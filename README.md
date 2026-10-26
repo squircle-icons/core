@@ -1,6 +1,6 @@
 # Squircle Icons · core
 
-**Alpha stage · Private · License pending**
+**Alpha stage · Public source · License pending**
 
 The single editable source of original Squircle artwork, metadata, motion recipes, and framework-independent runtime types/utilities. There are six original icons and two one-shot motion studies. This repository contains no homepage or framework component implementation.
 
@@ -20,7 +20,7 @@ pnpm pack --pack-destination .artifacts
 
 ## Updating an adapter
 
-Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the Svelte repository. That command builds a local core artifact and records its source commit and SHA-256. No npm account or publication is needed during this private alpha. Future framework adapters should consume the same versioned core input.
+Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the Svelte repository. That command builds a local core artifact and records its source commit and SHA-256. No npm account or publication is needed during this alpha. Future framework adapters should consume the same versioned core input.
 
 The packed catalog/source exports are an **internal build contract**, not a stable public core API. The core dependency is development-only in adapters; icon consumers do not install it separately.
 
