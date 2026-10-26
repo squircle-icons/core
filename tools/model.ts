@@ -1,7 +1,6 @@
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
 import pathParser from 'svg-path-parser';
 import { optimize } from 'svgo';
-import type { MotionRecipe } from '../src/types.js';
 
 export type SvgNode = { tag: string; attrs: Record<string, string>; children: SvgNode[] };
 const supported: Record<string, string[]> = {
@@ -136,103 +135,6 @@ export function optimizeSvg(source: string, style: 'outline' | 'filled' = 'outli
     'Optimization changed stable parts',
   );
   return result;
-}
-
-export function validateMotion(input: unknown, parts: string[], icon: string): MotionRecipe {
-  const recipe = input as MotionRecipe;
-  assert(recipe && recipe.icon === icon, 'Motion icon does not match source');
-  assert(recipe.kind === 'state' || recipe.kind === 'pulse', 'Invalid motion kind');
-  assert(
-    number(recipe.duration) && recipe.duration > 0 && recipe.duration <= 10000,
-    'Motion duration must be finite and bounded',
-  );
-  assert(
-    typeof recipe.easing === 'string' &&
-      /^(linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier\([\d., -]+\))$/.test(recipe.easing),
-    'Invalid easing',
-  );
-  if (recipe.easing.startsWith('cubic-bezier(')) {
-    const points = recipe.easing
-      .slice(13, -1)
-      .split(',')
-      .map((value) => Number(value.trim()));
-    assert(
-      points.length === 4 &&
-        points.every(Number.isFinite) &&
-        points[0] >= 0 &&
-        points[0] <= 1 &&
-        points[2] >= 0 &&
-        points[2] <= 1,
-      'Invalid cubic-bezier easing',
-    );
-  }
-  assert(recipe.states && recipe.initial in recipe.states, 'Missing initial motion state');
-  assert(recipe.origins && Object.keys(recipe.origins).length > 0, 'Missing transform origins');
-  for (const [part, origin] of Object.entries(recipe.origins)) {
-    assert(parts.includes(part), `Unknown motion part: ${part}`);
-    assert(number(origin.x) && number(origin.y), 'Invalid transform origin');
-  }
-  const style = (value: any) => {
-    assert(
-      value && typeof value.transform === 'string' && value.transform.length > 0,
-      'Missing transform',
-    );
-    assert(
-      /^(?:(?:rotate\(-?\d+(?:\.\d+)?deg\)|translate[XY]\(-?\d+(?:\.\d+)?px\)|scale[XY]\(-?\d+(?:\.\d+)?\))\s*)+$/.test(
-        value.transform,
-      ),
-      'Unsupported or non-finite transform',
-    );
-    if (value.opacity !== undefined)
-      assert(number(value.opacity) && value.opacity >= 0 && value.opacity <= 1, 'Invalid opacity');
-  };
-  const names = Object.keys(recipe.origins).sort();
-  for (const pose of Object.values(recipe.states)) {
-    assert(
-      JSON.stringify(Object.keys(pose).sort()) === JSON.stringify(names),
-      'Every state must define every moving part',
-    );
-    for (const value of Object.values(pose)) style(value);
-  }
-  if (recipe.kind === 'pulse') {
-    assert(
-      Array.isArray(recipe.tracks) && recipe.tracks.length === names.length,
-      'Pulse requires one track per moving part',
-    );
-    const seen = new Set<string>();
-    for (const track of recipe.tracks) {
-      assert(
-        names.includes(track.part) && !seen.has(track.part),
-        'Unknown or duplicate track part',
-      );
-      seen.add(track.part);
-      assert(track.keyframes.length >= 2, 'Track requires keyframes');
-      let previous = -1;
-      for (const frame of track.keyframes) {
-        style(frame);
-        assert(
-          number(frame.offset) &&
-            frame.offset >= previous &&
-            frame.offset >= 0 &&
-            frame.offset <= 1,
-          'Invalid keyframe offset',
-        );
-        previous = frame.offset;
-      }
-      assert(
-        track.keyframes[0].offset === 0 && track.keyframes.at(-1)?.offset === 1,
-        'Track must cover complete duration',
-      );
-      for (const endpoint of [track.keyframes[0], track.keyframes.at(-1)!]) {
-        const rest = recipe.states[recipe.initial][track.part];
-        assert(
-          endpoint.transform === rest.transform && endpoint.opacity === rest.opacity,
-          'Pulse must start and end at rest',
-        );
-      }
-    }
-  } else assert(!recipe.tracks, 'State motion does not use pulse tracks');
-  return recipe;
 }
 
 /** Derive a designated rectangular counter from the SVG itself, by named part. */

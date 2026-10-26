@@ -2,11 +2,11 @@
 
 **Alpha stage · Open source · MIT license**
 
-The single editable source of original Squircle artwork, metadata, motion recipes, and framework-independent runtime types/utilities. There are six original icons and two one-shot motion studies. This repository contains no homepage or framework component implementation.
+The single editable source of original Squircle artwork, metadata, and framework-independent types. This repository contains no homepage or framework component implementation.
 
 ## Design direction
 
-Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or refining more motion. Folder, Camera, Heart and Settings (Outline/Filled), plus Search (Outline only), are owner-approved. Bell is also approved after its solid Filled clapper correction; all six static icons have owner approval. Filled is intentionally omitted for Search.
+Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or adding new behavior. Folder, Camera, Heart and Settings (Outline/Filled), plus Search (Outline only), are owner-approved. Bell is also approved after its solid Filled clapper correction; all six static icons have owner approval. Filled is intentionally omitted for Search.
 
 ## Develop
 
@@ -18,9 +18,9 @@ pnpm verify
 pnpm pack --pack-destination .artifacts
 ```
 
-`icons/` contains the original SVGs and adjacent authorship/construction metadata. `motions/` contains named-part recipes. `src/` contains the DOM controller, types, and an internal catalog type. Browser APIs are accessed only when a controller is explicitly created, never at import time.
+`icons/` contains the original SVGs and adjacent authorship/construction metadata. `src/` contains shared stroke weights, types, and an internal catalog type.
 
-`pnpm build` validates/optimizes artwork conservatively, compiles runtime/types, and writes `dist/catalog.json` for adapter generation. `pnpm test` covers invalid XML/geometry, stable parts, motion references, finite timing/easing, pulse endpoints, and DOM-free import. Generated catalog data must not be edited manually.
+`pnpm build` validates/optimizes artwork conservatively, compiles types, and writes `dist/catalog.json` for adapter generation. `pnpm test` covers invalid XML/geometry, stable parts, filled contours, and cutout contracts. Generated catalog data must not be edited manually.
 
 ## Updating an adapter
 

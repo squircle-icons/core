@@ -34,7 +34,6 @@
     "dist",
     "src",
     "icons",
-    "motions",
     "README.md",
     "LICENSE",
     "DESIGN_RULES.md"
@@ -45,10 +44,9 @@
       "types": "./dist/catalog.d.ts",
       "default": "./dist/catalog.js"
     },
-    "./source/types": "./src/types.ts",
-    "./source/controller": "./src/controller.ts"
+    "./source/types": "./src/types.ts"
   },
-  "description": "Original Squircle SVG artwork, metadata, motion recipes and framework-independent runtime.",
+  "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/squircle-icons/core.git"

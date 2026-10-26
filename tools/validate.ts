@@ -2,16 +2,13 @@ import { STROKE_WEIGHTS } from '../src/types.js';
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseSvg, optimizeSvg, validateMotion, extractStrokeCutout } from './model.js';
+import { parseSvg, optimizeSvg, extractStrokeCutout } from './model.js';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 export async function loadSources() {
   const files = (await readdir(resolve(root, 'icons')))
     .filter((name) => name.endsWith('.svg'))
     .sort();
-  const motionFiles = (await readdir(resolve(root, 'motions'))).filter((name) =>
-    name.endsWith('.json'),
-  );
   const filledFiles = (
     await readdir(resolve(root, 'icons/filled')).catch((error) => {
       if (error.code === 'ENOENT') return [] as string[];
@@ -38,13 +35,6 @@ export async function loadSources() {
     const parsed = parseSvg(optimized);
     if (Number(parsed.root.attrs['stroke-width']) !== STROKE_WEIGHTS.regular)
       throw new Error(`Default stroke must match Regular: ${name}`);
-    const motion = motionFiles.includes(`${name}.json`)
-      ? validateMotion(
-          JSON.parse(await readFile(resolve(root, 'motions', `${name}.json`), 'utf8')),
-          parsed.parts,
-          name,
-        )
-      : undefined;
     let filled;
     if (filledFiles.includes(file)) {
       const filledSource = await readFile(resolve(root, 'icons/filled', file), 'utf8');
@@ -72,19 +62,16 @@ export async function loadSources() {
       optimized,
       metadata,
       ...parsed,
-      motion,
       ...(filled ? { filled } : {}),
     });
   }
   for (const file of filledFiles)
     if (!files.includes(file)) throw new Error(`Orphan filled icon: ${file}`);
-  for (const file of motionFiles)
-    if (!files.includes(file.replace('.json', '.svg'))) throw new Error(`Orphan motion: ${file}`);
   return icons;
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const icons = await loadSources();
   console.log(
-    `Validated ${icons.length} original outline SVGs, ${icons.filter((icon) => icon.filled).length} filled variants and ${icons.filter((icon) => icon.motion).length} motion recipes.`,
+    `Validated ${icons.length} original outline SVGs, ${icons.filter((icon) => icon.filled).length} filled variants.`,
   );
 }

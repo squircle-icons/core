@@ -1,19 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { readFile } from 'node:fs/promises';
-import { parseSvg, optimizeSvg, validateMotion, extractStrokeCutout } from '../../tools/model.js';
+import { parseSvg, optimizeSvg, extractStrokeCutout } from '../../tools/model.js';
 import { loadSources } from '../../tools/validate.js';
-import { createMotionController } from '../../src/controller.js';
 
 const source = await readFile(new URL('../../icons/folder.svg', import.meta.url), 'utf8');
-const motion = JSON.parse(
-  await readFile(new URL('../../motions/folder.json', import.meta.url), 'utf8'),
-);
-const bell = JSON.parse(
-  await readFile(new URL('../../motions/bell.json', import.meta.url), 'utf8'),
-);
-
 describe('single-source artwork pipeline', () => {
-  it('validates the original collection and their motion references', async () => {
+  it('validates the original collection', async () => {
     const icons = await loadSources();
     expect(icons.map((icon) => icon.name)).toEqual([
       'bell',
@@ -25,7 +17,6 @@ describe('single-source artwork pipeline', () => {
       'settings',
       'sun',
     ]);
-    expect(icons.filter((icon) => icon.motion)).toHaveLength(2);
   });
   it('preserves part names and geometry during conservative optimization', () => {
     const optimized = optimizeSvg(source);
@@ -53,48 +44,6 @@ describe('single-source artwork pipeline', () => {
       source.replace('<g data-part="lid">', '<g data-part="lid"><circle cx="12" cy="12" r="-1"/>'),
     ],
   ])('rejects %s', (_, svg) => expect(() => parseSvg(svg)).toThrow());
-});
-
-describe('motion recipe contracts', () => {
-  it('rejects missing targets', () =>
-    expect(() => validateMotion(motion, ['body'], 'folder')).toThrow('Unknown motion part'));
-  it.each([NaN, Infinity, -1, 0, 20000])('rejects duration %s', (duration) =>
-    expect(() => validateMotion({ ...motion, duration }, ['body', 'lid'], 'folder')).toThrow(
-      'duration',
-    ),
-  );
-  it.each(['cubic-bezier(1)', 'cubic-bezier(2, 0, 0, 1)', 'cubic-bezier(0, NaN, 1, 1)'])(
-    'rejects invalid easing %s',
-    (easing) =>
-      expect(() => validateMotion({ ...motion, easing }, ['lid'], 'folder')).toThrow('easing'),
-  );
-  it('rejects an absent initial state', () =>
-    expect(() => validateMotion({ ...motion, initial: 'missing' }, ['lid'], 'folder')).toThrow(
-      'initial',
-    ));
-  it('rejects non-finite transforms and incomplete state poses', () => {
-    const broken = structuredClone(motion);
-    broken.states.open.lid.transform = 'rotate(Infinitydeg)';
-    expect(() => validateMotion(broken, ['lid'], 'folder')).toThrow('transform');
-    broken.states.open = {};
-    expect(() => validateMotion(broken, ['lid'], 'folder')).toThrow('Every state');
-  });
-  it('requires pulse endpoints to return to rest', () => {
-    const broken = structuredClone(bell);
-    broken.tracks[0].keyframes.at(-1).transform = 'rotate(10deg)';
-    expect(() => validateMotion(broken, ['body', 'clapper'], 'bell')).toThrow('rest');
-  });
-  it('rejects out-of-order offsets and duplicate tracks', () => {
-    const broken = structuredClone(bell);
-    broken.tracks[0].keyframes[2].offset = -1;
-    expect(() => validateMotion(broken, ['body', 'clapper'], 'bell')).toThrow('offset');
-    broken.tracks[0] = structuredClone(broken.tracks[1]);
-    expect(() => validateMotion(broken, ['body', 'clapper'], 'bell')).toThrow('duplicate');
-  });
-  it('imports core in a Node environment without DOM globals', () => {
-    expect(typeof window).toBe('undefined');
-    expect(typeof createMotionController).toBe('function');
-  });
 });
 
 describe('filled artwork pipeline', () => {
