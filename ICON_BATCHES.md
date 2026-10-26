@@ -35,4 +35,4 @@ Arrow-family feedback (2026-10-27): the owner rejected the broad curved-head exp
 
 Current Check/arrow Filled revision (2026-10-27): add the accepted rounded-box treatment to Check Filled and make all six Filled arrowheads solid triangles. Outline arrow heads remain open V shapes. These are the seven existing pending pairs;13 of20 pairs remain approved.
 
-Final owner approval (2026-10-27): Check and all six arrow pairs passed in both current styles. Check uses the rounded box; Filled arrows have solid triangular heads. This completes20 approved pairs. Chevron Up/Down remain unified names for their Outline/Filled pair, with caret recorded as a search tag for the solid triangular treatment.
+Final owner approval (2026-10-27): Check and all six arrow pairs passed in both current styles. Check uses the rounded box; Filled arrows have solid triangular heads. This completes20 approved pairs. Chevron Up/Down remain unified names for each icon in both Outline/Filled styles. Caret is an alternate search term; it does not mean a separate icon or a required Filled-only name.
