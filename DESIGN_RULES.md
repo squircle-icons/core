@@ -28,7 +28,6 @@ Crisp means clean contours and consistent visual weight. It does not mean replac
 - Keep the icon artwork monochrome and inherit `currentColor`. No blur, glow, shadow or gradient is used to make the glyph appear softer. The website's indigo accents are separate from icon geometry.
 - Inspect at actual 16, 20 and 24px sizes before judging the enlarged view. Also inspect at 48px for contour defects, on light and dark surfaces.
 - Align straight strokes to the intended pixel grid where practical. Fractional stroke widths and scaling can produce normal antialiasing; do not promise identical pixel sharpness at every size or distort the object's geometry to force it.
-- Motion must preserve readable contours and consistent apparent stroke weight. Translation and rotation are preferable when they express the action. Check nonuniform scaling for visibly compressed strokes and awkward joins before accepting it.
 
 ## Current technical baseline
 
@@ -53,20 +52,18 @@ Outline uses configurable, consistent strokes. Filled is separately authored fil
 
 Filled remains fixed fill-only artwork. Thin, Bold and custom Outline weights can move the visible stroke edge; the required match is at Regular 1.70. Independent nonuniform Lab scaling preserves Outline stroke width and is a diagnostic adjustment, not a replacement for the native reference comparison. Outline-only icons such as Search do not need a Filled variant.
 
-Motion work is paused. The current Lab focuses on static outline/filled geometry, stroke weight and centered X/Y size adjustments. Existing animation exports remain evaluation-era functionality and are not being extended.
+The library and Lab focus on static Outline/Filled geometry, stroke weight and centered X/Y size adjustments. Animation files and exports have been removed.
 
 ## Quality and delivery order
 
 1. Establish a small approved static reference set using the shared outer construction and crisp-stroke rules. Review Folder first, then use other object types to check that the grammar works across the family.
 2. Produce additional static icons in small batches from that grammar. Review the batch together for weight, spacing and silhouette consistency. Do not invent a separate visual system or custom review page for every icon.
-3. Add motion only when it communicates a useful state or action. Static support is sufficient for an icon; animation is not a release requirement for every drawing.
-4. Reuse named-part motion patterns. Keep experiments in the existing Lab and limit each motion review to a small set of options. Park unresolved motion instead of blocking the static collection on it.
-5. Promote an approved change through core → Svelte → homepage. Keep original geometry, deterministic generation, accessible names, opt-in playback and reduced-motion behavior intact.
+3. Promote an approved change through core → Svelte → homepage. Keep original geometry, deterministic generation, accessible names and style selection intact.
 
-Do not expand the collection while its static visual grammar is unsettled. Existing Folder/Bell motion remains available for evaluation; further motion refinement waits until the static baseline is accepted.
+Do not expand the collection while its static visual grammar is unsettled.
 
 ## Approval gate
 
-Before a drawing is considered ready, confirm its recognizable outer silhouette, consistent rounding, appropriate interior geometry, crisp strokes, matching Outline/Filled visible outer edges where both styles exist, and readability at actual sizes. If motion is included, also inspect both endpoints, a paused middle frame, interruption and reduced motion.
+Before a drawing is considered ready, confirm its recognizable outer silhouette, consistent rounding, appropriate interior geometry, crisp strokes, matching Outline/Filled visible outer edges where both styles exist, and readability at actual sizes.
 
 Automated validation checks geometry syntax, safe SVG, named parts, generation and behavior. Visual quality and approval remain human review decisions; passing tests or adding more icons does not establish them.
