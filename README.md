@@ -1,6 +1,6 @@
 # Squircle Icons · core
 
-**Alpha stage · Public source · License pending**
+**Alpha stage · Open source · MIT license**
 
 The single editable source of original Squircle artwork, metadata, motion recipes, and framework-independent runtime types/utilities. There are six original icons and two one-shot motion studies. This repository contains no homepage or framework component implementation.
 
@@ -24,4 +24,4 @@ Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the 
 
 The packed catalog/source exports are an **internal build contract**, not a stable public core API. The core dependency is development-only in adapters; icon consumers do not install it separately.
 
-The grid, default 1.75 stroke, and curvature remain a proposal awaiting visual review. Do not copy or adapt third-party icon paths and claim them as original. Licensing remains `UNLICENSED`; no reuse license has been adopted. See [migration provenance](MIGRATION.md).
+The grid, default 1.75 stroke, and curvature remain a proposal awaiting visual review. Do not copy or adapt third-party icon paths and claim them as original. Original artwork, recipes, and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
