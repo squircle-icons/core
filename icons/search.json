@@ -3,9 +3,9 @@
   "description": "A circular search lens with a rounded diagonal handle.",
   "tags": ["find", "magnify"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner changed the Filled concept to Bold rather than a boxed cutout. Filled is fixed fill-only geometry matching the exact Outline centerlines rendered at Bold 2.25, with round cap radius 1.125. Outline retains default Regular 1.70 and radius-.85 caps. Both styles share centerlines and placement; weight is deliberately different. Centerlines are sized for exact 2px primary-pair margins at the Filled Bold reference. Regular Outline therefore has 2.275px on that same primary pair. No enclosing box or negative-space symbol is present. Native X/Y=100%, rotation=0. Both revised styles await owner review; earlier boxed approval does not approve this revision. Both opposing pairs are primary. Filled visible bounds 2..22 on both axes; Regular Outline bounds 2.275..21.725. Lens center 9.95977012,9.95977012, centerline radius 6.83477012. Handle starts on the lens at 45 degrees and ends at20.875,20.875. Filled analytically unions the expanded lens exterior and handle capsule, then subtracts the lens interior. The lens center stays transparent; no doubled seam or overlapping evenodd cutouts.",
+  "construction": "Owner changed the Filled concept to Bold rather than a boxed cutout. Filled is fixed fill-only geometry matching the exact Outline centerlines rendered at Bold 2.25, with round cap radius 1.125. Outline retains default Regular 1.70 and radius-.85 caps. Both styles share centerlines and placement; weight is deliberately different. Centerlines are sized for exact 2px primary-pair margins at the Filled Bold reference. Regular Outline therefore has 2.275px on that same primary pair. No enclosing box or negative-space symbol is present. Native X/Y=100%, rotation=0. The owner approved both revised styles on 2026-10-27. Both opposing pairs are primary. Filled visible bounds 2..22 on both axes; Regular Outline bounds 2.275..21.725. Lens center 9.95977012,9.95977012, centerline radius 6.83477012. Handle starts on the lens at 45 degrees and ends at20.875,20.875. Filled analytically unions the expanded lens exterior and handle capsule, then subtracts the lens interior. The lens center stays transparent; no doubled seam or overlapping evenodd cutouts.",
   "review": {
-    "status": "draft",
+    "status": "approved",
     "reviewedBy": "palamto",
     "date": "2026-10-27",
     "style": "outline",
@@ -15,7 +15,7 @@
       "strokeWidth": 1.7,
       "rotation": 0
     },
-    "note": "Owner requested Filled = Bold for Menu and Search, superseding the previous box treatment. Revised geometry awaits owner review."
+    "note": "Owner approved the current unboxed Filled = Bold 2.25 treatment and corresponding Regular 1.70 Outline. Shared centerlines and native proportions are retained, with 2px Filled primary margins."
   },
   "filledTreatment": "bold-stroke"
 }

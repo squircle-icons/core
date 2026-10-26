@@ -2,39 +2,27 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                  | Review status                                 |
+| Round | Icons                                                  | Current review status                         |
 | ----- | ------------------------------------------------------ | --------------------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings          | Five approved; revised Search awaits review   |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                              |
 | 2     | Sun, Moon                                              | Both approved; historical two-icon round      |
 | 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | Plus, X and Copy approved; three await review |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six are drafts awaiting owner review      |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | Menu and Trash approved; four await review    |
+
+**13 of 20 current icon pairs are approved.** Pending: Arrow Left, Arrow Right, Check, Chevron Down, Chevron Up, Download and Upload. Approval covers both Outline and Filled unless explicitly stated otherwise. Automated checks do not grant visual approval.
+
+## Batch membership
 
 Round 3 includes three owner selections (X / close, Copy, Chevron Down) and three complementary selections (Plus, Check, Chevron Up). It contains six icons total, not six in addition to the named selections. All six provide Outline and Filled artwork. The batch rule begins with Round 3 and does not require retroactively expanding Round 2.
 
-Round 3 revision: Plus centerlines extend symmetrically from 13 to 14 units. X uses that exact revised Plus geometry rotated 45 degrees about 12,12, baked into the source at native rotation 0. The owner subsequently requested a slight optical enlargement of X: diagonal centerlines now extend symmetrically from 14 to 16 units while stroke 1.70 and cap radius .85 stay fixed. Both styles use this enlarged glyph; the Filled box retains 2px clearance.
+Round 4 adds navigation directions, Menu, file transfer and Trash. All six provide Outline and Filled artwork. No new batch is created when revising an existing icon or adding its Filled style.
 
-## Round 4
+## Accepted revisions
 
-Arrow Left, Arrow Right, Menu, Download, Upload and Trash form the next six-icon batch. All six provide Outline and Filled artwork and remain drafts awaiting owner review. Navigation directions, a compact menu, file transfer and deletion complement the Round 3 controls. Filled line symbols are analytically expanded Regular 1.70 strokes; Trash has a solid bucket with two explicit internal capsule cutouts. Automated contour checks do not grant visual approval.
+The owner approved Camera, Folder, Plus and X on 2026-10-27. Camera/Folder retain natural horizontal proportions, exact 2px left/right margins, rounder main-body corners and matching unboxed Filled exteriors. Camera includes the lowered raised housing. Plus/X keep radius-4 boxes at2..22 and identical shared glyphs at4..20. See ICON_MARGIN_RULES.md and BOXED_ICON_RULES.md for exact dimensions.
 
-Round 3 Filled revision: Plus and X use upright solid rounded boxes with their unchanged glyphs as negative space, at 2px clearance on each side of each glyph. This is a Filled-only treatment; Outline stays unboxed. The 45-degree derivation applies to the glyphs, while each upright box is fitted independently.
+Copy was approved on 2026-10-27 with 4px exposed parallel-page spacing, standard radius-3.25 centerline corners (radius-4.10 Filled exterior), 1px breaks at both rear/front junctions and 2px artboard margins.
 
-X margin revision: the owner clarified that Filled must keep 2px outside its box, and Outline is exactly the X inside that box, following Plus. At native 24px, Regular 1.70 and rotation 0, the Filled box spans 2..22; both shared glyphs span 4..20. The box has radius-2.85 corners and 2px inner clearance. Outline and Filled glyphs keep identical position, dimensions, 1.70 weight and .85 caps. This contained shared-glyph construction is the current reference.
+The earlier boxed Search was approved, then superseded by the owner's **Filled = Bold** direction for Menu and Search. On 2026-10-27 the owner approved their current unboxed pairs: fixed Bold 2.25 Filled following the same centerlines as Regular 1.70 Outline. Filled has 2px on its primary pair (Menu left/right; Search both pairs); Regular Outline has 2.275px at the same pair. The former boxed treatment is not the current reference.
 
-Plus/X corner revision: the owner accepted the contained shared-glyph construction and requested rounder Filled box corners. Both boxes now use radius 4 with unchanged exterior bounds, identical Outline/cutout glyphs, Regular 1.70 weight and 2px clearance to each box side.
-
-Primary-pair revision: Camera and Folder keep their horizontal proportions with 2px left/right margins, rounder body corners, matching unboxed Filled exteriors and pending visual review. Plus is normalized to the same 2px all-side box and shared 16-unit glyph dimensions as X.
-
-Camera housing refinement: the owner requested a lower raised top. Housing height is reduced by .75 unit and the complete icon is recentered vertically, retaining 2px left/right margins and aligned Outline/Filled body contours.
-
-Owner approval recorded on 2026-10-27: Camera, Folder, Plus and X passed in both Outline and Filled at the current native geometry and Regular 1.70. The approved references include the lowered Camera housing, rounder Camera/Folder contours, 2px primary-pair margins, and radius-4 boxed Plus/X with identical shared glyphs. Copy, Check and both Chevrons remain awaiting review in Round 3. Ten of twenty icons are now approved.
-
-Copy spacing/corner revision: the owner requested greater separation and the same main-body roundness as Camera/Folder. Copy now has 4px exposed inter-page clearance, standard radius-3.25 centerline corners (radius-4.10 visible/Filled exterior), and 2px outer margins at Regular 1.70. Both styles retain matching contours; the final junction revision below was owner-approved on 2026-10-27.
-
-Copy junction revision: the owner requested breaks at both rear/front connections. Both styles now use a 1px cap-to-foreground gap at each rear endpoint, trimmed along the standard corner arcs. The front page, 4px parallel-border gap, Regular 1.70 weight and 2px artboard margins are retained.
-
-Search style extension: the owner requested a boxed Filled Search matching the Plus/X treatment. Both shared glyphs fit 4..20 with unchanged Regular 1.70; the box fits 2..22 with radius-4 corners and 2px side clearances. The earlier Outline-only rule is superseded. This is a new style for the existing Search icon, not a new icon batch. The owner approved both revised Search styles and both current Copy styles on 2026-10-27. Eleven of twenty current icon pairs are approved; Check and both Chevrons remain awaiting review in Round 3, along with all six Round 4 icons.
-
-Round 4 Menu/Trash revision: the owner requested a rounded box for Filled Menu and straight, rounded Trash geometry. Menu shares the exact three-bar glyph between styles inside a radius-4 Filled frame. Trash has vertical sides, standard rounded bottom corners and 2px top/bottom primary margins. Both pairs remain drafts awaiting owner review.
-
-Current owner direction, superseding earlier Menu/Search box notes: Filled = Bold for Menu and Search, with no enclosing box. Filled matches their shared centerlines at fixed Bold 2.25; Regular Outline remains 1.70. Bold Filled has 2px at its primary pair (Menu left/right; Search all sides); Regular Outline has 2.275px at the same pair. This is an explicit exception to matching the Regular exterior. The resized revised pairs await review; previous Search approval covered its boxed version. Ten of twenty current pairs remain approved. See BOXED_ICON_RULES.md.
+The owner accepted current Trash on 2026-10-27: straight vertical bucket sides, standard radius-3.25 base centerline corners, fitted radius-1 handle centerline corners, aligned unboxed Filled exterior and 2px top/bottom primary margins. Preserve the accepted small-handle exception; it is part of this approval.
