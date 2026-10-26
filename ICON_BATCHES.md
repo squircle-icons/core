@@ -2,14 +2,14 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                  | Current review status                    |
-| ----- | ------------------------------------------------------ | ---------------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                         |
-| 2     | Sun, Moon                                              | Both approved; historical two-icon round |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six approved                         |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six approved                         |
+| Round | Icons                                                  | Current review status                      |
+| ----- | ------------------------------------------------------ | ------------------------------------------ |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                           |
+| 2     | Sun, Moon                                              | Both approved; historical two-icon round   |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six approved                           |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | Four approved; Download and Upload pending |
 
-**20 of20 current icon pairs are approved.** No current pair awaits review. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**18 of20 current icon pairs are approved.** Download and Upload remain awaiting review in both styles. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
@@ -35,4 +35,6 @@ Arrow-family feedback (2026-10-27): the owner rejected the broad curved-head exp
 
 Current Check/arrow Filled revision (2026-10-27): add the accepted rounded-box treatment to Check Filled and make all six Filled arrowheads solid triangles. Outline arrow heads remain open V shapes. These are the seven existing pending pairs;13 of20 pairs remain approved.
 
-Final owner approval (2026-10-27): Check and all six arrow pairs passed in both current styles. Check uses the rounded box; Filled arrows have solid triangular heads. This completes20 approved pairs. Chevron Up/Down remain unified names for each icon in both Outline/Filled styles. Caret is an alternate search term; it does not mean a separate icon or a required Filled-only name.
+Owner approval (2026-10-27), corrected by the owner: Check and four navigation Arrow/Chevron pairs passed in both styles. Download and Upload remain pending. Check uses the rounded box; Filled arrows have solid triangular heads.18 current pairs are approved. Chevron Up/Down remain unified names for each icon in both Outline/Filled styles. Caret is an alternate search term; it does not mean a separate icon or a required Filled-only name.
+
+Approval correction (2026-10-27): the owner clarified that only Download and Upload remain pending. Their earlier approval was recorded in error and has been reverted to draft in both styles. Current approved count is18 of20; all other current pairs are approved.
