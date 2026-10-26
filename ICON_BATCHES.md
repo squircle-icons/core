@@ -20,3 +20,5 @@ Arrow Left, Arrow Right, Menu, Download, Upload and Trash form the next six-icon
 Round 3 Filled revision: Plus and X use upright solid rounded boxes with their unchanged glyphs as negative space, at 2px clearance on each side of each glyph. This is a Filled-only treatment; Outline stays unboxed. The 45-degree derivation applies to the glyphs, while each upright box is fitted independently.
 
 X margin revision: the owner clarified that Filled must keep 2px outside its box, and Outline is exactly the X inside that box, following Plus. At native 24px, Regular 1.70 and rotation 0, the Filled box spans 2..22; both shared glyphs span 4..20. The box has radius-2.85 corners and 2px inner clearance. Outline and Filled glyphs keep identical position, dimensions, 1.70 weight and .85 caps. This contained shared-glyph construction is the current reference.
+
+Plus/X corner revision: the owner accepted the contained shared-glyph construction and requested rounder Filled box corners. Both boxes now use radius 4 with unchanged exterior bounds, identical Outline/cutout glyphs, Regular 1.70 weight and 2px clearance to each box side.

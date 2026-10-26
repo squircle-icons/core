@@ -1,6 +1,6 @@
 # Contributing to core
 
-Read [DESIGN_RULES.md](DESIGN_RULES.md) first. Review the silhouette and crisp strokes, and review new drawings in a batch against the approved family.
+Read [DESIGN_RULES.md](DESIGN_RULES.md) and [BOXED_ICON_RULES.md](BOXED_ICON_RULES.md) first. Re-read the boxed-icon construction reference before every Plus/X change. Review the silhouette and crisp strokes, and review new drawings in a batch against the approved family.
 
 For every new or revised dual-style icon, match the Filled outer edge to the visible Outline exterior at native 100% and Regular 1.70. Compare overlays and rotated poses, inspect actual sizes, and add or update the packed-export contour regression check in the adapter.
 

@@ -51,7 +51,7 @@ Outline uses configurable, consistent strokes. Filled is separately authored fil
 
 On 2026-10-27, the owner requested solid rounded boxes for Plus and X Filled only, with glyph cutouts and exactly 2 native units of inner clearance on all four sides. Outline remains unboxed. Plus uses the `boxed-cutout` treatment: its Filled glyph cutout matches the Regular Outline exterior, and the box is fitted around it.
 
-X uses this same `boxed-cutout` treatment with its box contained at 2..22 and both glyphs at 4..20. The 2px outer margin applies to the Filled box, and another 2px separates the shared glyph from that box. Both glyphs have exactly matching contours at Regular 1.70 and radius-.85 caps. The box corners have radius 2.85. The glyph is centered identically in both styles with no style-specific scaling or translation. Only the added box exterior differs. Both drawings remain drafts until owner approval.
+X uses this same `boxed-cutout` treatment with its box contained at 2..22 and both glyphs at 4..20. The 2px outer margin applies to the Filled box, and another 2px separates the shared glyph from that box. Both glyphs have exactly matching contours at Regular 1.70 and radius-.85 caps. The owner requested rounder box corners for both Plus and X; their current corner radius is 4. Box bounds and both glyph contours stay fixed. The 2-unit inner clearance is measured against each straight box side; a rounder corner changes diagonal clearance. The glyph is centered identically in both styles with no style-specific scaling or translation. Only the added box exterior differs. Both drawings remain drafts until owner approval.
 
 ### Matching outer edges — required for new drawings and revisions
 
