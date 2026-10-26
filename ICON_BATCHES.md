@@ -5,11 +5,11 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 | Round | Icons                                                  | Current review status                      |
 | ----- | ------------------------------------------------------ | ------------------------------------------ |
 | 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                           |
-| 2     | Sun, Moon                                              | Both approved; historical two-icon round   |
+| 2     | Sun, Moon                                              | Sun approved; revised Moon awaits review   |
 | 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six approved                           |
 | 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | Four approved; Download and Upload pending |
 
-**18 of20 current icon pairs are approved.** Download and Upload remain awaiting review in both styles. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**17 of20 current icon pairs are approved.** Download, revised Moon and Upload await review in both styles. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
@@ -40,3 +40,5 @@ Owner approval (2026-10-27), corrected by the owner: Check and four navigation A
 Approval correction (2026-10-27): the owner clarified that only Download and Upload remain pending. Their earlier approval was recorded in error and has been reverted to draft in both styles. Current approved count is18 of20; all other current pairs are approved.
 
 Pending Download/Upload refinement (2026-10-27): both trays now use the standard Camera/Folder radius3.25 centerline corners, matching Filled outer4.10/inner2.40 radii and unchanged .85 caps. Heads, shafts and native outer bounds are retained. Both pairs still await owner review.
+
+Moon inner-crescent revision (2026-10-27): keep outer radius8, horns, bounds and weight; reduce the inner radius10→9 for a .63324958-unit deeper and longer arc. The revised pair reopens review;17 pairs are approved and Download/Moon/Upload remain pending.
