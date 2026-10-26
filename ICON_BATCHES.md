@@ -24,3 +24,5 @@ X margin revision: the owner clarified that Filled must keep 2px outside its box
 Plus/X corner revision: the owner accepted the contained shared-glyph construction and requested rounder Filled box corners. Both boxes now use radius 4 with unchanged exterior bounds, identical Outline/cutout glyphs, Regular 1.70 weight and 2px clearance to each box side.
 
 Primary-pair revision: Camera and Folder keep their horizontal proportions with 2px left/right margins, rounder body corners, matching unboxed Filled exteriors and pending visual review. Plus is normalized to the same 2px all-side box and shared 16-unit glyph dimensions as X.
+
+Camera housing refinement: the owner requested a lower raised top. Housing height is reduced by .75 unit and the complete icon is recentered vertically, retaining 2px left/right margins and aligned Outline/Filled body contours.
