@@ -30,3 +30,5 @@ Camera housing refinement: the owner requested a lower raised top. Housing heigh
 Owner approval recorded on 2026-10-27: Camera, Folder, Plus and X passed in both Outline and Filled at the current native geometry and Regular 1.70. The approved references include the lowered Camera housing, rounder Camera/Folder contours, 2px primary-pair margins, and radius-4 boxed Plus/X with identical shared glyphs. Copy, Check and both Chevrons remain awaiting review in Round 3. Ten of twenty icons are now approved.
 
 Copy spacing/corner revision: the owner requested greater separation and the same main-body roundness as Camera/Folder. Copy now has 4px exposed inter-page clearance, standard radius-3.25 centerline corners (radius-4.10 visible/Filled exterior), and 2px outer margins at Regular 1.70. Both styles retain matching contours and await review.
+
+Copy junction revision: the owner requested breaks at both rear/front connections. Both styles now use a 1px cap-to-foreground gap at each rear endpoint, trimmed along the standard corner arcs. The front page, 4px parallel-border gap, Regular 1.70 weight and 2px artboard margins are retained.

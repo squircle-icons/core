@@ -33,7 +33,7 @@ Crisp means clean contours and consistent visual weight. It does not mean replac
 
 Owner direction recorded on 2026-10-27: use the accepted Camera/Folder main-body roundness as the standard for object corners. The reference is a circular **3.25-unit Outline centerline radius** at Regular 1.70. Its visible exterior and corresponding Filled outer corner have radius **4.10**; an exposed Filled border's inner radius is **2.40**. Keep stroke width 1.70 and cap radius .85. Use this shared radius for comparable full-size body/page corners, including both Copy pages. Smaller shoulders, tabs and semantic details keep their fitted local radii; do not overwrite approved local features. The separately approved Plus/X enclosing-box radius remains 4.00.
 
-Copy uses this standard on both pages, with a 4px clear gap between exposed straight borders, exact 2px artboard margins, aligned Outline/Filled exteriors and no extra enclosing box. Record departures from the standard in construction metadata and review them with the owner.
+Copy uses this standard on both pages, with a 4px clear gap between exposed straight borders, exact 2px artboard margins, aligned Outline/Filled exteriors and no extra enclosing box. Both exposed rear endpoints stop 1px before the foreground border, including their rounded caps, to create the owner-requested breaks at the two layer junctions. Record departures from the standard in construction metadata and review them with the owner.
 
 ## Current technical baseline
 
