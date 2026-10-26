@@ -5,6 +5,27 @@ import { fileURLToPath } from 'node:url';
 import { parseSvg, optimizeSvg, extractStrokeCutout, validateIconName } from './model.js';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
+export function validateMetadata(metadata: any, name: string) {
+  if (
+    !metadata ||
+    typeof metadata !== 'object' ||
+    Array.isArray(metadata) ||
+    metadata.name !== name ||
+    !['description', 'authorship', 'construction'].every(
+      (field) => typeof metadata[field] === 'string' && metadata[field].trim().length > 0,
+    ) ||
+    !Array.isArray(metadata.tags) ||
+    !metadata.tags.every((tag: unknown) => typeof tag === 'string' && tag.trim().length > 0) ||
+    (metadata.review !== undefined &&
+      (!metadata.review ||
+        typeof metadata.review !== 'object' ||
+        Array.isArray(metadata.review) ||
+        !['approved', 'draft'].includes(metadata.review.status)))
+  )
+    throw new Error(`Invalid metadata: ${name}`);
+  return metadata;
+}
+
 export async function loadSources() {
   const files = (await readdir(resolve(root, 'icons')))
     .filter((name) => name.endsWith('.svg'))
@@ -22,15 +43,10 @@ export async function loadSources() {
     const name = file.slice(0, -4);
     validateIconName(name);
     const source = await readFile(resolve(root, 'icons', file), 'utf8');
-    const metadata = JSON.parse(await readFile(resolve(root, 'icons', `${name}.json`), 'utf8'));
-    if (
-      metadata.name !== name ||
-      !metadata.description ||
-      !metadata.authorship ||
-      !metadata.construction ||
-      !Array.isArray(metadata.tags)
-    )
-      throw new Error(`Invalid metadata: ${name}`);
+    const metadata = validateMetadata(
+      JSON.parse(await readFile(resolve(root, 'icons', `${name}.json`), 'utf8')),
+      name,
+    );
     const optimized = optimizeSvg(source);
     const parsed = parseSvg(optimized);
     if (Number(parsed.root.attrs['stroke-width']) !== STROKE_WEIGHTS.regular)
@@ -38,17 +54,10 @@ export async function loadSources() {
     let filled;
     if (filledFiles.includes(file)) {
       const filledSource = await readFile(resolve(root, 'icons/filled', file), 'utf8');
-      const filledMetadata = JSON.parse(
-        await readFile(resolve(root, 'icons/filled', `${name}.json`), 'utf8'),
+      const filledMetadata = validateMetadata(
+        JSON.parse(await readFile(resolve(root, 'icons/filled', `${name}.json`), 'utf8')),
+        name,
       );
-      if (
-        filledMetadata.name !== name ||
-        !filledMetadata.description ||
-        !filledMetadata.authorship ||
-        !filledMetadata.construction ||
-        !Array.isArray(filledMetadata.tags)
-      )
-        throw new Error(`Invalid filled metadata: ${name}`);
       const filledOptimized = optimizeSvg(filledSource, 'filled');
       const filledParsed = parseSvg(filledOptimized, 'filled');
       const cutout = filledMetadata.strokeWidthCutout
