@@ -1,0 +1,7 @@
+{
+  "name": "check",
+  "description": "A clear check mark with a compact lead-in and a longer rising arm.",
+  "tags": ["tick", "done", "confirm", "success"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The short diagonal runs from 5.5,12.5 to 9.5,16.5; the longer arm rises to 18.5,7.5. Both arms use true 45-degree straight segments with one rounded joint and two rounded ends. Native bounds are centered about 12,12, giving Regular visible margins 4.65 horizontally and 6.65 vertically. The unequal arm lengths preserve a recognizable check silhouette. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+}

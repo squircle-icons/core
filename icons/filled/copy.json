@@ -1,0 +1,7 @@
+{
+  "name": "copy",
+  "description": "Two overlapping rounded pages with a distinct foreground sheet in a solid filled style.",
+  "tags": ["duplicate", "clipboard", "document", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The foreground is a solid rounded page with bounds 6.65..21.85 and radius-2.85 corners, exactly the exterior of the Outline foreground at Regular 1.70. The exposed rear border is authored as a closed width-1.70 band with outer radius 2.85, inner radius 1.15 and radius-.85 end caps. Its ends merge within the solid foreground; the exposed inter-page gap is retained. No artificial foreground hole is added. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+}

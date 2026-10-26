@@ -1,0 +1,7 @@
+{
+  "name": "copy",
+  "description": "Two overlapping rounded pages with a distinct foreground sheet.",
+  "tags": ["duplicate", "clipboard", "document"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Two offset page shapes use deliberate straight sides and radius-2 circular corners. The rear outline runs from 7.5,16.5 around the upper-left page to 16.5,7.5, with its endpoints terminating within the foreground boundary stroke. The foreground page centerline bounds are 7.5..21 on both axes. Combined centerline bounds are 3..21, giving balanced Regular visible margins of 2.15. The partial rear path keeps hidden edges out of the foreground interior. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+}

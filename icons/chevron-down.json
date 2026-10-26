@@ -1,0 +1,7 @@
+{
+  "name": "chevron-down",
+  "description": "A balanced downward chevron with straight arms and a rounded vertex.",
+  "tags": ["down", "expand", "dropdown", "arrow"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Mirrored 45-degree arms meet at 12,15.25, with endpoints at 5.5,8.75 and 18.5,8.75. A single continuous centerline avoids doubled joins. Native bounds are centered at 12,12. Regular visible margins are 4.65 horizontally and 7.9 vertically. Rounded caps and the rounded lower vertex use the shared 1.70 stroke. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+}

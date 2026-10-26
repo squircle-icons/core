@@ -1,0 +1,7 @@
+{
+  "name": "plus",
+  "description": "A centered plus mark with four equally sized arms.",
+  "tags": ["add", "new", "create"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Perpendicular straight strokes cross at 12,12, with equal endpoints at 5.5 and 18.5. The mark uses no enclosing frame or decorative bends. Regular 1.70 gives equal visible margins of 4.65 units. All four free ends have the same round cap. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+}

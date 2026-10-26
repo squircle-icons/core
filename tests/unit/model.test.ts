@@ -10,12 +10,18 @@ describe('single-source artwork pipeline', () => {
     expect(icons.map((icon) => icon.name)).toEqual([
       'bell',
       'camera',
+      'check',
+      'chevron-down',
+      'chevron-up',
+      'copy',
       'folder',
       'heart',
       'moon',
+      'plus',
       'search',
       'settings',
       'sun',
+      'x',
     ]);
   });
   it('preserves part names and geometry during conservative optimization', () => {
@@ -92,11 +98,17 @@ it('available filled sources preserve named parts and original geometry through 
   expect(icons.filter((icon) => icon.filled).map((icon) => icon.name)).toEqual([
     'bell',
     'camera',
+    'check',
+    'chevron-down',
+    'chevron-up',
+    'copy',
     'folder',
     'heart',
     'moon',
+    'plus',
     'settings',
     'sun',
+    'x',
   ]);
   expect(icons.find((icon) => icon.name === 'search')?.filled).toBeUndefined();
   for (const icon of icons.filter((icon) => icon.filled)) {

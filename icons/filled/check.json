@@ -1,0 +1,7 @@
+{
+  "name": "check",
+  "description": "A clear check mark with a compact lead-in and a longer rising arm in a solid filled style.",
+  "tags": ["tick", "done", "confirm", "success", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The fill-only contour is the exact union of the Regular 1.70 stroke exterior, with radius-.85 free-end caps. Straight edges, internal intersections and any rounded outer joint are constructed analytically from the Outline centerline. Line marks have no enclosed body or counter to fill; both styles intentionally retain the same recognizable mark at Regular. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+}
