@@ -24,3 +24,5 @@ Camera and Folder retain natural horizontal proportions with rounder tangent cor
 Copy revision: both pairs are primary, with combined visible bounds 2..22. The exposed parallel page borders have 4px clear spacing, with separate 1px breaks between the two rear end caps and the foreground border. Comparable object corners follow the standard Camera/Folder centerline radius 3.25, giving visible/Filled exterior radius 4.10 at Regular 1.70; see DESIGN_RULES.md. Both Copy styles were owner-approved on 2026-10-27.
 
 Search boxed extension: the shared magnifier uses bounds 4..20 and its new Filled box uses bounds 2..22, radius 4 and 2px side clearances, like Plus/X. Both revised styles were owner-approved on 2026-10-27, replacing the old Outline-only version.
+
+Menu: Filled box bounds 2..22; shared bar glyph bounds x=4..20/y=5.15..18.85, retaining 2px horizontal primary inner clearance and 3.15px vertical clearance. Trash: visible bounds x=3.15..20.85/y=2..22; the primary pair is top/bottom at 2px, with natural vertical proportions. Both revised pairs await owner review.

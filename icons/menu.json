@@ -3,5 +3,6 @@
   "description": "Three equal horizontal menu strokes with rounded free ends.",
   "tags": ["navigation", "list", "hamburger"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Straight centerlines keep the symbol readable without an enclosing frame. Centerline bounds x=4..20 and y=6..18 give balanced opposite visible margins of 3.15 horizontally and 5.15 vertically. Three equal strokes sit at y=6,12,18. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 4 draft awaiting owner review."
+  "construction": "Owner requested a boxed Filled Menu. Three straight equal centerlines run x=4.85..19.15 at y=6,12,18 with unchanged Regular 1.70 and round .85 caps. The shared glyph has visible bounds x=4..20 and y=5.15..18.85. Filled adds the family radius-4 box at 2..22, with the exact three capsules as negative space. Left/right are the primary inner pair, with 2px clearances; top/bottom retain 3.15px clearances and natural bar spacing. The box has 2px artboard margins on all four sides. Outline and Filled glyphs are identical in position and weight. Native X/Y=100%, rotation=0. Round 4 draft awaiting owner review.",
+  "filledTreatment": "boxed-cutout"
 }
