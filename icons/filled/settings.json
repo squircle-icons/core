@@ -3,5 +3,5 @@
   "description": "A six-tooth gear with flowing shoulders and a circular center in a solid filled style.",
   "tags": ["preferences", "gear", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Six solid teeth use matching straight faces and softened roots, expanded independently from the Outline. A circular hub counter leaves a clean single-color silhouette. Opposite points are symmetric about 12,12. Separately authored fill-only study; counters are fixed geometry. Not owner-approved."
+  "construction": "The solid six-tooth silhouette follows the visible exterior of the original Outline at Regular stroke 1.70: the original contour is expanded outward by 0.85 unit and its overlaps are united into one closed fill-only contour. Straight tooth faces and rounded transitions retain the Outline geometry. The circular hub counter has radius 2.25, matching the visible inner edge of the Outline hub (radius 3.1 minus half the Regular stroke). Opposite points remain symmetric about 12,12. The counter is fixed geometry; other Outline weights may differ. Not owner-approved."
 }
