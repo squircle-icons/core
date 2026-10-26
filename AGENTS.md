@@ -13,3 +13,5 @@ Original SVGs and metadata are the only artwork source. Commit validated source
 before syncing an adapter. Automated checks never grant visual approval.
 
 Use 2px at the primary opposing edge pair. Camera/Folder use left/right and retain horizontal proportions; another icon may use top/bottom. The remaining pair need not be 2px. Plus/X use all four sides of their Filled box. Naturally filled objects need no added enclosing box.
+
+Use the Camera/Folder main-body roundness as the object-corner standard: Outline centerline radius 3.25, corresponding visible/Filled exterior radius 4.10 and border inner radius 2.40 at Regular 1.70. Re-read the standard object corner section in DESIGN_RULES.md before choosing new body/page radii. Preserve approved fitted small-feature radii and the separate Plus/X box radius 4.00.

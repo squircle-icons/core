@@ -29,6 +29,12 @@ Crisp means clean contours and consistent visual weight. It does not mean replac
 - Inspect at actual 16, 20 and 24px sizes before judging the enlarged view. Also inspect at 48px for contour defects, on light and dark surfaces.
 - Align straight strokes to the intended pixel grid where practical. Fractional stroke widths and scaling can produce normal antialiasing; do not promise identical pixel sharpness at every size or distort the object's geometry to force it.
 
+## Standard object corner roundness
+
+Owner direction recorded on 2026-10-27: use the accepted Camera/Folder main-body roundness as the standard for object corners. The reference is a circular **3.25-unit Outline centerline radius** at Regular 1.70. Its visible exterior and corresponding Filled outer corner have radius **4.10**; an exposed Filled border's inner radius is **2.40**. Keep stroke width 1.70 and cap radius .85. Use this shared radius for comparable full-size body/page corners, including both Copy pages. Smaller shoulders, tabs and semantic details keep their fitted local radii; do not overwrite approved local features. The separately approved Plus/X enclosing-box radius remains 4.00.
+
+Copy uses this standard on both pages, with a 4px clear gap between exposed straight borders, exact 2px artboard margins, aligned Outline/Filled exteriors and no extra enclosing box. Record departures from the standard in construction metadata and review them with the owner.
+
 ## Current technical baseline
 
 The grid is 24×24 with rounded caps/joins. Outer spacing balances in opposite pairs, measured to the visible edge: left equals right, top equals bottom. The pairs may differ to preserve the real object. Do not stretch every icon into a square.
