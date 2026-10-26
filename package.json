@@ -36,7 +36,8 @@
     "icons",
     "motions",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "DESIGN_RULES.md"
   ],
   "exports": {
     "./catalog.json": "./dist/catalog.json",

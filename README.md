@@ -4,6 +4,10 @@
 
 The single editable source of original Squircle artwork, metadata, motion recipes, and framework-independent runtime types/utilities. There are six original icons and two one-shot motion studies. This repository contains no homepage or framework component implementation.
 
+## Design direction
+
+Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or refining more motion. The current six alpha drawings remain under visual review.
+
 ## Develop
 
 Use Node.js 24.19.0 and pnpm 10.10.0.
