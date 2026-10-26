@@ -3,5 +3,5 @@
   "description": "A compact camera with a continuous curved body and circular lens in a solid filled style.",
   "tags": ["photo", "image", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Rounded rectangular outer shell has bounds x=2.15..21.85 and y=3.25..20.75. A circular lens counter and small indicator counter preserve recognition without overlapping strokes. Separately authored fill-only study; counters are fixed geometry. Not owner-approved."
+  "construction": "Rounded rectangular outer shell has bounds x=2.15..21.85 and y=3.25..20.75. Horizontal shoulder ledges at y=5.95 (x=5..7.5 and x=16.5..19) match the narrowed raised housing in Outline. A circular lens counter and small indicator counter preserve recognition without overlapping strokes. Separately authored fill-only study; counters are fixed geometry. Not owner-approved."
 }
