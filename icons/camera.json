@@ -3,5 +3,5 @@
   "description": "A compact camera with a continuous curved body and circular lens.",
   "tags": ["photo", "image"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Original B\u00e9zier body: shoulders taper into a raised shutter housing; lens is optically lowered to 12.9."
+  "construction": "Rounded rectangular body uses the Folder corner rhythm, straight shoulder ledges and a raised housing. Circular lens stays circular; its center is lowered to y=13.2. Source bounds x=3..21 and y=4.1..19.9 balance opposite margins. Review study; not owner-approved."
 }

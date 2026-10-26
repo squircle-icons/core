@@ -3,5 +3,5 @@
   "description": "A six-tooth gear with flowing shoulders and a circular center.",
   "tags": ["preferences", "gear"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Original six-tooth outline with B\u00e9zier shoulders. The gear stays recognizable rather than forcing a squircle silhouette."
+  "construction": "Six original radial teeth use straight faces with individually rounded transitions. The recognizable gear is a silhouette exception to the rounded rectangle baseline. Opposite teeth are constructed in symmetric pairs about 12,12; the circular hub remains circular. Review study; not owner-approved."
 }

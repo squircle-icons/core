@@ -1,0 +1,7 @@
+{
+  "name": "search",
+  "description": "A clear circular search lens with a short angled handle in a solid filled style.",
+  "tags": ["find", "magnify", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "A circular ring uses a true circular counter; the separately authored rounded capsule handle joins the solid ring. Fill overlap creates one silhouette with no doubled strokes. Combined visible bounds are approximately x/y=2.45..21.55. Separately authored fill-only study; counters are fixed geometry. Not owner-approved."
+}

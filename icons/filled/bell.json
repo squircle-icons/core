@@ -1,0 +1,7 @@
+{
+  "name": "bell",
+  "description": "A gently squared bell with a separate hanging clapper in a solid filled style.",
+  "tags": ["notification", "alert", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The solid shell follows the same hanger, upright walls and flat lip. Separate clapper starts 1.7 units beneath the body. Vertical bounds y=1.65..22.35 balance top and bottom. Separately authored fill-only study; counters are fixed geometry. Not owner-approved."
+}

@@ -1,0 +1,7 @@
+{
+  "name": "heart",
+  "description": "A balanced heart with full lobes and a softened lower point in a solid filled style.",
+  "tags": ["love", "favorite", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Filled lobes and point are separately expanded to match Outline apparent size. No artificial counters or interior strokes. Bounds x=2.4..21.6, y=3.25..20.75 are centered. Separately authored fill-only study; counters are fixed geometry. Not owner-approved."
+}

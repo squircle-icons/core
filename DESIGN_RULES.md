@@ -40,7 +40,7 @@ Construction notes must explain the outer contour, internal shapes, optical adju
 
 ## Outline and filled styles
 
-Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder is the first filled review candidate; other filled icons are not implied or generated automatically.
+Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder is the approved filled reference. Camera, Bell, Heart, Search and Settings have separately authored filled review studies; they remain unapproved. Their counters are fixed geometry. Only Folder has a strokeWidth-controlled divider.
 
 Motion work is paused. The current Lab focuses on static outline/filled geometry, stroke weight and centered X/Y size adjustments. Existing animation exports remain evaluation-era functionality and are not being extended.
 
