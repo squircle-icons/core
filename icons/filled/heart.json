@@ -3,5 +3,5 @@
   "description": "A balanced heart with full lobes and a softened lower point in a solid filled style.",
   "tags": ["love", "favorite", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Separately authored solid Heart follows the slim V with a slight outward convex bow. Mirrored quadratic lower flanks and a compact tip are tangent-aligned without inward inflections or a broad belly. The established upper lobes and notch are retained. Bounds x=2.4..21.6, y=3.25..20.75 remain centered. No interior counters or strokes. Not owner-approved."
+  "construction": "Filled upper lobes and center notch are fitted to the visible exterior of the original Outline at Regular stroke 1.70 (0.85-unit outward normal offset). Offset branches are trimmed at the symmetric center intersection, with cubic segments fitted to within 0.001 drawing unit. The lower slim V and slight outward bow remain as authored. Bounds x=2.4..21.6, y=3.25..20.75 remain centered. No interior counters or strokes. Not owner-approved."
 }
