@@ -1,6 +1,6 @@
 # Squircle Icons design rules
 
-Owner direction recorded on 2026-10-26; Moon approval added on 2026-10-27. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; Moon Outline/Filled were approved on 2026-10-27; the first eight static icons are owner-approved; Plus and X Outline/Filled are owner-approved as of 2026-10-27; four Round 3 and all six Round 4 drawings await review. Search intentionally has no Filled style.
+Owner direction recorded on 2026-10-26; Moon approval added on 2026-10-27. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; Moon Outline/Filled were approved on 2026-10-27; the first eight static icons are owner-approved; Plus and X Outline/Filled are owner-approved as of 2026-10-27; four Round 3 and all six Round 4 drawings await review. Search now has an owner-requested boxed Filled variant; its revised pair awaits review.
 
 ## Shape language
 
@@ -51,7 +51,7 @@ Construction notes must explain the outer contour, internal shapes, optical adju
 
 ## Outline and filled styles
 
-Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder, Camera, Heart and Settings are approved filled references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; Moon Outline/Filled were approved on 2026-10-27; the first eight static icons are owner-approved; Plus and X Outline/Filled are owner-approved as of 2026-10-27; four Round 3 and all six Round 4 drawings await review. Search is intentionally Outline-only by owner direction. Counters other than Folder are fixed geometry. Only Folder has a strokeWidth-controlled divider.
+Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder, Camera, Heart and Settings are approved filled references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; Moon Outline/Filled were approved on 2026-10-27; the first eight static icons are owner-approved; Plus and X Outline/Filled are owner-approved as of 2026-10-27; four Round 3 and all six Round 4 drawings await review. The owner’s latest direction adds boxed Filled Search, replacing the earlier Outline-only restriction. Counters other than Folder are fixed geometry. Only Folder has a strokeWidth-controlled divider.
 
 ### Owner-requested boxed Filled marks
 
@@ -68,7 +68,7 @@ X uses this same `boxed-cutout` treatment with its box contained at 2..22 and bo
 - Review an overlay and repeated style switching, then inspect 16/20/24/48px and at least one rotated pose. New or revised dual-style geometry needs a contour regression check using the actual packed exports. Record the reference weight and construction method in metadata.
 - Normal antialiasing differences are acceptable; geometric bulges, shifted edges, unmatched corners or different openings are not. Evaluate vector edges rather than chasing identical raster colors at every zoom.
 
-Filled remains fixed fill-only artwork. Thin, Bold and custom Outline weights can move the visible stroke edge; the required match is at Regular 1.70. Independent nonuniform Lab scaling preserves Outline stroke width and is a diagnostic adjustment, not a replacement for the native reference comparison. Outline-only icons such as Search do not need a Filled variant.
+Filled remains fixed fill-only artwork. Thin, Bold and custom Outline weights can move the visible stroke edge; the required match is at Regular 1.70. Independent nonuniform Lab scaling preserves Outline stroke width and is a diagnostic adjustment, not a replacement for the native reference comparison. Filled availability follows the current owner direction and catalog; Search now provides both styles.
 
 The library and Lab focus on static Outline/Filled geometry, stroke weight and centered X/Y size adjustments. Animation files and exports have been removed.
 
@@ -91,3 +91,5 @@ Automated validation checks geometry syntax, safe SVG, named parts, generation a
 When the owner says to add icons, create a batch of six. Any icons the owner names count toward those six; choose complementary icons to fill the remaining places automatically. Do not ask the owner to supply the remainder. This applies to future batches as well. Record each batch and its review status in ICON_BATCHES.md.
 
 Current Camera/Folder revision: both styles now have exact 2px left/right margins and rounder tangent corners. Camera retains a visible height of 17.01649746 (top/bottom 3.49175127); Folder retains 17.36040609 (top/bottom 3.31979695). Their Filled exteriors match the Regular Outline body exactly with no extra box. The owner approved these exact revisions in both styles on 2026-10-27, including the lower Camera housing.
+
+Search boxed revision: the owner requested Filled in a rounded box like Plus/X. The revised shared magnifier fits bounds 4..20 at unchanged Regular 1.70; the box spans 2..22 with radius-4 corners. Its negative-space ring and handle exactly match Outline, with a solid lens center. Both revised styles await review.

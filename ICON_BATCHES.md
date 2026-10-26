@@ -2,12 +2,12 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                  | Review status                            |
-| ----- | ------------------------------------------------------ | ---------------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All approved                             |
-| 2     | Sun, Moon                                              | Both approved; historical two-icon round |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | Plus and X approved; four await review   |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six are drafts awaiting owner review |
+| Round | Icons                                                  | Review status                               |
+| ----- | ------------------------------------------------------ | ------------------------------------------- |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings          | Five approved; revised Search awaits review |
+| 2     | Sun, Moon                                              | Both approved; historical two-icon round    |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | Plus and X approved; four await review      |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six are drafts awaiting owner review    |
 
 Round 3 includes three owner selections (X / close, Copy, Chevron Down) and three complementary selections (Plus, Check, Chevron Up). It contains six icons total, not six in addition to the named selections. All six provide Outline and Filled artwork. The batch rule begins with Round 3 and does not require retroactively expanding Round 2.
 
@@ -32,3 +32,5 @@ Owner approval recorded on 2026-10-27: Camera, Folder, Plus and X passed in both
 Copy spacing/corner revision: the owner requested greater separation and the same main-body roundness as Camera/Folder. Copy now has 4px exposed inter-page clearance, standard radius-3.25 centerline corners (radius-4.10 visible/Filled exterior), and 2px outer margins at Regular 1.70. Both styles retain matching contours and await review.
 
 Copy junction revision: the owner requested breaks at both rear/front connections. Both styles now use a 1px cap-to-foreground gap at each rear endpoint, trimmed along the standard corner arcs. The front page, 4px parallel-border gap, Regular 1.70 weight and 2px artboard margins are retained.
+
+Search style extension: the owner requested a boxed Filled Search matching the Plus/X treatment. Both shared glyphs fit 4..20 with unchanged Regular 1.70; the box fits 2..22 with radius-4 corners and 2px side clearances. The earlier Outline-only rule is superseded. This is a new style for the existing Search icon, not a new icon batch. Both revised styles await review, leaving nine of twenty current icon pairs approved.

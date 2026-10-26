@@ -69,3 +69,7 @@ Other already-approved artwork is not implicitly resized by this reference.
   the full Lab must retain draft icons. Reload the Lab's updated dependency and
   confirm the actual browser view before claiming completion.
 - Save a screenshot for the owner. Only explicit owner review approves artwork.
+
+## Search boxed extension
+
+The owner requested boxed Filled Search on 2026-10-27, superseding the old Outline-only direction. Use the same shared-glyph bounds 4..20, box bounds 2..22, box radius 4 and 2px inner/outer side clearances as Plus/X. The magnifier retains width 1.70 and cap radius .85 in both styles. Its compound path has three subpaths: box, the union of the lens exterior and handle, then the lens inner circle. Preserve the solid center inside the lens and avoid overlapping evenodd holes. This revised Search pair is awaiting owner approval; the Plus/X approvals remain unchanged.

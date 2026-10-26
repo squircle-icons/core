@@ -116,13 +116,14 @@ it('available filled sources preserve named parts and original geometry through 
     'menu',
     'moon',
     'plus',
+    'search',
     'settings',
     'sun',
     'trash',
     'upload',
     'x',
   ]);
-  expect(icons.find((icon) => icon.name === 'search')?.filled).toBeUndefined();
+  expect(icons.find((icon) => icon.name === 'search')?.filled).toBeDefined();
   for (const icon of icons.filter((icon) => icon.filled)) {
     const source = await readFile(
       new URL(`../../icons/filled/${icon.name}.svg`, import.meta.url),
