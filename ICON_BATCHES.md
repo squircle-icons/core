@@ -38,3 +38,5 @@ Current Check/arrow Filled revision (2026-10-27): add the accepted rounded-box t
 Owner approval (2026-10-27), corrected by the owner: Check and four navigation Arrow/Chevron pairs passed in both styles. Download and Upload remain pending. Check uses the rounded box; Filled arrows have solid triangular heads.18 current pairs are approved. Chevron Up/Down remain unified names for each icon in both Outline/Filled styles. Caret is an alternate search term; it does not mean a separate icon or a required Filled-only name.
 
 Approval correction (2026-10-27): the owner clarified that only Download and Upload remain pending. Their earlier approval was recorded in error and has been reverted to draft in both styles. Current approved count is18 of20; all other current pairs are approved.
+
+Pending Download/Upload refinement (2026-10-27): both trays now use the standard Camera/Folder radius3.25 centerline corners, matching Filled outer4.10/inner2.40 radii and unchanged .85 caps. Heads, shafts and native outer bounds are retained. Both pairs still await owner review.
