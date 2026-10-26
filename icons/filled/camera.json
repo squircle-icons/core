@@ -3,17 +3,18 @@
   "description": "A compact camera with a continuous curved body and circular lens in a solid filled style.",
   "tags": ["photo", "image", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner-requested rounder unboxed camera with the left/right primary edge pair at exactly 2 native units. Both style exteriors span x=2..22 and y=3.49175127..20.50824873, centered at 12,12. The natural horizontal body proportions are retained (20 by 17.01649746); the shorter vertical axis is not stretched to force 2px top/bottom margins. Outline uses circular tangent fillets and unchanged Regular 1.70 stroke. Filled exterior is the exact 0.85 outward offset of the same lines and arcs, increasing convex radii and reducing concave radii while keeping arc centers fixed. No enclosing box is added. Camera body corner radii are 2.75 at shoulders and 3.25 at the base; the raised housing has softened .8/1.05 transitions. The owner then requested lowering the raised housing by .75 unit relative to the body. The complete drawing is recentered upward by .375 unit, including lens and indicator; circle radii remain unchanged; Filled counters remain their established fixed geometry. Native X/Y=100%, rotation=0. Revision awaits owner visual review.",
+  "construction": "Owner-requested rounder unboxed camera with the left/right primary edge pair at exactly 2 native units. Both style exteriors span x=2..22 and y=3.49175127..20.50824873, centered at 12,12. The natural horizontal body proportions are retained (20 by 17.01649746); the shorter vertical axis is not stretched to force 2px top/bottom margins. Outline uses circular tangent fillets and unchanged Regular 1.70 stroke. Filled exterior is the exact 0.85 outward offset of the same lines and arcs, increasing convex radii and reducing concave radii while keeping arc centers fixed. No enclosing box is added. Camera body corner radii are 2.75 at shoulders and 3.25 at the base; the raised housing has softened .8/1.05 transitions. The owner then requested lowering the raised housing by .75 unit relative to the body. The complete drawing is recentered upward by .375 unit, including lens and indicator; circle radii remain unchanged; Filled counters remain their established fixed geometry. Native X/Y=100%, rotation=0. Owner-approved source.",
   "review": {
-    "status": "draft",
+    "status": "approved",
     "reviewedBy": "palamto",
     "date": "2026-10-27",
     "style": "filled",
     "preview": {
       "x": 100,
       "y": 100,
-      "strokeWidth": 1.7
+      "strokeWidth": 1.7,
+      "rotation": 0
     },
-    "note": "Review reopened for the owner-requested rounder corners and 2px primary-pair spacing. Previous approval applies to the earlier geometry; this revision awaits review."
+    "note": "Owner approved both Outline and Filled after rounder corners, exact 2px left/right primary margins, and the .75-unit lower raised housing. Reviewed at native proportions and Regular 1.70."
   }
 }

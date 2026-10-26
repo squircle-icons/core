@@ -2,7 +2,7 @@
 
 Read this file before every Plus/X change. The owner accepted the contained
 shared-glyph relationship on 2026-10-27, then requested rounder box corners.
-The corner revision remains subject to visual review.
+The owner approved the current radius-4 corners and complete Plus/X pairs in both styles on 2026-10-27. The dimensions below are the approved reference.
 
 ## The relationship to preserve
 

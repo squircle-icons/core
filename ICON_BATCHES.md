@@ -6,7 +6,7 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 | ----- | ------------------------------------------------------ | ---------------------------------------- |
 | 1     | Bell, Camera, Folder, Heart, Search, Settings          | All approved                             |
 | 2     | Sun, Moon                                              | Both approved; historical two-icon round |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six are drafts awaiting owner review |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | Plus and X approved; four await review   |
 | 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six are drafts awaiting owner review |
 
 Round 3 includes three owner selections (X / close, Copy, Chevron Down) and three complementary selections (Plus, Check, Chevron Up). It contains six icons total, not six in addition to the named selections. All six provide Outline and Filled artwork. The batch rule begins with Round 3 and does not require retroactively expanding Round 2.
@@ -26,3 +26,5 @@ Plus/X corner revision: the owner accepted the contained shared-glyph constructi
 Primary-pair revision: Camera and Folder keep their horizontal proportions with 2px left/right margins, rounder body corners, matching unboxed Filled exteriors and pending visual review. Plus is normalized to the same 2px all-side box and shared 16-unit glyph dimensions as X.
 
 Camera housing refinement: the owner requested a lower raised top. Housing height is reduced by .75 unit and the complete icon is recentered vertically, retaining 2px left/right margins and aligned Outline/Filled body contours.
+
+Owner approval recorded on 2026-10-27: Camera, Folder, Plus and X passed in both Outline and Filled at the current native geometry and Regular 1.70. The approved references include the lowered Camera housing, rounder Camera/Folder contours, 2px primary-pair margins, and radius-4 boxed Plus/X with identical shared glyphs. Copy, Check and both Chevrons remain awaiting review in Round 3. Ten of twenty icons are now approved.

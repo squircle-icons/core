@@ -3,6 +3,19 @@
   "description": "A solid rounded square with a centered plus cutout and two-unit clearance.",
   "tags": ["add", "new", "create", "filled", "boxed"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner clarified that Plus and X use all four sides as their primary margin pairs. Plus Filled box now spans 2..22 with radius-4 corners, exactly like X. Both Plus glyphs share perpendicular centerlines M4.85 12 H19.15 M12 4.85 V19.15, visible bounds 4..20, unchanged Regular 1.70 stroke and .85 round caps. This leaves 2px from the box to the artboard and another 2px from the shared glyph to each box side. Outline is exactly the mark inside Filled, with no style-specific scaling or translation. Native X/Y=100%, rotation=0. Round 3 draft awaiting owner review.",
-  "filledTreatment": "boxed-cutout"
+  "construction": "Owner clarified that Plus and X use all four sides as their primary margin pairs. Plus Filled box now spans 2..22 with radius-4 corners, exactly like X. Both Plus glyphs share perpendicular centerlines M4.85 12 H19.15 M12 4.85 V19.15, visible bounds 4..20, unchanged Regular 1.70 stroke and .85 round caps. This leaves 2px from the box to the artboard and another 2px from the shared glyph to each box side. Outline is exactly the mark inside Filled, with no style-specific scaling or translation. Native X/Y=100%, rotation=0. Owner-approved source.",
+  "filledTreatment": "boxed-cutout",
+  "review": {
+    "status": "approved",
+    "reviewedBy": "palamto",
+    "date": "2026-10-27",
+    "style": "filled",
+    "preview": {
+      "x": 100,
+      "y": 100,
+      "strokeWidth": 1.7,
+      "rotation": 0
+    },
+    "note": "Owner approved both Outline and Filled with radius-4 box corners, 2px around the Filled box, 2px between the box and shared glyph, and identical Outline/cutout position and weight. Reviewed at native proportions and Regular 1.70."
+  }
 }
