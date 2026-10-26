@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFile } from 'node:fs/promises';
-import { parseSvg, optimizeSvg, extractStrokeCutout } from '../../tools/model.js';
+import { parseSvg, optimizeSvg, extractStrokeCutout, validateIconName } from '../../tools/model.js';
 import { loadSources } from '../../tools/validate.js';
 
 const source = await readFile(new URL('../../icons/folder.svg', import.meta.url), 'utf8');
@@ -119,4 +119,25 @@ it('available filled sources preserve named parts and original geometry through 
     expect(parseSvg(optimizeSvg(source, 'filled'), 'filled')).toEqual(parseSvg(source, 'filled'));
     expect(icon.filled?.parts.length).toBeGreaterThan(0);
   }
+});
+
+it.each(['foo-', 'foo--bar', '-foo', '../camera', 'Camera'])(
+  'rejects invalid icon name %s',
+  (name) => {
+    expect(() => validateIconName(name)).toThrow('Invalid icon name');
+  },
+);
+it.each(['camera', 'chevron-down', 'camera-2'])('accepts icon name %s', (name) => {
+  expect(() => validateIconName(name)).not.toThrow();
+});
+it('rejects empty artwork even when it has a named group', () => {
+  const empty = source.replace(/<path[^>]*\/>/g, '');
+  expect(() => parseSvg(empty)).toThrow('at least one shape');
+});
+it('preserves small and precise circle geometry during optimization', () => {
+  const precise = source.replace(
+    '<g data-part="body">',
+    '<g data-part="body"><circle cx="1.23456789" cy="2.34567891" r="0.0001"/>',
+  );
+  expect(parseSvg(optimizeSvg(precise))).toEqual(parseSvg(precise));
 });

@@ -2,7 +2,7 @@ import { STROKE_WEIGHTS } from '../src/types.js';
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseSvg, optimizeSvg, extractStrokeCutout } from './model.js';
+import { parseSvg, optimizeSvg, extractStrokeCutout, validateIconName } from './model.js';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 export async function loadSources() {
@@ -20,7 +20,7 @@ export async function loadSources() {
   const icons = [];
   for (const file of files) {
     const name = file.slice(0, -4);
-    if (!/^[a-z][a-z0-9-]*$/.test(name)) throw new Error(`Invalid icon name: ${name}`);
+    validateIconName(name);
     const source = await readFile(resolve(root, 'icons', file), 'utf8');
     const metadata = JSON.parse(await readFile(resolve(root, 'icons', `${name}.json`), 'utf8'));
     if (

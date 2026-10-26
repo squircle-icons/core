@@ -24,6 +24,10 @@ function assert(value: unknown, message: string): asserts value {
   if (!value) throw new Error(message);
 }
 
+export function validateIconName(name: string): void {
+  assert(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(name), `Invalid icon name: ${name}`);
+}
+
 export function parseSvg(
   source: string,
   style: 'outline' | 'filled' = 'outline',
@@ -40,9 +44,10 @@ export function parseSvg(
     trimValues: true,
   }).parse(source);
   const parts: string[] = [];
+  let shapes = 0;
   const convert = (entry: Record<string, any>, parent?: string): SvgNode => {
     const tag = Object.keys(entry).find((key) => key !== ':@')!;
-    assert(tag in supported, `Unsupported SVG element: ${tag}`);
+    assert(Object.hasOwn(supported, tag), `Unsupported SVG element: ${tag}`);
     assert(parent ? tag !== 'svg' : tag === 'svg', 'Expected a single SVG root');
     const attrs = entry[':@'] ?? {};
     for (const key of Object.keys(attrs))
@@ -84,6 +89,7 @@ export function parseSvg(
       assert(!parts.includes(attrs['data-part']), 'Duplicate part name');
       parts.push(attrs['data-part']);
     }
+    if (tag === 'path' || tag === 'circle') shapes++;
     if (tag === 'path') {
       assert(typeof attrs.d === 'string', 'Path requires geometry');
       const commands = pathParser.parseSVG(attrs.d);
@@ -99,7 +105,9 @@ export function parseSvg(
     if (tag === 'circle')
       for (const key of ['cx', 'cy', 'r']) {
         assert(
-          attrs[key] !== undefined && Number.isFinite(Number(attrs[key])),
+          attrs[key] !== undefined &&
+            String(attrs[key]).trim() !== '' &&
+            Number.isFinite(Number(attrs[key])),
           'Invalid circle geometry',
         );
         if (key === 'r') assert(Number(attrs[key]) > 0, 'Circle radius must be positive');
@@ -120,13 +128,14 @@ export function parseSvg(
   assert(parsed.length === 1, 'Expected one SVG root');
   const root = convert(parsed[0]);
   assert(parts.length > 0, 'Expected named parts');
+  assert(shapes > 0, 'Expected at least one shape');
   return { root, parts };
 }
 
 export function optimizeSvg(source: string, style: 'outline' | 'filled' = 'outline'): string {
   const before = parseSvg(source, style);
   const result = optimize(source, {
-    plugins: ['cleanupNumericValues', 'sortAttrs'],
+    plugins: ['sortAttrs'],
     js2svg: { pretty: true, indent: 2 },
   }).data;
   const after = parseSvg(result, style);
