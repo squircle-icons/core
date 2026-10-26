@@ -12,5 +12,19 @@ export type CoreIcon = {
   root: { tag: string; attrs: Record<string, string>; children: CoreIcon['root'][] };
   parts: string[];
   motion?: MotionRecipe;
-  filled?: { metadata: CoreIcon['metadata']; root: CoreIcon['root']; parts: string[] };
+  filled?: {
+    metadata: CoreIcon['metadata'];
+    root: CoreIcon['root'];
+    parts: string[];
+    cutout?: {
+      part: string;
+      outerPath: string;
+      left: number;
+      right: number;
+      centerY: number;
+      defaultWidth: number;
+      minWidth: number;
+      maxWidth: number;
+    };
+  };
 };

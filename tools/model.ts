@@ -234,3 +234,90 @@ export function validateMotion(input: unknown, parts: string[], icon: string): M
   } else assert(!recipe.tracks, 'State motion does not use pulse tracks');
   return recipe;
 }
+
+/** Derive a designated rectangular counter from the SVG itself, by named part. */
+export function extractStrokeCutout(
+  root: SvgNode,
+  input: { part: string; minWidth: number; maxWidth: number },
+) {
+  assert(input && typeof input.part === 'string', 'Cutout requires a named part');
+  const group = root.children.find((node) => node.attrs['data-part'] === input.part);
+  assert(
+    group && group.children.length === 1 && group.children[0].tag === 'path',
+    'Cutout part must contain one compound path',
+  );
+  const subpaths = group.children[0].attrs.d.trim().split(/(?=[Mm])/);
+  assert(
+    subpaths.length === 2 && subpaths.every((path) => path.startsWith('M')),
+    'Cutout requires two absolute closed subpaths',
+  );
+  const candidates = subpaths
+    .map((path) => {
+      const commands = pathParser.makeAbsolute(pathParser.parseSVG(path));
+      if (
+        commands.length !== 5 ||
+        commands[0].command !== 'moveto' ||
+        commands.at(-1)?.command !== 'closepath'
+      )
+        return undefined;
+      if (
+        !commands
+          .slice(1, -1)
+          .every((command) =>
+            ['lineto', 'horizontal lineto', 'vertical lineto'].includes(command.command),
+          )
+      )
+        return undefined;
+      const points = commands.slice(0, -1).map((command) => ({ x: command.x, y: command.y }));
+      const xs = [...new Set(points.map((point) => point.x))].sort((a, b) => a - b);
+      const ys = [...new Set(points.map((point) => point.y))].sort((a, b) => a - b);
+      if (
+        xs.length !== 2 ||
+        ys.length !== 2 ||
+        new Set(points.map((point) => `${point.x},${point.y}`)).size !== 4
+      )
+        return undefined;
+      if (
+        !points.every(
+          (point, index) =>
+            point.x === points[(index + 1) % 4].x || point.y === points[(index + 1) % 4].y,
+        )
+      )
+        return undefined;
+      return {
+        path,
+        left: xs[0],
+        right: xs[1],
+        centerY: (ys[0] + ys[1]) / 2,
+        defaultWidth: ys[1] - ys[0],
+      };
+    })
+    .filter((value) => value !== undefined);
+  assert(candidates.length === 1, 'Cutout requires one unambiguous rectangular counter');
+  const counter = candidates[0];
+  assert(counter.right > counter.left && counter.defaultWidth > 0, 'Invalid cutout dimensions');
+  assert(
+    number(input.minWidth) &&
+      number(input.maxWidth) &&
+      input.minWidth > 0 &&
+      input.minWidth <= counter.defaultWidth &&
+      input.maxWidth >= counter.defaultWidth &&
+      input.maxWidth <= 6,
+    'Invalid cutout width bounds',
+  );
+  const outerPath = subpaths.find((path) => path !== counter.path)!;
+  assert(
+    pathParser.parseSVG(outerPath).at(-1)?.command === 'closepath',
+    'Cutout outer contour must be closed',
+  );
+  return {
+    part: input.part,
+    outerPath: outerPath.trim(),
+    left: counter.left,
+    right: counter.right,
+    centerY: counter.centerY,
+    defaultWidth: counter.defaultWidth,
+    minWidth: input.minWidth,
+    maxWidth: input.maxWidth,
+  };
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFile } from 'node:fs/promises';
-import { parseSvg, optimizeSvg, validateMotion } from '../../tools/model.js';
+import { parseSvg, optimizeSvg, validateMotion, extractStrokeCutout } from '../../tools/model.js';
 import { loadSources } from '../../tools/validate.js';
 import { createMotionController } from '../../src/controller.js';
 
@@ -115,4 +115,23 @@ describe('filled artwork pipeline', () => {
       parseSvg(source.replace('</svg>', '<script>alert(1)</script></svg>'), 'filled'),
     ).toThrow();
   });
+});
+
+it('derives adjustable negative-space geometry by part and rejects invalid targets or widths', async () => {
+  const svg = parseSvg(
+    await readFile(new URL('../../icons/filled/folder.svg', import.meta.url), 'utf8'),
+    'filled',
+  );
+  const config = { part: 'body', minWidth: 0.25, maxWidth: 6 };
+  expect(extractStrokeCutout(svg.root, config)).toMatchObject({
+    left: 4.75,
+    right: 19.25,
+    centerY: 11,
+    defaultWidth: 1.75,
+  });
+  expect(() => extractStrokeCutout(svg.root, { ...config, part: 'missing' })).toThrow(
+    'Cutout part',
+  );
+  expect(() => extractStrokeCutout(svg.root, { ...config, maxWidth: Infinity })).toThrow('bounds');
+  expect(() => extractStrokeCutout(svg.root, { ...config, minWidth: 2 })).toThrow('bounds');
 });
