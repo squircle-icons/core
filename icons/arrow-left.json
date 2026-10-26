@@ -1,0 +1,7 @@
+{
+  "name": "arrow-left",
+  "description": "A left-facing navigation arrow with a straight shaft and open chevron head.",
+  "tags": ["back", "previous", "navigation"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Straight centerlines keep the symbol readable without an enclosing frame. Centerline bounds x=4..20 and y=6..18 give balanced opposite visible margins of 3.15 horizontally and 5.15 vertically. The arrow pair is mirrored about x=12. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 4 draft awaiting owner review."
+}

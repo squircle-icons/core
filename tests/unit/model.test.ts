@@ -8,19 +8,25 @@ describe('single-source artwork pipeline', () => {
   it('validates the original collection', async () => {
     const icons = await loadSources();
     expect(icons.map((icon) => icon.name)).toEqual([
+      'arrow-left',
+      'arrow-right',
       'bell',
       'camera',
       'check',
       'chevron-down',
       'chevron-up',
       'copy',
+      'download',
       'folder',
       'heart',
+      'menu',
       'moon',
       'plus',
       'search',
       'settings',
       'sun',
+      'trash',
+      'upload',
       'x',
     ]);
   });
@@ -96,18 +102,24 @@ it('derives adjustable negative-space geometry by part and rejects invalid targe
 it('available filled sources preserve named parts and original geometry through optimization', async () => {
   const icons = await loadSources();
   expect(icons.filter((icon) => icon.filled).map((icon) => icon.name)).toEqual([
+    'arrow-left',
+    'arrow-right',
     'bell',
     'camera',
     'check',
     'chevron-down',
     'chevron-up',
     'copy',
+    'download',
     'folder',
     'heart',
+    'menu',
     'moon',
     'plus',
     'settings',
     'sun',
+    'trash',
+    'upload',
     'x',
   ]);
   expect(icons.find((icon) => icon.name === 'search')?.filled).toBeUndefined();
@@ -140,4 +152,12 @@ it('preserves small and precise circle geometry during optimization', () => {
     '<g data-part="body"><circle cx="1.23456789" cy="2.34567891" r="0.0001"/>',
   );
   expect(parseSvg(optimizeSvg(precise))).toEqual(parseSvg(precise));
+});
+
+it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate %s', (cx) => {
+  const invalid = source.replace(
+    '<g data-part="body">',
+    `<g data-part="body"><circle cx="${cx}" cy="12" r="1"/>`,
+  );
+  expect(() => parseSvg(invalid)).toThrow('circle geometry');
 });

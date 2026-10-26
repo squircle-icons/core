@@ -1,0 +1,7 @@
+{
+  "name": "menu",
+  "description": "Three equal horizontal menu strokes with rounded free ends.",
+  "tags": ["navigation", "list", "hamburger"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Straight centerlines keep the symbol readable without an enclosing frame. Centerline bounds x=4..20 and y=6..18 give balanced opposite visible margins of 3.15 horizontally and 5.15 vertically. Three equal strokes sit at y=6,12,18. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 4 draft awaiting owner review."
+}

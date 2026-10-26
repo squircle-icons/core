@@ -1,0 +1,7 @@
+{
+  "name": "trash",
+  "description": "A tapered waste bin with an open handle and two internal slots in a solid filled style.",
+  "tags": ["delete", "remove", "bin", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "A subtly tapered bucket meets a level lid, with a separate raised handle. Total centerline bounds x=4..20/y=2.5..21.5 give balanced visible padding 3.15 horizontally and 1.65 vertically. The Filled bucket is solid; its two radius-.85 capsule slots are explicit transparent counters aligned with the Outline internal slot strokes. The outer bucket stroke expansion is added around its solid centerline polygon; the lid covers the common top edge once visually. The handle keeps its real opening. Filled line contours are constructed as the union of radius-.85 segment capsules, matching the native Regular 1.70 stroke exterior, free-end caps and round joins. For closed objects, the body remains solid with explicitly authored negative-space details. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 4 draft awaiting owner review."
+}

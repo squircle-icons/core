@@ -1,0 +1,7 @@
+{
+  "name": "arrow-right",
+  "description": "A right-facing navigation arrow with a straight shaft and open chevron head in a solid filled style.",
+  "tags": ["forward", "next", "navigation", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Straight centerlines keep the symbol readable without an enclosing frame. Centerline bounds x=4..20 and y=6..18 give balanced opposite visible margins of 3.15 horizontally and 5.15 vertically. The arrow pair is mirrored about x=12. Filled line contours are constructed as the union of radius-.85 segment capsules, matching the native Regular 1.70 stroke exterior, free-end caps and round joins. For closed objects, the body remains solid with explicitly authored negative-space details. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 4 draft awaiting owner review."
+}

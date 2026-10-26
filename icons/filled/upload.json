@@ -1,0 +1,7 @@
+{
+  "name": "upload",
+  "description": "An upward arrow rising above an open sending tray in a solid filled style.",
+  "tags": ["send", "share", "file", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The arrow is centered at x=12 above a straight-sided U tray. The tray has a horizontal base and open top, preserving the recognizable receiving/sending object instead of a surrounding frame. Total centerline bounds x=4..20/y=3.5..20.5 balance visible padding 3.15 horizontally and 2.65 vertically. The 1.70 stroke supplies consistent rounded tray joints and free ends. Filled line contours are constructed as the union of radius-.85 segment capsules, matching the native Regular 1.70 stroke exterior, free-end caps and round joins. For closed objects, the body remains solid with explicitly authored negative-space details. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 4 draft awaiting owner review."
+}

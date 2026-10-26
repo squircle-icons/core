@@ -20,6 +20,10 @@ const supported: Record<string, string[]> = {
 };
 const number = (value: unknown): value is number =>
   typeof value === 'number' && Number.isFinite(value);
+const geometryNumber = (value: unknown): boolean =>
+  typeof value === 'string' &&
+  /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/.test(value.trim()) &&
+  Number.isFinite(Number(value));
 function assert(value: unknown, message: string): asserts value {
   if (!value) throw new Error(message);
 }
@@ -61,7 +65,7 @@ export function parseSvg(
           'Expected unfilled currentColor artwork',
         );
         assert(
-          Number(attrs['stroke-width']) > 0 && Number.isFinite(Number(attrs['stroke-width'])),
+          geometryNumber(attrs['stroke-width']) && Number(attrs['stroke-width']) > 0,
           'Invalid stroke width',
         );
         assert(
@@ -104,12 +108,7 @@ export function parseSvg(
     }
     if (tag === 'circle')
       for (const key of ['cx', 'cy', 'r']) {
-        assert(
-          attrs[key] !== undefined &&
-            String(attrs[key]).trim() !== '' &&
-            Number.isFinite(Number(attrs[key])),
-          'Invalid circle geometry',
-        );
+        assert(geometryNumber(attrs[key]), 'Invalid circle geometry');
         if (key === 'r') assert(Number(attrs[key]) > 0, 'Circle radius must be positive');
       }
     assert(Array.isArray(entry[tag]), 'Unexpected XML content');
