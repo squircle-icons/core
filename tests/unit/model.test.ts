@@ -43,7 +43,7 @@ describe('single-source artwork pipeline', () => {
     ['duplicate parts', source.replace('data-part="lid"', 'data-part="body"')],
     ['unnamed parts', source.replace('data-part="lid"', 'class="lid"')],
     ['invalid viewBox', source.replace('0 0 24 24', '0 0 NaN 24')],
-    ['invalid path', source.replace('M 3 17.8', 'M invalid')],
+    ['invalid path', source.replace(/<path d="[^"]*"/, '<path d="M invalid"')],
     ['entities', '<!DOCTYPE svg [<!ENTITY test "x">]>' + source],
     ['unsupported text', source.replace('</svg>', '<text>hello</text></svg>')],
     [
