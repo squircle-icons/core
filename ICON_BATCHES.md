@@ -2,14 +2,14 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                  | Current review status                         |
-| ----- | ------------------------------------------------------ | --------------------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                              |
-| 2     | Sun, Moon                                              | Both approved; historical two-icon round      |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | Plus, X and Copy approved; three await review |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | Menu and Trash approved; four await review    |
+| Round | Icons                                                  | Current review status                    |
+| ----- | ------------------------------------------------------ | ---------------------------------------- |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                         |
+| 2     | Sun, Moon                                              | Both approved; historical two-icon round |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six approved                         |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six approved                         |
 
-**13 of 20 current icon pairs are approved.** Pending: Arrow Left, Arrow Right, Check, Chevron Down, Chevron Up, Download and Upload. Approval covers both Outline and Filled unless explicitly stated otherwise. Automated checks do not grant visual approval.
+**20 of20 current icon pairs are approved.** No current pair awaits review. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
@@ -34,3 +34,5 @@ Trash native-size correction (2026-10-27), superseding the preceding Lab-default
 Arrow-family feedback (2026-10-27): the owner rejected the broad curved-head experiment. Restore the original straight-arm V heads for Arrow Left/Right, Chevron Up/Down and Download/Upload, retaining round caps/joins and matching Filled contours. All six pairs remain drafts;13 of20 current pairs stay approved.
 
 Current Check/arrow Filled revision (2026-10-27): add the accepted rounded-box treatment to Check Filled and make all six Filled arrowheads solid triangles. Outline arrow heads remain open V shapes. These are the seven existing pending pairs;13 of20 pairs remain approved.
+
+Final owner approval (2026-10-27): Check and all six arrow pairs passed in both current styles. Check uses the rounded box; Filled arrows have solid triangular heads. This completes20 approved pairs. Chevron Up/Down remain unified names for their Outline/Filled pair, with caret recorded as a search tag for the solid triangular treatment.

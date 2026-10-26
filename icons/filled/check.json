@@ -3,6 +3,19 @@
   "description": "A rounded solid square with a matching check-mark cutout.",
   "tags": ["tick", "done", "confirm", "success", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner requested boxed Filled Check on2026-10-27, using the accepted Plus/X family. The solid frame has bounds2..22 and radius4. Outline is exactly the negative-space mark in Filled at Regular1.70, with round .85 caps and join. Shared centerlines are M4.85 12.55 L9.25 16.95 L19.15 7.05; both arms retain45-degree slopes and their unequal lengths. Native shared visible bounds are x4..20/y6.2..17.8. The horizontal primary inner pair has exactly2px clearance; vertical inner clearance is4.2px to preserve the check proportions. The box has2px artboard margins all around. Both revised styles await owner review.",
-  "filledTreatment": "boxed-cutout"
+  "construction": "Owner requested boxed Filled Check on2026-10-27, using the accepted Plus/X family. The solid frame has bounds2..22 and radius4. Outline is exactly the negative-space mark in Filled at Regular1.70, with round .85 caps and join. Shared centerlines are M4.85 12.55 L9.25 16.95 L19.15 7.05; both arms retain45-degree slopes and their unequal lengths. Native shared visible bounds are x4..20/y6.2..17.8. The horizontal primary inner pair has exactly2px clearance; vertical inner clearance is4.2px to preserve the check proportions. The box has2px artboard margins all around. Owner approved this current pair on2026-10-27.",
+  "filledTreatment": "boxed-cutout",
+  "review": {
+    "status": "approved",
+    "reviewedBy": "palamto",
+    "date": "2026-10-27",
+    "style": "filled",
+    "preview": {
+      "x": 100,
+      "y": 100,
+      "strokeWidth": 1.7,
+      "rotation": 0
+    },
+    "note": "Owner approved current Check Outline and boxed Filled: radius-4 frame at2..22 and identical shared Regular1.70 check mark."
+  }
 }
