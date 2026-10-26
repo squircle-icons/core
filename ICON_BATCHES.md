@@ -16,3 +16,5 @@ Round 3 revision: Plus centerlines extend symmetrically from 13 to 14 units. X u
 ## Round 4
 
 Arrow Left, Arrow Right, Menu, Download, Upload and Trash form the next six-icon batch. All six provide Outline and Filled artwork and remain drafts awaiting owner review. Navigation directions, a compact menu, file transfer and deletion complement the Round 3 controls. Filled line symbols are analytically expanded Regular 1.70 strokes; Trash has a solid bucket with two explicit internal capsule cutouts. Automated contour checks do not grant visual approval.
+
+Round 3 Filled revision: Plus and X use upright solid rounded boxes with their unchanged glyphs as negative space, at 2px clearance on each side of each glyph. This is a Filled-only treatment; Outline stays unboxed. The 45-degree derivation applies to the glyphs, while each upright box is fitted independently.

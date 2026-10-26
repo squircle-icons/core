@@ -1,7 +1,8 @@
 {
   "name": "x",
-  "description": "A centered close mark with two balanced diagonal strokes in a solid filled style.",
-  "tags": ["close", "dismiss", "cancel", "filled"],
+  "description": "A solid rounded square with a centered close cutout and two-unit clearance.",
+  "tags": ["close", "dismiss", "cancel", "filled", "boxed"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "X is derived directly from the revised Plus by a 45-degree clockwise rotation about 12,12, with no rescaling. Each diagonal centerline is exactly 14 units long, sharing Plus arm length, intersections, Regular 1.70 weight and rounded end caps. The rotation is baked into the original SVG coordinates so the native Lab rotation remains 0 degrees. The diagonal projection is intentionally smaller than the unrotated Plus bounding box; there is no style-specific enlargement. The fill-only exterior is the exact width-1.70 union around the centerlines. The X Filled contour is obtained by rotating the entire revised Plus Filled contour, including its rounded end caps, with no independently redrawn geometry or artificial counter. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+  "construction": "Owner-requested Filled-only boxed treatment. The solid upright rounded square has bounds 4.20025253..19.79974747 on both axes and radius-2.85 corners. Its negative-space glyph is the unchanged Regular 1.70 stroke exterior of the Outline mark. There is exactly 2 units of clearance from the visible glyph to each of the four box sides at native 24px, X/Y=100%, rotation=0. X keeps the Plus glyph rotated 45 degrees with no rescaling; each box is sized independently to its own glyph bounds and remains upright. The body is one evenodd compound path: the outer square followed by the original glyph as a cutout. This owner-requested exception deliberately adds a box only to Filled; the Outline glyph remains unboxed. The glyph cutout, rather than the new box exterior, matches Outline at Regular 1.70. Round 3 draft awaiting owner review.",
+  "filledTreatment": "boxed-cutout"
 }

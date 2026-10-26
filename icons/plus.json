@@ -3,5 +3,6 @@
   "description": "A centered plus mark with four equally sized arms.",
   "tags": ["add", "new", "create"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "At the owner request, each perpendicular centerline is extended by 1 unit total, from length 13 to length 14. Endpoints move equally from 5.5/18.5 to 5/19 about the shared center 12,12. All four free ends retain radius-.85 caps at Regular 1.70. Visible native dimensions are 15.70 by 15.70, with equal margins of 4.15 units. This drawing is the construction source for X. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+  "construction": "At the owner request, each perpendicular centerline is extended by 1 unit total, from length 13 to length 14. Endpoints move equally from 5.5/18.5 to 5/19 about the shared center 12,12. All four free ends retain radius-.85 caps at Regular 1.70. Visible native dimensions are 15.70 by 15.70, with equal margins of 4.15 units. This drawing is the construction source for X. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review. The owner subsequently requested a Filled-only solid rounded box with a negative-space glyph and 2-unit clearance. Outline retains this unboxed drawing; its visible Regular exterior matches the Filled glyph cutout, not the added box.",
+  "filledTreatment": "boxed-cutout"
 }

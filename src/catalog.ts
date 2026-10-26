@@ -7,6 +7,7 @@ export type CoreIcon = {
     tags: string[];
     authorship: string;
     construction: string;
+    filledTreatment?: 'boxed-cutout';
     review?: {
       status: 'approved' | 'draft';
       reviewedBy: string;
