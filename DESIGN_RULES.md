@@ -32,7 +32,7 @@ Crisp means clean contours and consistent visual weight. It does not mean replac
 
 ## Current technical baseline
 
-The current implementation uses a 24×24 viewBox, approximately 2 units of optical breathing room, rounded caps/joins and a configurable default stroke of 1.75. These implementation values are retained during rule-setting. Final stroke weight and corner geometry require a visual comparison; this document does not silently change component defaults or approve the current drawings.
+The current implementation uses a 24×24 viewBox, rounded caps/joins and a configurable default stroke of 1.75. Outer spacing must be equal on the left, right, top and bottom, measured to the visible stroke edge rather than only the path centerline. The current Folder review uses contour bounds x=3..21 and y=3..21, giving exactly 2.125 units of visible padding on every side at stroke 1.75; changing stroke width changes the inset equally on all sides. These implementation values are retained during rule-setting. Final stroke weight and corner geometry require a visual comparison; this document does not silently change component defaults or approve the current drawings.
 
 Construction notes must explain the outer contour, internal shapes, optical adjustments and any exceptions. SVGs and metadata remain the only editable artwork source; generated adapters and homepage components must not contain alternative copies of paths.
 
