@@ -3,5 +3,17 @@
   "description": "A six-tooth gear with flowing shoulders and a circular center.",
   "tags": ["preferences", "gear"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Six original radial teeth use straight faces with individually rounded transitions. The recognizable gear is a silhouette exception to the rounded rectangle baseline. Opposite teeth are constructed in symmetric pairs about 12,12; the circular hub remains circular. Review study; not owner-approved."
+  "construction": "Six original radial teeth use straight faces with individually rounded transitions. The recognizable gear is a silhouette exception to the rounded rectangle baseline. Opposite teeth are constructed in symmetric pairs about 12,12; the circular hub remains circular. Owner-approved source.",
+  "review": {
+    "status": "approved",
+    "reviewedBy": "palamto",
+    "date": "2026-10-26",
+    "style": "outline",
+    "preview": {
+      "x": 100,
+      "y": 100,
+      "strokeWidth": 1.7
+    },
+    "note": "Owner approved Settings Outline and Filled after aligning their exterior and hub. Reviewed in Lab at source proportions, Regular 1.70, including rotation 30 degrees."
+  }
 }
