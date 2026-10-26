@@ -35,7 +35,7 @@ The grid is 24×24 with rounded caps/joins. Outer spacing balances in opposite p
 
 ### Owner-required 2px outer margin
 
-On 2026-10-27, the owner established a 2px outer-margin rule for icon construction at the native 24 by 24 grid, X/Y=100%, rotation=0 and Regular 1.70. Measure visible edges including rounded caps and joins, rather than path centerlines. Resize source geometry while retaining stroke width and cap radius; Lab zoom does not change native spacing. Existing approved artwork is historical and is not revised by this X-only request.
+On 2026-10-27, the owner clarified a **primary opposing edge pair** rule: use 2px on the shape's primary pair, with the other pair balanced but free to have more space. Horizontal Camera and Folder use left/right; vertical icons may use top/bottom. Plus and X use both pairs. Keep natural proportions rather than stretching every icon into a square. For naturally filled objects use their own silhouette, with no extra enclosing box. Read [ICON_MARGIN_RULES.md](ICON_MARGIN_RULES.md) before revising size or spacing. Measure visible edges, including stroke/caps, at native 24×24, X/Y=100%, rotation=0 and Regular 1.70.
 
 For boxed Filled marks, reserve 2 units between the box and the artboard on each side. The Outline must be exactly the glyph inside that Filled box, at the same position, size, stroke weight and rounded tips. Retain another 2 units between the glyph and box. For X this gives box bounds 2..22 and shared glyph bounds 4..20. Outline therefore has 4 units of artboard spacing. Keep both glyphs identical; never enlarge one style independently or expand the box to the artboard edges. This is the same shared-glyph relationship as Plus.
 
@@ -83,3 +83,5 @@ Automated validation checks geometry syntax, safe SVG, named parts, generation a
 ## Batch requests
 
 When the owner says to add icons, create a batch of six. Any icons the owner names count toward those six; choose complementary icons to fill the remaining places automatically. Do not ask the owner to supply the remainder. This applies to future batches as well. Record each batch and its review status in ICON_BATCHES.md.
+
+Current Camera/Folder revision: both styles now have exact 2px left/right margins and rounder tangent corners. Camera retains a visible height of 17.76649746 (top/bottom 3.11675127); Folder retains 17.36040609 (top/bottom 3.31979695). Their Filled exteriors match the Regular Outline body exactly with no extra box. These revisions reopen visual review of the previously approved artwork.

@@ -3,17 +3,17 @@
   "description": "A horizontal rounded folder with a distinct tab and a straight movable front-panel edge.",
   "tags": ["files", "directory"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner-approved horizontal Folder. Single rounded outer contour with a straight front-panel edge at y=10.9. Bounds x=3..21, y=4.3..19.7; default stroke is 1.7, with visible left/right padding 2.15 and top/bottom 3.45. The approved X=100%, Y=110% geometry is baked into the path coordinates, preserving constant stroke width and the existing part names.",
+  "construction": "Owner-requested rounder unboxed folder with the left/right primary edge pair at exactly 2 native units. Both style exteriors span x=2..22 and y=3.31979695..20.68020305, centered at 12,12. Visible aspect ratio is retained from the established Outline family (20 by 17.36040609); the shorter vertical axis is not stretched to force 2px top/bottom margins. Outline uses circular tangent fillets and unchanged Regular 1.70 stroke. Filled exterior is the exact 0.85 outward offset of the same lines and arcs, increasing convex radii and reducing concave radii while keeping arc centers fixed. No enclosing box is added. Folder body corner radii increase to 2.8/3.0 at the top and 3.25 at the base. The tab stays recognizable and its front-panel divider remains straight at y=10.9. The Filled divider gap remains strokeWidth-controlled, independent of the fixed exterior. Native X/Y=100%, rotation=0. Revision awaits owner visual review.",
   "review": {
-    "status": "approved",
+    "status": "draft",
     "reviewedBy": "palamto",
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "style": "outline",
     "preview": {
       "x": 100,
-      "y": 110,
+      "y": 100,
       "strokeWidth": 1.7
     },
-    "note": "Owner approved both styles. Y scaling and constant stroke/gap have been baked into the source; the approved shape is now 100% in the Lab."
+    "note": "Review reopened for the owner-requested rounder corners and 2px primary-pair spacing. Previous approval applies to the earlier geometry; this revision awaits review."
   }
 }

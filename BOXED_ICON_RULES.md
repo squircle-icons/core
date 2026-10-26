@@ -22,18 +22,18 @@ artboard edge. Do not fix this relationship with Lab-only scaling or translation
 Use a 24×24 grid, X/Y=100%, rotation=0, Regular stroke 1.70 and round cap radius
 0.85. Values below are native SVG units, equal to pixels at 24px output.
 
-| Measurement                            | Plus                  | X                                                 |
-| -------------------------------------- | --------------------- | ------------------------------------------------- |
-| Outline centerlines                    | `M5 12 H19 M12 5 V19` | `M4.85 4.85 L19.15 19.15 M19.15 4.85 L4.85 19.15` |
-| Shared glyph visible bounds, both axes | 4.15..19.85           | 4..20                                             |
-| Shared glyph width/height              | 15.70                 | 16.00                                             |
-| Filled box bounds, both axes           | 2.15..21.85           | 2..22                                             |
-| Filled box width/height                | 19.70                 | 20.00                                             |
-| Artboard-to-box spacing                | 2.15                  | 2.00                                              |
-| Glyph-to-box spacing at each side      | 2.00                  | 2.00                                              |
-| Filled box corner radius               | 4.00                  | 4.00                                              |
+| Measurement                            | Plus                              | X                                                 |
+| -------------------------------------- | --------------------------------- | ------------------------------------------------- |
+| Outline centerlines                    | `M4.85 12 H19.15 M12 4.85 V19.15` | `M4.85 4.85 L19.15 19.15 M19.15 4.85 L4.85 19.15` |
+| Shared glyph visible bounds, both axes | 4..20                             | 4..20                                             |
+| Shared glyph width/height              | 16.00                             | 16.00                                             |
+| Filled box bounds, both axes           | 2..22                             | 2..22                                             |
+| Filled box width/height                | 20.00                             | 20.00                                             |
+| Artboard-to-box spacing                | 2.00                              | 2.00                                              |
+| Glyph-to-box spacing at each side      | 2.00                              | 2.00                                              |
+| Filled box corner radius               | 4.00                              | 4.00                                              |
 
-Plus retains its established dimensions. X is optically sized to this family;
+Plus and X now both use the all-side primary-pair rule: Filled box bounds 2..22 and shared glyph bounds 4..20. Read ICON_MARGIN_RULES.md for horizontal or vertical objects whose other pair may have larger margins. X is optically sized to this family;
 do not restore a strict unscaled 45° rotation of Plus. Derive the diagonal
 construction from Plus but keep X's recorded final coordinates and stroke weight.
 Other already-approved artwork is not implicitly resized by this reference.

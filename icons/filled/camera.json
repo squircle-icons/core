@@ -3,17 +3,17 @@
   "description": "A compact camera with a continuous curved body and circular lens in a solid filled style.",
   "tags": ["photo", "image", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Rounded rectangular outer shell has bounds x=2.15..21.85 and y=3.25..20.75. Horizontal shoulder ledges at y=5.95 (x=5..7.5 and x=16.5..19) match the narrowed raised housing in Outline. A circular lens counter and small indicator counter preserve recognition without overlapping strokes. Separately authored fill-only study; counters are fixed geometry. Owner-approved source.",
+  "construction": "Owner-requested rounder unboxed camera with the left/right primary edge pair at exactly 2 native units. Both style exteriors span x=2..22 and y=3.11675127..20.88324873, centered at 12,12. Visible aspect ratio is retained from the established Outline family (20 by 17.76649746); the shorter vertical axis is not stretched to force 2px top/bottom margins. Outline uses circular tangent fillets and unchanged Regular 1.70 stroke. Filled exterior is the exact 0.85 outward offset of the same lines and arcs, increasing convex radii and reducing concave radii while keeping arc centers fixed. No enclosing box is added. Camera body corner radii are 2.75 at shoulders and 3.25 at the base; the raised housing has softened .8/1.05 transitions. Circular lens and indicator are retained; Filled counters remain their established fixed geometry. Native X/Y=100%, rotation=0. Revision awaits owner visual review.",
   "review": {
-    "status": "approved",
+    "status": "draft",
     "reviewedBy": "palamto",
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "style": "filled",
     "preview": {
       "x": 100,
       "y": 100,
       "strokeWidth": 1.7
     },
-    "note": "Owner approved Camera Outline and Filled at source proportions."
+    "note": "Review reopened for the owner-requested rounder corners and 2px primary-pair spacing. Previous approval applies to the earlier geometry; this revision awaits review."
   }
 }

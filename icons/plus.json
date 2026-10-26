@@ -3,6 +3,6 @@
   "description": "A centered plus mark with four equally sized arms.",
   "tags": ["add", "new", "create"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "At the owner request, each perpendicular centerline is extended by 1 unit total, from length 13 to length 14. Endpoints move equally from 5.5/18.5 to 5/19 about the shared center 12,12. All four free ends retain radius-.85 caps at Regular 1.70. Visible native dimensions are 15.70 by 15.70, with equal margins of 4.15 units. This drawing is the construction source for X. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review. The owner subsequently requested a Filled-only solid rounded box with a negative-space glyph and 2-unit clearance. Outline retains this unboxed drawing; its visible Regular exterior matches the Filled glyph cutout, not the added box.",
+  "construction": "Owner clarified that Plus and X use all four sides as their primary margin pairs. Plus Filled box now spans 2..22 with radius-4 corners, exactly like X. Both Plus glyphs share perpendicular centerlines M4.85 12 H19.15 M12 4.85 V19.15, visible bounds 4..20, unchanged Regular 1.70 stroke and .85 round caps. This leaves 2px from the box to the artboard and another 2px from the shared glyph to each box side. Outline is exactly the mark inside Filled, with no style-specific scaling or translation. Native X/Y=100%, rotation=0. Round 3 draft awaiting owner review.",
   "filledTreatment": "boxed-cutout"
 }
