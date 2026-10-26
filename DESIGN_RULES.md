@@ -1,6 +1,6 @@
 # Squircle Icons design rules
 
-Owner direction recorded on 2026-10-26. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell remains under review. Search intentionally has no Filled style.
+Owner direction recorded on 2026-10-26. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved in both styles; all six icons have static approval. Search intentionally has no Filled style.
 
 ## Shape language
 
@@ -34,13 +34,13 @@ Crisp means clean contours and consistent visual weight. It does not mean replac
 
 The grid is 24×24 with rounded caps/joins. Outer spacing balances in opposite pairs, measured to the visible edge: left equals right, top equals bottom. The pairs may differ to preserve the real object. Do not stretch every icon into a square.
 
-Folder Outline and Filled were approved by the owner on 2026-10-26 at X=100%, Y=110%, weight=1.70. Those settings are baked into both source drawings. Outline now has a 1.7 default stroke, contour bounds x=3..21/y=4.3..19.7 and visible padding 2.15 horizontally/3.45 vertically. Filled has bounds x=2.125..21.875/y=3.3375..20.6625 and a default 1.7 inner gap. The Lab now displays the approved source at 100% / 100%. The shared stroke defaults are Thin 1.25, Regular / Default 1.70, and Bold 2.25; custom stroke widths remain supported. Camera Outline/Filled and Search Outline were subsequently owner-approved at native 100% proportions. Heart Outline/Filled were approved after head alignment and grid correction, with the reviewed local X/Y=95% preview recorded in metadata; source proportions are retained. Settings Outline/Filled were then owner-approved at native 100% proportions after contour alignment. Bell awaits its own review.
+Folder Outline and Filled were approved by the owner on 2026-10-26 at X=100%, Y=110%, weight=1.70. Those settings are baked into both source drawings. Outline now has a 1.7 default stroke, contour bounds x=3..21/y=4.3..19.7 and visible padding 2.15 horizontally/3.45 vertically. Filled has bounds x=2.125..21.875/y=3.3375..20.6625 and a default 1.7 inner gap. The Lab now displays the approved source at 100% / 100%. The shared stroke defaults are Thin 1.25, Regular / Default 1.70, and Bold 2.25; custom stroke widths remain supported. Camera Outline/Filled and Search Outline were subsequently owner-approved at native 100% proportions. Heart Outline/Filled were approved after head alignment and grid correction, with the reviewed local X/Y=95% preview recorded in metadata; source proportions are retained. Settings Outline/Filled were then owner-approved at native 100% proportions after contour alignment. Bell Outline/Filled were then approved after shortening the hanger and aligning both contours; all six static icons are approved.
 
 Construction notes must explain the outer contour, internal shapes, optical adjustments and any exceptions. SVGs and metadata remain the only editable artwork source; generated adapters and homepage components must not contain alternative copies of paths.
 
 ## Outline and filled styles
 
-Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder, Camera, Heart and Settings are approved filled references. Bell remains unapproved. Search is intentionally Outline-only by owner direction. Counters other than Folder are fixed geometry. Only Folder has a strokeWidth-controlled divider.
+Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder, Camera, Heart and Settings are approved filled references. Bell is also approved in both styles. Search is intentionally Outline-only by owner direction. Counters other than Folder are fixed geometry. Only Folder has a strokeWidth-controlled divider.
 
 ### Matching outer edges — required for new drawings and revisions
 
