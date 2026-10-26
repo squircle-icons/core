@@ -6,7 +6,7 @@ The single editable source of original Squircle artwork, metadata, motion recipe
 
 ## Design direction
 
-Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or refining more motion. The current six alpha drawings remain under visual review.
+Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or refining more motion. Folder and Camera (Outline/Filled), plus Search (Outline only), are owner-approved. Bell, Heart and Settings remain under visual review. Filled is intentionally omitted for Search.
 
 ## Develop
 
