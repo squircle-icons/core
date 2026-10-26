@@ -107,3 +107,7 @@ Trash native-size correction (2026-10-27), superseding the preceding Lab-default
 ## Arrow V heads
 
 Owner feedback on2026-10-27 rejected the broad radius-1.50 curved-head experiment. Arrow Left/Right, Chevron Up/Down and Download/Upload return to straight-arm V heads, with the original Regular1.70 stroke, round .85 free caps and round joins. Preserve their original endpoints, shafts, bounds and centers. Filled follows the exact Regular Outline exterior. Do not treat the rejected curved-head experiment as a future standard. All six pairs remain drafts awaiting review.
+
+## Current Check and Filled arrow treatment
+
+Owner direction on2026-10-27: Check Filled uses the boxed-cutout family, with radius-4 frame bounds2..22 and an identical standalone Outline/negative-space mark. See BOXED_ICON_RULES.md. Every Filled arrow (Arrow Left/Right, Chevron Up/Down, Download/Upload) has a solid triangular head with small round exterior corners, keeping the Outline V tip/endpoints and its Regular1.70 exterior. Keep shafts and transfer trays unchanged. Outline heads remain open V shapes. The solid head is a deliberate semantic exception to open Outline interiors; verify Filled against the closed, solid Outline-head reference. All seven revised pairs remain drafts.

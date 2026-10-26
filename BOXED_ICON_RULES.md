@@ -75,3 +75,7 @@ Other already-approved artwork is not implicitly resized by this reference.
 The owner changed Menu and Search to **Filled = Bold** on 2026-10-27. Their previous boxed treatment is superseded. Neither has an enclosing box or cutout glyph. Use the same centerlines as Outline with fixed fill-only Bold 2.25 expansion (radius-1.125 round caps); Outline defaults to Regular 1.70. Size the shared centerlines for 2px primary margins at the Bold Filled reference, leaving 2.275px for Regular Outline. Menu uses left/right as its primary pair; Search uses both pairs. This explicit weight exception does not change Plus/X boxed construction. The owner approved both revised pairs on 2026-10-27.
 
 Owner approval recorded on 2026-10-27: current Search and Menu Outline/Filled passed with unboxed Filled = Bold 2.25; current Trash was accepted in both styles, including the fitted radius-1 handle centerline corners and radius-3.25 base centerline corners. Preserve these exact accepted geometries. Thirteen of twenty current pairs are approved.
+
+## Check boxed extension
+
+The owner requested boxed Filled Check on2026-10-27. Use the same radius-4 frame at2..22 and exact Regular1.70 shared mark as the Plus/X construction. Check centerlines are M4.85 12.55 L9.25 16.95 L19.15 7.05. Shared visible bounds are x4..20/y6.2..17.8; horizontal primary inner clearance is2px and vertical clearance4.2px. Outline remains the exact mark cut out of Filled. Both styles await review.
