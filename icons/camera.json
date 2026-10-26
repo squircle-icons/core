@@ -1,0 +1,7 @@
+{
+  "name": "camera",
+  "description": "A compact camera with a continuous curved body and circular lens.",
+  "tags": ["photo", "image"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Original B\u00e9zier body: shoulders taper into a raised shutter housing; lens is optically lowered to 12.9."
+}

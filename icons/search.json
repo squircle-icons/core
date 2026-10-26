@@ -1,0 +1,7 @@
+{
+  "name": "search",
+  "description": "A clear circular search lens with a short angled handle.",
+  "tags": ["find", "magnify"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Original construction from a circle centered at 10.4 and a 45-degree handle. Circular geometry preserves immediate recognition."
+}
