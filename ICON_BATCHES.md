@@ -11,7 +11,7 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 
 Round 3 includes three owner selections (X / close, Copy, Chevron Down) and three complementary selections (Plus, Check, Chevron Up). It contains six icons total, not six in addition to the named selections. All six provide Outline and Filled artwork. The batch rule begins with Round 3 and does not require retroactively expanding Round 2.
 
-Round 3 revision: Plus centerlines extend symmetrically from 13 to 14 units. X uses that exact revised Plus geometry rotated 45 degrees about 12,12, baked into the source at native rotation 0. Both styles follow this relationship without rescaling.
+Round 3 revision: Plus centerlines extend symmetrically from 13 to 14 units. X uses that exact revised Plus geometry rotated 45 degrees about 12,12, baked into the source at native rotation 0. The owner subsequently requested a slight optical enlargement of X: diagonal centerlines now extend symmetrically from 14 to 16 units while stroke 1.70 and cap radius .85 stay fixed. Both styles use this enlarged glyph; the Filled box retains 2px clearance.
 
 ## Round 4
 

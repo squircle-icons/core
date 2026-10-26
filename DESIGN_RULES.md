@@ -43,7 +43,7 @@ Outline uses configurable, consistent strokes. Filled is separately authored fil
 
 ### Owner-requested boxed Filled marks
 
-On 2026-10-27, the owner requested solid rounded boxes for Plus and X Filled only, with their original glyphs cut out and exactly 2 native drawing units of clearance on all four sides. Outline remains unboxed. This is an explicit exception to matching the two styles' entire outer silhouettes: compare the Filled glyph cutout to the Regular Outline exterior instead. Each box is upright and fitted independently to its glyph; the X glyph keeps the exact 45-degree relationship to Plus without rescaling. The box corner radius is 2.85, preserving the requested clearance around X's rounded tips. Both drawings remain drafts until owner approval.
+On 2026-10-27, the owner requested solid rounded boxes for Plus and X Filled only, with their original glyphs cut out and exactly 2 native drawing units of clearance on all four sides. Outline remains unboxed. This is an explicit exception to matching the two styles' entire outer silhouettes: compare the Filled glyph cutout to the Regular Outline exterior instead. Each box is upright and fitted independently to its glyph; X derives from Plus at 45 degrees, with owner-requested optical enlargement from 14 to 16-unit diagonal centerlines. The stroke stays 1.70 and cap radius stays .85; only arm lengths increase. The box corner radius is 2.85, preserving the requested clearance around X's rounded tips. Both drawings remain drafts until owner approval.
 
 ### Matching outer edges — required for new drawings and revisions
 
