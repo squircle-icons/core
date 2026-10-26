@@ -6,7 +6,9 @@ The single editable source of original Squircle artwork, metadata, and framework
 
 ## Design direction
 
-Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or adding new behavior. Folder, Camera, Heart and Settings (Outline/Filled), plus Search (Outline only), are owner-approved. Bell is also approved after its solid Filled clapper correction; all six static icons have owner approval. Search now includes an owner-requested boxed Filled variant aligned to a resized Outline; the revised Search pair and both Copy styles were owner-approved on 2026-10-27.
+Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. All 20 current icons are owner-approved in both Outline and Filled styles as of 2026-10-27. Moon's accepted minus-30-degree pose is baked into its native zero-degree source. Current metadata records the approved artwork; earlier review counts and construction experiments in the design history are superseded.
+
+Menu and Search use unboxed Filled geometry matching Outline at fixed Bold 2.25. Other matching exterior comparisons use Regular 1.70, with the documented boxed-cutout and solid arrow-head treatments. Read [the construction guide](BOXED_ICON_RULES.md) for the accepted exceptions and [margin rules](ICON_MARGIN_RULES.md) for native spacing.
 
 ## Develop
 
@@ -28,8 +30,4 @@ Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the 
 
 The packed catalog/source exports are an **internal build contract**, not a stable public core API. The core dependency is development-only in adapters; icon consumers do not install it separately.
 
-The grid, default 1.70 stroke, and curvature remain a proposal awaiting visual review. Do not copy or adapt third-party icon paths and claim them as original. Original artwork and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
-
-Current owner direction, superseding earlier Menu/Search box notes: Filled = Bold for Menu and Search, with no enclosing box. Filled matches their shared centerlines at fixed Bold 2.25; Regular Outline remains 1.70. Bold Filled has 2px at its primary pair (Menu left/right; Search all sides); Regular Outline has 2.275px at the same pair. This is an explicit exception to matching the Regular exterior. The owner approved the current resized unboxed Bold Menu/Search pairs and current Trash on 2026-10-27. Thirteen of twenty current pairs are approved. See BOXED_ICON_RULES.md.
-
-Owner approval recorded on 2026-10-27: current Search and Menu Outline/Filled passed with unboxed Filled = Bold 2.25; current Trash was accepted in both styles, including the fitted radius-1 handle centerline corners and radius-3.25 base centerline corners. Preserve these exact accepted geometries. Thirteen of twenty current pairs are approved.
+The approved family uses a 24×24 grid and default 1.70 stroke. New or revised artwork still needs owner review; automated tests do not grant visual approval. Do not copy or adapt third-party icon paths and claim them as original. Original artwork and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
