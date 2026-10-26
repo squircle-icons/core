@@ -42,3 +42,5 @@ Approval correction (2026-10-27): the owner clarified that only Download and Upl
 Pending Download/Upload refinement (2026-10-27): both trays now use the standard Camera/Folder radius3.25 centerline corners, matching Filled outer4.10/inner2.40 radii and unchanged .85 caps. Heads, shafts and native outer bounds are retained. Both pairs still await owner review.
 
 Moon inner-crescent revision (2026-10-27): keep outer radius8, horns, bounds and weight; reduce the inner radius10→9 for a .63324958-unit deeper and longer arc. The revised pair reopens review;17 pairs are approved and Download/Moon/Upload remain pending.
+
+Moon fullness correction (2026-10-27), superseding the preceding deeper-arc revision: the owner rejected radius9 because it made the body thinner. Use inner centerline radius14, moving the inner midpoint1.83215957 units toward the opening and making the crescent substantially fuller. Preserve outer radius8, horn locations, bounds, centering, Regular1.70 and .85 joins. Filled uses outer8.85/inner13.15. The revised pair remains pending;17 pairs stay approved.
