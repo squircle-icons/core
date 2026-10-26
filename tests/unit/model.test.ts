@@ -94,3 +94,25 @@ describe('motion recipe contracts', () => {
     expect(typeof createMotionController).toBe('function');
   });
 });
+
+describe('filled artwork pipeline', () => {
+  it('preserves compound cutouts and named parts through optimization', async () => {
+    const source = await readFile(
+      new URL('../../icons/filled/folder.svg', import.meta.url),
+      'utf8',
+    );
+    expect(parseSvg(optimizeSvg(source, 'filled'), 'filled')).toEqual(parseSvg(source, 'filled'));
+    const icons = await loadSources();
+    expect(icons.find((icon) => icon.name === 'folder')?.filled?.parts).toEqual(['body']);
+    expect(() => parseSvg(source)).toThrow('unfilled');
+    expect(() =>
+      parseSvg(source.replace('stroke="none"', 'stroke="currentColor"'), 'filled'),
+    ).toThrow('without stroke');
+    expect(() =>
+      parseSvg(source.replace('fill-rule="evenodd"', 'fill-rule="invalid"'), 'filled'),
+    ).toThrow('winding');
+    expect(() =>
+      parseSvg(source.replace('</svg>', '<script>alert(1)</script></svg>'), 'filled'),
+    ).toThrow();
+  });
+});

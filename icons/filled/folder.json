@@ -1,0 +1,7 @@
+{
+  "name": "folder",
+  "description": "A solid horizontal folder with a straight negative-space panel divider.",
+  "tags": ["files", "directory", "filled"],
+  "authorship": "Original filled geometry constructed for Squircle Icons; no third-party icon paths used.",
+  "construction": "A fill-only companion to Outline Folder. The outer bounds x=2.125..21.875 and y=4.125..19.875 match the visible Outline bounds at its default 1.75 stroke. One evenodd compound path cuts a straight 1.75-unit divider slot into the solid silhouette. Rounded outer corners preserve the real folder tab; no stroke is layered over the fill."
+}

@@ -11,6 +11,14 @@ export async function loadSources() {
   const motionFiles = (await readdir(resolve(root, 'motions'))).filter((name) =>
     name.endsWith('.json'),
   );
+  const filledFiles = (
+    await readdir(resolve(root, 'icons/filled')).catch((error) => {
+      if (error.code === 'ENOENT') return [] as string[];
+      throw error;
+    })
+  )
+    .filter((name) => name.endsWith('.svg'))
+    .sort();
   const icons = [];
   for (const file of files) {
     const name = file.slice(0, -4);
@@ -34,8 +42,35 @@ export async function loadSources() {
           name,
         )
       : undefined;
-    icons.push({ name, source, optimized, metadata, ...parsed, motion });
+    let filled;
+    if (filledFiles.includes(file)) {
+      const filledSource = await readFile(resolve(root, 'icons/filled', file), 'utf8');
+      const filledMetadata = JSON.parse(
+        await readFile(resolve(root, 'icons/filled', `${name}.json`), 'utf8'),
+      );
+      if (
+        filledMetadata.name !== name ||
+        !filledMetadata.description ||
+        !filledMetadata.authorship ||
+        !filledMetadata.construction ||
+        !Array.isArray(filledMetadata.tags)
+      )
+        throw new Error(`Invalid filled metadata: ${name}`);
+      const filledOptimized = optimizeSvg(filledSource, 'filled');
+      filled = { metadata: filledMetadata, ...parseSvg(filledOptimized, 'filled') };
+    }
+    icons.push({
+      name,
+      source,
+      optimized,
+      metadata,
+      ...parsed,
+      motion,
+      ...(filled ? { filled } : {}),
+    });
   }
+  for (const file of filledFiles)
+    if (!files.includes(file)) throw new Error(`Orphan filled icon: ${file}`);
   for (const file of motionFiles)
     if (!files.includes(file.replace('.json', '.svg'))) throw new Error(`Orphan motion: ${file}`);
   return icons;
@@ -43,6 +78,6 @@ export async function loadSources() {
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const icons = await loadSources();
   console.log(
-    `Validated ${icons.length} original SVGs and ${icons.filter((icon) => icon.motion).length} motion recipes.`,
+    `Validated ${icons.length} original outline SVGs, ${icons.filter((icon) => icon.filled).length} filled variants and ${icons.filter((icon) => icon.motion).length} motion recipes.`,
   );
 }

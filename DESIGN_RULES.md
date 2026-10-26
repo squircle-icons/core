@@ -36,6 +36,12 @@ The current implementation uses a 24×24 viewBox, rounded caps/joins and a confi
 
 Construction notes must explain the outer contour, internal shapes, optical adjustments and any exceptions. SVGs and metadata remain the only editable artwork source; generated adapters and homepage components must not contain alternative copies of paths.
 
+## Outline and filled styles
+
+Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder is the first filled review candidate; other filled icons are not implied or generated automatically.
+
+Motion work is paused. The current Lab focuses on static outline/filled geometry, stroke weight and centered X/Y size adjustments. Existing animation exports remain evaluation-era functionality and are not being extended.
+
 ## Quality and delivery order
 
 1. Establish a small approved static reference set using the shared outer construction and crisp-stroke rules. Review Folder first, then use other object types to check that the grammar works across the family.

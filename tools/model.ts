@@ -5,7 +5,16 @@ import type { MotionRecipe } from '../src/types.js';
 
 export type SvgNode = { tag: string; attrs: Record<string, string>; children: SvgNode[] };
 const supported: Record<string, string[]> = {
-  svg: ['xmlns', 'viewBox', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin'],
+  svg: [
+    'xmlns',
+    'viewBox',
+    'fill',
+    'stroke',
+    'stroke-width',
+    'stroke-linecap',
+    'stroke-linejoin',
+    'fill-rule',
+  ],
   g: ['data-part'],
   path: ['d'],
   circle: ['cx', 'cy', 'r'],
@@ -16,7 +25,10 @@ function assert(value: unknown, message: string): asserts value {
   if (!value) throw new Error(message);
 }
 
-export function parseSvg(source: string): { root: SvgNode; parts: string[] } {
+export function parseSvg(
+  source: string,
+  style: 'outline' | 'filled' = 'outline',
+): { root: SvgNode; parts: string[] } {
   assert(
     !/<!|<\?|&/.test(source),
     'Declarations, entities and processing instructions are unsupported',
@@ -39,18 +51,31 @@ export function parseSvg(source: string): { root: SvgNode; parts: string[] } {
     if (tag === 'svg') {
       assert(attrs.xmlns === 'http://www.w3.org/2000/svg', 'Expected SVG namespace');
       assert(attrs.viewBox === '0 0 24 24', 'Expected 24 × 24 viewBox');
-      assert(
-        attrs.fill === 'none' && attrs.stroke === 'currentColor',
-        'Expected unfilled currentColor artwork',
-      );
-      assert(
-        Number(attrs['stroke-width']) > 0 && Number.isFinite(Number(attrs['stroke-width'])),
-        'Invalid stroke width',
-      );
-      assert(
-        attrs['stroke-linecap'] === 'round' && attrs['stroke-linejoin'] === 'round',
-        'Expected rounded stroke caps and joins',
-      );
+      if (style === 'outline') {
+        assert(
+          attrs.fill === 'none' && attrs.stroke === 'currentColor',
+          'Expected unfilled currentColor artwork',
+        );
+        assert(
+          Number(attrs['stroke-width']) > 0 && Number.isFinite(Number(attrs['stroke-width'])),
+          'Invalid stroke width',
+        );
+        assert(
+          attrs['stroke-linecap'] === 'round' && attrs['stroke-linejoin'] === 'round',
+          'Expected rounded stroke caps and joins',
+        );
+        assert(attrs['fill-rule'] === undefined, 'Outline artwork cannot set a fill rule');
+      } else {
+        assert(
+          attrs.fill === 'currentColor' && attrs.stroke === 'none',
+          'Expected currentColor fill without stroke',
+        );
+        assert(
+          attrs['fill-rule'] === 'evenodd',
+          'Filled artwork requires explicit evenodd winding',
+        );
+        assert(attrs['stroke-width'] === undefined, 'Filled artwork must not add a stroke');
+      }
     }
     if (tag === 'g') {
       assert(
@@ -99,13 +124,13 @@ export function parseSvg(source: string): { root: SvgNode; parts: string[] } {
   return { root, parts };
 }
 
-export function optimizeSvg(source: string): string {
-  const before = parseSvg(source);
+export function optimizeSvg(source: string, style: 'outline' | 'filled' = 'outline'): string {
+  const before = parseSvg(source, style);
   const result = optimize(source, {
     plugins: ['cleanupNumericValues', 'sortAttrs'],
     js2svg: { pretty: true, indent: 2 },
   }).data;
-  const after = parseSvg(result);
+  const after = parseSvg(result, style);
   assert(
     JSON.stringify(before.parts) === JSON.stringify(after.parts),
     'Optimization changed stable parts',

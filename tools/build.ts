@@ -6,12 +6,13 @@ await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
   resolve(root, 'dist/catalog.json'),
   JSON.stringify(
-    icons.map(({ name, metadata, root, parts, motion }) => ({
+    icons.map(({ name, metadata, root, parts, motion, filled }) => ({
       name,
       metadata,
       root,
       parts,
       ...(motion ? { motion } : {}),
+      ...(filled ? { filled } : {}),
     })),
     null,
     2,
