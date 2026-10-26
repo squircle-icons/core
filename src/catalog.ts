@@ -8,7 +8,6 @@ export type CoreIcon = {
     authorship: string;
     construction: string;
     filledTreatment?: 'boxed-cutout' | 'bold-stroke';
-    labDefaults?: { x: number; y: number };
     review?: {
       status: 'approved' | 'draft';
       reviewedBy: string;
