@@ -9,3 +9,5 @@ Edit original SVG and metadata in `icons/`, or framework-independent types in `s
 Generated catalog data and adapter components are build output. Commit core changes before synchronizing an adapter, so the downstream source commit is traceable. Contributions to original code and artwork are submitted under the project’s [MIT license](LICENSE).
 
 Use 2px at the primary opposing edge pair. Camera/Folder use left/right and retain horizontal proportions; another icon may use top/bottom. The remaining pair need not be 2px. Plus/X use all four sides of their Filled box. Naturally filled objects need no added enclosing box.
+
+Owner exception: Menu/Search Filled is the shared Outline centerline expanded at Bold 2.25, with no box. Compare their packed Filled contours against Outline Bold, not Regular. See current direction in BOXED_ICON_RULES.md.

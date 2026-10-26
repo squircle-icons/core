@@ -29,3 +29,5 @@ Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the 
 The packed catalog/source exports are an **internal build contract**, not a stable public core API. The core dependency is development-only in adapters; icon consumers do not install it separately.
 
 The grid, default 1.70 stroke, and curvature remain a proposal awaiting visual review. Do not copy or adapt third-party icon paths and claim them as original. Original artwork and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
+
+Current owner direction, superseding earlier Menu/Search box notes: Filled = Bold for Menu and Search, with no enclosing box. Filled matches their shared centerlines at fixed Bold 2.25; Regular Outline remains 1.70. Bold Filled has 2px at its primary pair (Menu left/right; Search all sides); Regular Outline has 2.275px at the same pair. This is an explicit exception to matching the Regular exterior. The resized revised pairs await review; previous Search approval covered its boxed version. Ten of twenty current pairs remain approved. See BOXED_ICON_RULES.md.

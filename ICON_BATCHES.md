@@ -4,7 +4,7 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 
 | Round | Icons                                                  | Review status                                 |
 | ----- | ------------------------------------------------------ | --------------------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                              |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings          | Five approved; revised Search awaits review   |
 | 2     | Sun, Moon                                              | Both approved; historical two-icon round      |
 | 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | Plus, X and Copy approved; three await review |
 | 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six are drafts awaiting owner review      |
@@ -36,3 +36,5 @@ Copy junction revision: the owner requested breaks at both rear/front connection
 Search style extension: the owner requested a boxed Filled Search matching the Plus/X treatment. Both shared glyphs fit 4..20 with unchanged Regular 1.70; the box fits 2..22 with radius-4 corners and 2px side clearances. The earlier Outline-only rule is superseded. This is a new style for the existing Search icon, not a new icon batch. The owner approved both revised Search styles and both current Copy styles on 2026-10-27. Eleven of twenty current icon pairs are approved; Check and both Chevrons remain awaiting review in Round 3, along with all six Round 4 icons.
 
 Round 4 Menu/Trash revision: the owner requested a rounded box for Filled Menu and straight, rounded Trash geometry. Menu shares the exact three-bar glyph between styles inside a radius-4 Filled frame. Trash has vertical sides, standard rounded bottom corners and 2px top/bottom primary margins. Both pairs remain drafts awaiting owner review.
+
+Current owner direction, superseding earlier Menu/Search box notes: Filled = Bold for Menu and Search, with no enclosing box. Filled matches their shared centerlines at fixed Bold 2.25; Regular Outline remains 1.70. Bold Filled has 2px at its primary pair (Menu left/right; Search all sides); Regular Outline has 2.275px at the same pair. This is an explicit exception to matching the Regular exterior. The resized revised pairs await review; previous Search approval covered its boxed version. Ten of twenty current pairs remain approved. See BOXED_ICON_RULES.md.

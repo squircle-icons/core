@@ -70,10 +70,6 @@ Other already-approved artwork is not implicitly resized by this reference.
   confirm the actual browser view before claiming completion.
 - Save a screenshot for the owner. Only explicit owner review approves artwork.
 
-## Search boxed extension
+## Menu and Search: superseded boxed treatment
 
-The owner requested boxed Filled Search on 2026-10-27, superseding the old Outline-only direction. Use the same shared-glyph bounds 4..20, box bounds 2..22, box radius 4 and 2px inner/outer side clearances as Plus/X. The magnifier retains width 1.70 and cap radius .85 in both styles. Its compound path has three subpaths: box, the union of the lens exterior and handle, then the lens inner circle. Preserve the solid center inside the lens and avoid overlapping evenodd holes. The owner approved this revised Search pair on 2026-10-27; the Plus/X approvals remain unchanged.
-
-## Menu boxed extension
-
-The owner requested a boxed Filled Menu on 2026-10-27. Use the radius-4 box at 2..22 and three shared Regular 1.70 capsule strokes, centerlines x=4.85..19.15 at y=6,12,18. Outline is the exact negative-space glyph in Filled. The inner horizontal primary pair has 2px clearance; vertical clearance remains 3.15px to preserve the bar spacing. Both styles remain drafts.
+The owner changed Menu and Search to **Filled = Bold** on 2026-10-27. Their previous boxed treatment is superseded. Neither has an enclosing box or cutout glyph. Use the same centerlines as Outline with fixed fill-only Bold 2.25 expansion (radius-1.125 round caps); Outline defaults to Regular 1.70. Size the shared centerlines for 2px primary margins at the Bold Filled reference, leaving 2.275px for Regular Outline. Menu uses left/right as its primary pair; Search uses both pairs. This explicit weight exception does not change Plus/X boxed construction. Both revised pairs await owner review.
