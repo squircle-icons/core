@@ -1,6 +1,6 @@
 # Squircle Icons design rules
 
-Owner direction recorded on 2026-10-26. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved after its solid Filled clapper correction; all six static icons have owner approval. Search intentionally has no Filled style.
+Owner direction recorded on 2026-10-26. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; seven of eight static icons are approved, with Moon awaiting review. Search intentionally has no Filled style.
 
 ## Shape language
 
@@ -39,7 +39,7 @@ Construction notes must explain the outer contour, internal shapes, optical adju
 
 ## Outline and filled styles
 
-Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder, Camera, Heart and Settings are approved filled references. Bell is also approved after its solid Filled clapper correction; all six static icons have owner approval. Search is intentionally Outline-only by owner direction. Counters other than Folder are fixed geometry. Only Folder has a strokeWidth-controlled divider.
+Outline uses configurable, consistent strokes. Filled is separately authored fill-only geometry with deliberate negative space; it is not made by simply filling every outline path. Both styles preserve a recognizable silhouette and balanced opposite margins. Review their apparent sizes together at actual display sizes. Folder, Camera, Heart and Settings are approved filled references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; seven of eight static icons are approved, with Moon awaiting review. Search is intentionally Outline-only by owner direction. Counters other than Folder are fixed geometry. Only Folder has a strokeWidth-controlled divider.
 
 ### Matching outer edges — required for new drawings and revisions
 

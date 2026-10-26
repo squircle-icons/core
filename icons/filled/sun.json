@@ -3,5 +3,18 @@
   "description": "A clear circular sun with eight short, evenly spaced rays in a solid filled style.",
   "tags": ["day", "light", "weather", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "The solid disc radius is 5.95, exactly 5.1 plus half the Regular 1.70 stroke. Each shortened ray is an exact width-1.70 capsule with radius-.85 round ends around its original radial centerline from radius 8.2 to 9.2. The disc is solid; there is no counter. This follows the owner request for a larger disc and shorter rays while retaining the original overall dimensions and Regular stroke weight. Native X/Y=100% and rotation=0 are the reference. Compare contours at equal rotation. Draft awaiting owner review."
+  "construction": "The solid disc radius is 5.95, exactly 5.1 plus half the Regular 1.70 stroke. Each shortened ray is an exact width-1.70 capsule with radius-.85 round ends around its original radial centerline from radius 8.2 to 9.2. The disc is solid; there is no counter. This follows the owner request for a larger disc and shorter rays while retaining the original overall dimensions and Regular stroke weight. Native X/Y=100% and rotation=0 are the reference. Compare contours at equal rotation. Owner-approved source.",
+  "review": {
+    "status": "approved",
+    "reviewedBy": "palamto",
+    "date": "2026-10-26",
+    "style": "filled",
+    "preview": {
+      "x": 100,
+      "y": 100,
+      "strokeWidth": 1.7,
+      "rotation": 0
+    },
+    "note": "Owner approved Sun Outline and Filled after enlarging the central disc and shortening the eight rays. Reviewed at native proportions and Regular 1.70."
+  }
 }
