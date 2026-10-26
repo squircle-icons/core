@@ -3,5 +3,5 @@
   "description": "A centered close mark with two balanced diagonal strokes.",
   "tags": ["close", "dismiss", "cancel"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Two straight 45-degree strokes cross at 12,12 with endpoint coordinates 5.5 and 18.5. The line-symbol silhouette intentionally uses no outer frame or enclosed counter. Equal Regular 1.70 visible margins are 4.65 units. Rounded free ends and the shared center retain the established family weight. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
+  "construction": "X is derived directly from the revised Plus by a 45-degree clockwise rotation about 12,12, with no rescaling. Each diagonal centerline is exactly 14 units long, sharing Plus arm length, intersections, Regular 1.70 weight and rounded end caps. The rotation is baked into the original SVG coordinates so the native Lab rotation remains 0 degrees. The diagonal projection is intentionally smaller than the unrotated Plus bounding box; there is no style-specific enlargement. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Round 3 draft awaiting owner review."
 }
