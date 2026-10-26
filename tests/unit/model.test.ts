@@ -13,15 +13,17 @@ const bell = JSON.parse(
 );
 
 describe('single-source artwork pipeline', () => {
-  it('validates the six originals and their motion references', async () => {
+  it('validates the original collection and their motion references', async () => {
     const icons = await loadSources();
     expect(icons.map((icon) => icon.name)).toEqual([
       'bell',
       'camera',
       'folder',
       'heart',
+      'moon',
       'search',
       'settings',
+      'sun',
     ]);
     expect(icons.filter((icon) => icon.motion)).toHaveLength(2);
   });
@@ -143,7 +145,9 @@ it('available filled sources preserve named parts and original geometry through 
     'camera',
     'folder',
     'heart',
+    'moon',
     'settings',
+    'sun',
   ]);
   expect(icons.find((icon) => icon.name === 'search')?.filled).toBeUndefined();
   for (const icon of icons.filter((icon) => icon.filled)) {

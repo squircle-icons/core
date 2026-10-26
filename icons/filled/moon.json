@@ -1,0 +1,7 @@
+{
+  "name": "moon",
+  "description": "A balanced crescent moon with a clean circular concavity in a solid filled style.",
+  "tags": ["night", "dark", "weather", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The filled exterior is the analytical .85-unit outward offset of the Outline at Regular 1.70: outer radius 8.85, concave radius 7.15, and radius-.85 joins centered on both original horns. The shared circle centers and native translation are retained; no style-specific scaling or translation is used. Native X/Y=100% and rotation=0 are the reference. Compare contours at equal rotation. Draft awaiting owner review."
+}

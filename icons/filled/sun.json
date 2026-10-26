@@ -1,0 +1,7 @@
+{
+  "name": "sun",
+  "description": "A clear circular sun with eight short, evenly spaced rays in a solid filled style.",
+  "tags": ["day", "light", "weather", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The solid disc radius is 5.1, exactly 4.25 plus half the Regular 1.70 stroke. Each ray is an exact width-1.70 capsule with radius-.85 round ends around its original centerline. The disc is solid; there is no counter. Native X/Y=100% and rotation=0 are the reference. Compare contours at equal rotation. Draft awaiting owner review."
+}

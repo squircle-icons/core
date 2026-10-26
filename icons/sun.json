@@ -1,0 +1,7 @@
+{
+  "name": "sun",
+  "description": "A clear circular sun with eight short, evenly spaced rays.",
+  "tags": ["day", "light", "weather"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "The circular disc preserves the real celestial silhouette and is an intentional exception to the rounded rectangular object baseline. A radius-4.25 disc is centered at 12,12. Eight straight radial segments run from radius 7.2 to 9.2, with round caps and no overlaps. Regular 1.70 gives equal visible margins of 1.95 units. The minimum disc-to-ray gap is 1.25 units at Regular. Native proportions are the reference; static draft awaiting owner review."
+}
