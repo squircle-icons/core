@@ -289,7 +289,7 @@ export function extractStrokeCutout(
         left: xs[0],
         right: xs[1],
         centerY: (ys[0] + ys[1]) / 2,
-        defaultWidth: ys[1] - ys[0],
+        defaultWidth: Math.round((ys[1] - ys[0]) * 1e9) / 1e9,
       };
     })
     .filter((value) => value !== undefined);

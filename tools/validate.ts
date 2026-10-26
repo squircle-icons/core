@@ -1,3 +1,4 @@
+import { STROKE_WEIGHTS } from '../src/types.js';
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,6 +36,8 @@ export async function loadSources() {
       throw new Error(`Invalid metadata: ${name}`);
     const optimized = optimizeSvg(source);
     const parsed = parseSvg(optimized);
+    if (Number(parsed.root.attrs['stroke-width']) !== STROKE_WEIGHTS.regular)
+      throw new Error(`Default stroke must match Regular: ${name}`);
     const motion = motionFiles.includes(`${name}.json`)
       ? validateMotion(
           JSON.parse(await readFile(resolve(root, 'motions', `${name}.json`), 'utf8')),

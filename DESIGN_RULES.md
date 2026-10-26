@@ -1,6 +1,6 @@
 # Squircle Icons design rules
 
-Owner direction recorded on 2026-10-26. These rules guide new drawings and revisions; the existing six alpha icons are reference candidates, not an approved master set.
+Owner direction recorded on 2026-10-26. These rules guide new drawings and revisions; Folder Outline and Filled are approved references; the remaining alpha drawings still need review.
 
 ## Shape language
 
@@ -32,7 +32,9 @@ Crisp means clean contours and consistent visual weight. It does not mean replac
 
 ## Current technical baseline
 
-The current implementation uses a 24×24 viewBox, rounded caps/joins and a configurable default stroke of 1.75. Outer spacing must balance in opposite pairs, measured to the visible stroke edge: left equals right, and top equals bottom. Horizontal and vertical pairs may differ to preserve the object's natural aspect ratio. Do not stretch an icon into a square just to make all four margins identical. The current horizontal Folder uses contour bounds x=3..21 and y=5..19, giving visible left/right padding of 2.125 units and top/bottom padding of 4.125 units at stroke 1.75. Changing stroke width changes each opposite pair equally. These implementation values are retained during rule-setting. Final stroke weight and corner geometry require a visual comparison; this document does not silently change component defaults or approve the current drawings.
+The grid is 24×24 with rounded caps/joins. Outer spacing balances in opposite pairs, measured to the visible edge: left equals right, top equals bottom. The pairs may differ to preserve the real object. Do not stretch every icon into a square.
+
+Folder Outline and Filled were approved by the owner on 2026-10-26 at X=100%, Y=110%, weight=1.70. Those settings are baked into both source drawings. Outline now has a 1.7 default stroke, contour bounds x=3..21/y=4.3..19.7 and visible padding 2.15 horizontally/3.45 vertically. Filled has bounds x=2.125..21.875/y=3.3375..20.6625 and a default 1.7 inner gap. The Lab now displays the approved source at 100% / 100%. The shared stroke defaults are Thin 1.25, Regular / Default 1.70, and Bold 2.25; custom stroke widths remain supported. Other icon shapes await their own review.
 
 Construction notes must explain the outer contour, internal shapes, optical adjustments and any exceptions. SVGs and metadata remain the only editable artwork source; generated adapters and homepage components must not contain alternative copies of paths.
 

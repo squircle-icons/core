@@ -126,8 +126,8 @@ it('derives adjustable negative-space geometry by part and rejects invalid targe
   expect(extractStrokeCutout(svg.root, config)).toMatchObject({
     left: 4.75,
     right: 19.25,
-    centerY: 11,
-    defaultWidth: 1.75,
+    centerY: 10.9,
+    defaultWidth: 1.7,
   });
   expect(() => extractStrokeCutout(svg.root, { ...config, part: 'missing' })).toThrow(
     'Cutout part',

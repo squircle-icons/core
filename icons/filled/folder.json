@@ -3,10 +3,22 @@
   "description": "A solid horizontal folder with a straight negative-space panel divider.",
   "tags": ["files", "directory", "filled"],
   "authorship": "Original filled geometry constructed for Squircle Icons; no third-party icon paths used.",
-  "construction": "A fill-only companion to Outline Folder. The outer bounds x=2.125..21.875 and y=4.125..19.875 match the visible Outline bounds at its default 1.75 stroke. One evenodd compound path contains a straight divider slot, 1.75 units by default. strokeWidthCutout targets the named body part so adapters can vary the inner gap with strokeWidth while preserving the outer contour. The adjustable source gap is bounded to 0.25\u20136 units so it remains inside the solid body. Rounded outer corners preserve the real folder tab; no stroke is layered over the fill.",
+  "construction": "Owner-approved filled Folder. Bounds x=2.125..21.875, y=3.3375..20.6625 preserve the approved Y=110% silhouette; default gap is 1.7 around y=10.9, independent of that scaling. A named compound path retains a straight rectangular counter adjustable with strokeWidth without changing the outside. The approved shape is baked into source and starts at 100% in the Lab.",
   "strokeWidthCutout": {
     "part": "body",
     "minWidth": 0.25,
     "maxWidth": 6
+  },
+  "review": {
+    "status": "approved",
+    "reviewedBy": "palamto",
+    "date": "2026-10-26",
+    "style": "filled",
+    "preview": {
+      "x": 100,
+      "y": 110,
+      "strokeWidth": 1.7
+    },
+    "note": "Owner approved both styles. Y scaling and constant stroke/gap have been baked into the source; the approved shape is now 100% in the Lab."
   }
 }

@@ -8,6 +8,14 @@ export type CoreIcon = {
     tags: string[];
     authorship: string;
     construction: string;
+    review?: {
+      status: 'approved' | 'draft';
+      reviewedBy: string;
+      date: string;
+      style: string;
+      preview: { x: number; y: number; strokeWidth: number };
+      note: string;
+    };
   };
   root: { tag: string; attrs: Record<string, string>; children: CoreIcon['root'][] };
   parts: string[];
