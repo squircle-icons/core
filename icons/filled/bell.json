@@ -3,9 +3,9 @@
   "description": "A gently squared bell with a separate hanging clapper in a solid filled style.",
   "tags": ["notification", "alert", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "The compact top hanger and body match the visible Regular 1.70 Outline. The Filled clapper is a solid rounded half-disc: its upper edge closes the opening, while its lower curve and round outside corners follow the Regular Outline exterior. The closed clapper interior is united with its 0.85-unit outer expansion, leaving no U-shaped recess. Body/clapper separation and visible vertical bounds y=1.9..22.1 are retained. This intentional solid interior follows the Filled body treatment; it is not a counter. Fixed fill-only geometry; other Outline weights may differ. Pending owner review.",
+  "construction": "The compact top hanger and body match the visible Regular 1.70 Outline. The Filled clapper is a solid rounded half-disc: its upper edge closes the opening, while its lower curve and round outside corners follow the Regular Outline exterior. The closed clapper interior is united with its 0.85-unit outer expansion, leaving no U-shaped recess. Body/clapper separation and visible vertical bounds y=1.9..22.1 are retained. This intentional solid interior follows the Filled body treatment; it is not a counter. Fixed fill-only geometry; other Outline weights may differ. Owner-approved source.",
   "review": {
-    "status": "draft",
+    "status": "approved",
     "reviewedBy": "palamto",
     "date": "2026-10-26",
     "style": "filled",
@@ -14,6 +14,6 @@
       "y": 100,
       "strokeWidth": 1.7
     },
-    "note": "Owner reopened Bell review after noticing the hollow-looking Filled clapper. The Filled clapper is now solid and awaits visual review; Outline geometry is unchanged."
+    "note": "Owner approved Bell after the solid Filled clapper correction. Both styles reviewed at source proportions and Regular 1.70; the Filled clapper is a solid part with no U-shaped recess."
   }
 }

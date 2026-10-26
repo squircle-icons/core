@@ -6,7 +6,7 @@ The single editable source of original Squircle artwork, metadata, motion recipe
 
 ## Design direction
 
-Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or refining more motion. Folder, Camera, Heart and Settings (Outline/Filled), plus Search (Outline only), are owner-approved. Bell review is reopened for the solid Filled clapper correction. Filled is intentionally omitted for Search.
+Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. Crisp strokes and an approved static family come before expanding the collection or refining more motion. Folder, Camera, Heart and Settings (Outline/Filled), plus Search (Outline only), are owner-approved. Bell is also approved after its solid Filled clapper correction; all six static icons have owner approval. Filled is intentionally omitted for Search.
 
 ## Develop
 
