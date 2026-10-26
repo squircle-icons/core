@@ -3,7 +3,7 @@
   "description": "A six-tooth gear with flowing shoulders and a circular center in a solid filled style.",
   "tags": ["preferences", "gear", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "The solid six-tooth silhouette follows the visible exterior of the original Outline at Regular stroke 1.70: the original contour is expanded outward by 0.85 unit and its overlaps are united into one closed fill-only contour. Straight tooth faces and rounded transitions retain the Outline geometry. The circular hub counter has radius 2.25, matching the visible inner edge of the Outline hub (radius 3.1 minus half the Regular stroke). Opposite points remain symmetric about 12,12. The counter is fixed geometry; other Outline weights may differ. Owner-approved source.",
+  "construction": "The solid six-tooth silhouette follows the visible exterior of the original Outline at Regular stroke 1.70: the original contour is expanded outward by 0.85 unit and its overlaps are united into one closed fill-only contour. Straight tooth faces and rounded transitions retain the Outline geometry. The circular hub counter has radius 2.25, matching the visible inner edge of the Outline hub (radius 3.1 minus half the Regular stroke). Opposite points remain symmetric about 12,12. The counter is fixed geometry; other Outline weights may differ. Owner-approved source. The owner-selected 30-degree clockwise orientation is baked into all source coordinates about 12,12 for both styles. This orientation is now native rotation 0 degrees; no SVG or preview transform is needed.",
   "review": {
     "status": "approved",
     "reviewedBy": "palamto",
@@ -12,8 +12,9 @@
     "preview": {
       "x": 100,
       "y": 100,
-      "strokeWidth": 1.7
+      "strokeWidth": 1.7,
+      "rotation": 0
     },
-    "note": "Owner approved Settings Outline and Filled after aligning their exterior and hub. Reviewed in Lab at source proportions, Regular 1.70, including rotation 30 degrees."
+    "note": "Owner approved Settings Outline and Filled at the previous 30-degree preview orientation. At the owner's request, that orientation is now baked into both original SVGs and is the native 0-degree baseline. Exterior and hub alignment are preserved at Regular 1.70."
   }
 }
