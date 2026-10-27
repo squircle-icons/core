@@ -9,9 +9,9 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 | 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up                                                        | Chevron Up/Down reopened; other four approved  |
 | 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash                                                | Arrow Left/Right reopened; other four approved |
 | 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right                | All six await review                           |
-| 6     | Chevron Left, Chevron Right, Chevron Up Left, Chevron Up Right, Chevron Down Left, Chevron Down Right | All six await review                           |
+| 6     | Chevron Left, Chevron Right, Double Chevron Up, Double Chevron Down, Double Chevron Left, Double Chevron Right | All six await review                           |
 
-**16 of32 current icon pairs are approved; both eight-direction Arrow/Chevron families and their frames await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**16 of32 current icon pairs are approved; eight Arrow directions and four Single/four Double Chevron directions with their frames await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
