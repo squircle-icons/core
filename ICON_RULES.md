@@ -10,6 +10,16 @@ An external example may reveal a mismatch between our work and our own brief. It
 
 The existing circular-corner measurements below describe the approved implementation baseline. They do not establish the future squircle language. No new curve formula, exponent, control-point recipe or replacement geometry is approved by this conceptual clarification. Preserve the current artwork and acceptance records until a later artwork request establishes the scope of a redesign.
 
+## Base shape first; new-design stroke1.5 — 2026-10-28
+
+The owner requested a plain squircle study before extending Camera or redesigning the collection. A rounded square and a squircle must read differently: the former has explicit straight sides joined by local circular fillets; the study develops its whole contour continuously toward its corners. Develop our own proportions. External screenshots clarify the distinction but are not shape templates.
+
+**New-design base stroke is1.5 native units.** The owner explicitly scoped this to the shape study and future redesign work first. Do not change the existing collection's1.75 default, palette, Filled contours or morph weights as part of this study. Existing Camera remains the earlier1.75 draft; its shape is not the approved base grammar.
+
+The standalone Lab shape study uses a native24×24 canvas, centered12,12, with visible bounds2..22 in both styles. The whole-contour trial is a mathematically constructed superellipse with an adjustable profile; its initial3.2 exponent is a trial leaning more circular than the4-power reference, not an approved universal formula. Outline centerlines are the inward normal offset of the Filled exterior by.75, rather than a scaled copy; export fitting error stays below.001 native units. Rounded-square and circle references use the same visible bounds and1.5 stroke for a fair comparison. The UI describes visual roundness; mathematical construction lives in this document and the Core design module.
+
+This is one base-shape study, not a request for six new icon identities or for applying a frame to other icons. Keep it separate from the static catalog and approval counts. Shape, stroke and any later Camera application remain subject to owner visual review. The study is authored in [Core](src/design/squircle-base.ts), promoted through the pinned adapter, and shown by the private local Lab. No runtime sibling-checkout imports or copied path implementations belong in Lab.
+
 ## Camera original-squircle trial — 2026-10-28
 
 Camera is the first scoped artwork redesign. Its semantic structure remains a horizontal camera with a low raised housing, circular lens and indicator. The independently authored body uses a progressive corner profile: curvature starts at zero beside a straight side, increases through the turn and returns to zero at the next side. The lens remains circular because it describes an optical aperture. The shallow housing is integrated into the body rather than adding a generic enclosing frame.
@@ -110,7 +120,7 @@ Use the following current rules to design the source. Family exceptions are inte
 
 ### 3.1 Artboard, weight and shape
 
-Use a native **24 × 24** artboard, centered at **12,12**. Native SVG units correspond to pixels when rendered at 24px.
+For the existing collection, use a native **24 × 24** artboard, centered at **12,12**. The new-design study uses the scoped1.5 base above; the following weight palette remains the existing collection baseline. Native SVG units correspond to pixels when rendered at 24px.
 
 | Weight              | Stroke width |
 | ------------------- | -----------: |
