@@ -359,4 +359,3 @@ Required regression matrix: three pairs × three frame choices × both endpoints
 plus intermediate contour/negative-space checks, reversal and reduced motion in
 all three browser engines. Update the packed component fixture and the actual
 Lab; a static source check alone does not verify the rendered frame selection.
-
