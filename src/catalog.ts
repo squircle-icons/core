@@ -19,6 +19,7 @@ export type CoreIcon = {
   };
   root: { tag: string; attrs: Record<string, string>; children: CoreIcon['root'][] };
   parts: string[];
+  frames?: Partial<Record<'square' | 'circle', CoreFrame>>;
   filled?: {
     metadata: CoreIcon['metadata'];
     root: CoreIcon['root'];
@@ -34,4 +35,11 @@ export type CoreIcon = {
       maxWidth: number;
     };
   };
+};
+
+export type CoreFrame = {
+  metadata: CoreIcon['metadata'];
+  root: CoreIcon['root'];
+  parts: string[];
+  filled: { metadata: CoreIcon['metadata']; root: CoreIcon['root']; parts: string[] };
 };

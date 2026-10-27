@@ -10,7 +10,7 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 | 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash                                 | All six approved      |
 | 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right | All six await review  |
 
-**20 of26 current icon pairs are approved; the six Round5 arrows await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**18 of26 current icon pairs are approved; all eight compass arrows and their new frames await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
@@ -65,3 +65,7 @@ Sun3px rays were owner-approved on2026-10-27. Use this approved source for the S
 Round5 (2026-10-27): the owner requested the complete arrow set. Add the six missing compass directions to existing Arrow Left/Right, giving eight directional arrows. Each new icon provides open V Outline and solid-head Filled, fixed Regular1.70, round .85 exterior, and2px at its primary opposing pair (Up/Down top/bottom; diagonals both pairs). The original20 approved pairs and both morphs remain unchanged. All six new pairs are drafts until owner approval.
 
 Owner compass-arrow size correction (2026-10-27): all8 directional arrows must use the same physical shaft length18.25, identical head-arm lengths and Regular1.75. Derive each direction by rotation about12,12; do not independently enlarge diagonals to touch all four artboard edges. Cardinals have2px at their primary pair. Diagonal visible X/Y margins are4.67265062, preserving the same physical size. This explicit owner correction supersedes earlier diagonal all-side2px fits and normalizes Left/Right with Up/Down.
+
+## Current framed arrow family — 2026-10-27
+
+The owner requested smaller, equal arrows with room for Square/Circle frames. This supersedes the previous18.25-unit shaft and standalone2px edge rule. All8 directions now share a12.25-unit shaft, identical head arms and1.75 stroke. Standalone and framed arrows use exactly the same glyph, position and size. Add frame variants to the existing8 arrow identities; this is a construction revision, not a new six-icon batch. Square/Circle outer frames have2px artboard margins; Square exterior radius4, Circle radius10. Outline frame centerlines are inset by.875. Filled frames use negative space cut from a solid frame, preserving the standalone Filled solid-head silhouette. The glyph has14px visible length along its own axis; cardinal standalone primary margins are5px and diagonal margins6.79397097px. Circle inner clearance is1.25px at Regular and.5px at Bold2.50. Directional rotation never rotates the Square frame. All8 arrow pairs and their new frames await owner review;18 of26 standalone pairs remain approved.

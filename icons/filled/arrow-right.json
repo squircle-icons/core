@@ -3,19 +3,10 @@
   "description": "A solid rounded triangular arrowhead with a straight shaft.",
   "tags": ["forward", "next", "navigation", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Straight centerlines keep the symbol readable without an enclosing frame. Centerline bounds x=4..20 and y=6..18 give balanced opposite visible margins of 3.15 horizontally and 5.15 vertically. The arrow pair is mirrored about x=12. Filled line contours are constructed as the union of radius-.85 segment capsules, matching the native Regular 1.70 stroke exterior, free-end caps and round joins. For closed objects, the body remains solid with explicitly authored negative-space details. Native X/Y=100%, rotation=0 and Regular 1.70 are the reference. Owner rejected the radius-1.50 curved-head experiment on2026-10-27. Return to the original straight-arm V head with round .85 caps and round stroke joins at Regular1.70. Do not reintroduce a broad centerline fillet. Owner requested a solid arrowhead for every Filled arrow on2026-10-27. Outline retains the open straight-arm V. Filled closes that same head into a solid triangular body, including the Regular1.70 round exterior at its three corners; shaft and tray geometry are retained. Corresponding tip, arm endpoints, native outer bounds and Regular1.70 weight remain aligned. This is a semantic solid-head exception to reproducing the open Outline interior. Owner approved this current pair on2026-10-27. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Established centerline proportions and pose are retained. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75. Owner compass-size correction on2026-10-27: all eight directional arrows share exactly18.25-unit shafts, the same two head-arm lengths and fixed1.75 stroke. Rotate the same reference about12,12 without refitting diagonal bounds. Cardinal arrows have2px at their primary pair; diagonals retain the rotated physical size, so their horizontal/vertical visible margins are4.67265062px. This explicitly supersedes the earlier diagonal2px-on-all-sides fit and older Left/Right size. Filled uses the same shaft with .875 caps and the same solid expanded triangle. The owner requested equal sizes; new six directions remain drafts.",
+  "construction": "Owner frame-ready arrow revision on2026-10-27: all8 directions share a12.25-unit shaft and identical head-arm lengths at Regular1.75. Use one reference rotated about12,12, with no independent scaling for directions or frames. The standalone glyph has14px visible length along its axis, leaving5px at cardinal primary edges. This smaller shared glyph reserves room for Square/Circle frames. Square frame exterior is2..22 with radius4; Circle exterior is centered12,12 with radius10. Outline frame centerlines use radius3.125 corners / circle radius9.125 at stroke1.75. Filled frames are solid exteriors with the exact standalone Filled arrow silhouette cut out, retaining the approved solid triangular head. At Regular the circular frame has1.25px inner clearance at the shaft tips; at Bold2.50 it still clears by.5px. Standalone and framed glyphs have exactly the same position, size and weight. Frames remain upright for every baked arrow direction. The2px outer rule applies to frames, not the inner arrow. This explicitly supersedes earlier18.25-unit shafts and2px standalone-arrow margins. This family revision awaits owner review.",
   "filledTreatment": "solid-head",
   "review": {
-    "status": "approved",
-    "reviewedBy": "palamto",
-    "date": "2026-10-27",
-    "style": "filled",
-    "preview": {
-      "x": 100,
-      "y": 100,
-      "strokeWidth": 1.75,
-      "rotation": 0
-    },
-    "note": "Owner approved both current styles: open straight-arm V head in Outline and solid triangular head in Filled, with aligned tips/endpoints, original shafts/trays and Regular1.70 reference."
+    "status": "draft",
+    "note": "Review reopened for smaller shared arrow glyph and new Square/Circle frame variants; previous approval covered earlier standalone artwork."
   }
 }

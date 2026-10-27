@@ -174,3 +174,20 @@ it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate
   );
   expect(() => parseSvg(invalid)).toThrow('circle geometry');
 });
+
+it('validates Square and Circle frame sources with the identical standalone arrow glyph', async () => {
+  const icons = await loadSources();
+  const arrows = icons.filter((icon) => icon.name.startsWith('arrow-'));
+  expect(arrows).toHaveLength(8);
+  for (const icon of arrows) {
+    expect(Object.keys(icon.frames!)).toEqual(['square', 'circle']);
+    for (const frame of Object.values(icon.frames!)) {
+      expect(frame!.root.children[0].children[1].attrs.d).toBe(
+        icon.root.children[0].children[0].attrs.d,
+      );
+      expect(frame!.metadata.review?.status).toBe('draft');
+      expect(frame!.filled.root.attrs.stroke).toBe('none');
+    }
+  }
+  expect(icons.filter((icon) => icon.frames)).toHaveLength(8);
+});
