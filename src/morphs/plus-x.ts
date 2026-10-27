@@ -7,24 +7,151 @@ export type PlusXGeometry = {
   plus: { outline: string; filled: string };
   x: { outline: string; filled: string };
 };
+type Point = { x: number; y: number };
+type Edge =
+  | { kind: 'line'; a: Point; b: Point }
+  | { kind: 'arc'; center: Point; radius: number; angle: number };
+const tau = Math.PI * 2;
+const epsilon = 1e-8;
+const clamp = (p: number) => Math.min(1, Math.max(0, p));
+const smooth = (p: number) => p * p * p * (p * (p * 6 - 15) + 10);
+const add = (a: Point, b: Point): Point => ({ x: a.x + b.x, y: a.y + b.y });
+const sub = (a: Point, b: Point): Point => ({ x: a.x - b.x, y: a.y - b.y });
+const mul = (a: Point, s: number): Point => ({ x: a.x * s, y: a.y * s });
+const dot = (a: Point, b: Point) => a.x * b.x + a.y * b.y;
+const cross = (a: Point, b: Point) => a.x * b.y - a.y * b.x;
+const format = (p: number) => String(Math.round(p * 1e8) / 1e8);
+const pointString = (p: Point) => `${format(p.x)} ${format(p.y)}`;
+function at(edge: Edge, t: number): Point {
+  return edge.kind === 'line'
+    ? add(edge.a, mul(sub(edge.b, edge.a), t))
+    : add(edge.center, {
+        x: edge.radius * Math.cos(edge.angle + Math.PI * t),
+        y: edge.radius * Math.sin(edge.angle + Math.PI * t),
+      });
+}
+function parameter(edge: Edge, point: Point): number {
+  if (edge.kind === 'line') {
+    const direction = sub(edge.b, edge.a);
+    return dot(sub(point, edge.a), direction) / dot(direction, direction);
+  }
+  let angle = (Math.atan2(point.y - edge.center.y, point.x - edge.center.x) - edge.angle) % tau;
+  if (angle < 0) angle += tau;
+  if (angle > tau - epsilon) angle = 0;
+  return angle / Math.PI;
+}
+function crossings(a: Edge, b: Edge): Point[] {
+  let result: Point[] = [];
+  if (a.kind === 'line' && b.kind === 'line') {
+    const u = sub(a.b, a.a),
+      v = sub(b.b, b.a),
+      denominator = cross(u, v);
+    if (Math.abs(denominator) > epsilon)
+      result = [add(a.a, mul(u, cross(sub(b.a, a.a), v) / denominator))];
+  } else if (a.kind === 'arc' && b.kind === 'arc') {
+    const direction = sub(b.center, a.center),
+      distance = Math.hypot(direction.x, direction.y);
+    if (distance > epsilon && distance <= 2 * a.radius + epsilon) {
+      const half = mul(add(a.center, b.center), 0.5);
+      const height = Math.sqrt(Math.max(0, a.radius ** 2 - (distance / 2) ** 2));
+      const normal = { x: -direction.y / distance, y: direction.x / distance };
+      result = [add(half, mul(normal, height)), add(half, mul(normal, -height))];
+    }
+  } else {
+    const line = (a.kind === 'line' ? a : b) as Extract<Edge, { kind: 'line' }>;
+    const arc = (a.kind === 'arc' ? a : b) as Extract<Edge, { kind: 'arc' }>;
+    const direction = sub(line.b, line.a),
+      offset = sub(line.a, arc.center);
+    const aa = dot(direction, direction),
+      bb = 2 * dot(offset, direction),
+      cc = dot(offset, offset) - arc.radius ** 2;
+    const discriminant = bb * bb - 4 * aa * cc;
+    if (discriminant >= -epsilon) {
+      const root = Math.sqrt(Math.max(0, discriminant));
+      result = [(-bb - root) / (2 * aa), (-bb + root) / (2 * aa)].map((t) =>
+        add(line.a, mul(direction, t)),
+      );
+    }
+  }
+  return result.filter((p) =>
+    [parameter(a, p), parameter(b, p)].every((t) => t >= -epsilon && t <= 1 + epsilon),
+  );
+}
+function capsule(angle: number, length: number, h: number): Edge[] {
+  const u = { x: Math.cos(angle), y: Math.sin(angle) },
+    n = { x: -u.y, y: u.x };
+  const left = mul(u, -length),
+    right = mul(u, length);
+  return [
+    { kind: 'line', a: add(left, mul(n, -h)), b: add(right, mul(n, -h)) },
+    { kind: 'arc', center: right, radius: h, angle: angle - Math.PI / 2 },
+    { kind: 'line', a: add(right, mul(n, h)), b: add(left, mul(n, h)) },
+    { kind: 'arc', center: left, radius: h, angle: angle + Math.PI / 2 },
+  ];
+}
+/** Exact union boundary of two centered capsules, including overlapping end caps. */
+function mergedStrokes(a: number, b: number, length: number, h: number, center: Point): string {
+  const segments: { edge: Edge; from: number; to: number }[] = [];
+  const edges = [capsule(a, length, h), capsule(b, length, h)];
+  const single = Math.abs(a - b) < 1e-6;
+  for (let side = 0; side < (single ? 1 : 2); side++) {
+    const otherAngle = side === 0 ? b : a;
+    const otherUnit = { x: Math.cos(otherAngle), y: Math.sin(otherAngle) };
+    for (const edge of edges[side]) {
+      const cuts = [0, 1];
+      if (!single)
+        for (const other of edges[1 - side])
+          for (const p of crossings(edge, other)) cuts.push(clamp(parameter(edge, p)));
+      cuts.sort((x, y) => x - y);
+      for (let i = 1; i < cuts.length; i++) {
+        const from = cuts[i - 1],
+          to = cuts[i];
+        if (to - from < epsilon) continue;
+        const middle = at(edge, (from + to) / 2);
+        const projection = Math.min(length, Math.max(-length, dot(middle, otherUnit)));
+        const distance = sub(middle, mul(otherUnit, projection));
+        if (single || dot(distance, distance) > h * h + epsilon) segments.push({ edge, from, to });
+      }
+    }
+  }
+  // Their union is star-shaped about the origin, so polar order gives one closed contour.
+  segments.sort((a, b) => {
+    const x = at(a.edge, (a.from + a.to) / 2),
+      y = at(b.edge, (b.from + b.to) / 2);
+    return Math.atan2(x.y, x.x) - Math.atan2(y.y, y.x);
+  });
+  let path = 'M' + pointString(add(center, at(segments[0].edge, segments[0].from)));
+  for (const { edge, to } of segments) {
+    path +=
+      (edge.kind === 'line' ? ' L' : ` A${format(h)} ${format(h)} 0 0 1 `) +
+      pointString(add(center, at(edge, to)));
+  }
+  return path + ' Z';
+}
 
-/** Rotate and lengthen the SAME cross, with fixed stroke and visible side bounds. */
+/** Plus folds to one vertical line, holds briefly, then opens into the approved X. */
 export function plusXFrame(progress: number, geometry: PlusXGeometry) {
-  const p = Math.min(1, Math.max(0, Number.isFinite(progress) ? progress : 0));
+  const p = clamp(Number.isFinite(progress) ? progress : 0);
   if (p === 0) return geometry.plus;
   if (p === 1) return geometry.x;
-  const angle = (Math.PI / 4) * p;
-  const cos = Math.cos(angle),
-    sin = Math.sin(angle);
-  const extent = geometry.plusExtent + (geometry.xExtent - geometry.plusExtent) * p;
-  const length = extent / cos;
-  const h = geometry.strokeWidth / 2;
-  const format = (value: number) => String(Math.round(value * 1e8) / 1e8);
-  const point = (x: number, y: number) =>
-    `${format(geometry.center[0] + x * cos - y * sin)} ${format(geometry.center[1] + x * sin + y * cos)}`;
-  const outline = `M${point(-length, 0)} L${point(length, 0)} M${point(0, -length)} L${point(0, length)}`;
-  // Exact union of the two round-ended strokes: one hole, no overlap seam or mask IDs.
-  const arc = `A${format(h)} ${format(h)} 0 0 1`;
-  const cutout = `M${point(-length, -h)} L${point(-h, -h)} L${point(-h, -length)} ${arc} ${point(h, -length)} L${point(h, -h)} L${point(length, -h)} ${arc} ${point(length, h)} L${point(h, h)} L${point(h, length)} ${arc} ${point(-h, length)} L${point(-h, h)} L${point(-length, h)} ${arc} ${point(-length, -h)} Z`;
-  return { outline, filled: `${geometry.box} ${cutout}` };
+  const closing = smooth(clamp(p / 0.38));
+  const opening = smooth(clamp((p - 0.62) / 0.38));
+  const a = p < 0.38 ? (Math.PI / 2) * closing : Math.PI / 2 - (Math.PI / 4) * opening;
+  const b = Math.PI / 2 + (Math.PI / 4) * opening;
+  const extent = geometry.plusExtent + (geometry.xExtent - geometry.plusExtent) * opening;
+  const length = extent / Math.cos((Math.PI / 4) * opening);
+  const center = { x: geometry.center[0], y: geometry.center[1] };
+  const end = (angle: number, direction: number) =>
+    pointString(
+      add(center, {
+        x: Math.cos(angle) * length * direction,
+        y: Math.sin(angle) * length * direction,
+      }),
+    );
+  const line = (angle: number) => `M${end(angle, -1)} L${end(angle, 1)}`;
+  const outline = Math.abs(a - b) < 1e-6 ? line(b) : `${line(a)} ${line(b)}`;
+  return {
+    outline,
+    filled: geometry.box + ' ' + mergedStrokes(a, b, length, geometry.strokeWidth / 2, center),
+  };
 }
