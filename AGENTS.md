@@ -1,17 +1,17 @@
-# Mandatory icon construction reading
+# Agent entry point — Core
 
-Before editing any artwork or its construction metadata, read `CONTRIBUTING.md`,
-`DESIGN_RULES.md`, `ICON_MARGIN_RULES.md` and `BOXED_ICON_RULES.md`. Re-read the boxed-icon guide for any
-Plus/X revision, even when prior conversation context is available.
+## Icon work — canonical workspace playbook
 
-Outline is the exact glyph inside the boxed Filled variant. Preserve its size,
-position, stroke weight and round ends across styles. The Filled box needs its
-own outer clearance. Follow the recorded dimensions instead of compensating one
-style independently. Update the guide when the owner explicitly changes a rule.
+Read [ICON_RULES.md](ICON_RULES.md) before icon work in this workspace. It defines Goal, Rules, Design, implementation workflow, Verification, Tests and completion criteria across core, Svelte and the standalone local Lab. Use its current construction rules and family-specific exceptions; do not duplicate numerical specifications here.
 
-Original SVGs and metadata are the only artwork source. Commit validated source
-before syncing an adapter. Automated checks never grant visual approval.
+Before editing artwork or construction metadata, also read [CONTRIBUTING.md](CONTRIBUTING.md), [DESIGN_RULES.md](DESIGN_RULES.md), [ICON_MARGIN_RULES.md](ICON_MARGIN_RULES.md) and [BOXED_ICON_RULES.md](BOXED_ICON_RULES.md). Older dated trials are historical when superseded by the current playbook. Re-read the boxed construction reference for Plus/X revisions.
 
-Use 2px at the primary opposing edge pair. Camera/Folder use left/right and retain horizontal proportions; another icon may use top/bottom. The remaining pair need not be 2px. Plus/X use all four sides of their Filled box. Naturally filled objects need no added enclosing box.
+Original SVGs and metadata are the artwork source. Commit validated source before synchronizing the adapter. Preserve stable parts and unrelated working changes. Automated checks do not grant owner visual approval.
 
-Use the Camera/Folder main-body roundness as the object-corner standard: Outline centerline radius 3.25, corresponding visible/Filled exterior radius 4.10 and border inner radius 2.40 at Regular 1.70. Re-read the standard object corner section in DESIGN_RULES.md before choosing new body/page radii. Preserve approved fitted small-feature radii and the separate Plus/X box radius 4.00.
+## Morph work
+
+Read [MORPH.md](MORPH.md) before any morph or animation work. It is the shared
+agent playbook for Goal, Design, implementation, Verification, Tests and delivery
+across the source repositories and standalone local app. A named pair request means implement through to a
+working Lab preview. The owner explicitly permits questions whenever unsure about
+a material decision; the design brief is not a mandatory approval checkpoint.

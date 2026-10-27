@@ -225,16 +225,16 @@ it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate
   expect(() => parseSvg(invalid)).toThrow('circle geometry');
 });
 
-it('validates Square and Circle frame sources with the identical standalone arrow glyph', async () => {
+it('preserves the shared compact Square and Circle glyphs beside larger standalone arrows', async () => {
   const icons = await loadSources();
   const arrows = icons.filter((icon) => /^(arrow|chevrons?)-/.test(icon.name));
   expect(arrows).toHaveLength(22);
   for (const icon of arrows) {
     expect(Object.keys(icon.frames!)).toEqual(['square', 'circle']);
+    const framedGlyph = icon.frames!.square!.root.children[0].children.at(-1)!.attrs.d;
+    expect(framedGlyph).not.toBe(icon.root.children[0].children[0].attrs.d);
     for (const frame of Object.values(icon.frames!)) {
-      expect(frame!.root.children[0].children[1].attrs.d).toBe(
-        icon.root.children[0].children[0].attrs.d,
-      );
+      expect(frame!.root.children[0].children.at(-1)!.attrs.d).toBe(framedGlyph);
       expect(frame!.metadata.review?.status).toBe('draft');
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }

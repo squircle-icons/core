@@ -3,11 +3,11 @@
   "description": "Three straight menu bars with rounded ends. Fixed Bold 2.50 filled geometry.",
   "tags": ["navigation", "list", "hamburger", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Menu frame extension: one shared three-bar glyph in None/Square/Circle, x=7..17 at y=8,12,16. Regular Outline is1.75 with radius.875 caps; standalone Filled is the exact Bold2.50 capsule expansion (radius1.25). Framed Filled subtracts that same standalone Bold silhouette from the solid frame, following the shared Filled-glyph frame convention. No per-frame glyph scaling or translation. Regular visible glyph bounds are x6.125..17.875/y7.125..16.875; Bold/Filled bounds x5.75..18.25/y6.75..17.25. Frame exterior bounds2..22: Square radius4, Circle radius10. Outline Square centerline bounds2.875..21.125/radius3.125; Circle radius9.125. Even at Bold, the circular frame retains positive glyph clearance. This frame-ready construction supersedes the earlier unframed 2px Menu fit; Search is unchanged. Native X/Y100/100, rotation0. Review reopened for the new shared glyph and frames.",
+  "construction": "Owner explicitly requested larger native Frame None artwork, independent of the unchanged smaller Square/Circle glyphs. None centerlines uniformlyscale about12,12 by1.7500000000, with Regular1.75 stroke and roundcaps/joins unchanged. None Filled is the exact Bold2.50 union at radius1.25, using analytical arcs and a single union contour at intersections; it is not scaled oldstrokegeometry and has no enclosingbox. Fit None BoldFilled visibleprimaryextent20, leaving2px on its mainopposingpair; RegularOutline has2.375px there. Otherpairs preserve naturalproportions and balancedmargins. Menu centerlines x3.25..20.75 at y5,12,19; verticalbarspacing stays proportional to the original. All frameSVG/JSON files retain their prior smaller frame-fitting geometry; do not enlarge the frame glyphs or restore same-None-and-frame sizing. Source-nativeX/Y100/100 androtation0. This ownerexception supersedes prior shared-size wording; frame-specific metadata remains the record of the smaller variant. Existingapprovalhistory is preserved. RevisedNoneglyph awaits ownerreview.",
   "filledTreatment": "bold-stroke",
   "review": {
     "status": "draft",
-    "note": "Prior approval covered the larger unframed Menu. New frame-ready shared glyph and Square/Circle await owner review."
+    "note": "Owner requested larger native unframed glyph; frame drawings remain unchanged. Revised None size awaits review."
   },
   "reviewHistory": [
     {

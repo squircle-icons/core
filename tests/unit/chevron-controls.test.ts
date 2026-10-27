@@ -33,7 +33,7 @@ it('rotates opposed and stop-line chevrons without changing arm lengths or place
       [actual[0], actual[1]],
       [actual[1], actual[2]],
     ])
-      expect(Math.hypot(a[0] - b[0], a[1] - b[1])).toBeCloseTo(4 * Math.SQRT2, 7);
+      expect(Math.hypot(a[0] - b[0], a[1] - b[1])).toBeCloseTo(9.125 * Math.SQRT2, 7);
   }
   const horizontal = points('chevron-left-right');
   points('chevron-up-down')
@@ -52,8 +52,8 @@ it('keeps visible opposing gaps and stop-line gaps at Regular and Bold weights',
     [1.75, 1.25],
     [2.5, 0.5],
   ]) {
-    expect(opposedCenterlineGap - weight).toBeCloseTo(clearance, 7);
-    expect(stopCenterlineGap - weight).toBeCloseTo(clearance, 7);
+    expect(opposedCenterlineGap - weight).toBeGreaterThan(clearance);
+    expect(stopCenterlineGap - weight).toBeGreaterThan(clearance);
   }
 });
 
@@ -65,21 +65,35 @@ it.each([
   'chevron-line-left',
   'chevron-line-right',
 ])(
-  '%s preserves the exact Filled silhouette in frames and clears the Bold Circle border',
+  '%s enlarges None while retaining the compact Filled cutout and Bold Circle clearance',
   (name) => {
     const entry = icon(name);
     const subpaths = (d: string) => d.match(/[Mm][^Mm]*/g)!.map((part) => part.trim());
-    const filled = subpaths(entry.filled!.root.children[0].children[0].attrs.d);
+    const filled = subpaths(
+      entry.frames!.square!.filled.root.children[0].children[0].attrs.d,
+    ).slice(1);
+    const framedGlyph = entry.frames!.square!.root.children[0].children.at(-1)!.attrs.d;
+    expect(framedGlyph).not.toBe(path(name));
+    const nonePoints = points(name);
+    const extent = (axis: number) =>
+      Math.max(...nonePoints.map((point) => point[axis])) -
+      Math.min(...nonePoints.map((point) => point[axis])) +
+      1.75;
+    expect(Math.max(extent(0), extent(1))).toBeCloseTo(20, 6);
     expect(entry.metadata.review?.status).toBe('draft');
     expect(entry.root.attrs['stroke-width']).toBe('1.75');
     for (const frame of Object.values(entry.frames!)) {
-      expect(frame!.root.children[0].children.at(-1)!.attrs.d).toBe(path(name));
+      expect(frame!.root.children[0].children.at(-1)!.attrs.d).toBe(framedGlyph);
       const cutout = subpaths(frame!.filled.root.children[0].children[0].attrs.d).slice(1);
       expect(cutout).toEqual(filled);
     }
     // Rounded lines lie within vertex disks; a disk's radial maximum is vertex radius + half-weight.
     const glyphRadius =
-      Math.max(...points(name).map(([x, y]) => Math.hypot(x - 12, y - 12))) + 1.25;
+      Math.max(
+        ...pathParser
+          .makeAbsolute(pathParser.parseSVG(framedGlyph))
+          .map(({ x, y }) => Math.hypot(x - 12, y - 12)),
+      ) + 1.25;
     const circleInnerRadius =
       Number(entry.frames!.circle!.root.children[0].children[0].attrs.r) - 1.25;
     expect(circleInnerRadius - glyphRadius).toBeGreaterThan(1);

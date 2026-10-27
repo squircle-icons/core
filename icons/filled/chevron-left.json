@@ -3,10 +3,10 @@
   "description": "A chevron left with a solid rounded triangular head.",
   "tags": ["chevron", "caret", "navigation", "left", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner clarified Chevron has four cardinal directions only, with four Double Chevron identities (chevrons-up/down/left/right), each in None/Square/Circle and Outline/Filled:8 identities times3 forms=24 variants. Single uses V vertices(-5.5,2.75),(0,-2.75),(5.5,2.75). Double uses two V marks with vertices(-4,2),(0,-2),(4,2), shifted vertically by -2.875/+2.875. Rotate by cardinal direction and recenter at12,12, with no directional scaling. Reuse the exact same glyph standalone and inside upright Arrow frames. Regular1.75 round caps/joins; Filled closes each triangle and expands by.875. Double solid triangles touch exactly with zero gap at the shared center. Frame exteriors have2px margins, square radius4 or circle radius10. Filled frames subtract the identical standalone solid silhouette. Circle clearance at Bold is at least.2218px for Double and.4758px for Single. All await owner review; no diagonal Chevron icons.",
+  "construction": "Owner explicitly requested larger native None glyphs while retaining the existing smaller Square/Circle glyphs unchanged. Single Chevron None has centerline half-width9.125, with20px visible primary width. Other cardinal directions are rigid rotations. None geometry is authored separately from frames, with no runtime style/frame scaling and no scaling of stroke width. Rebuild all Filled contours at the fixed source stroke expansion; never scale a previous Filled path. Square/Circle SVG and metadata files retain their previous exact artwork and dimensions. This supersedes the older requirement that None and framed glyphs have identical size. Native X/Y100/100 and rotation0 remain the new None baseline. Revised None glyph awaits owner review; existing frame review status is unchanged.",
   "filledTreatment": "solid-head",
   "review": {
     "status": "draft",
-    "note": "New shared glyph and frame-ready Chevron family; awaits owner review."
+    "note": "Larger native None glyph requested by owner; smaller Square/Circle variants are preserved unchanged. Awaiting owner visual review."
   }
 }
