@@ -1,21 +1,13 @@
 {
   "name": "plus",
-  "description": "A solid rounded square with a centered plus cutout and two-unit clearance.",
-  "tags": ["add", "new", "create", "filled", "boxed"],
+  "description": "A rounded plus symbol with unboxed and framed styles.",
+  "tags": ["math", "symbol", "plus", "filled"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner clarified that Plus and X use all four sides as their primary margin pairs. Plus Filled box now spans 2..22 with radius-4 corners, exactly like X. Both Plus glyphs share perpendicular centerlines M4.85 12 H19.15 M12 4.85 V19.15, visible bounds 4..20, unchanged Regular 1.70 stroke and .85 round caps. This leaves 2px from the box to the artboard and another 2px from the shared glyph to each box side. Outline is exactly the mark inside Filled, with no style-specific scaling or translation. Native X/Y=100%, rotation=0. Owner-approved source. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Centerlines uniformly refitted about12,12 by 0.9965034965 to retain the existing2px primary margins and shared boxed glyph clearance. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
-  "filledTreatment": "boxed-cutout",
+  "construction": "Owner requested Plus/Minus/X to follow the frame family with three explicit styles: Outline Regular1.75, unboxed Bold2.50, and Filled. Frame None Filled equals the unboxed Bold2.50 expansion, as Menu/Search. Square/Circle Filled uses a solid upright frame and the exact Regular1.75 glyph cutout. Use shared centerlines centered at12,12, extent4.5 on both axes; Plus and X retain identical optical bounds10.75 square at Regular and11.50 at Bold; Minus shares their horizontal extent. Smaller source glyphs reserve actual Circle clearance at every weight without independent per-frame scaling. Frame exteriors span2..22, Square radius4 and Circle radius10, same as Arrow/Chevron. Outline centerlines are2.875..21.125 with corner radius3.125, circle9.125. Bold is explicitly unboxed; selecting it ignores a frame. At Bold the Circle border clears the X by at least.261px. Filled standalone is the exact union of the shared centerlines expanded at2.50; frame holes use1.75. This supersedes the previous standalone boxed Plus/X Filled semantics. Morph timing remains approved, while its boxed endpoints derive from the new Square frame sources. Family extension adds Minus only; it is not a six unrelated-icon batch. All three revised identities await owner review.",
+  "filledTreatment": "bold-stroke",
+  "supportsBold": true,
   "review": {
-    "status": "approved",
-    "reviewedBy": "palamto",
-    "date": "2026-10-27",
-    "style": "filled",
-    "preview": {
-      "x": 100,
-      "y": 100,
-      "strokeWidth": 1.75,
-      "rotation": 0
-    },
-    "note": "Owner approved both Outline and Filled with radius-4 box corners, 2px around the Filled box, 2px between the box and shared glyph, and identical Outline/cutout position and weight. Reviewed at native proportions and Regular 1.70."
+    "status": "draft",
+    "note": "New three-style frame construction; awaits owner review."
   }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "x",
+  "description": "A rounded x symbol with unboxed and framed styles.",
+  "tags": ["math", "symbol", "x", "circle", "frame"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Owner requested Plus/Minus/X to follow the frame family with three explicit styles: Outline Regular1.75, unboxed Bold2.50, and Filled. Frame None Filled equals the unboxed Bold2.50 expansion, as Menu/Search. Square/Circle Filled uses a solid upright frame and the exact Regular1.75 glyph cutout. Use shared centerlines centered at12,12, extent4.5 on both axes; Plus and X retain identical optical bounds10.75 square at Regular and11.50 at Bold; Minus shares their horizontal extent. Smaller source glyphs reserve actual Circle clearance at every weight without independent per-frame scaling. Frame exteriors span2..22, Square radius4 and Circle radius10, same as Arrow/Chevron. Outline centerlines are2.875..21.125 with corner radius3.125, circle9.125. Bold is explicitly unboxed; selecting it ignores a frame. At Bold the Circle border clears the X by at least.261px. Filled standalone is the exact union of the shared centerlines expanded at2.50; frame holes use1.75. This supersedes the previous standalone boxed Plus/X Filled semantics. Morph timing remains approved, while its boxed endpoints derive from the new Square frame sources. Family extension adds Minus only; it is not a six unrelated-icon batch. All three revised identities await owner review.",
+  "filledTreatment": "boxed-cutout",
+  "supportsBold": true,
+  "review": {
+    "status": "draft",
+    "note": "New three-style frame construction; awaits owner review."
+  }
+}

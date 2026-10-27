@@ -17,6 +17,7 @@ export function validateMetadata(metadata: any, name: string) {
     ) ||
     !Array.isArray(metadata.tags) ||
     !metadata.tags.every((tag: unknown) => typeof tag === 'string' && tag.trim().length > 0) ||
+    (metadata.supportsBold !== undefined && typeof metadata.supportsBold !== 'boolean') ||
     (metadata.review !== undefined &&
       (!metadata.review ||
         typeof metadata.review !== 'object' ||

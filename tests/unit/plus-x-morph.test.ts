@@ -10,8 +10,8 @@ it('uses the approved endpoints and upright radius4 box without altering static 
   expect(geometry.strokeWidth).toBe(1.75);
   expect(plusXFrame(0, geometry)).toEqual(geometry.plus);
   expect(plusXFrame(1, geometry)).toEqual(geometry.x);
-  expect(geometry.plusExtent).toBeCloseTo(7.125, 8);
-  expect(geometry.xExtent).toBeCloseTo(7.125, 8);
+  expect(geometry.plusExtent).toBeCloseTo(4.5, 8);
+  expect(geometry.xExtent).toBeCloseTo(4.5, 8);
 });
 it('keeps the glyph inside its approved bounds while folding through a single line', () => {
   for (let i = 1; i < 100; i++) {
@@ -29,7 +29,7 @@ it('keeps the glyph inside its approved bounds while folding through a single li
 });
 
 it('passes through one horizontal stroke without holding neighboring frames', () => {
-  expect(plusXFrame(0.5, geometry).outline).toBe('M4.875 12 L19.125 12');
+  expect(plusXFrame(0.5, geometry).outline).toBe('M7.5 12 L16.5 12');
   for (const p of [0.4, 0.49, 0.499, 0.501, 0.51, 0.6]) {
     expect(plusXFrame(p, geometry).outline).not.toBe(plusXFrame(0.5, geometry).outline);
   }

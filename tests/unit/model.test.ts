@@ -32,6 +32,7 @@ describe('single-source artwork pipeline', () => {
       'folder',
       'heart',
       'menu',
+      'minus',
       'moon',
       'plus',
       'search',
@@ -138,6 +139,7 @@ it('available filled sources preserve named parts and original geometry through 
     'folder',
     'heart',
     'menu',
+    'minus',
     'moon',
     'plus',
     'search',
@@ -201,5 +203,5 @@ it('validates Square and Circle frame sources with the identical standalone arro
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }
   }
-  expect(icons.filter((icon) => icon.frames)).toHaveLength(16);
+  expect(icons.filter((icon) => icon.frames)).toHaveLength(19);
 });

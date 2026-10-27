@@ -6,7 +6,9 @@ export function buildPlusXGeometry(icons: CoreIcon[]): PlusXGeometry {
   const x = icons.find((icon) => icon.name === 'x')!;
   const paths = (icon: CoreIcon) => ({
     outline: String(icon.root.children[0].children[0].attrs.d),
-    filled: String(icon.filled!.root.children[0].children[0].attrs.d),
+    filled: String(
+      (icon.frames?.square?.filled ?? icon.filled!).root.children[0].children[0].attrs.d,
+    ),
   });
   const from = paths(plus),
     to = paths(x);
