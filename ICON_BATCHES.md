@@ -2,15 +2,16 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                                                  | Current review status                          |
-| ----- | -------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings                                          | All six approved                               |
-| 2     | Sun, Moon                                                                              | Both approved                                  |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up                                         | All six approved                               |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash                                 | Arrow Left/Right reopened; other four approved |
-| 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right | All six await review                           |
+| Round | Icons                                                                                                 | Current review status                          |
+| ----- | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings                                                         | All six approved                               |
+| 2     | Sun, Moon                                                                                             | Both approved                                  |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up                                                        | Chevron Up/Down reopened; other four approved  |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash                                                | Arrow Left/Right reopened; other four approved |
+| 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right                | All six await review                           |
+| 6     | Chevron Left, Chevron Right, Chevron Up Left, Chevron Up Right, Chevron Down Left, Chevron Down Right | All six await review                           |
 
-**18 of26 current icon pairs are approved; all eight compass arrows and their new frames await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**16 of32 current icon pairs are approved; both eight-direction Arrow/Chevron families and their frames await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
@@ -69,3 +70,7 @@ Owner compass-arrow size correction (2026-10-27): all8 directional arrows must u
 ## Current framed arrow family — 2026-10-27
 
 The owner requested smaller, equal arrows with room for Square/Circle frames. This supersedes the previous18.25-unit shaft and standalone2px edge rule. All8 directions now share a12.25-unit shaft, identical head arms and1.75 stroke. Standalone and framed arrows use exactly the same glyph, position and size. Add frame variants to the existing8 arrow identities; this is a construction revision, not a new six-icon batch. Square/Circle outer frames have2px artboard margins; Square exterior radius4, Circle radius10. Outline frame centerlines are inset by.875. Filled frames use negative space cut from a solid frame, preserving the standalone Filled solid-head silhouette. The glyph has14px visible length along its own axis; cardinal standalone primary margins are5px and diagonal margins6.79397097px. Circle inner clearance is1.25px at Regular and.5px at Bold2.50. Directional rotation never rotates the Square frame. All8 arrow pairs and their new frames await owner review;18 of26 standalone pairs remain approved.
+
+## Current Chevron family — 2026-10-27
+
+Apply the same Arrow concept to Chevron:8 directions times None/Square/Circle =24 variants, with Outline/Filled for each. Round6 adds the six missing directions to existing Up/Down. Use equal90-degree V arms of length5.5*sqrt(2), endpoints at(-5.5,2.75),(0,-2.75),(5.5,2.75) before rotation. Rotate and uniformly recenter the bounding box at12,12; never scale directions independently. The same glyph/placement appears in all frames. Filled closes and expands the same triangle at half Regular.875; framed Filled subtracts that exact silhouette. Reuse Arrow frame geometry:2px exterior margins, Square exterior radius4, Circle radius10. At Bold2.50 the circular border still clears all Chevron vertices by at least.4758px. Up/Down review reopens for the new smaller shared glyph. The catalog now contains32 standalone identities:16 approved and16 directional Arrow/Chevron pairs awaiting review. Each directional family contains24 variants; styles do not change that count.

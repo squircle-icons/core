@@ -19,7 +19,13 @@ describe('single-source artwork pipeline', () => {
       'bell',
       'camera',
       'check',
+      'chevron-down-left',
+      'chevron-down-right',
       'chevron-down',
+      'chevron-left',
+      'chevron-right',
+      'chevron-up-left',
+      'chevron-up-right',
       'chevron-up',
       'copy',
       'download',
@@ -119,7 +125,13 @@ it('available filled sources preserve named parts and original geometry through 
     'bell',
     'camera',
     'check',
+    'chevron-down-left',
+    'chevron-down-right',
     'chevron-down',
+    'chevron-left',
+    'chevron-right',
+    'chevron-up-left',
+    'chevron-up-right',
     'chevron-up',
     'copy',
     'download',
@@ -177,8 +189,8 @@ it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate
 
 it('validates Square and Circle frame sources with the identical standalone arrow glyph', async () => {
   const icons = await loadSources();
-  const arrows = icons.filter((icon) => icon.name.startsWith('arrow-'));
-  expect(arrows).toHaveLength(8);
+  const arrows = icons.filter((icon) => /^(arrow|chevron)-/.test(icon.name));
+  expect(arrows).toHaveLength(16);
   for (const icon of arrows) {
     expect(Object.keys(icon.frames!)).toEqual(['square', 'circle']);
     for (const frame of Object.values(icon.frames!)) {
@@ -189,5 +201,5 @@ it('validates Square and Circle frame sources with the identical standalone arro
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }
   }
-  expect(icons.filter((icon) => icon.frames)).toHaveLength(8);
+  expect(icons.filter((icon) => icon.frames)).toHaveLength(16);
 });
