@@ -13,8 +13,12 @@ function bodySamples(d: string) {
   return bodyCommands(d)
     .slice(1, -1)
     .flatMap((c) => {
-      if (!('x1' in c && 'x2' in c))
-        throw Error('Whole-body prototype must have continuous cubics');
+      if (c.code === 'L')
+        return [0, 0.25, 0.5, 0.75].map((t) => ({
+          point: [c.x0 + (c.x - c.x0) * t, c.y0 + (c.y - c.y0) * t] as Point,
+          tangent: [c.x - c.x0, c.y - c.y0] as Point,
+        }));
+      if (!('x1' in c && 'x2' in c)) throw Error('Expected source body line or progressive curve');
       return [0, 0.25, 0.5, 0.75].map((t) => ({
         point: [
           (1 - t) ** 3 * c.x0 +
@@ -103,59 +107,82 @@ it('Camera aperture and Folder divider retain deliberate exact native counters',
   const camera = prototypeStudy('camera');
   const outlineArcs = pathParser.parseSVG(camera.outline).filter((c) => 'rx' in c);
   const filledArcs = pathParser.parseSVG(camera.filled).filter((c) => 'rx' in c);
-  expect(outlineArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([3.1, 3.1]);
-  expect(filledArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([2.35, 2.35, 0.75, 0.75]);
+  expect(outlineArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([3.2411202, 3.2411202]);
+  expect(filledArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([
+    2.4911202, 2.4911202, 0.75, 0.75,
+  ]);
   const folder = prototypeStudy('folder');
   const dividerArcs = pathParser.parseSVG(folder.filled).filter((c) => 'rx' in c);
   expect(dividerArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([0.75, 0.75]);
   expect(bodyCommands(folder.outline).at(-1)!.code).toBe('Z');
 });
 
-it('semantic-top revision preserves the entire lower body and interiors modulo vertical recentering', () => {
+it('original housing, tab, side runs and details are invariant while only main body corners change', () => {
+  const originalFeatures = {
+    camera: [
+      [8.2758646, 6.63968611],
+      [9.20277691, 6.07970858],
+      [9.88095856, 4.78932476],
+      [10.58717728, 4.36267519],
+      [13.41282368, 4.36267519],
+      [14.1190424, 4.78932476],
+      [14.797225, 6.07970858],
+      [15.72413635, 6.63968611],
+      [21.25, 16.3962059],
+      [6.11612034, 19.63732529],
+      [2.75, 9.38217258],
+    ],
+    folder: [
+      [5.66734982, 4.1911912],
+      [8.07275391, 4.1911912],
+      [8.64480209, 4.4328866],
+      [10.89379501, 6.74629974],
+      [11.6446085, 7.06352472],
+      [18.13319778, 7.06352472],
+      [21.25, 16.56768799],
+      [6.11612034, 19.80880928],
+      [2.75, 6.98354101],
+    ],
+  };
   for (const subject of ['camera', 'folder'] as const)
     for (const exponent of [2.7, 3.2, 4]) {
-      const shape = prototypeStudy(subject, exponent);
-      const centerY = bodyCommands(shape.filled)[0].y;
-      const halfHeight = subject === 'camera' ? 6.9 : 7;
-      // All lower geometry and upper side portions outside either semantic feature are unchanged.
-      const stableBody = bodySamples(shape.filled).filter(
-        ({ point: [x, y] }) =>
-          y >= centerY || (subject === 'camera' ? x < 6.8 || x > 17.2 : x < 3.4 || x > 13.1),
-      );
-      expect(stableBody.length).toBeGreaterThan(1024);
-      for (const sample of stableBody) {
-        const x = Math.abs((sample.point[0] - 12) / 10);
-        const y = Math.abs((sample.point[1] - centerY) / halfHeight);
-        expect(x ** exponent + y ** exponent).toBeCloseTo(1, 5);
+      const shape = prototypeStudy(subject, exponent),
+        commands = bodyCommands(shape.outline);
+      for (const [x, y] of originalFeatures[subject])
+        expect(commands.some((c) => Math.hypot(c.x - x, c.y - y) < 0.000001)).toBe(true);
+      for (const style of ['outline', 'filled'] as const) {
+        const tail = shape[style].slice(shape[style].indexOf('Z') + 1);
+        const base = prototypeStudy(subject, 3.2)[style];
+        expect(tail).toBe(base.slice(base.indexOf('Z') + 1));
       }
       const outline = pathParser.makeAbsolute(pathParser.parseSVG(shape.outline));
-      const firstClose = outline.findIndex((command) => command.code === 'Z');
-      const detail = outline.slice(firstClose + 1);
+      const detail = outline.slice(outline.findIndex((c) => c.code === 'Z') + 1);
       if (subject === 'camera') {
-        expect(detail[0].x).toBe(8.9);
-        expect(detail[0].y - centerY).toBeCloseTo(0.55, 6);
-        expect(detail[4].x).toBe(17.55);
-        expect(detail[4].y - centerY).toBeCloseTo(-2.25, 6);
+        expect(detail[0].x).toBeCloseTo(12 - 3.24112022, 6);
+        expect(detail[0].y).toBeCloseTo(12.8227459, 6);
+        expect(detail[4].x).toBeCloseTo(17.88388062, 6);
+        expect(detail[4].y).toBeCloseTo(9.13285542, 6);
       } else {
-        expect(detail[0].x).toBe(4.6);
-        expect(detail[1].x).toBe(19.4);
-        expect(detail[0].y - centerY).toBeCloseTo(-2.05, 6);
+        expect(detail[0].x).toBe(2.75);
+        expect(detail[1].x).toBe(21.25);
+        expect(detail[0].y).toBeCloseTo(10.9030056, 6);
       }
     }
 });
-
-it('Camera housing and shorter Folder tab have deliberate level roofs instead of additive bumps', () => {
+it('restored native silhouettes retain their original heights and an enclosed Folder counter', () => {
   for (const subject of ['camera', 'folder'] as const) {
-    const shape = prototypeStudy(subject);
-    const centerY = bodyCommands(shape.filled)[0].y;
-    const roof = bodySamples(shape.filled).filter(
-      ({ point: [x, y] }) =>
-        y < centerY && (subject === 'camera' ? x > 10.2 && x < 13.8 : x > 6.7 && x < 10.8),
-    );
-    expect(roof.length).toBeGreaterThan(8);
-    for (const { point, tangent } of roof) {
-      expect(point[1] - centerY).toBeCloseTo(subject === 'camera' ? -7.55 : -7.6, 6);
-      expect(tangent[1]).toBeCloseTo(0, 6);
-    }
+    const shape = prototypeStudy(subject),
+      outside = bodySamples(shape.filled);
+    const ys = outside.map((p) => p.point[1]);
+    expect(Math.min(...ys)).toBeCloseTo(subject === 'camera' ? 3.61267519 : 3.4411912, 4);
+    expect(Math.max(...ys)).toBeCloseTo(subject === 'camera' ? 20.38732529 : 20.55880928, 4);
   }
+  const folder = prototypeStudy('folder');
+  const all = pathParser.makeAbsolute(pathParser.parseSVG(folder.filled));
+  const counter = all.slice(all.findIndex((c) => c.code === 'Z') + 1);
+  const xs = counter.flatMap((c) => ('rx' in c ? [c.x - c.rx, c.x + c.rx] : [c.x]));
+  expect(Math.min(...xs)).toBeCloseTo(4.76980874, 6);
+  expect(Math.max(...xs)).toBeCloseTo(19.23019126, 6);
+  expect(Math.min(...xs) - 2).toBeGreaterThan(2.7);
+  expect(22 - Math.max(...xs)).toBeGreaterThan(2.7);
 });
