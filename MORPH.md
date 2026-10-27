@@ -101,10 +101,12 @@ or 10.75 square. Square frame bounds remain 2..22 with the current exterior radi
 Framed Filled holes match the smaller Regular mark. Compare each endpoint with
 the same selected frame; never restore the larger None glyph inside a frame.
 
-Static endpoint approval and motion approval are separate. The frame-family
-revision reopens static Plus/Minus/X review; it does not revoke or retune the
-approved Plus X motion algorithm. Builders and the latest construction rules
-supply current dimensions; old approved commits establish motion history only.
+Static endpoint approval and motion approval are separate. The owner approved
+all current static artwork on2026-10-27:51 source families and121 separately named
+identities including their supported styles and frames. This supersedes older
+static pending-review notes. It does not approve experimental morphs: read the
+motion status in the registry above. Builders and the latest construction rules
+supply current dimensions; preserve the separately approved Plus X algorithm.
 
 ### Sun ↔ Moon reference
 
@@ -156,9 +158,10 @@ family rule below. The horizontal-first revision remains available for owner rev
 ### Plus ↔ Minus proposal
 
 Goal: expand/collapse or add/remove state, with Plus and Minus from current core
-sources. `icons/plus.svg` and `icons/minus.svg` share the horizontal centerline
-from 7.5,12 to 16.5,12. Both endpoint drawings are pending static family review;
-this new motion is also pending review. Filled uses their Square frame sources.
+sources. `icons/plus.svg` and `icons/minus.svg` share the native horizontal
+centerline from3.25,12 to20.75,12; their Square/Circle sources use7.5,12 to16.5,12.
+Both static endpoints are approved; this single-fold motion remains pending review.
+Filled uses the selected authored frame, defaulting to Square.
 
 Keep the horizontal arm fixed. Fold the vertical arm through 90° onto that same
 line, preserving its length, Regular1.75 weight and round ends. Quintic C2 phase
@@ -180,8 +183,8 @@ this proposal; both pairs remain available for owner visual review.
 Goal: transition between expanded and restored view states using the same four
 rounded corner marks. Sources are `icons/maximize.svg`, `icons/minimize.svg` and
 their Filled counterparts. Both are None-only; no frame selector or enclosing
-box is added. Static endpoints and this new motion remain pending owner review;
-the owner separately made their roundness a mandatory construction rule.
+box is added. Both static endpoints are owner-approved, including their mandatory
+roundness construction. The inward-fold motion below remains pending owner review.
 
 Map the four L-shaped subpaths in stable top-left, top-right, bottom-right,
 bottom-left order. Each elbow has centerline radius3.25 with unchanged5.46875 arm
