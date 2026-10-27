@@ -1,5 +1,5 @@
 import type { CoreIcon } from '../src/catalog.js';
-import type { MorphFrames } from '../src/morphs/round-strokes.js';
+import type { MorphFrame, MorphFrames } from '../src/morphs/round-strokes.js';
 /** Require the same complete frame family at both endpoints; never mix variants. */
 export function buildMorphFrames(from: CoreIcon, to: CoreIcon): MorphFrames {
   const path = (icon: CoreIcon, frame: 'none' | 'square' | 'circle') => {
@@ -30,4 +30,17 @@ export function buildMorphFrames(from: CoreIcon, to: CoreIcon): MorphFrames {
       return [frame, { box, outline, from: a, to: b }];
     }),
   ) as MorphFrames;
+}
+
+/** Read the selected native mark; frame artwork and glyph sizing are independent. */
+export function morphMark(icon: CoreIcon, frame: MorphFrame) {
+  const variant = frame === 'none' ? icon : icon.frames?.[frame];
+  if (!variant) throw new Error(`${icon.name} is missing Outline ${frame}`);
+  const body = variant.root.children[0].children;
+  const glyph = body[frame === 'none' ? 0 : 1];
+  if (!glyph?.attrs.d) throw new Error(`${icon.name} has no ${frame} morph centerline`);
+  return {
+    outline: String(glyph.attrs.d),
+    strokeWidth: Number(variant.root.attrs['stroke-width']),
+  };
 }
