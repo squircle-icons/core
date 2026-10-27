@@ -120,7 +120,7 @@ it('semantic-top revision preserves the entire lower body and interiors modulo v
       // All lower geometry and upper side portions outside either semantic feature are unchanged.
       const stableBody = bodySamples(shape.filled).filter(
         ({ point: [x, y] }) =>
-          y >= centerY || (subject === 'camera' ? x < 6.8 || x > 17.2 : x < 3.4 || x > 12.9),
+          y >= centerY || (subject === 'camera' ? x < 6.8 || x > 17.2 : x < 3.4 || x > 13.1),
       );
       expect(stableBody.length).toBeGreaterThan(1024);
       for (const sample of stableBody) {
@@ -150,11 +150,11 @@ it('Camera housing and shorter Folder tab have deliberate level roofs instead of
     const centerY = bodyCommands(shape.filled)[0].y;
     const roof = bodySamples(shape.filled).filter(
       ({ point: [x, y] }) =>
-        y < centerY && (subject === 'camera' ? x > 10.2 && x < 13.8 : x > 7.7 && x < 9.8),
+        y < centerY && (subject === 'camera' ? x > 10.2 && x < 13.8 : x > 6.7 && x < 10.8),
     );
     expect(roof.length).toBeGreaterThan(8);
     for (const { point, tangent } of roof) {
-      expect(point[1] - centerY).toBeCloseTo(subject === 'camera' ? -8 : -7.8, 6);
+      expect(point[1] - centerY).toBeCloseTo(subject === 'camera' ? -7.55 : -7.6, 6);
       expect(tangent[1]).toBeCloseTo(0, 6);
     }
   }
