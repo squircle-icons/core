@@ -2,14 +2,14 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                  | Current review status              |
-| ----- | ------------------------------------------------------ | ---------------------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved                   |
-| 2     | Sun, Moon                                              | Moon approved; Sun3px rays pending |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six approved                   |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six approved                   |
+| Round | Icons                                                  | Current review status |
+| ----- | ------------------------------------------------------ | --------------------- |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings          | All six approved      |
+| 2     | Sun, Moon                                              | Both approved         |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up         | All six approved      |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash | All six approved      |
 
-**19 of20 current icon pairs are approved.** The new Sun3px visible ray-length trial awaits review in both styles. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**20 of20 current icon pairs are approved.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 
@@ -58,3 +58,5 @@ Moon concave point moved to local2,2 (2026-10-27), superseding the circle-center
 Owner approval completed on2026-10-27: Moon passed at -30 degrees and Download/Upload passed in both styles. All20 current icon pairs are approved. Moon’s accepted pose is baked into source and becomes native0 degrees at X/Y100%, preserving Regular1.70 and exact Outline/Filled contours. Recenter both styles uniformly; no independent scaling. Download/Upload geometry is unchanged.
 
 Sun ray-length trial (2026-10-27): Owner requested a trial of longer Sun rays on2026-10-27. Each ray is3px long measured to the visible rounded ends at native24px and Regular1.70: centerline length1.30, spanning radial distance7.90..9.20, plus .85 caps at each end. Extend only the inner endpoint by.30; preserve the outer tips, disc radius5.10 (Filled5.95), stroke1.70, native X/Y100%, rotation0 and equal margins1.95. Filled rays are exact radius-.85 capsules around the same centerlines. The Sun Moon morph derives its Sun endpoint from this source automatically. This trial replaces the previously approved2.70px rays and awaits owner review;19 of20 pairs remain approved.
+
+Sun3px rays were owner-approved on2026-10-27. Use this approved source for the Sun Moon morph endpoint. All20 static pairs are approved.
