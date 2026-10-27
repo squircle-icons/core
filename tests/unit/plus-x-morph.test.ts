@@ -28,8 +28,25 @@ it('keeps the glyph inside its approved bounds while folding through a single li
   }
 });
 
-it('merges into one full-length horizontal stroke before opening into X', () => {
-  for (const p of [0.4, 0.5, 0.6]) {
-    expect(plusXFrame(p, geometry).outline).toBe('M4.85 12 L19.15 12');
+it('passes through one horizontal stroke without holding neighboring frames', () => {
+  expect(plusXFrame(0.5, geometry).outline).toBe('M4.85 12 L19.15 12');
+  for (const p of [0.4, 0.49, 0.499, 0.501, 0.51, 0.6]) {
+    expect(plusXFrame(p, geometry).outline).not.toBe(plusXFrame(0.5, geometry).outline);
+  }
+});
+it('carries nonzero, continuous angular velocity through the merge', () => {
+  const angles = (p: number) => {
+    const values = plusXFrame(p, geometry)
+      .outline.match(/-?\d*\.?\d+/g)!
+      .map(Number);
+    return [0, 4].map((i) => Math.atan2(values[i + 3] - values[i + 1], values[i + 2] - values[i]));
+  };
+  const left = angles(0.499),
+    right = angles(0.501);
+  for (let stroke = 0; stroke < 2; stroke++) {
+    const incoming = -left[stroke] / 0.001,
+      outgoing = right[stroke] / 0.001;
+    expect(Math.abs(incoming)).toBeGreaterThan(1);
+    expect(outgoing).toBeCloseTo(incoming, 2);
   }
 });

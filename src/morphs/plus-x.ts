@@ -14,7 +14,23 @@ type Edge =
 const tau = Math.PI * 2;
 const epsilon = 1e-8;
 const clamp = (p: number) => Math.min(1, Math.max(0, p));
-const smooth = (p: number) => p * p * p * (p * (p * 6 - 15) + 10);
+// Quintic Hermite interpolation carries angular velocity through the horizontal merge.
+function interpolate(
+  from: number,
+  to: number,
+  startVelocity: number,
+  endVelocity: number,
+  t: number,
+) {
+  const delta = to - from;
+  return (
+    from +
+    startVelocity * t +
+    (10 * delta - 6 * startVelocity - 4 * endVelocity) * t ** 3 +
+    (-15 * delta + 8 * startVelocity + 7 * endVelocity) * t ** 4 +
+    (6 * delta - 3 * startVelocity - 3 * endVelocity) * t ** 5
+  );
+}
 const add = (a: Point, b: Point): Point => ({ x: a.x + b.x, y: a.y + b.y });
 const sub = (a: Point, b: Point): Point => ({ x: a.x - b.x, y: a.y - b.y });
 const mul = (a: Point, s: number): Point => ({ x: a.x * s, y: a.y * s });
@@ -129,17 +145,18 @@ function mergedStrokes(a: number, b: number, length: number, h: number, center: 
   return path + ' Z';
 }
 
-/** Plus folds to one horizontal line, holds briefly, then opens into the approved X. */
+/** Plus flows through one horizontal line into X without a hold or zero angular velocity. */
 export function plusXFrame(progress: number, geometry: PlusXGeometry) {
   const p = clamp(Number.isFinite(progress) ? progress : 0);
   if (p === 0) return geometry.plus;
   if (p === 1) return geometry.x;
-  const closing = smooth(clamp(p / 0.38));
-  const opening = smooth(clamp((p - 0.62) / 0.38));
-  const a = -(Math.PI / 4) * opening;
-  const b = p < 0.38 ? (Math.PI / 2) * (1 - closing) : (Math.PI / 4) * opening;
+  const turn = Math.PI / 4;
+  const t = p < 0.5 ? p * 2 : (p - 0.5) * 2;
+  const a = p < 0.5 ? interpolate(0, 0, 0, turn, t) : interpolate(0, turn, turn, 0, t);
+  const b = p < 0.5 ? interpolate(Math.PI / 2, 0, 0, -turn, t) : -a;
+  const opening = Math.abs(a) / turn;
   const extent = geometry.plusExtent + (geometry.xExtent - geometry.plusExtent) * opening;
-  const length = extent / Math.cos((Math.PI / 4) * opening);
+  const length = extent / Math.max(Math.abs(Math.cos(a)), Math.abs(Math.cos(b)));
   const center = { x: geometry.center[0], y: geometry.center[1] };
   const end = (angle: number, direction: number) =>
     pointString(
