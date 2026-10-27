@@ -6,9 +6,9 @@ The single editable source of original Squircle artwork, metadata, and framework
 
 ## Design direction
 
-Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. All 20 current icons are owner-approved in both Outline and Filled styles as of 2026-10-27. Moon's accepted minus-30-degree pose is baked into its native zero-degree source. Current metadata records the approved artwork; earlier review counts and construction experiments in the design history are superseded.
+Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. All 51 current authoring families and their supported static styles are owner-approved as of 2026-10-27. The adapter exposes 121 independent static icons, including 35 Square and 35 Circle drawings. Static approval is separate from the motion statuses in [MORPH.md](MORPH.md). Moon's accepted minus-30-degree pose is baked into its native zero-degree source. Current metadata records the approved artwork; earlier review counts and construction experiments in the design history are superseded.
 
-Menu and Search use unboxed Filled geometry matching Outline at fixed Bold 2.25. Other matching exterior comparisons use Regular 1.70, with the documented boxed-cutout and solid arrow-head treatments. Read [the construction guide](BOXED_ICON_RULES.md) for the accepted exceptions and [margin rules](ICON_MARGIN_RULES.md) for native spacing.
+Menu and Search use unboxed Filled geometry matching Outline at fixed Bold 2.50. Other matching exterior comparisons use Regular 1.75, with the documented boxed-cutout and solid arrow-head treatments. Read [the construction guide](BOXED_ICON_RULES.md) for the accepted exceptions and [margin rules](ICON_MARGIN_RULES.md) for native spacing.
 
 ## Develop
 
@@ -30,4 +30,4 @@ Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the 
 
 The packed catalog/source exports are an **internal build contract**, not a stable public core API. The core dependency is development-only in adapters; icon consumers do not install it separately.
 
-The approved family uses a 24×24 grid and default 1.70 stroke. New or revised artwork still needs owner review; automated tests do not grant visual approval. Do not copy or adapt third-party icon paths and claim them as original. Original artwork and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
+The approved family uses a 24×24 grid and default 1.75 stroke. New or revised artwork still needs owner review; automated tests do not grant visual approval. Do not copy or adapt third-party icon paths and claim them as original. Original artwork and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
