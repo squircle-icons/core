@@ -1,3 +1,4 @@
+import { buildMorphFrames } from './build-morph-frames.js';
 import type { CoreIcon } from '../src/catalog.js';
 import type { PlusMinusGeometry } from '../src/morphs/plus-minus.js';
 export function buildPlusMinusGeometry(icons: CoreIcon[]): PlusMinusGeometry {
@@ -17,6 +18,7 @@ export function buildPlusMinusGeometry(icons: CoreIcon[]): PlusMinusGeometry {
   if (box !== to.filled.match(/[Mm][^Mm]*/g)![0].trim())
     throw new Error('Plus/Minus must share the same upright Square Filled frame');
   return {
+    frames: buildMorphFrames(plus, minus),
     center: [(values[0] + values[2]) / 2, values[1]],
     extent: (values[2] - values[0]) / 2,
     strokeWidth: Number(plus.root.attrs['stroke-width']),

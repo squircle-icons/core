@@ -38,7 +38,8 @@
     "LICENSE",
     "DESIGN_RULES.md",
     "ICON_BATCHES.md",
-    "MORPH.md"
+    "MORPH.md",
+    "ICON_RULES.md"
   ],
   "exports": {
     "./catalog.json": "./dist/catalog.json",

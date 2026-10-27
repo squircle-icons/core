@@ -1,7 +1,7 @@
 # Morph — shared agent playbook
 
 Maintained: 2026-10-27. **This is the canonical working document for every morph
-request across core, Svelte and the homepage.** Read it before starting a pair or
+request across core, Svelte and the standalone local Lab.** Read it before starting a pair or
 revising motion. Update this document when the owner changes the contract;
 repository entry points should link here instead of maintaining another copy.
 
@@ -36,7 +36,7 @@ Before editing:
    rule; older dated trials are historical, not alternative current specifications.
 3. Read this playbook, the selected pair's source, its endpoint builder and its
    existing tests. Inspect both static styles and the actual frame variant used.
-4. Inspect the working state of all three repositories. Preserve unrelated work,
+4. Inspect the working state of the source repositories and local app. Preserve unrelated work,
    drafts, review metadata and the separate public/Lab package pins.
 
 ## 1. Goal
@@ -67,7 +67,7 @@ that pair. Neither preference automatically approves the design of another pair.
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Artboard and weight | 24 × 24; fixed Regular 1.75. Static Thin is 1.25 and Bold is 2.50. Do not add a morph thickness control unless requested.                 |
 | Endpoints           | Derive geometry from core SVGs through endpoint builders. Match the actual endpoint variant, including its frame, pose, caps and contour. |
-| Source ownership    | Original artwork and intermediate geometry live in core. Svelte renders and controls progress. The homepage provides inspection UI.       |
+| Source ownership    | Original artwork and intermediate geometry live in core. Svelte renders and controls progress. The local Lab provides inspection UI.      |
 | Continuity          | No whole-icon opacity crossfade. Map contours/parts explicitly; avoid kinks, accidental holes, contour crossings and disconnected shards. |
 | Reversal            | Retain both position and velocity when the target changes. Use the same geometry function in reverse.                                     |
 | Controller          | Shared analytic critically damped spring: mass 1, stiffness 100, damping 20. Keep pair-specific rate multipliers separate.                |
@@ -85,12 +85,12 @@ are implementation constraints, not an invitation to retune approved motion.
 
 ### Pair registry and current endpoint contract
 
-| Pair         | Lab route               | Opt-in Svelte subpath | Default shared-rate multiplier | Motion status                                          |
-| ------------ | ----------------------- | --------------------- | ------------------------------ | ------------------------------------------------------ |
-| Sun ↔ Moon   | `/lab/morph`            | `morph/sun-moon`      | 1.0                            | Owner-preferred reference; experiment                  |
-| Plus ↔ X     | `/lab/morph/plus-x`     | `morph/plus-x`        | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
-| Menu ↔ X     | `/lab/morph/menu-x`     | `morph/menu-x`        | 0.6                            | Proposed motion; awaiting owner review                 |
-| Plus ↔ Minus | `/lab/morph/plus-minus` | `morph/plus-minus`    | 0.6                            | Proposed single-fold motion; awaiting owner review     |
+| Pair         | Lab route           | Opt-in Svelte subpath | Default shared-rate multiplier | Motion status                                          |
+| ------------ | ------------------- | --------------------- | ------------------------------ | ------------------------------------------------------ |
+| Sun ↔ Moon   | `/morph`            | `morph/sun-moon`      | 1.0                            | Owner-preferred reference; experiment                  |
+| Plus ↔ X     | `/morph/plus-x`     | `morph/plus-x`        | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
+| Menu ↔ X     | `/morph/menu-x`     | `morph/menu-x`        | 0.6                            | Proposed motion; awaiting owner review                 |
+| Plus ↔ Minus | `/morph/plus-minus` | `morph/plus-minus`    | 0.6                            | Proposed single-fold motion; awaiting owner review     |
 
 **Current Plus/X geometry supersedes the original 4..20 mark bounds.** The latest
 Plus/Minus/X frame-family rule uses centered half-extents 4.5: Regular visible
@@ -112,7 +112,7 @@ body grows into the crescent while the rays retract; concavity and ray phases us
 C2 interpolation. Filled follows the evolving closed body and Regular exterior.
 Preserve the Moon's baked native pose, including its accepted -30° source
 orientation. Regenerate endpoint data after a source revision instead of copying
-new paths into the adapter or homepage.
+new paths into the adapter or local app.
 
 ### Plus ↔ X approved motion
 
@@ -137,14 +137,12 @@ Outline maps the outer Menu bars onto the X diagonals. Move them inward and open
 into X while the middle bar contracts to zero length and thickness. Keep round
 ends, continuous movement and exact current source endpoints.
 
-Filled starts at the unboxed Bold 2.50 Menu and ends at Square Filled X with its
-Regular 1.75 hole. Map the outer Menu capsules to the upper/lower solid regions
-around the X hole; contract the middle capsule. Matched horizontal boundary
-stations let the concave branches open without contour crossings, opacity fades
-or masks. Intermediate Filled geometry is a deliberately authored topology bridge;
-it does not claim an exact Outline/cutout relationship throughout this pair.
-That exception does not change static shared-glyph rules or the Plus X invariant.
-The 0.6× pace and intermediate treatment remain proposals for owner review.
+Filled uses the same selected None/Square/Circle variant at both ends. None is
+the positive unboxed Bold mark. Square/Circle keep the source frame upright and
+cut out the exact union of the moving bars. Menu's source cutout is Bold2.50,
+which interpolates to X's Regular1.75 cutout in framed variants; None stays2.50.
+The previous unboxed-to-box topology bridge is superseded. See the complete frame
+family rule below. Keep the existing0.6× rate and Outline motion for review.
 
 ### Plus ↔ Minus proposal
 
@@ -167,6 +165,31 @@ reduced motion and pair navigation in all three engines. Menu X retains its
 existing design and rate; reverify its current Menu and Square Filled X sources
 alongside this pair. No unresolved endpoint identity or timing decision blocks
 this proposal; both pairs remain available for owner visual review.
+
+### Complete matching frame families — owner correction, 2026-10-27
+
+If a morph endpoint supports frames, implement and verify every supported common
+frame for the whole pair. Menu ↔ X, Plus ↔ X and Plus ↔ Minus must all provide
+None, Square and Circle. A single selected frame applies to both endpoints, the
+intermediate Filled geometry, static comparison buttons and actual-size samples.
+Never pair an unframed Filled source with a framed target, silently fall back to
+another frame, or declare the pair complete after testing only Square. Builders
+reject missing or mismatched frame data. The frame exterior stays upright and
+unchanged throughout a framed transition. Default Square preserves existing
+math-morph presentation; switching frame does not retune progress or motion.
+
+None Filled follows the unboxed Bold2.50 source at both ends. Square/Circle use
+their actual source cutouts: Menu is Bold2.50 and X/Plus/Minus are Regular1.75.
+Menu X interpolates that source-derived cutout width while retaining the existing
+Outline part mapping, progress phases and0.6× pace. Its former solid-to-box
+topology bridge is superseded: framed Menu starts in the same frame as X.
+Outline remains unframed Regular1.75. Existing Plus X merge/timing and Plus Minus
+fold/timing remain unchanged.
+
+Required regression matrix: three pairs × three frame choices × both endpoints,
+plus intermediate contour/negative-space checks, reversal and reduced motion in
+all three browser engines. Update the packed component fixture and the actual
+Lab; a static source check alone does not verify the rendered frame selection.
 
 ## 3. Implementation workflow
 
@@ -195,16 +218,16 @@ Paths below are relative to each repository; the active repositories are sibling
 under workspace `repos/`. The historical workspace-root `icons/`, `packages/`
 and `apps/` are not implementation targets.
 
-| Layer                 | Files to inspect or extend                                                                                                                       |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Core source           | `icons/`; `src/morphs/<pair>.ts` for pure geometry and types. No framework or DOM dependencies.                                                  |
-| Core endpoint data    | `tools/build-<pair>.ts`; register JSON generation in `tools/build.ts` and exports in `package.json`.                                             |
-| Core tests            | `tests/unit/<pair>-morph.test.ts`.                                                                                                               |
-| Svelte renderer       | `src/lib/morph/<Pair>Morph.svelte`; reuse `MorphProgress.svelte`.                                                                                |
-| Adapter generation    | Register the opt-in pair in `tools/generate.ts`. `<pair>-geometry.*` and `<pair>-data.*` are generated; never edit them by hand.                 |
-| Packed consumer tests | `tests/fixture/src/routes/+page.svelte`, `tests/browser/*morph.spec.ts`, `tests/compatibility/App.svelte` and `tests/compatibility/build.mjs`.   |
-| Homepage              | `src/lib/components/MorphIcon.svelte`, `src/routes/lab/morph/+page.svelte`, and the pair route wrapper. Import the Lab adapter; no copied paths. |
-| Homepage tests        | `tests/browser/morph.spec.ts` and pair-specific specs such as `tests/browser/menu-x-morph.spec.ts`.                                              |
+| Layer                 | Files to inspect or extend                                                                                                                     |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Core source           | `icons/`; `src/morphs/<pair>.ts` for pure geometry and types. No framework or DOM dependencies.                                                |
+| Core endpoint data    | `tools/build-<pair>.ts`; register JSON generation in `tools/build.ts` and exports in `package.json`.                                           |
+| Core tests            | `tests/unit/<pair>-morph.test.ts`.                                                                                                             |
+| Svelte renderer       | `src/lib/morph/<Pair>Morph.svelte`; reuse `MorphProgress.svelte`.                                                                              |
+| Adapter generation    | Register the opt-in pair in `tools/generate.ts`. `<pair>-geometry.*` and `<pair>-data.*` are generated; never edit them by hand.               |
+| Packed consumer tests | `tests/fixture/src/routes/+page.svelte`, `tests/browser/*morph.spec.ts`, `tests/compatibility/App.svelte` and `tests/compatibility/build.mjs`. |
+| Local Lab             | `src/lib/components/MorphIcon.svelte`, `src/routes/morph/+page.svelte`, and the pair route wrapper. Import the Lab adapter; no copied paths.   |
+| Local Lab tests       | `tests/browser/morph.spec.ts` and pair-specific specs such as `tests/browser/menu-x-morph.spec.ts`.                                            |
 
 Preserve stable part names and existing API behavior. Do not replace the shared
 progress controller for a new pair. Choose the new pair's rate deliberately;
@@ -220,8 +243,8 @@ Do not publish or replace the public package as part of a Lab-only morph request
    source changes. A documentation-only edit needs the documentation checks below.
 2. In **svelte**, run `pnpm sync:core ../core`, then `pnpm verify`. Commit the
    intended adapter changes, generated artifacts, lockfile and provenance together.
-3. In **homepage**, run `pnpm sync:lab ../svelte`, then `pnpm verify`. Verify that
-   `@squircle-icons/lab-svelte` points at the new artifact and the public package pin
+3. In **local Lab**, run `pnpm sync:svelte ../svelte`, then `pnpm verify`. Verify that
+   `@squircle-icons/svelte` points at the new artifact and Homepage’s public package pin
    is unchanged. Compare the before/after Lab identities and review metadata.
 4. Inspect the actual updated browser page and save visual evidence. If the owner
    asked to open the preview, open that route and verify that it is visible.
@@ -272,7 +295,7 @@ manual-only verification honestly.
 | Lifecycle        | Hidden-tab pause/resume and cleanup after unmount, including repeated mount cycles.                                                                                        | Shared controller and packed fixture; extend coverage when changing lifecycle logic.      |
 | Compatibility    | SSR/client compilation, hydration without mismatch, Svelte 5.0 through supported Svelte 5, package declarations and consumer engines.                                      | Adapter `test:pack`, `test:compat`, compatibility fixture.                                |
 | Static isolation | Static direct imports must traverse no morph runtime or unrelated geometry, before and after tree shaking.                                                                 | Adapter `test:bundle` and `test:imports`.                                                 |
-| Lab integration  | Correct route/pair picker, endpoints, styles, scrubbing, reversal, reduced-motion loop policy, responsive widths and retained catalog status.                              | Homepage `tests/browser/morph.spec.ts` and pair-specific specs.                           |
+| Lab integration  | Correct route/pair picker, endpoints, styles, scrubbing, reversal, reduced-motion loop policy, responsive widths and retained catalog status.                              | Local Lab `tests/browser/morph.spec.ts` and pair-specific specs.                          |
 
 ### Commands
 
@@ -286,7 +309,7 @@ pnpm exec vitest run tests/unit/menu-x-morph.test.ts
 pnpm test:pack
 pnpm exec playwright test tests/browser/menu-x-morph.spec.ts
 
-# From repos/homepage: build the route before preview-based browser tests
+# From repos/lab: build the route before preview-based browser tests
 pnpm build
 pnpm exec playwright test tests/browser/menu-x-morph.spec.ts
 ```

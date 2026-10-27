@@ -1,4 +1,6 @@
+import { movingStrokeUnion, type MorphFrame, type MorphFrames } from './round-strokes.js';
 export type MenuXGeometry = {
+  frames: MorphFrames;
   center: [number, number];
   menuExtent: number;
   menuOffset: number;
@@ -8,7 +10,6 @@ export type MenuXGeometry = {
   menu: { outline: string; filled: string };
   x: { outline: string; filled: string };
 };
-type Point = [number, number];
 const clamp = (p: number) => Math.max(0, Math.min(1, p));
 const smooth = (p: number) => {
   const t = clamp(p);
@@ -16,89 +17,17 @@ const smooth = (p: number) => {
 };
 const mix = (a: number, b: number, p: number) => a + (b - a) * p;
 const fmt = (n: number) => String(Math.round(n * 1e8) / 1e8);
-const point = (p: Point) => p.map(fmt).join(' ');
-
-// Matched boundary stations turn each solid outer Menu bar into one half of the
-// boxed X. Its negative-space branches open geometrically, without a crossfade.
-function resample(points: Point[], count = 192): Point[] {
-  const lengths = [0];
-  for (let i = 1; i <= points.length; i++) {
-    const a = points[i - 1],
-      b = points[i % points.length];
-    lengths.push(lengths[i - 1] + Math.hypot(b[0] - a[0], b[1] - a[1]));
-  }
-  let edge = 0;
-  return Array.from({ length: count }, (_, i) => {
-    const distance = (lengths.at(-1)! * i) / count;
-    while (lengths[edge + 1] < distance) edge++;
-    const a = points[edge],
-      b = points[(edge + 1) % points.length];
-    const t = (distance - lengths[edge]) / (lengths[edge + 1] - lengths[edge]);
-    return [mix(a[0], b[0], t), mix(a[1], b[1], t)];
-  });
-}
-function arc(cx: number, cy: number, r: number, from: number, to: number): Point[] {
-  return Array.from({ length: 49 }, (_, i) => {
-    const angle = mix(from, to, i / 48);
-    return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
-  });
-}
-function capsule(extent: number, y: number, r: number): Point[] {
-  return resample([
-    ...arc(-extent, y, r, Math.PI, Math.PI * 1.5),
-    ...arc(extent, y, r, -Math.PI / 2, Math.PI / 2),
-    ...arc(-extent, y, r, Math.PI / 2, Math.PI),
-  ]);
-}
-function upperBox(g: MenuXGeometry): { from: Point[]; to: Point[] } {
-  const d = g.xExtent,
-    r = g.strokeWidth / 2,
-    c = r / Math.SQRT2;
-  const densify = (points: Point[]) =>
-    points.flatMap((a, i) => {
-      if (!i) return [a];
-      const b = points[i - 1],
-        count = Math.max(1, Math.ceil(Math.hypot(a[0] - b[0], a[1] - b[1]) / 0.12));
-      return Array.from({ length: count }, (_, j): Point => [
-        mix(b[0], a[0], (j + 1) / count),
-        mix(b[1], a[1], (j + 1) / count),
-      ]);
-    });
-  const outer = densify([
-    [-10, 0],
-    [-10, -6],
-    ...arc(-6, -6, 4, Math.PI, Math.PI * 1.5),
-    [6, -10],
-    ...arc(6, -6, 4, -Math.PI / 2, 0),
-    [10, 0],
-  ]);
-  const inner = densify([
-    [10, 0],
-    [r * Math.SQRT2, 0],
-    [d + c, -d + c],
-    ...arc(d, -d, r, Math.PI / 4, (-Math.PI * 3) / 4),
-    [0, -r * Math.SQRT2],
-    [-d + c, -d - c],
-    ...arc(-d, -d, r, -Math.PI / 4, (-Math.PI * 5) / 4),
-    [-r * Math.SQRT2, 0],
-    [-10, 0],
-  ]);
-  const h = g.filledStrokeWidth / 2;
-  // Keep each boundary's horizontal station fixed. The future X branches start
-  // collapsed on the bar's lower edge, then open without contour crossings.
-  const source = (points: Point[], side: number) =>
-    points.map(([station]): Point => {
-      const x = (station * (g.menuExtent + h)) / 10;
-      const capX = Math.max(0, Math.abs(x) - g.menuExtent);
-      return [x, -g.menuOffset + side * Math.sqrt(Math.max(0, h * h - capX * capX))];
-    });
-  return { from: [...source(outer, -1), ...source(inner, 1)], to: [...outer, ...inner] };
-}
-const contours = new WeakMap<MenuXGeometry, { from: Point[]; to: Point[] }>();
-export function menuXFrame(progress: number, geometry: MenuXGeometry) {
+const point = (p: [number, number]) => p.map(fmt).join(' ');
+export function menuXFrame(
+  progress: number,
+  geometry: MenuXGeometry,
+  frame: MorphFrame = 'square',
+) {
   const p = clamp(Number.isFinite(progress) ? progress : 0);
-  if (p === 0) return { ...geometry.menu, middle: '', middleWidth: 0 };
-  if (p === 1) return { ...geometry.x, middle: '', middleWidth: 0 };
+  if (p === 0)
+    return { ...geometry.menu, filled: geometry.frames[frame].from, middle: '', middleWidth: 0 };
+  if (p === 1)
+    return { ...geometry.x, filled: geometry.frames[frame].to, middle: '', middleWidth: 0 };
   const q = smooth(p),
     center = geometry.center;
   const offset = geometry.menuOffset * (1 - smooth(p / 0.7));
@@ -111,22 +40,25 @@ export function menuXFrame(progress: number, geometry: MenuXGeometry) {
   };
   const remaining = 1 - smooth(p / 0.65);
   const middleExtent = geometry.menuExtent * remaining;
-  let pair = contours.get(geometry);
-  if (!pair) {
-    pair = upperBox(geometry);
-    contours.set(geometry, pair);
-  }
-  const upper = pair.from.map((a, i): Point => [
-    mix(a[0], pair!.to[i][0], q),
-    mix(a[1], pair!.to[i][1], q),
+  const width =
+    frame === 'none'
+      ? geometry.filledStrokeWidth
+      : mix(geometry.filledStrokeWidth, geometry.strokeWidth, q);
+  const glyph = movingStrokeUnion([
+    { center: { x: center[0], y: center[1] - offset }, angle, length: extent, radius: width / 2 },
+    {
+      center: { x: center[0], y: center[1] + offset },
+      angle: -angle,
+      length: extent,
+      radius: width / 2,
+    },
+    {
+      center: { x: center[0], y: center[1] },
+      angle: 0,
+      length: middleExtent,
+      radius: (width / 2) * remaining,
+    },
   ]);
-  const path = (points: Point[]) =>
-    'M' + points.map((a) => point([center[0] + a[0], center[1] + a[1]])).join(' L') + ' Z';
-  const lower = upper.map(([x, y]): Point => [-x, -y]);
-  const middle =
-    remaining > 1e-7
-      ? path(capsule(middleExtent, 0, (geometry.filledStrokeWidth / 2) * remaining))
-      : '';
   return {
     outline: `${line(center[1] - offset, angle)} ${line(center[1] + offset, -angle)}`,
     middle:
@@ -134,6 +66,7 @@ export function menuXFrame(progress: number, geometry: MenuXGeometry) {
         ? `M${point([center[0] - middleExtent, center[1]])} H${fmt(center[0] + middleExtent)}`
         : '',
     middleWidth: geometry.strokeWidth * remaining,
-    filled: path(upper) + ' ' + path(lower) + ' ' + middle,
+    filledWidth: width,
+    filled: geometry.frames[frame].box + ' ' + glyph,
   };
 }

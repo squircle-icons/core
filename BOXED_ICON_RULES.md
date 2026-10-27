@@ -137,3 +137,19 @@ Owner requested the two Double Chevron Filled heads to touch, as viewed in Lab. 
 Owner requested Plus/Minus/X to follow the frame family with three explicit styles: Outline Regular1.75, unboxed Bold2.50, and Filled. Frame None Filled equals the unboxed Bold2.50 expansion, as Menu/Search. Square/Circle Filled uses a solid upright frame and the exact Regular1.75 glyph cutout. Use shared centerlines centered at12,12, extent4.5 on both axes; Plus and X retain identical optical bounds10.75 square at Regular and11.50 at Bold; Minus shares their horizontal extent. Smaller source glyphs reserve actual Circle clearance at every weight without independent per-frame scaling. Frame exteriors span2..22, Square radius4 and Circle radius10, same as Arrow/Chevron. Outline centerlines are2.875..21.125 with corner radius3.125, circle9.125. Bold is explicitly unboxed; selecting it ignores a frame. At Bold the Circle border clears the X by at least.261px. Filled standalone is the exact union of the shared centerlines expanded at2.50; frame holes use1.75. This supersedes the previous standalone boxed Plus/X Filled semantics. Morph timing remains approved, while its boxed endpoints derive from the new Square frame sources. Family extension adds Minus only; it is not a six unrelated-icon batch. All three revised identities await owner review.
 
 The catalog now has33 identities:14 approved and19 draft. Arrow and Chevron families keep their current geometry. Plus X and Menu X retain the same reversible motion and timing; boxed Filled endpoints now reference the Square frame source, while standalone Filled is Bold.
+
+## Menu frames and shorter Trash slots — 2026-10-27
+
+The Menu frame extension uses one smaller shared glyph in None/Square/Circle: centerlines x7..17 at y8,12,16. Outline remains Regular1.75. Unframed Filled remains the exact Bold2.50 expansion; framed Filled subtracts that same Bold silhouette from the solid frame. Standard frame exteriors remain2..22 with Square radius4 / Circle radius10. The Circle still clears a Bold Outline glyph and Bold frame by more than.2px. This replaces only Menu’s former standalone2px fit; Search is unchanged. Menu X endpoints follow the new source, preserving motion sequence and rate.
+
+Trash slots keep x9.9/14.1, center y13.425 and fixed1.75 weight, but centerlines shorten from y10.1..16.75 to11.1..15.75, removing1px at each end. Filled holes use the matching radius.875 capsules. Body/lid/handle and baked105/95 proportions are unchanged. Menu and Trash reviews reopen; earlier approval records remain in metadata history. These revisions await owner review.
+
+## Morph frame parity — owner correction, 2026-10-27
+
+When a morph has frame variants, implement every supported frame for the whole
+pair. Menu X, Plus X and Plus Minus support None/Square/Circle, with the same
+selection at both ends and throughout Filled playback. No unboxed-to-box pairing
+or silent fallback is allowed. Verify every variant using packed endpoints and
+intermediate frames. See [MORPH.md](MORPH.md) for the canonical frame matrix and
+source-derived weights. This supersedes earlier Menu X topology-bridge notes;
+static icon construction, approval statuses and accepted motion timing stay intact.
