@@ -171,8 +171,9 @@ this proposal; both pairs remain available for owner visual review.
 Frames are opt-in per icon: add them only when the owner asks for that identity.
 A morph request does not authorize adding frames to every icon or inventing missing
 variants. Read supported frame capabilities from both actual endpoint sources.
-New Tab, Maximize and External Link have no added frames under the current owner
-correction. Where a pair's supported families differ, clarify the intended shared
+Maximize and External Link have no added frames under the current owner correction.
+New Tab uses the existing Plus Square identity; do not create a duplicate icon or
+independent New Tab frame family. Where a pair's supported families differ, clarify the intended shared
 variant rather than silently changing static artwork.
 
 If a morph endpoint supports frames, implement and verify every supported common
