@@ -45,7 +45,12 @@
       "types": "./dist/catalog.d.ts",
       "default": "./dist/catalog.js"
     },
-    "./source/types": "./src/types.ts"
+    "./source/types": "./src/types.ts",
+    "./morph/sun-moon": {
+      "types": "./dist/morphs/sun-moon.d.ts",
+      "default": "./dist/morphs/sun-moon.js"
+    },
+    "./morph/sun-moon.json": "./dist/morphs/sun-moon.json"
   },
   "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {
