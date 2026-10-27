@@ -6,8 +6,8 @@
   "construction": "Menu frame extension: one shared three-bar glyph in None/Square/Circle, x=7..17 at y=8,12,16. Regular Outline is1.75 with radius.875 caps; standalone Filled is the exact Bold2.50 capsule expansion (radius1.25). Framed Filled subtracts that same standalone Bold silhouette from the solid frame, following the shared Filled-glyph frame convention. No per-frame glyph scaling or translation. Regular visible glyph bounds are x6.125..17.875/y7.125..16.875; Bold/Filled bounds x5.75..18.25/y6.75..17.25. Frame exterior bounds2..22: Square radius6, Circle radius10. Outline Square centerline bounds2.875..21.125/radius5.125; Circle radius9.125. Even at Bold, the circular frame retains positive glyph clearance. This frame-ready construction supersedes the earlier unframed 2px Menu fit; Search is unchanged. Native X/Y100/100, rotation0. Review reopened for the new shared glyph and frames. Current Square rounding trial: owner requested rounder enclosing frames. The exterior radius is now6 at unchanged bounds2..22; the matching Regular1.75 Outline centerline uses radius5.125 at bounds2.875..21.125. Only the outer enclosing contour changed. Inner glyph coordinates, cutout contours, object-specific rounding and positions remain exact. This rounding trial awaits owner visual review.",
   "filledTreatment": "boxed-cutout",
   "review": {
-    "status": "draft",
-    "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
   },
   "reviewHistory": [
     {
@@ -22,6 +22,10 @@
         "rotation": 0
       },
       "note": "Owner approved the current unboxed Filled = Bold 2.25 treatment and corresponding Regular 1.70 Outline. Shared centerlines and native proportions are retained, with 2px Filled primary margins."
+    },
+    {
+      "status": "draft",
+      "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
     }
   ],
   "frameConstruction": {

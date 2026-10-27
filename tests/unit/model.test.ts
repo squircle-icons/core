@@ -235,7 +235,7 @@ it('preserves the shared compact Square and Circle glyphs beside larger standalo
     expect(framedGlyph).not.toBe(icon.root.children[0].children[0].attrs.d);
     for (const frame of Object.values(icon.frames!)) {
       expect(frame!.root.children[0].children.at(-1)!.attrs.d).toBe(framedGlyph);
-      expect(frame!.metadata.review?.status).toBe('draft');
+      expect(frame!.metadata.review?.status).toBe('approved');
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }
   }

@@ -20,7 +20,7 @@ it.each(['maximize', 'minimize'])(
   (name) => {
     const entry = icon(name);
     expect(entry.frames).toBeUndefined();
-    expect(entry.metadata.review?.status).toBe('draft');
+    expect(entry.metadata.review?.status).toBe('approved');
     expect(entry.metadata.filledTreatment).toBe('bold-stroke');
     expect(entry.root.attrs['stroke-width']).toBe('1.75');
     const outline = contours(name);

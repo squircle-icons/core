@@ -7,7 +7,13 @@
   "filledTreatment": "boxed-cutout",
   "supportsBold": true,
   "review": {
-    "status": "draft",
-    "note": "New three-style frame construction; awaits owner review."
-  }
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "New three-style frame construction; awaits owner review."
+    }
+  ]
 }

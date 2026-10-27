@@ -2,7 +2,7 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                                                                          | Current review status                                    |
+| Round | Icons                                                                                                          | Historical review status                                 |
 | ----- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | 1     | Bell, Camera, Folder, Heart, Search, Settings                                                                  | All six approved                                         |
 | 2     | Sun, Moon                                                                                                      | Both approved                                            |
@@ -11,7 +11,7 @@ Owner workflow recorded on 2026-10-27: an add-icons request means six icons tota
 | 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right                         | All six await review                                     |
 | 6     | Chevron Left, Chevron Right, Double Chevron Up, Double Chevron Down, Double Chevron Left, Double Chevron Right | All six await review                                     |
 
-**14 of33 current icon pairs are approved; Arrow, Chevron and Plus/Minus/X frame families await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
+**Current owner acceptance,2026-10-27: all51 static authoring families, all styles and70 requested framed drawings are approved. The adapter exposes121 separate named icons/components. Earlier per-round review states below are history. Motion review is separate.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
 ## Batch membership
 

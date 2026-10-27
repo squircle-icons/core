@@ -15,7 +15,13 @@
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
   "construction": "Owner frame-ready arrow revision on2026-10-27: all8 directions share a12.25-unit shaft and identical head-arm lengths at Regular1.75. Use one reference rotated about12,12, with no independent scaling for directions or frames. The standalone glyph has14px visible length along its axis, leaving5px at cardinal primary edges. This smaller shared glyph reserves room for Square/Circle frames. Square frame exterior is2..22 with radius4; Circle exterior is centered12,12 with radius10. Outline frame centerlines use radius3.125 corners / circle radius9.125 at stroke1.75. Filled frames are solid exteriors with the exact standalone Filled arrow silhouette cut out, retaining the approved solid triangular head. At Regular the circular frame has1.25px inner clearance at the shaft tips; at Bold2.50 it still clears by.5px. Standalone and framed glyphs have exactly the same position, size and weight. Frames remain upright for every baked arrow direction. The2px outer rule applies to frames, not the inner arrow. This explicitly supersedes earlier18.25-unit shafts and2px standalone-arrow margins. This family revision awaits owner review.",
   "review": {
-    "status": "draft",
-    "note": "Review reopened for smaller shared arrow glyph and new Square/Circle frame variants; previous approval covered earlier standalone artwork."
-  }
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "Review reopened for smaller shared arrow glyph and new Square/Circle frame variants; previous approval covered earlier standalone artwork."
+    }
+  ]
 }

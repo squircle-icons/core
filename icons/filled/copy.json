@@ -5,8 +5,8 @@
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
   "construction": "Owner Copy orientation revision: horizontally reflect the entire previous natural Copy drawing about x12, mapping every x to24-x. The foreground sheet is now bottom-left, with the background sheet top-right, matching the supplied reference. Bake all path endpoints/control points and reverse elliptical-arc sweep flags; no runtime transform. Preserve the previous geometry, object roundness, exposed parallel-page spacing, intentional rear-junction breaks and combined visible bounds2..22 at Regular1.75. Filled mirrors the same original natural silhouette with a solid foreground sheet. Neither Copy nor New Window adds a Square/Circle enclosure. The unreflected previous drawing is preserved byte-for-byte as the new New Window identity. Previous Copy approval remains in history; revised orientation is draft pending owner visual review.",
   "review": {
-    "status": "draft",
-    "note": "Review reopened for the owner-requested bottom-left foreground / top-right background orientation. Prior Copy approval is retained in history."
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
   },
   "reviewHistory": [
     {
@@ -21,6 +21,10 @@
         "rotation": 0
       },
       "note": "Owner approved both Outline and Filled Copy with standard Camera/Folder roundness, 4px exposed page spacing, 1px breaks at both rear junctions and 2px outer margins."
+    },
+    {
+      "status": "draft",
+      "note": "Review reopened for the owner-requested bottom-left foreground / top-right background orientation. Prior Copy approval is retained in history."
     }
   ]
 }

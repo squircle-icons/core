@@ -88,7 +88,7 @@ it.each([
       Math.min(...nonePoints.map((point) => point[axis])) +
       1.75;
     expect(Math.max(extent(0), extent(1))).toBeCloseTo(20, 6);
-    expect(entry.metadata.review?.status).toBe('draft');
+    expect(entry.metadata.review?.status).toBe('approved');
     expect(entry.root.attrs['stroke-width']).toBe('1.75');
     for (const frame of Object.values(entry.frames!)) {
       expect(frame!.root.children[0].children.at(-1)!.attrs.d).toBe(framedGlyph);

@@ -7,8 +7,8 @@
   "filledTreatment": "boxed-cutout",
   "supportsBold": true,
   "review": {
-    "status": "draft",
-    "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
   },
   "frameConstruction": {
     "kind": "square",
@@ -18,5 +18,11 @@
     "outlineCenterlineRadius": 5.125,
     "defaultStrokeWidth": 1.75,
     "glyphUnchanged": true
-  }
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
+    }
+  ]
 }

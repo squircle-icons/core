@@ -7,15 +7,21 @@
   "filledTreatment": "solid-head",
   "review": {
     "status": "approved",
-    "reviewedBy": "palamto",
-    "date": "2026-10-27",
-    "style": "filled",
-    "preview": {
-      "x": 100,
-      "y": 100,
-      "strokeWidth": 1.75,
-      "rotation": 0
-    },
-    "note": "Owner explicitly approved Download and Upload Outline/Filled on2026-10-27 with the current standard radius3.25 centerline tray corners, aligned Filled exterior and accepted arrowheads. Native X/Y100%, Regular1.70, rotation0; source geometry is unchanged by this approval."
-  }
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "approved",
+      "reviewedBy": "palamto",
+      "date": "2026-10-27",
+      "style": "filled",
+      "preview": {
+        "x": 100,
+        "y": 100,
+        "strokeWidth": 1.75,
+        "rotation": 0
+      },
+      "note": "Owner explicitly approved Download and Upload Outline/Filled on2026-10-27 with the current standard radius3.25 centerline tray corners, aligned Filled exterior and accepted arrowheads. Native X/Y100%, Regular1.70, rotation0; source geometry is unchanged by this approval."
+    }
+  ]
 }

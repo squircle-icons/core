@@ -6,14 +6,20 @@
   "construction": "The compact top hanger and body match the visible Regular 1.70 Outline. The Filled clapper is a solid rounded half-disc: its upper edge closes the opening, while its lower curve and round outside corners follow the Regular Outline exterior. The closed clapper interior is united with its 0.85-unit outer expansion, leaving no U-shaped recess. Body/clapper separation and visible vertical bounds y=1.9..22.1 are retained. This intentional solid interior follows the Filled body treatment; it is not a counter. Fixed fill-only geometry; other Outline weights may differ. Owner-approved source. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Established centerline proportions and pose are retained. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
   "review": {
     "status": "approved",
-    "reviewedBy": "palamto",
-    "date": "2026-10-26",
-    "style": "filled",
-    "preview": {
-      "x": 100,
-      "y": 100,
-      "strokeWidth": 1.75
-    },
-    "note": "Owner approved Bell after the solid Filled clapper correction. Both styles reviewed at source proportions and Regular 1.70; the Filled clapper is a solid part with no U-shaped recess."
-  }
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "approved",
+      "reviewedBy": "palamto",
+      "date": "2026-10-26",
+      "style": "filled",
+      "preview": {
+        "x": 100,
+        "y": 100,
+        "strokeWidth": 1.75
+      },
+      "note": "Owner approved Bell after the solid Filled clapper correction. Both styles reviewed at source proportions and Regular 1.70; the Filled clapper is a solid part with no U-shaped recess."
+    }
+  ]
 }

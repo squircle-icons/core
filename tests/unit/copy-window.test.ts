@@ -51,11 +51,14 @@ for (const [directory, style, originalHash] of references)
       const metadata = JSON.parse(
         await readFile(new URL(`../../icons/${directory}${name}.json`, import.meta.url), 'utf8'),
       );
-      expect(metadata.review.status).toBe('draft');
+      expect(metadata.review.status).toBe('approved');
       if (name === 'copy')
         expect(
           metadata.reviewHistory.some((review: { status: string }) => review.status === 'approved'),
         ).toBe(true);
-      else expect(metadata.reviewHistory).toBeUndefined();
+      else
+        expect(
+          metadata.reviewHistory.some((review: { status: string }) => review.status === 'draft'),
+        ).toBe(true);
     }
   });

@@ -6,7 +6,7 @@
 
 Current motion approval: Plus ↔ X continuous horizontal merge is owner-approved on2026-10-27. See the approved motion reference at the end of this document.
 
-Current approval status:14 of33 pairs are owner-approved as of2026-10-27. Arrow/Chevron and Plus/Minus/X frame families await review; Sun retains its approved3px visible rays. Earlier approval counts below are historical. Moon uses the accepted -30-degree pose as its native0-degree source orientation.
+Current static approval: the owner approved all51 current authoring families, including all styles and70 framed drawings, on2026-10-27. These are121 separately named static icons after the frame split. SVG geometry and prior review history are preserved. Earlier draft counts below are historical. Motion approval remains separate. Read ICON_RULES.md for the current independent-frame component contract.
 
 Owner direction recorded on 2026-10-26; Moon approval added on 2026-10-27. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; Moon Outline/Filled were approved on 2026-10-27; the first eight static icons are owner-approved; Plus and X Outline/Filled are owner-approved as of 2026-10-27; Copy Outline/Filled are also owner-approved as of 2026-10-27; three Round 3 and four Round 4 drawings await review. Search’s earlier boxed pair was approved on 2026-10-27; its current Bold Filled revision was subsequently approved on 2026-10-27.
 

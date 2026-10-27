@@ -2,6 +2,10 @@
 
 Maintained: 2026-10-27. **This is the canonical English working document for icon creation and revision across this workspace.** It defines the goal, rules, design contract, workflow, verification, tests and completion criteria. Read it before making icon changes. Update the current sections when the owner changes a rule; do not maintain competing copies in agent entry points.
 
+## Current static approval — 2026-10-27
+
+The owner explicitly approved **all current static icons**, including every available style and requested Square/Circle drawing. This covers51 authoring families and121 separately exported static icons after the frame split. Preserve every existing SVG path and prior review history while recording the approval. Current `metadata.review` is authoritative; earlier draft statements in historical construction notes are superseded. New or changed artwork must reopen the affected review. Static approval does not approve any morph or motion.
+
 ## Start here
 
 1. Read this playbook and the applicable `AGENTS.md` and `CONTRIBUTING.md` files.
@@ -20,7 +24,7 @@ Apply current user instructions within the applicable higher-priority instructio
 | ------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | New icon or ordinary add-icons batch              | Family/reference selection, Outline source, Filled treatment | Original SVG/metadata, requested variants, packed exports and Lab preview                        |
 | Size, rounding, spacing or orientation correction | Existing source and acceptance record                        | Revised native geometry; corresponding styles remain aligned; affected checks updated            |
-| Frame or style extension                          | Shared glyph, frame geometry and style semantics             | One identity with supported variants, consistent API, Lab controls and variant checks            |
+| Frame or style extension                          | Shared glyph, frame geometry and style semantics             | Separate named icons/components for each requested frame, with consistent styles and checks      |
 | Adapter/API change                                | Core contract and generator                                  | Deterministic outputs, direct-import isolation, compatibility and consumer checks                |
 | Lab-only change                                   | Current packed Lab dependency                                | Correct controls, measurements, accessible interaction and responsive preview                    |
 | Morph                                             | [Core MORPH.md](MORPH.md)                                    | Follow that canonical motion playbook in addition to these static rules                          |
@@ -58,11 +62,11 @@ Inspect `git status --short` in each source repository before edits; the local a
 
 An ordinary request to add icons means **six total**. Named icons occupy places in that six; choose the remainder automatically. Do not ask the owner to fill the remaining places. **A new identity defaults to None only. Add Square/Circle variants only when the owner explicitly requests frames; another family having frames is not authorization to add them everywhere.**
 
-Explicit family extensions and construction revisions follow their requested scope. Adding frames does not create another six-icon batch. The Plus/Minus/X family revision adds Minus to the existing symbols; it does not authorize unrelated additions. Styles and frames are variants of an identity, not duplicate sidebar icons.
+Explicit family extensions and construction revisions follow their requested scope. Adding frames does not create another six-icon batch. The Plus/Minus/X family revision adds Minus to the existing symbols; it does not authorize unrelated additions. Outline/Filled are styles of one icon. Each requested Square/Circle drawing is a separate named static icon, exported component and sidebar entry. A frame extension still does not trigger an unrelated six-icon batch.
 
 ### 2.3 Preserve contracts
 
-- **Reuse before adding an identity.** When the drawing already exists as an icon/style/frame variant and only the action name differs, reuse that existing identity and variant. Record the semantic mapping and add discovery tags; do not duplicate SVG geometry, generated components or alias exports. New Tab = Plus Square is the current example. Do not invent a duplicate identity merely to fill a six-action batch.
+- **Reuse before adding an identity.** When the drawing already exists as a named icon or style and only the action name differs, reuse that existing icon. Record the semantic mapping and add discovery tags; do not duplicate SVG geometry, generated components or alias exports. New Tab = Plus Square is the current example. Do not invent a duplicate identity merely to fill a six-action batch.
 - Author original geometry and keep metadata authorship accurate.
 - Use stable kebab-case icon names and stable `data-part` names. Preserve existing public names unless a rename is requested.
 - Keep direct Svelte imports independent of barrels, catalogs, unrelated icon geometry and animation runtime.
@@ -151,7 +155,9 @@ Keep the compact glyph identical between Square and Circle. None uses its separa
 
 ### 3.4 Frame construction
 
-The default supported choice is `none`. Add `square`/`circle` only for identities whose frames were explicitly requested. Existing requested frame families keep their supported variants; frames never create duplicate sidebar identities. `external-link`, `maximize` and `minimize` are explicitly None-only. New Tab reuses Plus with `frame="square"`; it is not a separate icon identity or alias export. Morphs must cover every frame actually supported by their pair, which does not require adding frames to every new static icon.
+**Frames are separate static icons and components.** Export `Plus`, `PlusSquare` and `PlusCircle` as independent geometry, using paths `plus`, `plus-square` and `plus-circle`. Do not combine these drawings inside one component or expose a static `frame` prop. Each named drawing has its own Lab sidebar entry; Outline/Filled remain styles of that drawing. Add framed icons only when the owner requests them. External Link, Maximize and Minimize have no added framed icons. New Tab reuses `PlusSquare`, with no duplicate New Tab export.
+
+Core may keep related artwork nested under its authoring family for source ownership and pure morph builders. The adapter flattens the current51 authoring families and70 framed drawings into121 separate static icons. Each generated component includes only its selected drawing, with no hidden sibling-frame geometry. Catalog `baseIcon` and fixed `frame` fields describe provenance; they are not runtime switching props. Morph pair controls may select corresponding explicit static endpoint components without restoring a combined static component.
 
 | Measurement                  | Square                                   | Circle                     |
 | ---------------------------- | ---------------------------------------- | -------------------------- |
@@ -192,7 +198,7 @@ These six identities are `chevron-up-down`, `chevron-left-right` and `chevron-li
 
 Compact framed Up–Down vertices remain `(8,10.5) → (12,6.5) → (16,10.5)` and `(16,13.5) → (12,17.5) → (8,13.5)`. Its None centerlines scale uniformly by73/44 about12,12, keeping Regular1.75 fixed and giving20px visible primary extent. Chevron Line keeps the existing V size but moves its stop line closer by balanced repositioning. Compact Line Up uses `(8,15.25) → (12,11.25) → (16,15.25)` with bar `(8,8.75) → (16,8.75)`, giving a2.5-unit centerline gap. None retains V half-width9.125, with bar y5.9375, tip y8.9375 and base y18.0625, giving a3-unit gap and20×13.875px Regular visible bounds. Both references remain centered; other directions are rigid rotations.
 
-Filled closes and expands each triangle at radius0.875 and adds a matching fixed-radius capsule where needed. Opposed None gaps grow with its centerline proportions; its compact framed gaps remain1.25px at Regular and0.5px at Bold. Line None keeps1.25px Regular /0.5px Bold separation; compact Line keeps0.75px Regular separation and intentionally reaches tangency at Bold2.50, without overlap. Frame Filled uses the unchanged compact silhouette as its cutout. All revised None drawings and existing draft frames remain pending owner review.
+Filled closes and expands each triangle at radius0.875 and adds a matching fixed-radius capsule where needed. Opposed None gaps grow with its centerline proportions; its compact framed gaps remain1.25px at Regular and0.5px at Bold. Line None keeps1.25px Regular /0.5px Bold separation; compact Line keeps0.75px Regular separation and intentionally reaches tangency at Bold2.50, without overlap. Frame Filled uses the unchanged compact silhouette as its cutout. The current static drawings and framed icons are owner-approved; future geometry revisions reopen only their affected review.
 
 #### Plus / Minus / X
 
@@ -238,7 +244,7 @@ Compact `more-horizontal/vertical` references remain three centers7.5/12/16.5 al
 
 Copy places its foreground sheet bottom-left and background sheet top-right, by a baked horizontal reflection about x12. Every endpoint/control point maps x→24−x, elliptical-axis rotations negate and arc sweep flags reverse. Preserve original object roundness, rear-junction breaks, exposed parallel-border spacing and combined Regular visible bounds2..22. Filled is the natural silhouette with a solid foreground sheet.
 
-`new-window` preserves both former Copy SVG files byte-for-byte, with foreground bottom-right and background top-left. Neither identity has additional Square/Circle variants, so this None-versus-frame enlargement does not resize them. New Window does not inherit Copy approval; revised Copy keeps previous approval in history. Both remain drafts.
+`new-window` preserves both former Copy SVG files byte-for-byte, with foreground bottom-right and background top-left. Neither identity has additional Square/Circle variants, so this None-versus-frame enlargement does not resize them. New Window does not inherit Copy approval; revised Copy keeps previous approval in history. Both current static drawings were included in the owner's collection-wide approval.
 
 #### External Link
 

@@ -45,7 +45,7 @@ it('preserves the smaller frame glyph and Circle clearance independently of enla
 it('uses independent exact Bold contours for None and smaller transparent frame cutouts', () => {
   const none = check.filled!.root.children[0].children[0].attrs.d;
   expect(check.metadata.filledTreatment).toBe('bold-stroke');
-  expect(check.metadata.review?.status).toBe('draft');
+  expect(check.metadata.review?.status).toBe('approved');
   expect(pieces(none)).toHaveLength(1);
   const contours = [none];
   let compact: string | undefined;

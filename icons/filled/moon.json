@@ -6,15 +6,21 @@
   "construction": "Owner approved Moon Outline and Filled at the reviewed -30-degree pose on2026-10-27, with X/Y100% and Regular1.70. Bake that counterclockwise pose into both SVG sources, then uniformly recenter their shared visible bounds. The accepted orientation is now native0 degrees; opening/resetting Lab uses100/100 and rotation0. Preserve the approved circular contours, radius8 outer centerline, radius6.569189459166889 inner centerline and .85 joins. Filled is the exact Regular exterior with outer8.85 and inner5.719189459166889. No style-specific scaling or preview rotation override. New native horns 9.95061758 4.13437209 and 19.99324926 12.33021515; outer-circle center 12.00675074 11.86562791, inner-circle center 15.64928594 7.40231166. Left/right margins3.15675074, top/bottom3.28437209. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Established centerline proportions and pose are retained. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
   "review": {
     "status": "approved",
-    "reviewedBy": "palamto",
-    "date": "2026-10-27",
-    "style": "filled",
-    "preview": {
-      "x": 100,
-      "y": 100,
-      "strokeWidth": 1.75,
-      "rotation": 0
-    },
-    "note": "Owner approved Moon Outline and Filled at the reviewed -30-degree pose on2026-10-27, with X/Y100% and Regular1.70. Bake that counterclockwise pose into both SVG sources, then uniformly recenter their shared visible bounds. The accepted orientation is now native0 degrees; opening/resetting Lab uses100/100 and rotation0. Preserve the approved circular contours, radius8 outer centerline, radius6.569189459166889 inner centerline and .85 joins. Filled is the exact Regular exterior with outer8.85 and inner5.719189459166889. No style-specific scaling or preview rotation override."
-  }
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "approved",
+      "reviewedBy": "palamto",
+      "date": "2026-10-27",
+      "style": "filled",
+      "preview": {
+        "x": 100,
+        "y": 100,
+        "strokeWidth": 1.75,
+        "rotation": 0
+      },
+      "note": "Owner approved Moon Outline and Filled at the reviewed -30-degree pose on2026-10-27, with X/Y100% and Regular1.70. Bake that counterclockwise pose into both SVG sources, then uniformly recenter their shared visible bounds. The accepted orientation is now native0 degrees; opening/resetting Lab uses100/100 and rotation0. Preserve the approved circular contours, radius8 outer centerline, radius6.569189459166889 inner centerline and .85 joins. Filled is the exact Regular exterior with outer8.85 and inner5.719189459166889. No style-specific scaling or preview rotation override."
+    }
+  ]
 }

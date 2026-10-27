@@ -6,14 +6,20 @@
   "construction": "The lower silhouette is a slim V with only a slight outward convex bow. Mirrored quadratic flanks depart subtly from straight diagonals and meet a compact rounded tip. Tangents align through the side transitions and tip without inward inflections. The established upper lobes and notch are retained. Outline bounds x=3.25..20.75, y=4.1..19.9 remain centered. Owner-approved source. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Established centerline proportions and pose are retained. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
   "review": {
     "status": "approved",
-    "reviewedBy": "palamto",
-    "date": "2026-10-26",
-    "style": "outline",
-    "preview": {
-      "x": 95,
-      "y": 95,
-      "strokeWidth": 1.75
-    },
-    "note": "Owner approved Heart Outline and Filled after the head alignment and centered-grid review. The reviewed Lab preview used X/Y=95%; these local preview settings are recorded without changing the source geometry."
-  }
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "approved",
+      "reviewedBy": "palamto",
+      "date": "2026-10-26",
+      "style": "outline",
+      "preview": {
+        "x": 95,
+        "y": 95,
+        "strokeWidth": 1.75
+      },
+      "note": "Owner approved Heart Outline and Filled after the head alignment and centered-grid review. The reviewed Lab preview used X/Y=95%; these local preview settings are recorded without changing the source geometry."
+    }
+  ]
 }

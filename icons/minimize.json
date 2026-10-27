@@ -6,7 +6,13 @@
   "construction": "The Maximize/Minimize pair uses four separately rounded L marks, in stable TL/TR/BR/BL subpath order under data-part body. Only Frame None is supported; no enclosing box or frame source is added. Each local elbow square has center (5.984375,5.984375), (18.015625,5.984375), (18.015625,18.015625) or (5.984375,18.015625), respectively. Maximize reference TL centerline is M3.25 8.71875 L3.25 6.5 A3.25 3.25 0 0 1 6.5 3.25 L8.71875 3.25. Other Maximize corners are rigid quarter-turns about12,12. The old endpoint stations and 5.46875 arm extent are retained, while the actual tangent elbow radius becomes3.25. Minimize rotates each complete Maximize corner180degrees about its own local elbow-square center; shape, stroke and corner radius are unchanged. Both endpoints contain four matching M L A L Outline subpaths. Outline defaults to Regular1.75 with round caps/joins; Thin1.25 and Bold2.50 retain the same centerlines. Filled is the exact fixed Bold2.50 normal expansion, with outer elbow radius4.5, inner elbow radius2 and cap radius1.25. Each Filled corner is one closed analytical contour; do not combine overlapping evenodd capsules. Outline centerline bounds are3.25..20.75, Regular visible bounds2.375..21.625 and Bold/Filled visible bounds2..22 on both axes. The native baseline remains X/Y100/100 and rotation0. Original project geometry with no SVG transforms or copied third-party paths. This supersedes the previous sharp centerline elbow; all revised/new static endpoints remain drafts pending owner review. Motion approval is a separate owner decision.",
   "filledTreatment": "bold-stroke",
   "review": {
-    "status": "draft",
-    "note": "Owner requested tangent rounded Maximize elbows and matching inward Minimize endpoints. Static geometry awaits owner visual review; motion review is separate."
-  }
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "Owner requested tangent rounded Maximize elbows and matching inward Minimize endpoints. Static geometry awaits owner visual review; motion review is separate."
+    }
+  ]
 }

@@ -6,8 +6,8 @@
   "construction": "Elbow centerline starts(8,16.75), rises to(8,13.75), bends with radius3 around(11,13.75) to(11,10.75), then ends at(16,10.75). Head arms run from(12.5,7.25) through the tip to(12.5,14.25). Filled is the analytical union of the radius.875 shaft and rounded solid triangular head, retaining tangent elbow radii3.875/2.125. Regular visible bounds x7.125..16.875/y6.375..17.625 are centered at12,12. Circle clearance at Bold is greater than.4px. All None/Square/Circle forms reuse exactly the same native glyph, with no per-frame scale or translation. Outline is Regular1.75 with round caps/joins; Thin1.25 and Bold2.50 use the same centerlines. Standard solid frame exteriors are bounds2..22, Square radius6 / Circle radius10; Outline frame centerlines are bounds2.875..21.125 with radius5.125 / circle radius9.125. Frames remain upright, with2px default outer margins. Framed Filled subtracts the exact standalone Filled silhouette as transparent negative space. All geometry is original to this project; external references establish meaning only. Native X/Y100/100, rotation0. All new forms remain draft pending owner review. Current Square rounding trial: owner requested rounder enclosing frames. The exterior radius is now6 at unchanged bounds2..22; the matching Regular1.75 Outline centerline uses radius5.125 at bounds2.875..21.125. Only the outer enclosing contour changed. Inner glyph coordinates, cutout contours, object-specific rounding and positions remain exact. This rounding trial awaits owner visual review.",
   "filledTreatment": "solid-head",
   "review": {
-    "status": "draft",
-    "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
+    "status": "approved",
+    "note": "Owner approved every current static icon, style and supported frame on 2026-10-27. Motion approval is separate."
   },
   "frameConstruction": {
     "kind": "square",
@@ -17,5 +17,11 @@
     "outlineCenterlineRadius": 5.125,
     "defaultStrokeWidth": 1.75,
     "glyphUnchanged": true
-  }
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
+    }
+  ]
 }
