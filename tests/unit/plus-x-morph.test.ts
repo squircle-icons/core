@@ -7,11 +7,11 @@ beforeAll(async () => {
   geometry = buildPlusXGeometry(await loadSources());
 });
 it('uses the approved endpoints and upright radius4 box without altering static sources', () => {
-  expect(geometry.strokeWidth).toBe(1.7);
+  expect(geometry.strokeWidth).toBe(1.75);
   expect(plusXFrame(0, geometry)).toEqual(geometry.plus);
   expect(plusXFrame(1, geometry)).toEqual(geometry.x);
-  expect(geometry.plusExtent).toBeCloseTo(7.15, 8);
-  expect(geometry.xExtent).toBeCloseTo(7.15, 8);
+  expect(geometry.plusExtent).toBeCloseTo(7.125, 8);
+  expect(geometry.xExtent).toBeCloseTo(7.125, 8);
 });
 it('keeps the glyph inside its approved bounds while folding through a single line', () => {
   for (let i = 1; i < 100; i++) {
@@ -20,8 +20,8 @@ it('keeps the glyph inside its approved bounds while folding through a single li
     const xs = values.filter((_, n) => n % 2 === 0),
       ys = values.filter((_, n) => n % 2 === 1);
     for (const axis of [xs, ys]) {
-      expect(Math.min(...axis) - 0.85).toBeGreaterThanOrEqual(4 - 1e-7);
-      expect(Math.max(...axis) + 0.85).toBeLessThanOrEqual(20 + 1e-7);
+      expect(Math.min(...axis) - 0.875).toBeGreaterThanOrEqual(4 - 1e-7);
+      expect(Math.max(...axis) + 0.875).toBeLessThanOrEqual(20 + 1e-7);
     }
     expect(frame.filled.startsWith(geometry.box + ' ')).toBe(true);
     expect(frame.filled).not.toMatch(/NaN|Infinity/);
@@ -29,7 +29,7 @@ it('keeps the glyph inside its approved bounds while folding through a single li
 });
 
 it('passes through one horizontal stroke without holding neighboring frames', () => {
-  expect(plusXFrame(0.5, geometry).outline).toBe('M4.85 12 L19.15 12');
+  expect(plusXFrame(0.5, geometry).outline).toBe('M4.875 12 L19.125 12');
   for (const p of [0.4, 0.49, 0.499, 0.501, 0.51, 0.6]) {
     expect(plusXFrame(p, geometry).outline).not.toBe(plusXFrame(0.5, geometry).outline);
   }

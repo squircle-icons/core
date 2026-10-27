@@ -3,7 +3,7 @@
   "description": "A six-tooth gear with flowing shoulders and a circular center.",
   "tags": ["preferences", "gear"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Six original radial teeth use straight faces with individually rounded transitions. The recognizable gear is a silhouette exception to the rounded rectangle baseline. Opposite teeth are constructed in symmetric pairs about 12,12; the circular hub remains circular. Owner-approved source. The owner-selected 30-degree clockwise orientation is baked into all source coordinates about 12,12 for both styles. This orientation is now native rotation 0 degrees; no SVG or preview transform is needed.",
+  "construction": "Six original radial teeth use straight faces with individually rounded transitions. The recognizable gear is a silhouette exception to the rounded rectangle baseline. Opposite teeth are constructed in symmetric pairs about 12,12; the circular hub remains circular. Owner-approved source. The owner-selected 30-degree clockwise orientation is baked into all source coordinates about 12,12 for both styles. This orientation is now native rotation 0 degrees; no SVG or preview transform is needed. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Established centerline proportions and pose are retained. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
   "review": {
     "status": "approved",
     "reviewedBy": "palamto",
@@ -12,7 +12,7 @@
     "preview": {
       "x": 100,
       "y": 100,
-      "strokeWidth": 1.7,
+      "strokeWidth": 1.75,
       "rotation": 0
     },
     "note": "Owner approved Settings Outline and Filled at the previous 30-degree preview orientation. At the owner's request, that orientation is now baked into both original SVGs and is the native 0-degree baseline. Exterior and hub alignment are preserved at Regular 1.70."

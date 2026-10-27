@@ -3,7 +3,7 @@
   "description": "A centered close mark with two balanced diagonal strokes.",
   "tags": ["close", "dismiss", "cancel"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner clarified that the Filled box must keep 2px outside clearance and Outline is exactly the X inside that Filled box, following Plus. The upright rounded box spans 2..22 on the native 24 by 24 grid, with radius-4 corners. Its negative-space X and the standalone Outline share diagonal centerline endpoints 4.85..19.15 on each axis, giving visible glyph bounds 4..20. The shared glyph retains Regular-equivalent width 1.70 and .85 round caps. This leaves exactly 2 units between the glyph and each box side, plus 2 units between the box and each artboard side. The cutout is the exact analytical union of the Outline stroke exterior. Both glyphs are centered at 12,12 with identical position, size and contours; no style-specific scaling or translation. Native X/Y=100%, rotation=0. Owner-approved source. The owner subsequently requested rounder Filled box corners: radius is 4, with box bounds, glyph contour, stroke weight and the measured 2-unit side clearances retained.",
+  "construction": "Owner clarified that the Filled box must keep 2px outside clearance and Outline is exactly the X inside that Filled box, following Plus. The upright rounded box spans 2..22 on the native 24 by 24 grid, with radius-4 corners. Its negative-space X and the standalone Outline share diagonal centerline endpoints 4.85..19.15 on each axis, giving visible glyph bounds 4..20. The shared glyph retains Regular-equivalent width 1.70 and .85 round caps. This leaves exactly 2 units between the glyph and each box side, plus 2 units between the box and each artboard side. The cutout is the exact analytical union of the Outline stroke exterior. Both glyphs are centered at 12,12 with identical position, size and contours; no style-specific scaling or translation. Native X/Y=100%, rotation=0. Owner-approved source. The owner subsequently requested rounder Filled box corners: radius is 4, with box bounds, glyph contour, stroke weight and the measured 2-unit side clearances retained. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Centerlines uniformly refitted about12,12 by 0.9965034965 to retain the existing2px primary margins and shared boxed glyph clearance. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
   "filledTreatment": "boxed-cutout",
   "review": {
     "status": "approved",
@@ -13,7 +13,7 @@
     "preview": {
       "x": 100,
       "y": 100,
-      "strokeWidth": 1.7,
+      "strokeWidth": 1.75,
       "rotation": 0
     },
     "note": "Owner approved both Outline and Filled with radius-4 box corners, 2px around the Filled box, 2px between the box and shared glyph, and identical Outline/cutout position and weight. Reviewed at native proportions and Regular 1.70."

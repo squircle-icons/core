@@ -101,3 +101,7 @@ The owner explicitly approved the current continuous horizontal-merge motion and
 - Accepted implementation: core `e4a739a4fde20156bfe7a812f78918f06daeb75b`, Svelte adapter `190b84b49ea2e058fc99d358298a392c0271eaee`; preview `/lab/morph/plus-x`.
 
 Keep this version as the accepted reference for later revisions. The earlier simple rotation, vertical merge, fast pacing and horizontal hold are superseded. Static icon approvals remain unchanged.
+
+## Current global weight palette — 2026-10-27
+
+Owner requested all icons to start at Regular1.75, with Thin1.25, Bold2.50 and .25-unit adjustment steps. The owner explicitly confirmed this includes Filled and both morphs. This supersedes historical1.70/2.25 stroke references throughout earlier construction notes. All26 Outline sources now default to1.75. Filled contours are rebuilt around the same source centerlines at radius.875; Menu/Search use Bold2.50. Existing2px primary bounds and boxed2px inner clearance are retained by a small uniform centerline refit; box frames stay2..22/radius4. Other accepted centerline poses remain unchanged. Preserve the approved horizontal, continuous, no-hold Plus X motion and its slow pace; only the source-derived stroke/endpoints follow the new weight. Keep the six Round5 arrow pairs as drafts.

@@ -3,7 +3,7 @@
   "description": "A centered plus mark with four equally sized arms.",
   "tags": ["add", "new", "create"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner clarified that Plus and X use all four sides as their primary margin pairs. Plus Filled box now spans 2..22 with radius-4 corners, exactly like X. Both Plus glyphs share perpendicular centerlines M4.85 12 H19.15 M12 4.85 V19.15, visible bounds 4..20, unchanged Regular 1.70 stroke and .85 round caps. This leaves 2px from the box to the artboard and another 2px from the shared glyph to each box side. Outline is exactly the mark inside Filled, with no style-specific scaling or translation. Native X/Y=100%, rotation=0. Owner-approved source.",
+  "construction": "Owner clarified that Plus and X use all four sides as their primary margin pairs. Plus Filled box now spans 2..22 with radius-4 corners, exactly like X. Both Plus glyphs share perpendicular centerlines M4.85 12 H19.15 M12 4.85 V19.15, visible bounds 4..20, unchanged Regular 1.70 stroke and .85 round caps. This leaves 2px from the box to the artboard and another 2px from the shared glyph to each box side. Outline is exactly the mark inside Filled, with no style-specific scaling or translation. Native X/Y=100%, rotation=0. Owner-approved source. Global weight update requested by owner on2026-10-27: default Regular1.75 (half-width .875), Thin1.25 and Bold2.50, adjustable in .25 increments. Filled is rebuilt from these same Outline centerlines using rounded normal expansion, with solid-head/boxed/object semantics preserved. Menu/Search Filled follows Bold2.50. Centerlines uniformly refitted about12,12 by 0.9965034965 to retain the existing2px primary margins and shared boxed glyph clearance. Earlier1.70/2.25 construction measurements are historical; the current default reference is1.75.",
   "filledTreatment": "boxed-cutout",
   "review": {
     "status": "approved",
@@ -13,7 +13,7 @@
     "preview": {
       "x": 100,
       "y": 100,
-      "strokeWidth": 1.7,
+      "strokeWidth": 1.75,
       "rotation": 0
     },
     "note": "Owner approved both Outline and Filled with radius-4 box corners, 2px around the Filled box, 2px between the box and shared glyph, and identical Outline/cutout position and weight. Reviewed at native proportions and Regular 1.70."
