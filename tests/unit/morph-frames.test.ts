@@ -71,14 +71,12 @@ it('rejects a partial frame family instead of silently mixing endpoint variants'
 
 it('derives larger None marks independently without resizing either framed morph', () => {
   const enlarged = structuredClone(icons);
-  const paths = {
-    plus: 'M3.25 12 H20.75 M12 3.25 V20.75',
-    minus: 'M3.25 12 H20.75',
-    x: 'M3.25 3.25 L20.75 20.75 M20.75 3.25 L3.25 20.75',
-    menu: 'M3.25 5 H20.75 M3.25 12 H20.75 M3.25 19 H20.75',
-  };
-  for (const [name, path] of Object.entries(paths))
-    enlarged.find((icon) => icon.name === name)!.root.children[0].children[0].attrs.d = path;
+  for (const name of ['plus', 'minus', 'x', 'menu']) {
+    const glyph = enlarged.find((icon) => icon.name === name)!.root.children[0].children[0];
+    glyph.attrs.d = String(glyph.attrs.d).replace(/-?\d*\.?\d+/g, (n) =>
+      String(12 + (Number(n) - 12) * 1.1),
+    );
+  }
   const verify = <G>(
     build: (icons: CoreIcon[]) => G,
     render: (p: number, g: G, f: 'none' | 'square' | 'circle') => { outline: string },
