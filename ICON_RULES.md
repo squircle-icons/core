@@ -99,6 +99,10 @@ Use a native **24 × 24** artboard, centered at **12,12**. Native SVG units corr
 - Avoid doubled shared edges, uneven joins and accidental dark intersections. Union overlapping Filled contours where necessary.
 - Inspect actual 16, 20, 24 and 48px output on both light and dark surfaces.
 
+**Mandatory roundness rule — owner accepted:** comparable full-size object corners and L-shaped elbows use actual tangent centerline arcs with radius3.25 at Regular1.75, while round end caps keep radius0.875. A sharp H/V centerline with only `stroke-linejoin="round"` does not satisfy this rule. New drawings follow it without asking the owner again. For Maximize/Minimize Filled at Bold2.50, use the exact rounded expansion: cap radius1.25 and elbow outer/inner radii4.5/2.
+
+Apply the rule at the correct scale. Preserve accepted Camera/Folder fitted geometry and use intentional, documented local radii for smaller semantic details such as tabs, shoulders and handles; do not force3.25 onto every tiny part. Enclosing Square frames keep their separate radius6 exterior rule. A different comparable-elbow construction requires a meaningful geometric reason recorded in construction metadata/current rules or a newer explicit owner instruction. Acceptance of this roundness rule does not approve a particular static drawing or morph.
+
 The Camera/Folder main bodies are the object-corner reference. The original centerline-radius reference was 3.25 at Regular 1.70; current sources include the subsequent 1.75 weight refit. Reuse the current source construction instead of copying historical coordinates blindly. Small tabs, shoulders and handles retain their fitted local radii. Enclosing Square frames use a separate exterior radius of6 in the current owner-requested rounding trial. This does not change Camera/Folder or other natural-object corner radii.
 
 ### 3.2 Margins and optical size
@@ -141,13 +145,13 @@ Filled is authored fill-only geometry. It is not the result of indiscriminately 
 | Check, no frame                        | Unboxed Bold 2.50 expansion of the shared check centerline             |
 | Check, Square/Circle                   | Solid frame with its compact Bold silhouette cut out                   |
 
-For natural dual-style objects, match the Filled exterior to the visible Regular Outline exterior. For Menu/Search, Check, alignment bars and unframed math symbols, compare Filled to **Bold 2.50**, not Regular. For boxed math marks, compare the hole to the corresponding Regular mark. Framed Menu, Check and alignment bars use the compact framed glyph expanded at Bold as their cutouts. Maximize is None-only. Directional families likewise use their compact framed solid-head geometry. Compare within the selected frame variant; the larger None silhouette is a separate source.
+For natural dual-style objects, match the Filled exterior to the visible Regular Outline exterior. For Menu/Search, Check, alignment bars and unframed math symbols, compare Filled to **Bold 2.50**, not Regular. For boxed math marks, compare the hole to the corresponding Regular mark. Framed Menu, Check and alignment bars use the compact framed glyph expanded at Bold as their cutouts. Maximize and Minimize are None-only. Directional families likewise use their compact framed solid-head geometry. Compare within the selected frame variant; the larger None silhouette is a separate source.
 
 Keep the compact glyph identical between Square and Circle. None uses its separately authored larger geometry. Never enlarge a Filled path by scaling its stroke, and never simulate this size distinction with Lab-only transforms. This owner correction supersedes older same-size-None/frame instructions in historical metadata and supporting notes.
 
 ### 3.4 Frame construction
 
-The default supported choice is `none`. Add `square`/`circle` only for identities whose frames were explicitly requested. Existing requested frame families keep their supported variants; frames never create duplicate sidebar identities. `external-link` and `maximize` are explicitly None-only. New Tab reuses Plus with `frame="square"`; it is not a separate icon identity or alias export. Morphs must cover every frame actually supported by their pair, which does not require adding frames to every new static icon.
+The default supported choice is `none`. Add `square`/`circle` only for identities whose frames were explicitly requested. Existing requested frame families keep their supported variants; frames never create duplicate sidebar identities. `external-link`, `maximize` and `minimize` are explicitly None-only. New Tab reuses Plus with `frame="square"`; it is not a separate icon identity or alias export. Morphs must cover every frame actually supported by their pair, which does not require adding frames to every new static icon.
 
 | Measurement                  | Square                                   | Circle                     |
 | ---------------------------- | ---------------------------------------- | -------------------------- |
@@ -211,12 +215,20 @@ Regular Outline is1.75. None Filled is the exact larger Bold2.50 expansion; fram
 - Corner uses `M8 16.75 V13.75 A3 3 0 0 1 11 10.75 H16`, with head `(12.5,7.25) → (16,10.75) → (12.5,14.25)`. None centerlines uniformly scale by18.25/9.5 about12,12, keeping1.75 stroke and rebuilding Filled with0.875 expansion. Its visible top/bottom are2..22; left/right are3.44078947..20.55921053.
 - Entry/Exit compact rounded C doors occupy y7.5..16.5 with radius1.5. Entry bounds x12.5..16.5 open left; Exit mirrors the door to x7.5..11.5 and opens right. Both arrows point right. Entry shaft x7.5..12.5 has head base x9.5; Exit shaft x11.5..16.5 has head base x13.5; both heads use y9/15. None scales centerlines by18.25/9 about12,12 and rebuilds the natural Filled doorway/solid-head union at0.875, yielding Regular visible bounds2..22. Never reverse the exit arrow merely because its doorway is mirrored.
 
-#### Alignment and Maximize
+#### Alignment
 
-These use unboxed Bold2.50 Filled. Alignment retains its explicitly requested Square/Circle variants with compact Bold cutouts; Maximize is explicitly None-only. Every None reference has20px primary extent at Bold and19.25px at Regular.
+Alignment uses unboxed Bold2.50 Filled and retains its explicitly requested Square/Circle variants with compact Bold cutouts. Every None reference has20px primary extent at Bold and19.25px at Regular.
 
 - Alignment None rows are y3.25,9.08333333,14.91666667,20.75. Long bars span x3.25..20.75; short bars are11.66666667 units with their Left/Center/Right anchors preserved. Compact rows remain y7.5,10.5,13.5,16.5, with long9-unit bars x7.5..16.5 and short6-unit bars x7.5..13.5 / x9..15 / x10.5..16.5 respectively.
-- Maximize has no enclosing frame variants. Its four corners occupy3.25..20.75 with arm length5.46875, as rigid quarter-turns around12,12. Filled is the exact union at Bold radius1.25; preserve the natural four-corner mark.
+
+#### Maximize and Minimize
+
+These are a related pair of natural four-corner marks with Outline/Filled and no enclosing Square/Circle variants. The owner made the actual rounded-elbow construction mandatory and requested a separate inward-facing Minimize drawing. Keep their centerline extrema3.25..20.75 and arm span5.46875.
+
+- Maximize points each rounded L toward its artboard corner. Elbow centerline radius is3.25 with straight tangent lead-ins, not a sharp H/V turn. Regular Outline remains1.75 with round end caps.
+- Minimize turns each Maximize L by180 degrees about that corner's local center: `(5.984375,5.984375)`, `(18.015625,5.984375)`, `(18.015625,18.015625)` and `(5.984375,18.015625)`. This changes the corner's direction while retaining placement, arm span, roundness and bounds; it is not a whole-icon rotation or a duplicate alias.
+- Filled is an exact Bold2.50 stroked union: radius1.25 end caps and elbow outer/inner radii4.5/2. Use tangent circular arcs and one closed contour per corner, without overlapping evenodd seams. Bold/Filled visible bounds remain2..22; Regular Outline margins are2.375.
+- Preserve prior Maximize review history and keep the rounded revision and new Minimize draft until owner review. For the named Maximize↔Minimize morph, follow [MORPH.md](MORPH.md), derive both static endpoints exactly and preserve the shared source weight/tangent construction; static implementation and motion approval remain separate.
 
 #### More controls
 
@@ -411,6 +423,10 @@ Run commands from the repository indicated below. Read the current `package.json
 | local app: `pnpm verify` | Formatting, pinned local-package provenance, catalog generation, types, unit tests, local production build and review behavior           |
 
 For an artwork change delivered through Lab, complete the core → adapter → local app checks required by their contribution instructions. For a new capability, verify all supported variants, not just the selected screenshot. When Homepage itself changes, run its separate `pnpm verify` website suite; it is not a prerequisite for ordinary local Lab updates. Never claim a full suite passed if only selected tests ran.
+
+### Mandatory rounded-corner gate
+
+Before handing off a new or revised comparable object corner or L elbow, verify the **actual source arc radius and tangent continuity**, then verify the actual packed rendering. Assert radius3.25 on eligible centerlines at Regular1.75 and radius0.875 caps; check incoming/outgoing straight tangents rather than merely searching for `stroke-linejoin="round"`. For Maximize/Minimize, also check the Bold2.50 union's4.5/2 outer/inner elbow radii,1.25 caps, local corner turns and native bounds. The [static corner regression](tests/unit/maximize-minimize-static.test.ts) is the source reference; corresponding packed contour/endpoint checks and actual-size inspection are also required. Document fitted small-detail radii and any meaningful geometric exception instead of silently waiving the rule.
 
 ### Choose tests by the change
 

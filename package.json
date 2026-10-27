@@ -71,7 +71,12 @@
       "types": "./dist/morphs/plus-minus.d.ts",
       "default": "./dist/morphs/plus-minus.js"
     },
-    "./morph/plus-minus.json": "./dist/morphs/plus-minus.json"
+    "./morph/plus-minus.json": "./dist/morphs/plus-minus.json",
+    "./morph/maximize-minimize": {
+      "types": "./dist/morphs/maximize-minimize.d.ts",
+      "default": "./dist/morphs/maximize-minimize.js"
+    },
+    "./morph/maximize-minimize.json": "./dist/morphs/maximize-minimize.json"
   },
   "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {

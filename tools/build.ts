@@ -5,6 +5,7 @@ import { buildSunMoonGeometry } from './build-sun-moon.js';
 import { buildPlusXGeometry } from './build-plus-x.js';
 import { buildMenuXGeometry } from './build-menu-x.js';
 import { buildPlusMinusGeometry } from './build-plus-minus.js';
+import { buildMaximizeMinimizeGeometry } from './build-maximize-minimize.js';
 const icons = await loadSources();
 await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
@@ -41,4 +42,9 @@ await writeFile(
 await writeFile(
   resolve(root, 'dist/morphs/plus-minus.json'),
   JSON.stringify(buildPlusMinusGeometry(icons), null, 2) + '\n',
+);
+
+await writeFile(
+  resolve(root, 'dist/morphs/maximize-minimize.json'),
+  JSON.stringify(buildMaximizeMinimizeGeometry(icons), null, 2) + '\n',
 );

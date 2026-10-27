@@ -78,19 +78,20 @@ that pair. Neither preference automatically approves the design of another pair.
 
 `progress` overrides animation and is clamped to [0, 1]; non-finite progress maps
 to 0. `moon` selects the Sun Moon destination; `x` selects the Plus X and Menu X
-destination. `minus` selects the Plus Minus destination. Existing components also accept `style`, `size`, `color`, `class`,
+destination. `minus` selects the Plus Minus destination, and `minimize` selects the Maximize Minimize destination. Existing components also accept `style`, `size`, `color`, `class`,
 `label`, `speed`, `onprogress` and `onsettle`. Check `MorphProgress.svelte` before
 changing speed limits, settling thresholds or callback behavior; existing values
 are implementation constraints, not an invitation to retune approved motion.
 
 ### Pair registry and current endpoint contract
 
-| Pair         | Lab route           | Opt-in Svelte subpath | Default shared-rate multiplier | Motion status                                          |
-| ------------ | ------------------- | --------------------- | ------------------------------ | ------------------------------------------------------ |
-| Sun ↔ Moon   | `/morph`            | `morph/sun-moon`      | 1.0                            | Owner-preferred reference; experiment                  |
-| Plus ↔ X     | `/morph/plus-x`     | `morph/plus-x`        | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
-| Menu ↔ X     | `/morph/menu-x`     | `morph/menu-x`        | 0.6                            | Proposed motion; awaiting owner review                 |
-| Plus ↔ Minus | `/morph/plus-minus` | `morph/plus-minus`    | 0.6                            | Proposed single-fold motion; awaiting owner review     |
+| Pair                | Lab route                  | Opt-in Svelte subpath     | Default shared-rate multiplier | Motion status                                          |
+| ------------------- | -------------------------- | ------------------------- | ------------------------------ | ------------------------------------------------------ |
+| Sun ↔ Moon          | `/morph`                   | `morph/sun-moon`          | 1.0                            | Owner-preferred reference; experiment                  |
+| Plus ↔ X            | `/morph/plus-x`            | `morph/plus-x`            | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
+| Menu ↔ X            | `/morph/menu-x`            | `morph/menu-x`            | 0.6                            | Proposed motion; awaiting owner review                 |
+| Plus ↔ Minus        | `/morph/plus-minus`        | `morph/plus-minus`        | 0.6                            | Proposed single-fold motion; awaiting owner review     |
+| Maximize ↔ Minimize | `/morph/maximize-minimize` | `morph/maximize-minimize` | 0.6                            | Proposed four-corner turn; awaiting owner review       |
 
 **Current Plus/X geometry depends on the selected native frame.** Plus/Minus/X
 None uses centered half-extents 8.75: Regular visible bounds 2.375..21.625,
@@ -174,12 +175,40 @@ existing design and rate; reverify its current Menu and Square Filled X sources
 alongside this pair. No unresolved endpoint identity or timing decision blocks
 this proposal; both pairs remain available for owner visual review.
 
+### Maximize ↔ Minimize proposal
+
+Goal: transition between expanded and restored view states using the same four
+rounded corner marks. Sources are `icons/maximize.svg`, `icons/minimize.svg` and
+their Filled counterparts. Both are None-only; no frame selector or enclosing
+box is added. Static endpoints and this new motion remain pending owner review;
+the owner separately made their roundness a mandatory construction rule.
+
+Map the four L-shaped subpaths in stable top-left, top-right, bottom-right,
+bottom-left order. Each elbow has centerline radius3.25 with unchanged5.46875 arm
+extent. Outline is Regular1.75; Filled follows the same centerline at fixed
+Bold2.50, with exterior/interior elbow radii4.5/2 and cap radius1.25. Derive all
+paths, radii and local centers from source through the endpoint builder.
+
+Turn each complete corner through180degrees about its local square center:
+`(5.984375,5.984375)`, `(18.015625,5.984375)`,
+`(18.015625,18.015625)` and `(5.984375,18.015625)`. Alternate rotation signs
+`+,-,+,-` to preserve both mirror axes. Use quintic C2 angular interpolation
+`q(p)=6p^5-15p^4+10p^3`, with no intermediate hold or whole-icon crossfade.
+The proposed rate is0.6× the shared spring; retain current position and velocity
+on reversal. Do not alter the shared controller or approved Plus X timing.
+
+Intermediate corner marks may breathe beyond their endpoint2px margin while
+remaining fully within the24px artboard. Never scale strokes or corner radii to
+hide that motion. Verify exact packed endpoints, near-endpoint continuity,
+positive corner separation, finite bounded paths, matching moving Bold/Filled
+contours, reversal, reduced motion, lifecycle, native sizes and narrow screens.
+
 ### Complete matching frame families — owner correction, 2026-10-27
 
 Frames are opt-in per icon: add them only when the owner asks for that identity.
 A morph request does not authorize adding frames to every icon or inventing missing
 variants. Read supported frame capabilities from both actual endpoint sources.
-Maximize and External Link have no added frames under the current owner correction.
+Maximize, Minimize and External Link have no added frames under the current owner correction.
 New Tab uses the existing Plus Square identity; do not create a duplicate icon or
 independent New Tab frame family. Where a pair's supported families differ, clarify the intended shared
 variant rather than silently changing static artwork.

@@ -46,6 +46,7 @@ describe('single-source artwork pipeline', () => {
       'log-out',
       'maximize',
       'menu',
+      'minimize',
       'minus',
       'moon',
       'more-horizontal',
@@ -170,6 +171,7 @@ it('available filled sources preserve named parts and original geometry through 
     'log-out',
     'maximize',
     'menu',
+    'minimize',
     'minus',
     'moon',
     'more-horizontal',
@@ -242,7 +244,7 @@ it('preserves the shared compact Square and Circle glyphs beside larger standalo
 
 it('reuses Plus Square for New Tab discovery without a duplicate artwork identity', async () => {
   const icons = await loadSources();
-  expect(icons).toHaveLength(50);
+  expect(icons).toHaveLength(51);
   expect(icons.some((icon) => icon.name === 'new-tab')).toBe(false);
   const plus = icons.find((icon) => icon.name === 'plus')!;
   for (const metadata of [
