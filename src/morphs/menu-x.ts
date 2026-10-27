@@ -18,7 +18,7 @@ const mix = (a: number, b: number, p: number) => a + (b - a) * p;
 const fmt = (n: number) => String(Math.round(n * 1e8) / 1e8);
 const point = (p: Point) => p.map(fmt).join(' ');
 
-// Arclength correspondence turns each solid outer Menu bar into one half of the
+// Matched boundary stations turn each solid outer Menu bar into one half of the
 // boxed X. Its negative-space branches open geometrically, without a crossfade.
 function resample(points: Point[], count = 192): Point[] {
   const lengths = [0];
@@ -50,16 +50,29 @@ function capsule(extent: number, y: number, r: number): Point[] {
     ...arc(-extent, y, r, Math.PI / 2, Math.PI),
   ]);
 }
-function upperBox(g: MenuXGeometry): Point[] {
+function upperBox(g: MenuXGeometry): { from: Point[]; to: Point[] } {
   const d = g.xExtent,
     r = g.strokeWidth / 2,
     c = r / Math.SQRT2;
-  return resample([
+  const densify = (points: Point[]) =>
+    points.flatMap((a, i) => {
+      if (!i) return [a];
+      const b = points[i - 1],
+        count = Math.max(1, Math.ceil(Math.hypot(a[0] - b[0], a[1] - b[1]) / 0.12));
+      return Array.from({ length: count }, (_, j): Point => [
+        mix(b[0], a[0], (j + 1) / count),
+        mix(b[1], a[1], (j + 1) / count),
+      ]);
+    });
+  const outer = densify([
     [-10, 0],
     [-10, -6],
     ...arc(-6, -6, 4, Math.PI, Math.PI * 1.5),
     [6, -10],
     ...arc(6, -6, 4, -Math.PI / 2, 0),
+    [10, 0],
+  ]);
+  const inner = densify([
     [10, 0],
     [r * Math.SQRT2, 0],
     [d + c, -d + c],
@@ -68,7 +81,17 @@ function upperBox(g: MenuXGeometry): Point[] {
     [-d + c, -d - c],
     ...arc(-d, -d, r, -Math.PI / 4, (-Math.PI * 5) / 4),
     [-r * Math.SQRT2, 0],
+    [-10, 0],
   ]);
+  const h = g.filledStrokeWidth / 2;
+  // Keep each boundary's horizontal station fixed. The future X branches start
+  // collapsed on the bar's lower edge, then open without contour crossings.
+  const source = (points: Point[], side: number) =>
+    points.map(([x]): Point => {
+      const capX = Math.max(0, Math.abs(x) - g.menuExtent);
+      return [x, -g.menuOffset + side * Math.sqrt(Math.max(0, h * h - capX * capX))];
+    });
+  return { from: [...source(outer, -1), ...source(inner, 1)], to: [...outer, ...inner] };
 }
 const contours = new WeakMap<MenuXGeometry, { from: Point[]; to: Point[] }>();
 export function menuXFrame(progress: number, geometry: MenuXGeometry) {
@@ -89,10 +112,7 @@ export function menuXFrame(progress: number, geometry: MenuXGeometry) {
   const middleExtent = geometry.menuExtent * remaining;
   let pair = contours.get(geometry);
   if (!pair) {
-    pair = {
-      from: capsule(geometry.menuExtent, -geometry.menuOffset, geometry.filledStrokeWidth / 2),
-      to: upperBox(geometry),
-    };
+    pair = upperBox(geometry);
     contours.set(geometry, pair);
   }
   const upper = pair.from.map((a, i): Point => [

@@ -91,8 +91,7 @@ Filled endpoints have deliberately different construction: Menu is the accepted
 unboxed Bold 2.50 glyph, while X is a Regular 1.75 cutout in its radius-4 box at
 2..22. Preserve both endpoint sources. The transition maps the two outer Menu
 capsules to the upper and lower solid regions of the boxed X; their concave
-boundaries open the X hole while the middle capsule contracts. Arclength-matched
-contours provide a geometric transition without opacity, duplicate IDs or masks.
+boundaries open the X hole while the middle capsule contracts. Matched horizontal boundary stations provide a geometric transition without opacity, duplicate IDs or masks.
 Intermediate Filled geometry is a separately authored topology bridge; only the
 X endpoint has the exact Outline/cutout relationship. This does not alter the
 shared-glyph rule for static icons or the approved Plus X morph.
