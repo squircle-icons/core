@@ -6,7 +6,7 @@ let geometry: PlusXGeometry;
 beforeAll(async () => {
   geometry = buildPlusXGeometry(await loadSources());
 });
-it('uses the approved endpoints and upright radius4 box without altering static sources', () => {
+it('uses the approved endpoints and matching upright source frame without altering static sources', () => {
   expect(geometry.strokeWidth).toBe(1.75);
   expect(plusXFrame(0, geometry)).toEqual(geometry.plus);
   expect(plusXFrame(1, geometry)).toEqual(geometry.x);

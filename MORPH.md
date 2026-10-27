@@ -96,7 +96,7 @@ are implementation constraints, not an invitation to retune approved motion.
 None uses centered half-extents 8.75: Regular visible bounds 2.375..21.625,
 or 19.25 square; unboxed Filled Bold 2.50 spans 2..22, or 20 square.
 Square/Circle retain half-extents 4.5: Regular visible bounds 6.625..17.375,
-or 10.75 square. Square frame bounds remain 2..22 with radius 4.
+or 10.75 square. Square frame bounds remain 2..22 with the current exterior radius 6.
 Framed Filled holes match the smaller Regular mark. Compare each endpoint with
 the same selected frame; never restore the larger None glyph inside a frame.
 
@@ -155,7 +155,7 @@ Keep the horizontal arm fixed. Fold the vertical arm through 90° onto that same
 line, preserving its length, Regular1.75 weight and round ends. Quintic C2 phase
 interpolation settles smoothly at both endpoints without a middle hold. Reverse
 along the same geometry using the shared spring. The proposed rate is0.6×; keep
-Sun Moon and approved Plus X rates unchanged. Filled retains the upright radius4
+Sun Moon and approved Plus X rates unchanged. Filled retains the current source
 Square at2..22 and cuts out the exact analytical union of the same two strokes.
 
 The pure capsule-union helper is shared with Plus X; extracting it must preserve
@@ -168,13 +168,24 @@ this proposal; both pairs remain available for owner visual review.
 
 ### Complete matching frame families — owner correction, 2026-10-27
 
+Frames are opt-in per icon: add them only when the owner asks for that identity.
+A morph request does not authorize adding frames to every icon or inventing missing
+variants. Read supported frame capabilities from both actual endpoint sources.
+New Tab, Maximize and External Link have no added frames under the current owner
+correction. Where a pair's supported families differ, clarify the intended shared
+variant rather than silently changing static artwork.
+
 If a morph endpoint supports frames, implement and verify every supported common
 frame for the whole pair. Menu ↔ X, Plus ↔ X and Plus ↔ Minus must all provide
 None, Square and Circle. A single selected frame applies to both endpoints, the
 intermediate Filled geometry, static comparison buttons and actual-size samples.
 Never pair an unframed Filled source with a framed target, silently fall back to
 another frame, or declare the pair complete after testing only Square. Builders
-reject missing or mismatched frame data. The frame exterior stays upright and
+reject missing or mismatched frame data. Read both exterior and Outline frame
+paths from source; never hardcode a previous corner radius in runtime or comparison
+masks. Current Square exterior radius is 6, with Regular centerline radius 5.125;
+Circle remains radius 10. A corner-only revision regenerates all existing framed
+morphs without changing native marks or motion. The frame exterior stays upright and
 unchanged throughout a framed transition. Default Square preserves existing
 math-morph presentation; switching frame does not retune progress or motion.
 
