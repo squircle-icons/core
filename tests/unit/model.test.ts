@@ -203,5 +203,5 @@ it('validates Square and Circle frame sources with the identical standalone arro
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }
   }
-  expect(icons.filter((icon) => icon.frames)).toHaveLength(19);
+  expect(icons.filter((icon) => icon.frames)).toHaveLength(20);
 });

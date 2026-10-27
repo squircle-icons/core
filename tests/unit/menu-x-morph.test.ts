@@ -37,3 +37,11 @@ it('keeps the Filled contour within the artboard and produces finite reversible 
   expect(menuXFrame(0.7, geometry).middle).toBe('');
   expect(menuXFrame(0.5, geometry).middleWidth).toBeGreaterThan(0);
 });
+
+it('starts the topology bridge at the frame-ready Menu extent without a width jump', () => {
+  const frame = menuXFrame(1e-6, geometry);
+  const points = frame.filled.match(/-?\d*\.?\d+/g)!.map(Number);
+  const xs = points.filter((_, i) => i % 2 === 0);
+  expect(Math.min(...xs)).toBeCloseTo(5.75, 3);
+  expect(Math.max(...xs)).toBeCloseTo(18.25, 3);
+});

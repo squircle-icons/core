@@ -1,0 +1,27 @@
+{
+  "name": "menu",
+  "description": "Three rounded menu bars in a circle frame.",
+  "tags": ["navigation", "list", "hamburger", "frame", "circle"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Menu frame extension: one shared three-bar glyph in None/Square/Circle, x=7..17 at y=8,12,16. Regular Outline is1.75 with radius.875 caps; standalone Filled is the exact Bold2.50 capsule expansion (radius1.25). Framed Filled subtracts that same standalone Bold silhouette from the solid frame, following the shared Filled-glyph frame convention. No per-frame glyph scaling or translation. Regular visible glyph bounds are x6.125..17.875/y7.125..16.875; Bold/Filled bounds x5.75..18.25/y6.75..17.25. Frame exterior bounds2..22: Square radius4, Circle radius10. Outline Square centerline bounds2.875..21.125/radius3.125; Circle radius9.125. Even at Bold, the circular frame retains positive glyph clearance. This frame-ready construction supersedes the earlier unframed 2px Menu fit; Search is unchanged. Native X/Y100/100, rotation0. Review reopened for the new shared glyph and frames.",
+  "filledTreatment": "bold-stroke",
+  "review": {
+    "status": "draft",
+    "note": "Prior approval covered the larger unframed Menu. New frame-ready shared glyph and Square/Circle await owner review."
+  },
+  "reviewHistory": [
+    {
+      "status": "approved",
+      "reviewedBy": "palamto",
+      "date": "2026-10-27",
+      "style": "outline",
+      "preview": {
+        "x": 100,
+        "y": 100,
+        "strokeWidth": 1.75,
+        "rotation": 0
+      },
+      "note": "Owner approved the current unboxed Filled = Bold 2.25 treatment and corresponding Regular 1.70 Outline. Shared centerlines and native proportions are retained, with 2px Filled primary margins."
+    }
+  ]
+}
