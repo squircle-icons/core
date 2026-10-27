@@ -1,4 +1,5 @@
 import { beforeAll, expect, it } from 'vitest';
+import pathParser from 'svg-path-parser';
 import { loadSources } from '../../tools/validate.js';
 import type { CoreIcon } from '../../src/catalog.js';
 import { buildMenuXGeometry } from '../../tools/build-menu-x.js';
@@ -51,9 +52,24 @@ for (const item of cases)
         const source = icons.find((icon) => icon.name === name)!;
         const variant = frame === 'none' ? source.filled! : source.frames![frame]!.filled!;
         const outline = frame === 'none' ? source : source.frames![frame]!;
-        expect(render(p, frame).outline).toBe(
-          String(outline.root.children[0].children[frame === 'none' ? 0 : 1].attrs.d),
+        const sourceOutline = String(
+          outline.root.children[0].children[frame === 'none' ? 0 : 1].attrs.d,
         );
+        expect(render(p, frame).outline).toBe(sourceOutline);
+        const near = render(p === 0 ? 0.00001 : 0.99999, frame);
+        const vertices = (d: string) =>
+          pathParser.makeAbsolute(pathParser.parseSVG(d)).map(({ x, y }) => [x, y]);
+        const a = vertices(sourceOutline),
+          b = vertices(near.outline + ('middle' in near ? ' ' + near.middle : ''));
+        // Either path ordering is valid; the limiting stroke endpoints must coincide.
+        for (const [points, reference] of [
+          [a, b],
+          [b, a],
+        ])
+          for (const [x, y] of points)
+            expect(Math.min(...reference.map(([u, v]) => Math.hypot(x - u, y - v)))).toBeLessThan(
+              0.0001,
+            );
         expect(render(p, frame).filled).toBe(String(variant.root.children[0].children[0].attrs.d));
       }
       for (const p of [0.000001, 0.1, 0.3, 0.5, 0.65, 0.9, 0.999999]) {
