@@ -34,6 +34,14 @@ Identify the body, housing, tab, opening, concave join and small detail separate
 
 This clarifies the whole-contour study rather than discarding the accepted Balanced Square. The present Camera housing and Folder tab revision uses restrained local construction while preserving that base reference,1.5 weight and the existing body/interior geometry. No collection-wide or unrelated redraw is authorized by this clarification.
 
+### Figma design workspace — original editable studies
+
+The owner asked to use Figma for direct shape design. The working [Shape & Icon Studies file](https://www.figma.com/design/5H3BjvQHvoTlkqp73YNx17?node-id=4-26) contains original editable24×24 Square, Camera and Folder masters in Outline/Filled, with linked enlarged comparison instances. The accepted Balanced Square is a locked reference. Camera housing and Folder tab remain separately editable draft parts. Visible Outline strokes stay at1.5 native units; an enlarged preview is not a new stroke specification.
+
+Use Figma to explore and review the design, with the accepted Square as a family reference and the part-by-part judgment above. Do not copy external artwork or force every detail into the same curve. This file is an explicit snapshot of the Core study, not automatic two-way synchronization. After an owner-approved edit, translate the accepted vector construction back into Core, record its rationale and review status, verify it, then promote through the pinned Svelte adapter to the standalone Lab. Core remains the source for shipped artwork. Lab remains the check for actual16/20/24/48px rendering, native margins, weights, style contours and application behavior. A Figma review does not bypass those checks or approve unrelated production icons.
+
+The initial canvas uses comparison board `4:26` and24px master area `4:5`. Original SVG paths were imported as native vectors; Outline Camera/Folder semantic tops are separate from body and interior parts. Filled counters remain transparent compound paths. Keep linked comparison instances and native dimensions intact when editing. Current Camera/Folder drawings still require owner visual review.
+
 ### Shared prototype grammar: Square, Camera and Folder
 
 The three study subjects share one roundness parameter. Square uses the complete superellipse directly; Camera and Folder construct natural horizontal bodies from that same whole-contour profile before adding the subject's essential feature. A shallow central housing identifies Camera; a left tab and a separate front-panel divider identify Folder. These are independent semantic deformations, not added surrounding frames. They are intentionally original trials rather than imitations of any reference image.
