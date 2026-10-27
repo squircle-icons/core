@@ -107,7 +107,7 @@ Use a native **24 × 24** artboard, centered at **12,12**. Native SVG units corr
 
 Apply the rule at the correct scale. Preserve accepted Camera/Folder fitted geometry and use intentional, documented local radii for smaller semantic details such as tabs, shoulders and handles; do not force3.25 onto every tiny part. Enclosing Square frames keep their separate radius6 exterior rule. A different comparable-elbow construction requires a meaningful geometric reason recorded in construction metadata/current rules or a newer explicit owner instruction. Acceptance of this roundness rule does not approve a particular static drawing or morph.
 
-The Camera/Folder main bodies are the object-corner reference. The original centerline-radius reference was 3.25 at Regular 1.70; current sources include the subsequent 1.75 weight refit. Reuse the current source construction instead of copying historical coordinates blindly. Small tabs, shoulders and handles retain their fitted local radii. Enclosing Square frames use a separate exterior radius of6 in the current owner-requested rounding trial. This does not change Camera/Folder or other natural-object corner radii.
+The Camera/Folder main bodies are the object-corner reference. The original centerline-radius reference was 3.25 at Regular 1.70; current sources include the subsequent 1.75 weight refit. Reuse the current source construction instead of copying historical coordinates blindly. Small tabs, shoulders and handles retain their fitted local radii. Enclosing Square frames use a separate exterior radius of6 in the owner-approved rounded construction. This does not change Camera/Folder or other natural-object corner radii.
 
 ### 3.2 Margins and optical size
 
@@ -142,7 +142,7 @@ Filled is authored fill-only geometry. It is not the result of indiscriminately 
 | Camera, Folder and other solid objects | Natural solid silhouette with intentional counters and openings        |
 | Menu (no frame) and Search             | Unboxed Bold 2.50 expansion of the shared centerlines                  |
 | Menu, Square/Circle                    | Solid frame with its compact Bold 2.50 glyph silhouette cut out        |
-| Plus, Minus and X, `frame="none"`      | Unboxed Bold 2.50, matching the explicit Bold style                    |
+| Plus, Minus and X, unframed            | Unboxed Bold 2.50, matching the explicit Bold style                    |
 | Plus, Minus and X, Square/Circle       | Solid frame with the exact Regular 1.75 symbol cut out                 |
 | Arrow and Chevron, no frame            | Solid rounded triangular head; preserve the shared source construction |
 | Arrow and Chevron, Square/Circle       | Solid frame with its compact Filled glyph silhouette cut out           |
@@ -166,7 +166,7 @@ Core may keep related artwork nested under its authoring family for source owner
 | Default frame stroke         | 1.75                                     | 1.75                       |
 | Default visible outer margin | 2 on all sides                           | 2 on all sides             |
 
-The Square stays upright when a directional glyph rotates. Its current radius6 exterior / radius5.125 Outline centerline is an owner-requested rounder trial pending visual review, replacing the previous radius4/3.125 enclosing frame. Change only the enclosing contour: glyph paths, cutouts, positions and local radii remain unchanged unless separately requested. Cutouts are transparent negative space; preserve exact unions and correct fill rules.
+The Square stays upright when a directional glyph rotates. Its current radius6 exterior / radius5.125 Outline centerline is the owner-approved rounder construction, replacing the previous radius4/3.125 enclosing frame. Change only the enclosing contour: glyph paths, cutouts, positions and local radii remain unchanged unless separately requested. Cutouts are transparent negative space; preserve exact unions and correct fill rules.
 
 Check glyph-to-frame clearance at Regular and Bold, especially near Circle borders and diagonal endpoints. The outer 2px margin is the default Regular measurement; changing the Outline stroke changes its visible exterior normally.
 
@@ -212,7 +212,7 @@ New Tab is a semantic use of the existing Plus Square variant, in either support
 
 Check supports Outline/Filled and all three frame choices. Larger None vertices are `(3.25,12.67307692) → (8.63461539,18.05769231) → (20.75,5.94230769)`. Compact Square/Circle vertices remain `(7,12.38461538) → (10.07692308,15.46153846) → (17,8.53846154)`. Both preserve the original4:9 arm ratio and45-degree slopes.
 
-Regular Outline is1.75. None Filled is the exact larger Bold2.50 expansion; framed Filled cuts out the compact Bold mark. Use one analytical union contour with radius1.25 caps/outer join and an intersected inner offset corner, never overlapping evenodd capsules. None Filled has20px primary width; compact frame geometry stays unchanged. The earlier standalone boxed Filled is superseded. Preserve prior approval history and keep the revised drawing draft.
+Regular Outline is1.75. None Filled is the exact larger Bold2.50 expansion; framed Filled cuts out the compact Bold mark. Use one analytical union contour with radius1.25 caps/outer join and an intersected inner offset corner, never overlapping evenodd capsules. None Filled has20px primary width; compact frame geometry stays unchanged. The earlier standalone boxed Filled is superseded. Preserve prior approval history; the owner has approved this current static drawing.
 
 #### Corner and entry/exit controls
 
@@ -234,7 +234,7 @@ These are a related pair of natural four-corner marks with Outline/Filled and no
 - Maximize points each rounded L toward its artboard corner. Elbow centerline radius is3.25 with straight tangent lead-ins, not a sharp H/V turn. Regular Outline remains1.75 with round end caps.
 - Minimize turns each Maximize L by180 degrees about that corner's local center: `(5.984375,5.984375)`, `(18.015625,5.984375)`, `(18.015625,18.015625)` and `(5.984375,18.015625)`. This changes the corner's direction while retaining placement, arm span, roundness and bounds; it is not a whole-icon rotation or a duplicate alias.
 - Filled is an exact Bold2.50 stroked union: radius1.25 end caps and elbow outer/inner radii4.5/2. Use tangent circular arcs and one closed contour per corner, without overlapping evenodd seams. Bold/Filled visible bounds remain2..22; Regular Outline margins are2.375.
-- Preserve prior Maximize review history and keep the rounded revision and new Minimize draft until owner review. For the named Maximize↔Minimize morph, follow [MORPH.md](MORPH.md), derive both static endpoints exactly and preserve the shared source weight/tangent construction; static implementation and motion approval remain separate.
+- Preserve prior Maximize review history; both current rounded static endpoints are owner-approved. For the named Maximize↔Minimize morph, follow [MORPH.md](MORPH.md), derive both static endpoints exactly and preserve the shared source weight/tangent construction; static implementation and motion approval remain separate.
 
 #### More controls
 
@@ -398,19 +398,19 @@ Perform the verification in section 5, finish the tests in section 6, update thi
 
 Verification checks whether the requested visual/product result is correct. Automated tests in section 6 support these checks; they do not replace visual inspection.
 
-| Check                   | Method                                                                        | Pass criterion                                                                                               |
-| ----------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| Identity and silhouette | Compare with the chosen family/reference at 16/20/24/48px                     | Recognizable, balanced and consistent; defining features survive at small sizes                              |
-| Native placement        | Measure at 24×24, X/Y 100/100, rotation 0, Regular 1.75                       | Correct center and primary margin pair; opposite margins balanced                                            |
-| Visible bounds          | Include half-stroke, caps and joins in measurements                           | Specified dimensions/margins match the current family; no hidden clipping                                    |
-| Contour relationship    | Overlay/vector-sample or compare raster masks from actual packed exports      | Objects match Regular exterior; Bold Filled matches 2.50; frame holes match their specified glyph            |
-| Frame consistency       | Toggle None/Square/Circle at equal scale and pose                             | Square/Circle share the compact glyph; None is natively larger; fixed stroke and correct per-frame treatment |
-| Frame clearance         | Inspect nearest glyph/border points at Regular and Bold                       | Positive clearance except a deliberately requested contact; default frame exterior has 2px margins           |
-| Directional consistency | Compare the source reference under rigid rotations                            | Same physical construction; no independently enlarged diagonal directions; Square stays upright              |
-| Rounding and overlaps   | Inspect caps, joins, corners and intersections at enlarged and actual sizes   | Smooth, intentional contours; no doubled edges, seams, accidental holes or unequal stroke weight             |
-| Lab behavior            | Switch icon/style/frame, edit/reset X/Y and rotation, inspect optical samples | Correct supported options, preserved independent drafts, accurate measurements and native defaults           |
-| Accessibility/layout    | Keyboard controls, accessible labels, desktop and mobile widths               | Usable controls, decorative SVGs hidden appropriately, meaningful icons named, no unintended page overflow   |
-| Affected morphs         | Compare both packed endpoints and reverse during playback                     | Correct source/style/frame endpoints; accepted motion, timing and continuity remain intact                   |
+| Check                   | Method                                                                                     | Pass criterion                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| Identity and silhouette | Compare with the chosen family/reference at 16/20/24/48px                                  | Recognizable, balanced and consistent; defining features survive at small sizes                              |
+| Native placement        | Measure at 24×24, X/Y 100/100, rotation 0, Regular 1.75                                    | Correct center and primary margin pair; opposite margins balanced                                            |
+| Visible bounds          | Include half-stroke, caps and joins in measurements                                        | Specified dimensions/margins match the current family; no hidden clipping                                    |
+| Contour relationship    | Overlay/vector-sample or compare raster masks from actual packed exports                   | Objects match Regular exterior; Bold Filled matches 2.50; frame holes match their specified glyph            |
+| Frame consistency       | Toggle None/Square/Circle at equal scale and pose                                          | Square/Circle share the compact glyph; None is natively larger; fixed stroke and correct per-frame treatment |
+| Frame clearance         | Inspect nearest glyph/border points at Regular and Bold                                    | Positive clearance except a deliberately requested contact; default frame exterior has 2px margins           |
+| Directional consistency | Compare the source reference under rigid rotations                                         | Same physical construction; no independently enlarged diagonal directions; Square stays upright              |
+| Rounding and overlaps   | Inspect caps, joins, corners and intersections at enlarged and actual sizes                | Smooth, intentional contours; no doubled edges, seams, accidental holes or unequal stroke weight             |
+| Lab behavior            | Select each named icon (including framed icons), switch style, edit/reset X/Y and rotation | Correct supported options, preserved independent drafts, accurate measurements and native defaults           |
+| Accessibility/layout    | Keyboard controls, accessible labels, desktop and mobile widths                            | Usable controls, decorative SVGs hidden appropriately, meaningful icons named, no unintended page overflow   |
+| Affected morphs         | Compare both packed endpoints and reverse during playback                                  | Correct source/style/frame endpoints; accepted motion, timing and continuity remain intact                   |
 
 For numeric measurements, use tolerances appropriate to the existing geometry checks. Opposite-margin comparisons normally use about 0.001 native units. Allow a documented antialiasing fringe in raster checks, not a genuine shape mismatch. Existing contour tests use one raster pixel at 40× magnification as a fringe allowance; do not loosen thresholds simply to make a regression pass.
 
@@ -443,7 +443,7 @@ Before handing off a new or revised comparable object corner or L elbow, verify 
 | Directional family                 | Rigid-rotation/equal-size contract and complete direction/frame coverage                                                                                        |
 | Public props, exports or generator | Generation check, direct-import graph/bundle checks, packed consumer and compatibility suite                                                                    |
 | Static endpoint used by a morph    | Regenerated endpoint data, packed endpoint comparison and affected reversal/intermediate-frame tests                                                            |
-| Lab controls or measurements       | Style/frame switching, resets, drafts, displayed spacing, keyboard access and affected viewport checks                                                          |
+| Lab controls or measurements       | Named icon/style switching, resets, local edits, displayed spacing, keyboard access and affected viewport checks                                                |
 | Documentation only                 | Verify current values against sources, resolve local links, check script names and Markdown formatting; no artwork/browser reruns unless implementation changed |
 
 Useful focused commands, **after their required build/pack preparation**, include:
