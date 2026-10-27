@@ -123,3 +123,7 @@ to two solid regions around the X hole; intermediate Filled contours are a
 separately authored topology bridge. This changes neither static construction
 nor the exact shared moving glyph in the approved Plus X pair. Menu X motion
 is pending owner review.
+
+## Chevron owner clarification — four directions plus Double (2026-10-27)
+
+Supersedes the earlier eight-direction Chevron proposal. The owner explicitly excludes diagonal Chevron icons. Keep Single Chevron in Up/Down/Left/Right and add Double Chevron in the same four directions (`chevrons-up/down/left/right`). Each of these8 identities supports None/Square/Circle with Outline/Filled:24 variants total. Single V geometry stays unchanged. Double uses two equal V marks with local vertices(-4,2),(0,-2),(4,2), shifted by -3/+3 along the vertical axis before cardinal rotation. Rotate and center without scaling; reuse exactly the same glyph in all frames. Filled closes and expands both triangles at.875, retaining.25px between them; framed Filled subtracts that same silhouette. All Arrow frame dimensions remain unchanged. Double retains at least.2218px circular clearance at Bold2.50. The total catalog remains32 identities,16 approved and16 pending directional pairs. No diagonal Chevron components or exports remain.

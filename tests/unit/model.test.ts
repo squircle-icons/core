@@ -19,14 +19,14 @@ describe('single-source artwork pipeline', () => {
       'bell',
       'camera',
       'check',
-      'chevron-down-left',
-      'chevron-down-right',
       'chevron-down',
       'chevron-left',
       'chevron-right',
-      'chevron-up-left',
-      'chevron-up-right',
       'chevron-up',
+      'chevrons-down',
+      'chevrons-left',
+      'chevrons-right',
+      'chevrons-up',
       'copy',
       'download',
       'folder',
@@ -125,14 +125,14 @@ it('available filled sources preserve named parts and original geometry through 
     'bell',
     'camera',
     'check',
-    'chevron-down-left',
-    'chevron-down-right',
     'chevron-down',
     'chevron-left',
     'chevron-right',
-    'chevron-up-left',
-    'chevron-up-right',
     'chevron-up',
+    'chevrons-down',
+    'chevrons-left',
+    'chevrons-right',
+    'chevrons-up',
     'copy',
     'download',
     'folder',
@@ -189,7 +189,7 @@ it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate
 
 it('validates Square and Circle frame sources with the identical standalone arrow glyph', async () => {
   const icons = await loadSources();
-  const arrows = icons.filter((icon) => /^(arrow|chevron)-/.test(icon.name));
+  const arrows = icons.filter((icon) => /^(arrow|chevrons?)-/.test(icon.name));
   expect(arrows).toHaveLength(16);
   for (const icon of arrows) {
     expect(Object.keys(icon.frames!)).toEqual(['square', 'circle']);
