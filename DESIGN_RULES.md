@@ -187,3 +187,13 @@ The owner requested smaller, equal arrows with room for Square/Circle frames. Th
 ## Current Chevron family — 2026-10-27
 
 Apply the same Arrow concept to Chevron:8 directions times None/Square/Circle =24 variants, with Outline/Filled for each. Round6 adds the six missing directions to existing Up/Down. Use equal90-degree V arms of length5.5*sqrt(2), endpoints at(-5.5,2.75),(0,-2.75),(5.5,2.75) before rotation. Rotate and uniformly recenter the bounding box at12,12; never scale directions independently. The same glyph/placement appears in all frames. Filled closes and expands the same triangle at half Regular.875; framed Filled subtracts that exact silhouette. Reuse Arrow frame geometry:2px exterior margins, Square exterior radius4, Circle radius10. At Bold2.50 the circular border still clears all Chevron vertices by at least.4758px. Up/Down review reopens for the new smaller shared glyph. The catalog now contains32 standalone identities:16 approved and16 directional Arrow/Chevron pairs awaiting review. Each directional family contains24 variants; styles do not change that count.
+
+## Maintained morph specification — 2026-10-27
+
+[MORPH.md](MORPH.md) defines the current pair registry, fixed weights, shared
+reversible spring, source ownership, promotion and review contract. Menu ↔ X is
+a new authored proposal: outer Menu bars become X diagonals and the middle bar
+contracts; Filled bridges its approved unboxed Bold Menu to the approved boxed
+X. Its intermediate topology and 0.6× pace await owner review. The approved
+Plus ↔ X motion and its 0.4× pace remain unchanged. Official documentation does
+not confer motion approval or change static icon approval statuses.

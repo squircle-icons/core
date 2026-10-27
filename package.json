@@ -37,7 +37,8 @@
     "README.md",
     "LICENSE",
     "DESIGN_RULES.md",
-    "ICON_BATCHES.md"
+    "ICON_BATCHES.md",
+    "MORPH.md"
   ],
   "exports": {
     "./catalog.json": "./dist/catalog.json",
@@ -55,7 +56,12 @@
       "types": "./dist/morphs/plus-x.d.ts",
       "default": "./dist/morphs/plus-x.js"
     },
-    "./morph/plus-x.json": "./dist/morphs/plus-x.json"
+    "./morph/plus-x.json": "./dist/morphs/plus-x.json",
+    "./morph/menu-x": {
+      "types": "./dist/morphs/menu-x.d.ts",
+      "default": "./dist/morphs/menu-x.js"
+    },
+    "./morph/menu-x.json": "./dist/morphs/menu-x.json"
   },
   "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {
