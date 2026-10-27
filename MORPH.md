@@ -92,13 +92,13 @@ are implementation constraints, not an invitation to retune approved motion.
 | Menu ↔ X     | `/morph/menu-x`     | `morph/menu-x`        | 0.6                            | Proposed motion; awaiting owner review                 |
 | Plus ↔ Minus | `/morph/plus-minus` | `morph/plus-minus`    | 0.6                            | Proposed single-fold motion; awaiting owner review     |
 
-**Current Plus/X geometry supersedes the original 4..20 mark bounds.** The latest
-Plus/Minus/X frame-family rule uses centered half-extents 4.5: Regular visible
-bounds 6.625..17.375, or 10.75 square. Square frame bounds remain 2..22 with
-radius 4. Static standalone Filled is unboxed Bold 2.50. The existing boxed morphs
-explicitly use **Square Filled** endpoints, whose holes match the Regular mark.
-Compare those endpoints with `frame="square"`, not the standalone Filled export.
-Do not restore the old larger glyph when preserving the approved motion.
+**Current Plus/X geometry depends on the selected native frame.** Plus/Minus/X
+None uses centered half-extents 8.75: Regular visible bounds 2.375..21.625,
+or 19.25 square; unboxed Filled Bold 2.50 spans 2..22, or 20 square.
+Square/Circle retain half-extents 4.5: Regular visible bounds 6.625..17.375,
+or 10.75 square. Square frame bounds remain 2..22 with radius 4.
+Framed Filled holes match the smaller Regular mark. Compare each endpoint with
+the same selected frame; never restore the larger None glyph inside a frame.
 
 Static endpoint approval and motion approval are separate. The frame-family
 revision reopens static Plus/Minus/X review; it does not revoke or retune the
