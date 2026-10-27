@@ -57,22 +57,59 @@ export function squircleStudy(exponent = DEFAULT_ROUNDNESS): StudyShape {
 
 type Body = { exponent: number; halfHeight: number; bump: number; tab: boolean; centerY: number };
 
-/** Compact G2 housing/tab rise, expressed in native coordinates rather than copied artwork. */
-function semanticRise(x: number, amount: number, tab: boolean) {
-  const center = tab ? -4.1 : 0;
-  const halfPlateau = tab ? 1.2 : 1.45;
-  const support = tab ? 4.5 : 5.1;
-  const distance = Math.abs(x - center);
-  if (distance <= halfPlateau) return { value: amount, derivative: 0 };
-  if (distance >= support) return { value: 0, derivative: 0 };
-  const width = support - halfPlateau,
-    t = (distance - halfPlateau) / width;
-  const smooth = t ** 3 * (10 - 15 * t + 6 * t * t);
-  const slope = 30 * t * t * (1 - t) ** 2;
+/** Native upper-edge derivatives for the unmodified shared superellipse body. */
+function upperEdge(body: Body, x: number) {
+  const n = body.exponent,
+    q = Math.abs(x),
+    a = 1 - (q / 10) ** n,
+    k = 1 / n - 1;
   return {
-    value: amount * (1 - smooth),
-    derivative: (-amount * slope * Math.sign(x - center)) / width,
+    value: -body.halfHeight * a ** (1 / n),
+    slope: ((body.halfHeight * Math.sign(x) * q ** (n - 1)) / 10 ** n) * a ** k,
+    curvature:
+      body.halfHeight *
+      (n - 1) *
+      ((q ** (n - 2) / 10 ** n) * a ** k + (q ** (2 * n - 2) / 10 ** (2 * n)) * a ** (k - 1)),
   };
+}
+
+/** Quintic endpoint interpolation preserves position, tangent and geometric curvature. */
+function structuralTransition(
+  x: number,
+  left: number,
+  right: number,
+  a: { value: number; slope: number; curvature: number },
+  b: { value: number; slope: number; curvature: number },
+) {
+  const width = right - left,
+    t = (x - left) / width;
+  const c0 = a.value,
+    c1 = width * a.slope,
+    c2 = (width * width * a.curvature) / 2;
+  const d = b.value - c0 - c1 - c2,
+    e = width * b.slope - c1 - 2 * c2,
+    f = width * width * b.curvature - 2 * c2;
+  const c3 = 10 * d - 4 * e + f / 2,
+    c4 = -15 * d + 7 * e - f,
+    c5 = 6 * d - 3 * e + f / 2;
+  return {
+    value: c0 + t * (c1 + t * (c2 + t * (c3 + t * (c4 + t * c5)))),
+    slope: (c1 + t * (2 * c2 + t * (3 * c3 + t * (4 * c4 + t * 5 * c5)))) / width,
+  };
+}
+
+/** Restrained level housing/tab roofs; only the semantic upper sections are replaced. */
+function semanticTop(body: Body, x: number) {
+  const supportLeft = body.tab ? -8.5 : -5.1,
+    supportRight = body.tab ? 0.8 : 5.1;
+  const roofLeft = body.tab ? -4.5 : -2,
+    roofRight = body.tab ? -2 : 2;
+  if (x <= supportLeft || x >= supportRight) return null;
+  const roof = { value: -body.halfHeight - body.bump, slope: 0, curvature: 0 };
+  if (x >= roofLeft && x <= roofRight) return roof;
+  return x < roofLeft
+    ? structuralTransition(x, supportLeft, roofLeft, upperEdge(body, supportLeft), roof)
+    : structuralTransition(x, roofRight, supportRight, roof, upperEdge(body, supportRight));
 }
 
 /** The shared whole-body profile is anisotropic before its native-coordinate offset is made. */
@@ -91,9 +128,11 @@ function bodySample(body: Body, angle: number) {
   let y = body.halfHeight * r * s,
     dy = body.halfHeight * (dr * s + r * c);
   if (s < 0) {
-    const rise = semanticRise(x, body.bump, body.tab);
-    y -= rise.value;
-    dy -= rise.derivative * dx;
+    const top = semanticTop(body, x);
+    if (top) {
+      y = top.value;
+      dy = top.slope * dx;
+    }
   }
   return { point: [12 + x, body.centerY + y] as Point, tangent: [dx, dy] as Point };
 }
@@ -133,7 +172,7 @@ function studyBody(subject: 'camera' | 'folder', exponent: number): Body {
   const body: Body = {
     exponent,
     halfHeight: subject === 'camera' ? 6.9 : 7,
-    bump: subject === 'camera' ? 1.65 : 1.8,
+    bump: subject === 'camera' ? 1.1 : 0.8,
     tab: subject === 'folder',
     centerY: 0,
   };

@@ -2,6 +2,8 @@
 
 > **Current concept — original squircle identity:** start with [ICON_RULES.md](ICON_RULES.md#current-design-direction--original-squircle-identity). The owner requested a concept/documentation update first. Develop our own shape language from icon meaning; external collections must not supply geometry, proportions, motifs or style recipes. Ordinary circular rounding alone does not establish the intended squircle identity. Numerical corner values below record the approved legacy implementation, not a universal future design recipe. Preserve current artwork and approval records; prototypes and redesign implementation require a later artwork task.
 
+> **Current study review —2026-10-28:** Balanced Square at1.5 is accepted. Camera housing and Folder tab were rejected; revise only those top features while preserving the body language. See [owner review](ICON_RULES.md#owner-review-balanced-square-accepted-object-tops-rejected).
+
 > **Base-shape study —2026-10-28:** compare whole-contour Square, Camera and Folder prototypes together before extending the redesign. New-study/new-design stroke is1.5; existing artwork and motion keep their current1.75 baseline. See the [canonical scoped rule](ICON_RULES.md#base-shape-first-new-design-stroke15--2026-10-28).
 
 > **Camera trial —2026-10-28:** the owner now requests the first Camera-only redesign and local Lab preview. See the [canonical trial scope](ICON_RULES.md#camera-original-squircle-trial--2026-10-28). Camera reviews reopen; other artwork remains unchanged. The earlier concept-only scope is historical.

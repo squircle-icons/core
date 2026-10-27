@@ -110,3 +110,52 @@ it('Camera aperture and Folder divider retain deliberate exact native counters',
   expect(dividerArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([0.75, 0.75]);
   expect(bodyCommands(folder.outline).at(-1)!.code).toBe('Z');
 });
+
+it('semantic-top revision preserves the entire lower body and interiors modulo vertical recentering', () => {
+  for (const subject of ['camera', 'folder'] as const)
+    for (const exponent of [2.7, 3.2, 4]) {
+      const shape = prototypeStudy(subject, exponent);
+      const centerY = bodyCommands(shape.filled)[0].y;
+      const halfHeight = subject === 'camera' ? 6.9 : 7;
+      // All lower geometry and upper side portions outside either semantic feature are unchanged.
+      const stableBody = bodySamples(shape.filled).filter(
+        ({ point: [x, y] }) =>
+          y >= centerY || (subject === 'camera' ? x < 6.8 || x > 17.2 : x < 3.4 || x > 12.9),
+      );
+      expect(stableBody.length).toBeGreaterThan(1024);
+      for (const sample of stableBody) {
+        const x = Math.abs((sample.point[0] - 12) / 10);
+        const y = Math.abs((sample.point[1] - centerY) / halfHeight);
+        expect(x ** exponent + y ** exponent).toBeCloseTo(1, 5);
+      }
+      const outline = pathParser.makeAbsolute(pathParser.parseSVG(shape.outline));
+      const firstClose = outline.findIndex((command) => command.code === 'Z');
+      const detail = outline.slice(firstClose + 1);
+      if (subject === 'camera') {
+        expect(detail[0].x).toBe(8.9);
+        expect(detail[0].y - centerY).toBeCloseTo(0.55, 6);
+        expect(detail[4].x).toBe(17.55);
+        expect(detail[4].y - centerY).toBeCloseTo(-2.25, 6);
+      } else {
+        expect(detail[0].x).toBe(4.6);
+        expect(detail[1].x).toBe(19.4);
+        expect(detail[0].y - centerY).toBeCloseTo(-2.05, 6);
+      }
+    }
+});
+
+it('Camera housing and shorter Folder tab have deliberate level roofs instead of additive bumps', () => {
+  for (const subject of ['camera', 'folder'] as const) {
+    const shape = prototypeStudy(subject);
+    const centerY = bodyCommands(shape.filled)[0].y;
+    const roof = bodySamples(shape.filled).filter(
+      ({ point: [x, y] }) =>
+        y < centerY && (subject === 'camera' ? x > 10.2 && x < 13.8 : x > 7.7 && x < 9.8),
+    );
+    expect(roof.length).toBeGreaterThan(8);
+    for (const { point, tangent } of roof) {
+      expect(point[1] - centerY).toBeCloseTo(subject === 'camera' ? -8 : -7.8, 6);
+      expect(tangent[1]).toBeCloseTo(0, 6);
+    }
+  }
+});
