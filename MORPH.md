@@ -133,16 +133,24 @@ crosses, vertical merges, faster default pacing and a held midpoint were rejecte
 
 ### Menu ↔ X proposal
 
-Outline maps the outer Menu bars onto the X diagonals. Move them inward and open
-into X while the middle bar contracts to zero length and thickness. Keep round
-ends, continuous movement and exact current source endpoints.
+Owner correction, 2026-10-27: merge Menu into one horizontal line before opening X.
+During progress 0..0.5, keep all bars horizontal while moving the outer bars to the
+center and contracting the middle bar to zero length and thickness. At exactly
+0.5, render one horizontal stroke at the native Menu extent. During 0.5..1, open
+the two merged bars into opposite X diagonals, with no scheduled midpoint hold.
+Use C2 interpolation on both phases, preserve round ends and source endpoints,
+and interpolate the projected horizontal extent from Menu to X to avoid a size
+bulge. Reverse along the same geometry with the existing shared spring at 0.6×.
+At the merge, Filled must have one capsule union; coincident contours must not
+cancel its hole under even-odd fill. Test before, at and after the merge in all
+three supported frames and both styles.
 
 Filled uses the same selected None/Square/Circle variant at both ends. None is
 the positive unboxed Bold mark. Square/Circle keep the source frame upright and
 cut out the exact union of the moving bars. Menu's source cutout is Bold2.50,
 which interpolates to X's Regular1.75 cutout in framed variants; None stays2.50.
 The previous unboxed-to-box topology bridge is superseded. See the complete frame
-family rule below. Keep the existing0.6× rate and Outline motion for review.
+family rule below. The horizontal-first revision remains available for owner review.
 
 ### Plus ↔ Minus proposal
 
