@@ -3,6 +3,7 @@ export const STUDY_STROKE = 1.5;
 export const DEFAULT_ROUNDNESS = 3.2;
 type Point = [number, number];
 export type StudyShape = { outline: string; filled: string };
+export type StudySubject = 'square' | 'camera' | 'folder';
 const round = (n: number) => String(Number(n.toFixed(7)));
 const xy = (p: Point) => p.map(round).join(' ');
 
@@ -52,6 +53,146 @@ export function squircleStudy(exponent = DEFAULT_ROUNDNESS): StudyShape {
   if (!Number.isFinite(exponent) || exponent < 2 || exponent > 5)
     throw new RangeError('Study exponent must be between2 and5');
   return { outline: contour(exponent, STUDY_STROKE / 2), filled: contour(exponent, 0) };
+}
+
+type Body = { exponent: number; halfHeight: number; bump: number; tab: boolean; centerY: number };
+
+/** Compact G2 housing/tab rise, expressed in native coordinates rather than copied artwork. */
+function semanticRise(x: number, amount: number, tab: boolean) {
+  const center = tab ? -4.1 : 0;
+  const halfPlateau = tab ? 1.2 : 1.45;
+  const support = tab ? 4.5 : 5.1;
+  const distance = Math.abs(x - center);
+  if (distance <= halfPlateau) return { value: amount, derivative: 0 };
+  if (distance >= support) return { value: 0, derivative: 0 };
+  const width = support - halfPlateau,
+    t = (distance - halfPlateau) / width;
+  const smooth = t ** 3 * (10 - 15 * t + 6 * t * t);
+  const slope = 30 * t * t * (1 - t) ** 2;
+  return {
+    value: amount * (1 - smooth),
+    derivative: (-amount * slope * Math.sign(x - center)) / width,
+  };
+}
+
+/** The shared whole-body profile is anisotropic before its native-coordinate offset is made. */
+function bodySample(body: Body, angle: number) {
+  const c = Math.cos(angle),
+    s = Math.sin(angle),
+    n = body.exponent;
+  const ac = Math.abs(c),
+    as = Math.abs(s),
+    f = ac ** n + as ** n;
+  const df = n * (-(ac ** (n - 2)) * c * s + as ** (n - 2) * s * c);
+  const r = f ** (-1 / n),
+    dr = (-r * df) / (n * f);
+  const x = 10 * r * c,
+    dx = 10 * (dr * c - r * s);
+  let y = body.halfHeight * r * s,
+    dy = body.halfHeight * (dr * s + r * c);
+  if (s < 0) {
+    const rise = semanticRise(x, body.bump, body.tab);
+    y -= rise.value;
+    dy -= rise.derivative * dx;
+  }
+  return { point: [12 + x, body.centerY + y] as Point, tangent: [dx, dy] as Point };
+}
+
+function bodyOffset(body: Body, angle: number, inset: number) {
+  const sample = bodySample(body, angle),
+    [dx, dy] = sample.tangent;
+  const speed = Math.hypot(dx, dy),
+    normal: Point = [dy / speed, -dx / speed];
+  if (!inset) return sample;
+  const h = 0.00001,
+    a = bodySample(body, angle - h).tangent,
+    b = bodySample(body, angle + h).tangent;
+  const ddx = (b[0] - a[0]) / (2 * h),
+    ddy = (b[1] - a[1]) / (2 * h);
+  const dot = (dx * ddx + dy * ddy) / speed ** 2;
+  const dn: Point = [ddy / speed - normal[0] * dot, -ddx / speed - normal[1] * dot];
+  return {
+    point: [sample.point[0] - inset * normal[0], sample.point[1] - inset * normal[1]] as Point,
+    tangent: [dx - inset * dn[0], dy - inset * dn[1]] as Point,
+  };
+}
+
+function bodyContour(body: Body, inset: number) {
+  const count = 512,
+    step = (2 * Math.PI) / count;
+  let d = `M${xy(bodyOffset(body, 0, inset).point)}`;
+  for (let i = 0; i < count; i++) {
+    const a = bodyOffset(body, i * step, inset),
+      b = bodyOffset(body, (i + 1) * step, inset);
+    d += `C${xy([a.point[0] + (a.tangent[0] * step) / 3, a.point[1] + (a.tangent[1] * step) / 3])} ${xy([b.point[0] - (b.tangent[0] * step) / 3, b.point[1] - (b.tangent[1] * step) / 3])} ${xy(b.point)}`;
+  }
+  return d + 'Z';
+}
+
+function studyBody(subject: 'camera' | 'folder', exponent: number): Body {
+  const body: Body = {
+    exponent,
+    halfHeight: subject === 'camera' ? 6.9 : 7,
+    bump: subject === 'camera' ? 1.65 : 1.8,
+    tab: subject === 'folder',
+    centerY: 0,
+  };
+  // Locate the upper extreme first, then center visible bounds rather than the tab's mass.
+  let angle = Math.PI,
+    minimum = Infinity;
+  const step = Math.PI / 512;
+  for (let i = 0; i <= 512; i++) {
+    const candidate = Math.PI + i * step,
+      y = bodySample(body, candidate).point[1];
+    if (y < minimum) {
+      minimum = y;
+      angle = candidate;
+    }
+  }
+  let lo = angle - step,
+    hi = angle + step;
+  for (let i = 0; i < 36; i++) {
+    const a = lo + (hi - lo) / 3,
+      b = hi - (hi - lo) / 3;
+    if (bodySample(body, a).point[1] < bodySample(body, b).point[1]) hi = b;
+    else lo = a;
+  }
+  minimum = bodySample(body, (lo + hi) / 2).point[1];
+  body.centerY = 12 - (minimum + body.halfHeight) / 2;
+  return body;
+}
+const circlePath = (x: number, y: number, r: number) =>
+  `M${round(x - r)} ${round(y)}a${round(r)} ${round(r)} 0 1 0 ${round(2 * r)} 0a${round(r)} ${round(r)} 0 1 0 ${round(-2 * r)} 0Z`;
+
+/** Three original subject prototypes; never substituted into the production icon catalog. */
+export function prototypeStudy(subject: StudySubject, exponent = DEFAULT_ROUNDNESS): StudyShape {
+  if (subject === 'square') return squircleStudy(exponent);
+  if (subject !== 'camera' && subject !== 'folder') throw new RangeError('Unknown study subject');
+  if (!Number.isFinite(exponent) || exponent < 2 || exponent > 5)
+    throw new RangeError('Study exponent must be between2 and5');
+  const body = studyBody(subject, exponent),
+    half = STUDY_STROKE / 2;
+  const exterior = bodyContour(body, 0),
+    centerline = bodyContour(body, half);
+  if (subject === 'camera') {
+    const lensY = body.centerY + 0.55,
+      indicatorY = body.centerY - 2.25;
+    return {
+      outline:
+        centerline +
+        circlePath(12, lensY, 3.1) +
+        `M17.55 ${round(indicatorY)}L17.55 ${round(indicatorY)}`,
+      filled: exterior + circlePath(12, lensY, 3.1 - half) + circlePath(17.55, indicatorY, half),
+    };
+  }
+  const dividerY = body.centerY - 2.05,
+    left = 4.6,
+    right = 19.4;
+  const capsule = `M${left} ${round(dividerY - half)}H${right}a${half} ${half} 0 0 1 0 ${STUDY_STROKE}H${left}a${half} ${half} 0 0 1 0 ${-STUDY_STROKE}Z`;
+  return {
+    outline: centerline + `M${left} ${round(dividerY)}H${right}`,
+    filled: exterior + capsule,
+  };
 }
 /** Explicit comparison references, not additional production icons. */
 export function studyReference(kind: 'rounded-square' | 'circle'): StudyShape {
