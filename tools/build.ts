@@ -2,6 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { loadSources, root } from './validate.js';
 import { buildSunMoonGeometry } from './build-sun-moon.js';
+import { buildPlusXGeometry } from './build-plus-x.js';
 const icons = await loadSources();
 await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
@@ -23,4 +24,8 @@ await mkdir(resolve(root, 'dist/morphs'), { recursive: true });
 await writeFile(
   resolve(root, 'dist/morphs/sun-moon.json'),
   JSON.stringify(buildSunMoonGeometry(icons), null, 2) + '\n',
+);
+await writeFile(
+  resolve(root, 'dist/morphs/plus-x.json'),
+  JSON.stringify(buildPlusXGeometry(icons), null, 2) + '\n',
 );

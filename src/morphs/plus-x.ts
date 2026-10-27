@@ -1,0 +1,30 @@
+export type PlusXGeometry = {
+  center: [number, number];
+  plusExtent: number;
+  xExtent: number;
+  strokeWidth: number;
+  box: string;
+  plus: { outline: string; filled: string };
+  x: { outline: string; filled: string };
+};
+
+/** Rotate and lengthen the SAME cross, with fixed stroke and visible side bounds. */
+export function plusXFrame(progress: number, geometry: PlusXGeometry) {
+  const p = Math.min(1, Math.max(0, Number.isFinite(progress) ? progress : 0));
+  if (p === 0) return geometry.plus;
+  if (p === 1) return geometry.x;
+  const angle = (Math.PI / 4) * p;
+  const cos = Math.cos(angle),
+    sin = Math.sin(angle);
+  const extent = geometry.plusExtent + (geometry.xExtent - geometry.plusExtent) * p;
+  const length = extent / cos;
+  const h = geometry.strokeWidth / 2;
+  const format = (value: number) => String(Math.round(value * 1e8) / 1e8);
+  const point = (x: number, y: number) =>
+    `${format(geometry.center[0] + x * cos - y * sin)} ${format(geometry.center[1] + x * sin + y * cos)}`;
+  const outline = `M${point(-length, 0)} L${point(length, 0)} M${point(0, -length)} L${point(0, length)}`;
+  // Exact union of the two round-ended strokes: one hole, no overlap seam or mask IDs.
+  const arc = `A${format(h)} ${format(h)} 0 0 1`;
+  const cutout = `M${point(-length, -h)} L${point(-h, -h)} L${point(-h, -length)} ${arc} ${point(h, -length)} L${point(h, -h)} L${point(length, -h)} ${arc} ${point(length, h)} L${point(h, h)} L${point(h, length)} ${arc} ${point(-h, length)} L${point(-h, h)} L${point(-length, h)} ${arc} ${point(-length, -h)} Z`;
+  return { outline, filled: `${geometry.box} ${cutout}` };
+}
