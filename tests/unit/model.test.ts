@@ -8,8 +8,14 @@ describe('single-source artwork pipeline', () => {
   it('validates the original collection', async () => {
     const icons = await loadSources();
     expect(icons.map((icon) => icon.name)).toEqual([
+      'arrow-down-left',
+      'arrow-down-right',
+      'arrow-down',
       'arrow-left',
       'arrow-right',
+      'arrow-up-left',
+      'arrow-up-right',
+      'arrow-up',
       'bell',
       'camera',
       'check',
@@ -102,8 +108,14 @@ it('derives adjustable negative-space geometry by part and rejects invalid targe
 it('available filled sources preserve named parts and original geometry through optimization', async () => {
   const icons = await loadSources();
   expect(icons.filter((icon) => icon.filled).map((icon) => icon.name)).toEqual([
+    'arrow-down-left',
+    'arrow-down-right',
+    'arrow-down',
     'arrow-left',
     'arrow-right',
+    'arrow-up-left',
+    'arrow-up-right',
+    'arrow-up',
     'bell',
     'camera',
     'check',

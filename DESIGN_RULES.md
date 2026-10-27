@@ -2,7 +2,7 @@
 
 Current motion approval: Plus ↔ X continuous horizontal merge is owner-approved on2026-10-27. See the approved motion reference at the end of this document.
 
-Current approval status: all20 pairs are owner-approved as of2026-10-27, including Sun with3px visible rays. Earlier approval counts below are historical. Moon uses the accepted -30-degree pose as its native0-degree source orientation.
+Current approval status:20 of26 pairs are owner-approved as of2026-10-27. The six Round5 compass arrows are drafts; the approved20 include Sun with3px visible rays. Earlier approval counts below are historical. Moon uses the accepted -30-degree pose as its native0-degree source orientation.
 
 Owner direction recorded on 2026-10-26; Moon approval added on 2026-10-27. These rules guide new drawings and revisions; Folder, Camera, Heart and Settings Outline/Filled, plus Search Outline, are approved references. Bell is also approved after its solid Filled clapper correction; Sun Outline/Filled are also owner-approved after enlarging the disc and shortening the rays; Moon Outline/Filled were approved on 2026-10-27; the first eight static icons are owner-approved; Plus and X Outline/Filled are owner-approved as of 2026-10-27; Copy Outline/Filled are also owner-approved as of 2026-10-27; three Round 3 and four Round 4 drawings await review. Search’s earlier boxed pair was approved on 2026-10-27; its current Bold Filled revision was subsequently approved on 2026-10-27.
 
@@ -169,3 +169,7 @@ The owner explicitly approved the current continuous horizontal-merge motion and
 - Accepted implementation: core `e4a739a4fde20156bfe7a812f78918f06daeb75b`, Svelte adapter `190b84b49ea2e058fc99d358298a392c0271eaee`; preview `/lab/morph/plus-x`.
 
 Keep this version as the accepted reference for later revisions. The earlier simple rotation, vertical merge, fast pacing and horizontal hold are superseded. Static icon approvals remain unchanged.
+
+## Round5 directional arrows
+
+Add Arrow Up/Down and all four diagonal directions to complete the eight compass arrows. Use the approved Arrow Right centerline proportions, baked rotation and uniform fitting with fixed Regular1.70 and .85 round caps/joins. New Up/Down have2px top/bottom primary margins and naturally larger left/right spacing; diagonals use2px on both pairs. Construct Filled with the shared shaft capsule and a solid triangular head expanded around the same head vertices at radius.85. Keep the existing approved Left/Right source unchanged, including its historical3.15px horizontal margin. Do not infer approval of these six new drawings from the approved reference. All six pairs await owner review.

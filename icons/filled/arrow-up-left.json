@@ -1,0 +1,12 @@
+{
+  "name": "arrow-up-left",
+  "description": "A up and left-facing navigation arrow with a straight shaft and a solid rounded triangular head.",
+  "tags": ["arrow", "navigation", "direction", "northwest", "up", "left", "filled"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Round 5 completes the eight compass arrows. Rotate the approved Arrow Right straight shaft and V head by -135 degrees about 12,12, uniformly fit centerlines to a 9.15-unit primary half extent, then bake coordinates into source. Reference centerline points before rotation are shaft (4,12) to (20,12) and head (14,6) to (20,12) to (14,18). Centerline fit factor 1.6175067620; keep Regular1.70 unchanged instead of scaling stroke. Both horizontal and vertical visible margins are exactly2px. Outline keeps an open straight-arm V with .85 round caps and joins. Filled uses the exact .85 capsule around the same shaft and a solid triangle expanded by .85 round exterior corners around those same head vertices. Tips, shoulders and exterior align at Regular1.70; the solid head is the accepted semantic interior exception. No enclosing box, broad curved-head fillet or preview transform. Existing approved Left/Right artwork is preserved. Both new styles await owner review.",
+  "filledTreatment": "solid-head",
+  "review": {
+    "status": "draft",
+    "note": "Round 5: new direction derived from the approved Arrow Right family, awaiting owner visual review."
+  }
+}
