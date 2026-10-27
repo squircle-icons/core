@@ -1,0 +1,12 @@
+{
+  "name": "maximize",
+  "description": "Four outward corners for maximizing a view.",
+  "tags": ["window", "maximize", "expand", "fullscreen"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Four equal L corners occupy the 8..16 centerline bounds. Top-left is M8 10.5 V8 H10.5; the other corners are rigid quarter-turns about 12,12. Unframed Filled is the exact Bold 2.50 expansion, with radius-1.25 outer joins and round caps, like Menu. Framed Filled reuses the same Bold silhouette. Adjacent corner endpoints are 3px apart, leaving .5px of visible clearance at Bold. Regular exterior bounds 7.125..16.875; Bold/Filled bounds 6.75..17.25. Circle clearance at Bold exceeds .96px. All None/Square/Circle forms use the identical native glyph position and size, without per-frame transforms. Outline defaults to Regular 1.75 with round caps/joins, Thin 1.25 and Bold 2.50. Standard frame exteriors span 2..22, with Square radius 4 and Circle radius 10; Outline frame centerlines span 2.875..21.125 with corner radius 3.125 / Circle radius 9.125. Framed Filled subtracts the exact standalone Filled silhouette as transparent negative space. Original project geometry; no third-party SVG paths used. All forms remain drafts pending owner review.",
+  "review": {
+    "status": "draft",
+    "note": "New window action icon and frame variants; awaits owner review."
+  },
+  "filledTreatment": "bold-stroke"
+}

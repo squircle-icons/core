@@ -1,0 +1,12 @@
+{
+  "name": "chevron-line-right",
+  "description": "A rounded chevron pointing right toward a separate stop line.",
+  "tags": ["chevron", "caret", "navigation", "line", "right"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Original extension of the existing project Chevron family, using the supplied reference only for icon meaning, without third-party SVG paths. Chevron Up Down and Left Right combine two outward-facing heads. Up Down vertices are (8,10.5),(12,6.5),(16,10.5) and (16,13.5),(12,17.5),(8,13.5); the Filled heads have1.25px central separation, and Bold Outline retains.5px between endpoint caps. Chevron Line Up uses V vertices (8,15.5),(12,11.5),(16,15.5), with a separate bar from(8,8.5) to(16,8.5), giving1.25px Regular and.5px Bold head/bar clearance. Rotate the exact construction for other cardinal directions, without independent scaling. All source strokes are Regular1.75 with round caps/joins; Filled is the same triangle expanded by.875 plus a matching.875-radius bar capsule where present. None/Square/Circle reuse one glyph at identical position and size. Standard frame exteriors2..22, Square radius4, Circle radius10; Outline centerline radius3.125/9.125. Framed Filled subtracts the exact standalone solid-head-and-line silhouette as transparent negative space. Circle clearance remains positive at Bold2.50. All six new identities and frames are drafts; existing Single/Double Chevron geometry is unchanged.",
+  "filledTreatment": "solid-head",
+  "review": {
+    "status": "draft",
+    "note": "New opposed Chevron / Chevron Line family and frames; awaits owner review."
+  }
+}

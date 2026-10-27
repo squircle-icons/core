@@ -8,6 +8,9 @@ describe('single-source artwork pipeline', () => {
   it('validates the original collection', async () => {
     const icons = await loadSources();
     expect(icons.map((icon) => icon.name)).toEqual([
+      'align-center',
+      'align-left',
+      'align-right',
       'arrow-down-left',
       'arrow-down-right',
       'arrow-down',
@@ -20,20 +23,35 @@ describe('single-source artwork pipeline', () => {
       'camera',
       'check',
       'chevron-down',
+      'chevron-left-right',
       'chevron-left',
+      'chevron-line-down',
+      'chevron-line-left',
+      'chevron-line-right',
+      'chevron-line-up',
       'chevron-right',
+      'chevron-up-down',
       'chevron-up',
       'chevrons-down',
       'chevrons-left',
       'chevrons-right',
       'chevrons-up',
       'copy',
+      'corner-up-right',
       'download',
+      'external-link',
       'folder',
       'heart',
+      'log-in',
+      'log-out',
+      'maximize',
       'menu',
       'minus',
       'moon',
+      'more-horizontal',
+      'more-vertical',
+      'new-tab',
+      'new-window',
       'plus',
       'search',
       'settings',
@@ -115,6 +133,9 @@ it('derives adjustable negative-space geometry by part and rejects invalid targe
 it('available filled sources preserve named parts and original geometry through optimization', async () => {
   const icons = await loadSources();
   expect(icons.filter((icon) => icon.filled).map((icon) => icon.name)).toEqual([
+    'align-center',
+    'align-left',
+    'align-right',
     'arrow-down-left',
     'arrow-down-right',
     'arrow-down',
@@ -127,20 +148,35 @@ it('available filled sources preserve named parts and original geometry through 
     'camera',
     'check',
     'chevron-down',
+    'chevron-left-right',
     'chevron-left',
+    'chevron-line-down',
+    'chevron-line-left',
+    'chevron-line-right',
+    'chevron-line-up',
     'chevron-right',
+    'chevron-up-down',
     'chevron-up',
     'chevrons-down',
     'chevrons-left',
     'chevrons-right',
     'chevrons-up',
     'copy',
+    'corner-up-right',
     'download',
+    'external-link',
     'folder',
     'heart',
+    'log-in',
+    'log-out',
+    'maximize',
     'menu',
     'minus',
     'moon',
+    'more-horizontal',
+    'more-vertical',
+    'new-tab',
+    'new-window',
     'plus',
     'search',
     'settings',
@@ -192,7 +228,7 @@ it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate
 it('validates Square and Circle frame sources with the identical standalone arrow glyph', async () => {
   const icons = await loadSources();
   const arrows = icons.filter((icon) => /^(arrow|chevrons?)-/.test(icon.name));
-  expect(arrows).toHaveLength(16);
+  expect(arrows).toHaveLength(22);
   for (const icon of arrows) {
     expect(Object.keys(icon.frames!)).toEqual(['square', 'circle']);
     for (const frame of Object.values(icon.frames!)) {
@@ -203,5 +239,5 @@ it('validates Square and Circle frame sources with the identical standalone arro
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }
   }
-  expect(icons.filter((icon) => icon.frames)).toHaveLength(20);
+  expect(icons.filter((icon) => icon.frames)).toHaveLength(38);
 });

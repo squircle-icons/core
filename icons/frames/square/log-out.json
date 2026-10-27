@@ -1,0 +1,12 @@
+{
+  "name": "log-out",
+  "description": "A right-pointing arrow leaving a rounded open door in a square frame.",
+  "tags": ["authentication", "session", "logout", "exit", "frame", "square"],
+  "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
+  "construction": "Door centerlines span y7.5..16.5 with radius1.5 corners. Entry door opens left at x12.5 and closes at x16.5; exit is mirrored about12,12 and opens right at x11.5 with left side x7.5. Both arrows point right: entry shaft x7.5..12.5 / head base x9.5, exit shaft x11.5..16.5 / head base x13.5, at y12 with head arms y9..15. Filled uses the exact radius.875 expansion of the C door, outer radius2.375 / inner radius.625, and an analytical merged shaft/solid-head contour; door and arrow stay disjoint. Combined Regular visible bounds6.625..17.375 on both axes; Bold circular clearance exceeds.26px. All None/Square/Circle forms reuse exactly the same native glyph, with no per-frame scale or translation. Outline is Regular1.75 with round caps/joins; Thin1.25 and Bold2.50 use the same centerlines. Standard solid frame exteriors are bounds2..22, Square radius4 / Circle radius10; Outline frame centerlines are bounds2.875..21.125 with radius3.125 / circle radius9.125. Frames remain upright, with2px default outer margins. Framed Filled subtracts the exact standalone Filled silhouette as transparent negative space. All geometry is original to this project; external references establish meaning only. Native X/Y100/100, rotation0. All new forms remain draft pending owner review.",
+  "filledTreatment": "solid-head",
+  "review": {
+    "status": "draft",
+    "note": "New action/alignment icon and frame variants; awaits owner review."
+  }
+}
