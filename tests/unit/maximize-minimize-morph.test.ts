@@ -48,80 +48,85 @@ it('clamps finite progress and safely resets nonfinite inputs', () => {
   expect(maximizeMinimizeFrame(2, geometry)).toEqual(maximizeMinimizeFrame(1, geometry));
 });
 
-it('keeps four rigid parts, circular radii and fixed weight throughout a reversible fold', () => {
+it('anchors the tips while four rounded elbows fold inward without rigid rotation', () => {
   for (let step = 1; step < 100; step++) {
     const p = step / 100;
     const frame = maximizeMinimizeFrame(p, geometry);
     expect(frame.parts.map(({ id }) => id)).toEqual(['tl', 'tr', 'br', 'bl']);
     for (const style of ['outline', 'filled'] as const) {
       expect(frame[style]).not.toMatch(/NaN|Infinity/);
-      const source = parse(geometry.maximize[style]);
-      const moving = parse(frame[style]);
-      expect(moving.map(({ code }) => code)).toEqual(source.map(({ code }) => code));
-      moving.forEach((command, index) => {
-        const original = source[index];
-        if (command.command === 'elliptical arc' && original.command === 'elliptical arc')
-          expect([command.rx, command.ry, command.largeArc, command.sweep]).toEqual([
-            original.rx,
-            original.ry,
-            original.largeArc,
-            original.sweep,
-          ]);
-      });
-      for (let corner = 0; corner < 4; corner++) {
-        const center = geometry.corners[corner].center;
-        const movingPart = parse(frame.parts[corner][style]);
-        const originalPart = parse(geometry.corners[corner].maximize[style]);
-        movingPart.forEach((point, index) => {
-          if (point.command === 'closepath') return;
-          const original = originalPart[index];
-          expect(Math.hypot(point.x - center[0], point.y - center[1])).toBeCloseTo(
-            Math.hypot(original.x - center[0], original.y - center[1]),
-            7,
-          );
-        });
-      }
+      for (const command of parse(frame[style]))
+        if (command.command === 'elliptical arc') {
+          expect(command.rx).toBe(command.ry);
+          expect(style === 'outline' ? [3.25] : [1.25, 2, 4.5]).toContain(command.rx);
+        }
     }
+    frame.parts.forEach((part, index) => {
+      const moving = parse(part.outline),
+        source = parse(geometry.corners[index].maximize.outline);
+      for (const at of [0, -1]) {
+        expect(moving.at(at)!.x).toBe(source.at(at)!.x);
+        expect(moving.at(at)!.y).toBe(source.at(at)!.y);
+      }
+    });
     maximizeMinimizeFrame(1 - p, geometry);
     expect(maximizeMinimizeFrame(p, geometry)).toEqual(frame);
   }
 });
 
-it('approaches both endpoints continuously and passes the midpoint without a hold', () => {
+it('approaches both source silhouettes continuously despite reversed endpoint traversal', () => {
   for (const [near, exact] of [
     [0.00001, 0],
     [0.99999, 1],
-  ]) {
+  ])
     for (const style of ['outline', 'filled'] as const) {
-      const a = parse(maximizeMinimizeFrame(near, geometry)[style]);
-      const b = parse(maximizeMinimizeFrame(exact, geometry)[style]);
-      a.forEach((point, index) => {
-        if (point.command === 'closepath') return;
-        expect(point.x).toBeCloseTo(b[index].x, 6);
-        expect(point.y).toBeCloseTo(b[index].y, 6);
-      });
+      const a = parse(maximizeMinimizeFrame(near, geometry)[style]).filter(
+        (c) => c.command !== 'closepath',
+      );
+      const b = parse(maximizeMinimizeFrame(exact, geometry)[style]).filter(
+        (c) => c.command !== 'closepath',
+      );
+      for (const [points, target] of [
+        [a, b],
+        [b, a],
+      ])
+        for (const point of points)
+          expect(
+            Math.min(...target.map((other) => Math.hypot(point.x - other.x, point.y - other.y))),
+          ).toBeLessThan(0.00001);
     }
-  }
-  const positions = [0.49, 0.5, 0.51].map(
-    (p) => parse(maximizeMinimizeFrame(p, geometry).outline)[0],
-  );
-  const before = Math.hypot(positions[1].x - positions[0].x, positions[1].y - positions[0].y);
-  const after = Math.hypot(positions[2].x - positions[1].x, positions[2].y - positions[1].y);
-  expect(before).toBeGreaterThan(0.1);
-  expect(after).toBeCloseTo(before, 7);
 });
 
-it('keeps every corner inside the artboard even while its intermediate margin breathes', () => {
-  // A circle containing a whole source L also contains every rigid rotation of it.
-  // The elbow and its cap contours lie inside the endpoint square plus half weight.
-  for (const corner of geometry.corners) {
-    const vertices = corner.outline.filter((command) => command.kind !== 'Z');
-    const radius =
-      Math.max(...vertices.map((p) => Math.hypot(p.x - corner.center[0], p.y - corner.center[1]))) +
-      geometry.filledStrokeWidth / 2;
-    for (const coordinate of corner.center) {
-      expect(coordinate - radius).toBeGreaterThan(0);
-      expect(coordinate + radius).toBeLessThan(24);
+it('contracts each elbow through a straight diagonal before bending inward, without a hold', () => {
+  const middle = maximizeMinimizeFrame(0.5, geometry);
+  for (const [index, part] of middle.parts.entries()) {
+    const commands = parse(part.outline);
+    expect(commands.map(({ code }) => code)).toEqual(['M', 'L']);
+    const start = commands[0],
+      end = commands[1];
+    expect((start.x + end.x) / 2).toBe(geometry.corners[index].center[0]);
+    expect((start.y + end.y) / 2).toBe(geometry.corners[index].center[1]);
+  }
+  for (const p of [0.49, 0.499, 0.501, 0.51])
+    expect(maximizeMinimizeFrame(p, geometry).outline).not.toBe(middle.outline);
+  const firstBend = (p: number) => parse(maximizeMinimizeFrame(p, geometry).parts[0].outline)[1];
+  expect(firstBend(0.25).x + firstBend(0.25).y).toBeLessThan(2 * geometry.corners[0].center[0]);
+  expect(firstBend(0.75).x + firstBend(0.75).y).toBeGreaterThan(2 * geometry.corners[0].center[0]);
+});
+
+it('keeps each changing centerline inside its source corner square and separated from the center', () => {
+  for (let i = 0; i <= 100; i++) {
+    const drawing = maximizeMinimizeFrame(i / 100, geometry);
+    for (const [index, part] of drawing.parts.entries()) {
+      const original = parse(geometry.corners[index].maximize.outline);
+      const xs = original.map((c) => c.x),
+        ys = original.map((c) => c.y);
+      for (const point of parse(part.outline)) {
+        expect(point.x).toBeGreaterThanOrEqual(Math.min(...xs) - 1e-7);
+        expect(point.x).toBeLessThanOrEqual(Math.max(...xs) + 1e-7);
+        expect(point.y).toBeGreaterThanOrEqual(Math.min(...ys) - 1e-7);
+        expect(point.y).toBeLessThanOrEqual(Math.max(...ys) + 1e-7);
+      }
     }
   }
 });

@@ -91,7 +91,7 @@ are implementation constraints, not an invitation to retune approved motion.
 | Plus ↔ X            | `/morph/plus-x`            | `morph/plus-x`            | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
 | Menu ↔ X            | `/morph/menu-x`            | `morph/menu-x`            | 0.6                            | Proposed motion; awaiting owner review                 |
 | Plus ↔ Minus        | `/morph/plus-minus`        | `morph/plus-minus`        | 0.6                            | Proposed single-fold motion; awaiting owner review     |
-| Maximize ↔ Minimize | `/morph/maximize-minimize` | `morph/maximize-minimize` | 0.6                            | Proposed four-corner turn; awaiting owner review       |
+| Maximize ↔ Minimize | `/morph/maximize-minimize` | `morph/maximize-minimize` | 0.6                            | Proposed inward corner fold; awaiting owner review     |
 
 **Current Plus/X geometry depends on the selected native frame.** Plus/Minus/X
 None uses centered half-extents 8.75: Regular visible bounds 2.375..21.625,
@@ -189,19 +189,26 @@ extent. Outline is Regular1.75; Filled follows the same centerline at fixed
 Bold2.50, with exterior/interior elbow radii4.5/2 and cap radius1.25. Derive all
 paths, radii and local centers from source through the endpoint builder.
 
-Turn each complete corner through180degrees about its local square center:
-`(5.984375,5.984375)`, `(18.015625,5.984375)`,
-`(18.015625,18.015625)` and `(5.984375,18.015625)`. Alternate rotation signs
-`+,-,+,-` to preserve both mirror axes. Use quintic C2 angular interpolation
-`q(p)=6p^5-15p^4+10p^3`, with no intermediate hold or whole-icon crossfade.
-The proposed rate is0.6× the shared spring; retain current position and velocity
-on reversal. Do not alter the shared controller or approved Plus X timing.
+Owner motion correction, 2026-10-27: favor inward contraction and shape morphing
+instead of twisting or rotating each complete corner. Anchor the two source tips
+of every L. Pull its virtual elbow diagonally from the outer corner to the inner
+corner, using quintic C2 interpolation. Its arms straighten into a single diagonal
+chord at progress0.5, then bend inward into Minimize. No rigid-part rotation,
+opacity crossfade, midpoint hold or element replacement is used.
 
-Intermediate corner marks may breathe beyond their endpoint2px margin while
-remaining fully within the24px artboard. Never scale strokes or corner radii to
-hide that motion. Verify exact packed endpoints, near-endpoint continuity,
-positive corner separation, finite bounded paths, matching moving Bold/Filled
-contours, reversal, reduced motion, lifecycle, native sizes and narrow screens.
+Retain actual tangent fillets of radius3.25 while each bend is curved; its arc
+span smoothly reaches zero at the straight midpoint. Rebuild Filled as the exact
+Bold2.50 offset of those changing centerlines with constant1.25 caps and4.5/2
+outer/inner curved offsets. Do not interpolate old Filled control points or scale
+stroke widths. Original static paths remain the exact progress0/1 endpoints,
+even when their path traversal order differs from the intermediate drawing.
+
+The proposed rate remains0.6× the shared spring. Reverse the same geometry while
+retaining current progress and velocity. The earlier four-corner half-turn was
+rejected for this pair; its previous proposal does not approve this revision.
+Verify fixed tips, inward elbow movement, bounded separated parts, continuous
+straight-to-curved passage, exact packed endpoints, moving Bold/Filled overlays,
+reversal, reduced motion, lifecycle, actual sizes and narrow screens.
 
 ### Complete matching frame families — owner correction, 2026-10-27
 
@@ -217,6 +224,10 @@ If a morph endpoint supports frames, implement and verify every supported common
 frame for the whole pair. Menu ↔ X, Plus ↔ X and Plus ↔ Minus must all provide
 None, Square and Circle. A single selected frame applies to both endpoints, the
 intermediate Filled geometry, static comparison buttons and actual-size samples.
+Static framed artwork uses separately named exports such as `plus-square` and
+`plus-circle`. Select the matching explicit component for every static endpoint;
+never pass a runtime `frame` prop to a static icon. The morph's own frame option
+selects its authored pair geometry, and does not merge static components again.
 Never pair an unframed Filled source with a framed target, silently fall back to
 another frame, or declare the pair complete after testing only Square. Builders
 reject missing or mismatched frame data. Read both exterior and Outline frame
