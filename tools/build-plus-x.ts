@@ -1,3 +1,4 @@
+import { buildMorphFrames } from './build-morph-frames.js';
 import type { CoreIcon } from '../src/catalog.js';
 import type { PlusXGeometry } from '../src/morphs/plus-x.js';
 
@@ -20,6 +21,7 @@ export function buildPlusXGeometry(icons: CoreIcon[]): PlusXGeometry {
   if (box !== to.filled.match(/[Mm][^Mm]*/g)![0].trim())
     throw new Error('Plus/X morph needs the same approved upright Filled box');
   return {
+    frames: buildMorphFrames(plus, x),
     center,
     plusExtent: (a[2] - a[0]) / 2,
     xExtent: Math.max(...b.filter((_, i) => i % 2 === 0)) - center[0],

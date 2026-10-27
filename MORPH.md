@@ -334,3 +334,29 @@ On explicit owner acceptance, update the registry and the pair's motion approval
 record here. On a construction-rule change, update `DESIGN_RULES.md` and
 `BOXED_ICON_RULES.md` together as required. Never turn a recommendation, successful
 test run or official-looking document into an approval record.
+
+### Complete matching frame families — owner correction, 2026-10-27
+
+If a morph endpoint supports frames, implement and verify every supported common
+frame for the whole pair. Menu ↔ X, Plus ↔ X and Plus ↔ Minus must all provide
+None, Square and Circle. A single selected frame applies to both endpoints, the
+intermediate Filled geometry, static comparison buttons and actual-size samples.
+Never pair an unframed Filled source with a framed target, silently fall back to
+another frame, or declare the pair complete after testing only Square. Builders
+reject missing or mismatched frame data. The frame exterior stays upright and
+unchanged throughout a framed transition. Default Square preserves existing
+math-morph presentation; switching frame does not retune progress or motion.
+
+None Filled follows the unboxed Bold2.50 source at both ends. Square/Circle use
+their actual source cutouts: Menu is Bold2.50 and X/Plus/Minus are Regular1.75.
+Menu X interpolates that source-derived cutout width while retaining the existing
+Outline part mapping, progress phases and0.6× pace. Its former solid-to-box
+topology bridge is superseded: framed Menu starts in the same frame as X.
+Outline uses Regular1.75 and supports every matching frame too; it defaults to None, while Filled defaults to Square. Existing Plus X merge/timing and Plus Minus
+fold/timing remain unchanged.
+
+Required regression matrix: three pairs × three frame choices × both endpoints,
+plus intermediate contour/negative-space checks, reversal and reduced motion in
+all three browser engines. Update the packed component fixture and the actual
+Lab; a static source check alone does not verify the rendered frame selection.
+
