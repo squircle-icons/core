@@ -2,6 +2,14 @@
 
 Maintained: 2026-10-27. **This is the canonical English working document for icon creation and revision across this workspace.** It defines the goal, rules, design contract, workflow, verification, tests and completion criteria. Read it before making icon changes. Update the current sections when the owner changes a rule; do not maintain competing copies in agent entry points.
 
+## Current design direction — original squircle identity
+
+The owner clarified that this project needs its **own squircle design language**, beyond ordinary rounded corners. The current task changes the concept and this document only. It does not authorize prototypes, replacement artwork, package changes or a collection-wide redesign yet.
+
+An external example may reveal a mismatch between our work and our own brief. It must not supply the design solution. Do not trace, extract, sample or reconstruct its paths, silhouettes, proportions, motifs, compositions, icon inventory or style recipes. Do not make a slightly altered version of another collection. Start our design decisions from the meaning of each icon and independently develop our own shape grammar.
+
+The existing circular-corner measurements below describe the approved implementation baseline. They do not establish the future squircle language. No new curve formula, exponent, control-point recipe or replacement geometry is approved by this conceptual clarification. Preserve the current artwork and acceptance records until a later artwork request establishes the scope of a redesign.
+
 ## Current static approval — 2026-10-27
 
 The owner explicitly approved **all current static icons**, including every available style and requested Square/Circle drawing. This covers51 authoring families and121 separately exported static icons after the frame split. Preserve every existing SVG path and prior review history while recording the approval. Current `metadata.review` is authoritative; earlier draft statements in historical construction notes are superseded. New or changed artwork must reopen the affected review. Static approval does not approve any morph or motion.
@@ -20,26 +28,28 @@ Apply current user instructions within the applicable higher-priority instructio
 
 ### Quick task map
 
-| Request                                           | Start with                                                   | Required result                                                                                  |
-| ------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| New icon or ordinary add-icons batch              | Family/reference selection, Outline source, Filled treatment | Original SVG/metadata, requested variants, packed exports and Lab preview                        |
-| Size, rounding, spacing or orientation correction | Existing source and acceptance record                        | Revised native geometry; corresponding styles remain aligned; affected checks updated            |
-| Frame or style extension                          | Shared glyph, frame geometry and style semantics             | Separate named icons/components for each requested frame, with consistent styles and checks      |
-| Adapter/API change                                | Core contract and generator                                  | Deterministic outputs, direct-import isolation, compatibility and consumer checks                |
-| Lab-only change                                   | Current packed Lab dependency                                | Correct controls, measurements, accessible interaction and responsive preview                    |
-| Morph                                             | [Core MORPH.md](MORPH.md)                                    | Follow that canonical motion playbook in addition to these static rules                          |
-| Documentation-only change                         | Current rules, source and package scripts                    | Clear current instructions, valid links/commands and consistent entry points; no artwork changes |
+| Request                                           | Start with                                                                 | Required result                                                                                  |
+| ------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| New icon or ordinary add-icons batch              | Semantic brief and our own shape grammar, Outline source, Filled treatment | Original SVG/metadata, requested variants, packed exports and Lab preview                        |
+| Size, rounding, spacing or orientation correction | Existing source and acceptance record                                      | Revised native geometry; corresponding styles remain aligned; affected checks updated            |
+| Frame or style extension                          | Shared glyph, frame geometry and style semantics                           | Separate named icons/components for each requested frame, with consistent styles and checks      |
+| Adapter/API change                                | Core contract and generator                                                | Deterministic outputs, direct-import isolation, compatibility and consumer checks                |
+| Lab-only change                                   | Current packed Lab dependency                                              | Correct controls, measurements, accessible interaction and responsive preview                    |
+| Morph                                             | [Core MORPH.md](MORPH.md)                                                  | Follow that canonical motion playbook in addition to these static rules                          |
+| Documentation-only change                         | Current rules, source and package scripts                                  | Clear current instructions, valid links/commands and consistent entry points; no artwork changes |
 
 ## 1. Goal
 
-Create original, recognizable icons that form one coherent visual family and remain readable at actual UI sizes. A completed implementation must:
+Create an independently designed squircle icon family with a recognizable identity of its own, readable at actual UI sizes. A completed implementation must:
 
-- Use consistent rounded construction and deliberate optical proportions.
+- Express our own coordinated silhouette, corner transitions, proportions and negative-space rhythm; rounded caps or a larger circular corner radius alone do not establish the identity.
 - Keep the correct geometric relationship between Outline, Bold, Filled and frames; matching bounding boxes alone is insufficient.
 - Preserve accepted artwork and motion outside the requested revision.
 - Keep core framework-independent, static imports lightweight and morphs opt-in.
 - Reach the real Lab through traceable core → Svelte → local Lab promotion, preserving every draft and the separate public package pin.
 - Include reproducible checks and visual evidence, with implementation completion separate from owner approval.
+
+In this project's intended squircle language, the transition from a straighter side into a corner develops progressively, rather than relying only on a constant-radius circular fillet. This is a design requirement for the future grammar, not a claim that the current collection already meets it. Keep meaningful circles, straight segments, open forms and distinguishing features where the icon's meaning requires them. A shared language does not mean forcing every subject into the same outline.
 
 A request is complete when its intended working result is delivered and verified. **Visual approval is a separate owner decision.** Do not mark a drawing approved merely because implementation or tests are complete.
 
@@ -66,6 +76,8 @@ Explicit family extensions and construction revisions follow their requested sco
 
 ### 2.3 Preserve contracts
 
+- **Develop the design independently.** Define the subject, action and essential features first, then construct our own silhouette, spacing and curves. External collections are not construction templates or a source of design ideas to transplant. Replacing points, changing a radius or mirroring someone else's drawing does not make it our design.
+
 - **Reuse before adding an identity.** When the drawing already exists as a named icon or style and only the action name differs, reuse that existing icon. Record the semantic mapping and add discovery tags; do not duplicate SVG geometry, generated components or alias exports. New Tab = Plus Square is the current example. Do not invent a duplicate identity merely to fill a six-action batch.
 - Author original geometry and keep metadata authorship accurate.
 - Use stable kebab-case icon names and stable `data-part` names. Preserve existing public names unless a rename is requested.
@@ -79,6 +91,8 @@ Explicit family extensions and construction revisions follow their requested sco
 `repos/lab` is a private local app, not a new Git/GitHub repository. It owns its package manifest, lockfile, packed review artifact, catalog generation, dev server, production build and tests. Its runtime, check and build must work without Homepage or sibling source checkouts. Only an explicit package-sync operation needs the Svelte source checkout.
 
 The canonical icon rules are this file in Core. Local-app agents read `../core/ICON_RULES.md`; no copied rule body is maintained in the app. The root workspace file is an entry link. Homepage must have no review routes, preview helpers, development icon dependency, review-specific tests or sync tools. Its public package pin remains independent.
+
+The icon-production agent owns static artwork and the shared icon concept. Hand static endpoint changes and their construction contract to the separate icon morph owner for animation work; a static design request does not transfer motion implementation into this role.
 
 Core → Svelte → local Lab is the icon-development path. Updating the published website is a separate task, using a released package.
 
@@ -103,11 +117,11 @@ Use a native **24 × 24** artboard, centered at **12,12**. Native SVG units corr
 - Avoid doubled shared edges, uneven joins and accidental dark intersections. Union overlapping Filled contours where necessary.
 - Inspect actual 16, 20, 24 and 48px output on both light and dark surfaces.
 
-**Mandatory roundness rule — owner accepted:** comparable full-size object corners and L-shaped elbows use actual tangent centerline arcs with radius3.25 at Regular1.75, while round end caps keep radius0.875. A sharp H/V centerline with only `stroke-linejoin="round"` does not satisfy this rule. New drawings follow it without asking the owner again. For Maximize/Minimize Filled at Bold2.50, use the exact rounded expansion: cap radius1.25 and elbow outer/inner radii4.5/2.
+**Approved circular-corner baseline:** the existing comparable full-size object corners and L elbows use tangent centerline arcs of radius3.25 at Regular1.75, with round cap radius0.875. Maximize/Minimize Filled follows Bold2.50, with cap radius1.25 and elbow outer/inner radii4.5/2. Preserve these exact sources when verifying or maintaining the approved baseline. A sharp H/V centerline with only a round stroke join does not reproduce that baseline.
 
-Apply the rule at the correct scale. Preserve accepted Camera/Folder fitted geometry and use intentional, documented local radii for smaller semantic details such as tabs, shoulders and handles; do not force3.25 onto every tiny part. Enclosing Square frames keep their separate radius6 exterior rule. A different comparable-elbow construction requires a meaningful geometric reason recorded in construction metadata/current rules or a newer explicit owner instruction. Acceptance of this roundness rule does not approve a particular static drawing or morph.
+These circular-arc values are not a universal squircle construction rule for future redesigns. The earlier instruction to apply radius3.25 automatically to every new comparable corner is superseded by the current conceptual direction. A later artwork task must first establish our independently designed silhouette and progressive corner profile, with its own rationale and review evidence. Do not guess a numeric replacement or silently refit the whole collection now.
 
-The Camera/Folder main bodies are the object-corner reference. The original centerline-radius reference was 3.25 at Regular 1.70; current sources include the subsequent 1.75 weight refit. Reuse the current source construction instead of copying historical coordinates blindly. Small tabs, shoulders and handles retain their fitted local radii. Enclosing Square frames use a separate exterior radius of6 in the owner-approved rounded construction. This does not change Camera/Folder or other natural-object corner radii.
+Camera/Folder fitted bodies, small semantic details and the current Square frame exterior radius6 remain approved baseline references. Preserve their current geometry during this documentation-only task. Future profiles must respect the subject's meaning and scale; neither a single fixed radius nor one universal outline should be imposed on every feature.
 
 ### 3.2 Margins and optical size
 
@@ -158,6 +172,8 @@ Keep the compact glyph identical between Square and Circle. None uses its separa
 **Frames are separate static icons and components.** Export `Plus`, `PlusSquare` and `PlusCircle` as independent geometry, using paths `plus`, `plus-square` and `plus-circle`. Do not combine these drawings inside one component or expose a static `frame` prop. Each named drawing has its own Lab sidebar entry; Outline/Filled remain styles of that drawing. Add framed icons only when the owner requests them. External Link, Maximize and Minimize have no added framed icons. New Tab reuses `PlusSquare`, with no duplicate New Tab export.
 
 Core may keep related artwork nested under its authoring family for source ownership and pure morph builders. The adapter flattens the current51 authoring families and70 framed drawings into121 separate static icons. Each generated component includes only its selected drawing, with no hidden sibling-frame geometry. Catalog `baseIcon` and fixed `frame` fields describe provenance; they are not runtime switching props. Morph pair controls may select corresponding explicit static endpoint components without restoring a combined static component.
+
+The following measurements describe the current approved baseline, not the unestablished future squircle profile:
 
 | Measurement                  | Square                                   | Circle                     |
 | ---------------------------- | ---------------------------------------- | -------------------------- |
@@ -229,7 +245,7 @@ Alignment uses unboxed Bold2.50 Filled and retains its explicitly requested Squa
 
 #### Maximize and Minimize
 
-These are a related pair of natural four-corner marks with Outline/Filled and no enclosing Square/Circle variants. The owner made the actual rounded-elbow construction mandatory and requested a separate inward-facing Minimize drawing. Keep their centerline extrema3.25..20.75 and arm span5.46875.
+These are a related pair of natural four-corner marks with Outline/Filled and no enclosing Square/Circle variants. The approved baseline uses actual rounded elbows and a separate inward-facing Minimize drawing; these circular arcs do not define the future squircle grammar. Keep their centerline extrema3.25..20.75 and arm span5.46875.
 
 - Maximize points each rounded L toward its artboard corner. Elbow centerline radius is3.25 with straight tangent lead-ins, not a sharp H/V turn. Regular Outline remains1.75 with round end caps.
 - Minimize turns each Maximize L by180 degrees about that corner's local center: `(5.984375,5.984375)`, `(18.015625,5.984375)`, `(18.015625,18.015625)` and `(5.984375,18.015625)`. This changes the corner's direction while retaining placement, arm span, roundness and bounds; it is not a whole-icon rotation or a duplicate alias.
@@ -331,7 +347,9 @@ Before drawing, establish this small brief in the work notes or construction met
 
 ```text
 Identity / family:
+Meaning, action and essential distinguishing features:
 Requested change and preserved references:
+Our independently developed silhouette and corner/negative-space decisions:
 Required styles and frames:
 Native center, primary margin pair and intended visible bounds:
 Filled treatment and its comparison reference:
@@ -342,6 +360,8 @@ Review status:
 ```
 
 Use the established family rules for routine choices. If a missing decision materially affects the result, ask the owner while progressing work that does not depend on the answer.
+
+For a later redesign request, build the brief from the subject and our own design goals. Establish our shape grammar independently before proposing an artwork trial. Record why the proportions and corner progression belong to this family, without using another collection's geometry or stylistic solution as the target. Review a concrete trial before proposing a collection-wide migration. This workflow does not start a trial during the current documentation-only task.
 
 ### Step 3 — Author in core
 
@@ -363,7 +383,7 @@ repos/core/icons/frames/{square,circle}/filled/<name>.json
 3. Derive the corresponding Filled exterior or cutout using the treatment in section 3.3. Construct exact unions at intersections; preserve counters and openings.
 4. Add frames only when explicitly requested. For supported frame families, author the larger None glyph and preserve the compact shared Square/Circle glyphs as separate native variants. Keep Square upright, rebuild Filled at fixed family weight for each size, and verify compact Circle clearance.
 5. Write/update metadata: name, description, tags, authorship, construction, parts and review status. Use `filledTreatment` consistently (`bold-stroke`, `boxed-cutout`, `solid-head` where applicable). The current math family uses `supportsBold: true`.
-6. Update meaningful source/geometry checks when behavior changes. If a static endpoint changes, inspect its morph endpoint builder and regenerate the affected data; preserve accepted timing and unrelated pairs.
+6. Update meaningful static source/geometry checks when behavior changes. If a static endpoint changes, give the morph owner the accepted source version and construction contract for endpoint updates and motion verification; preserve accepted timing and unrelated pairs.
 7. Run core checks and commit the intended source changes before adapter synchronization.
 
 ### Step 4 — Generate and verify the adapter
@@ -398,19 +418,20 @@ Perform the verification in section 5, finish the tests in section 6, update thi
 
 Verification checks whether the requested visual/product result is correct. Automated tests in section 6 support these checks; they do not replace visual inspection.
 
-| Check                   | Method                                                                                     | Pass criterion                                                                                               |
-| ----------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| Identity and silhouette | Compare with the chosen family/reference at 16/20/24/48px                                  | Recognizable, balanced and consistent; defining features survive at small sizes                              |
-| Native placement        | Measure at 24×24, X/Y 100/100, rotation 0, Regular 1.75                                    | Correct center and primary margin pair; opposite margins balanced                                            |
-| Visible bounds          | Include half-stroke, caps and joins in measurements                                        | Specified dimensions/margins match the current family; no hidden clipping                                    |
-| Contour relationship    | Overlay/vector-sample or compare raster masks from actual packed exports                   | Objects match Regular exterior; Bold Filled matches 2.50; frame holes match their specified glyph            |
-| Frame consistency       | Toggle None/Square/Circle at equal scale and pose                                          | Square/Circle share the compact glyph; None is natively larger; fixed stroke and correct per-frame treatment |
-| Frame clearance         | Inspect nearest glyph/border points at Regular and Bold                                    | Positive clearance except a deliberately requested contact; default frame exterior has 2px margins           |
-| Directional consistency | Compare the source reference under rigid rotations                                         | Same physical construction; no independently enlarged diagonal directions; Square stays upright              |
-| Rounding and overlaps   | Inspect caps, joins, corners and intersections at enlarged and actual sizes                | Smooth, intentional contours; no doubled edges, seams, accidental holes or unequal stroke weight             |
-| Lab behavior            | Select each named icon (including framed icons), switch style, edit/reset X/Y and rotation | Correct supported options, preserved independent drafts, accurate measurements and native defaults           |
-| Accessibility/layout    | Keyboard controls, accessible labels, desktop and mobile widths                            | Usable controls, decorative SVGs hidden appropriately, meaningful icons named, no unintended page overflow   |
-| Affected morphs         | Compare both packed endpoints and reverse during playback                                  | Correct source/style/frame endpoints; accepted motion, timing and continuity remain intact                   |
+| Check                      | Method                                                                                          | Pass criterion                                                                                                    |
+| -------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Identity and silhouette    | Compare with our semantic brief and our own family at 16/20/24/48px                             | Recognizable, balanced and consistent; defining features survive at small sizes                                   |
+| Original squircle language | For a later redesign, inspect our own side-to-corner progression, silhouette and negative space | A coherent original grammar; neither round caps alone nor similarity to an external collection establishes a pass |
+| Native placement           | Measure at 24×24, X/Y 100/100, rotation 0, Regular 1.75                                         | Correct center and primary margin pair; opposite margins balanced                                                 |
+| Visible bounds             | Include half-stroke, caps and joins in measurements                                             | Specified dimensions/margins match the current family; no hidden clipping                                         |
+| Contour relationship       | Overlay/vector-sample or compare raster masks from actual packed exports                        | Objects match Regular exterior; Bold Filled matches 2.50; frame holes match their specified glyph                 |
+| Frame consistency          | Toggle None/Square/Circle at equal scale and pose                                               | Square/Circle share the compact glyph; None is natively larger; fixed stroke and correct per-frame treatment      |
+| Frame clearance            | Inspect nearest glyph/border points at Regular and Bold                                         | Positive clearance except a deliberately requested contact; default frame exterior has 2px margins                |
+| Directional consistency    | Compare the source reference under rigid rotations                                              | Same physical construction; no independently enlarged diagonal directions; Square stays upright                   |
+| Rounding and overlaps      | Inspect caps, joins, corners and intersections at enlarged and actual sizes                     | Smooth, intentional contours; no doubled edges, seams, accidental holes or unequal stroke weight                  |
+| Lab behavior               | Select each named icon (including framed icons), switch style, edit/reset X/Y and rotation      | Correct supported options, preserved independent drafts, accurate measurements and native defaults                |
+| Accessibility/layout       | Keyboard controls, accessible labels, desktop and mobile widths                                 | Usable controls, decorative SVGs hidden appropriately, meaningful icons named, no unintended page overflow        |
+| Affected morphs            | Compare both packed endpoints and reverse during playback                                       | Correct source/style/frame endpoints; accepted motion, timing and continuity remain intact                        |
 
 For numeric measurements, use tolerances appropriate to the existing geometry checks. Opposite-margin comparisons normally use about 0.001 native units. Allow a documented antialiasing fringe in raster checks, not a genuine shape mismatch. Existing contour tests use one raster pixel at 40× magnification as a fringe allowance; do not loosen thresholds simply to make a regression pass.
 
@@ -430,9 +451,11 @@ Run commands from the repository indicated below. Read the current `package.json
 
 For an artwork change delivered through Lab, complete the core → adapter → local app checks required by their contribution instructions. For a new capability, verify all supported variants, not just the selected screenshot. When Homepage itself changes, run its separate `pnpm verify` website suite; it is not a prerequisite for ordinary local Lab updates. Never claim a full suite passed if only selected tests ran.
 
-### Mandatory rounded-corner gate
+### Baseline corner checks and future squircle verification
 
-Before handing off a new or revised comparable object corner or L elbow, verify the **actual source arc radius and tangent continuity**, then verify the actual packed rendering. Assert radius3.25 on eligible centerlines at Regular1.75 and radius0.875 caps; check incoming/outgoing straight tangents rather than merely searching for `stroke-linejoin="round"`. For Maximize/Minimize, also check the Bold2.50 union's4.5/2 outer/inner elbow radii,1.25 caps, local corner turns and native bounds. The [static corner regression](tests/unit/maximize-minimize-static.test.ts) is the source reference; corresponding packed contour/endpoint checks and actual-size inspection are also required. Document fitted small-detail radii and any meaningful geometric exception instead of silently waiving the rule.
+When maintaining the approved circular-corner baseline, verify actual source arcs, tangent continuity and the packed rendering. Its existing radius3.25 centerlines, Regular1.75 weight, radius0.875 caps and Maximize/Minimize Bold offsets remain covered by the [static corner regression](tests/unit/maximize-minimize-static.test.ts). Passing these checks proves baseline compatibility, not that an icon has the future squircle identity.
+
+When an artwork redesign is later requested, add tests for the independently chosen profile: intended side-to-corner curvature progression, tangent continuity, finite/non-self-intersecting contours, visible bounds, weight and Outline/Filled relationships. State the intended continuity and numerical tolerances in that design's construction notes; do not invent universal values in advance. Inspect native sizes and the whole family visually as well. Neither automated geometry tests nor comparison with another library grants design approval.
 
 ### Choose tests by the change
 
