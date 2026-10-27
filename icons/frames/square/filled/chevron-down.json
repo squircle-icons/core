@@ -3,9 +3,18 @@
   "description": "Chevron Down in a square frame with a negative-space solid head.",
   "tags": ["chevron", "caret", "navigation", "down", "filled", "frame", "square"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner clarified Chevron has four cardinal directions only, with four Double Chevron identities (chevrons-up/down/left/right), each in None/Square/Circle and Outline/Filled:8 identities times3 forms=24 variants. Single uses V vertices(-5.5,2.75),(0,-2.75),(5.5,2.75). Double uses two V marks with vertices(-4,2),(0,-2),(4,2), shifted vertically by -2.875/+2.875. Rotate by cardinal direction and recenter at12,12, with no directional scaling. Reuse the exact same glyph standalone and inside upright Arrow frames. Regular1.75 round caps/joins; Filled closes each triangle and expands by.875. Double solid triangles touch exactly with zero gap at the shared center. Frame exteriors have2px margins, square radius4 or circle radius10. Filled frames subtract the identical standalone solid silhouette. Circle clearance at Bold is at least.2218px for Double and.4758px for Single. All await owner review; no diagonal Chevron icons.",
+  "construction": "Owner clarified Chevron has four cardinal directions only, with four Double Chevron identities (chevrons-up/down/left/right), each in None/Square/Circle and Outline/Filled:8 identities times3 forms=24 variants. Single uses V vertices(-5.5,2.75),(0,-2.75),(5.5,2.75). Double uses two V marks with vertices(-4,2),(0,-2),(4,2), shifted vertically by -2.875/+2.875. Rotate by cardinal direction and recenter at12,12, with no directional scaling. Reuse the exact same glyph standalone and inside upright Arrow frames. Regular1.75 round caps/joins; Filled closes each triangle and expands by.875. Double solid triangles touch exactly with zero gap at the shared center. Frame exteriors have2px margins, square radius6 or circle radius10. Filled frames subtract the identical standalone solid silhouette. Circle clearance at Bold is at least.2218px for Double and.4758px for Single. All await owner review; no diagonal Chevron icons. Current Square rounding trial: owner requested rounder enclosing frames. The exterior radius is now6 at unchanged bounds2..22; the matching Regular1.75 Outline centerline uses radius5.125 at bounds2.875..21.125. Only the outer enclosing contour changed. Inner glyph coordinates, cutout contours, object-specific rounding and positions remain exact. This rounding trial awaits owner visual review.",
   "review": {
     "status": "draft",
-    "note": "New shared glyph and frame-ready Chevron family; awaits owner review."
+    "note": "Owner-requested rounder Square exterior radius6 trial; inner glyph preserved. Awaiting visual review."
+  },
+  "frameConstruction": {
+    "kind": "square",
+    "exteriorBounds": [2, 2, 22, 22],
+    "exteriorRadius": 6,
+    "outlineCenterlineBounds": [2.875, 2.875, 21.125, 21.125],
+    "outlineCenterlineRadius": 5.125,
+    "defaultStrokeWidth": 1.75,
+    "glyphUnchanged": true
   }
 }

@@ -56,7 +56,7 @@ Inspect `git status --short` in each source repository before edits; the local a
 
 ### 2.2 Scope and batching
 
-An ordinary request to add icons means **six total**. Named icons occupy places in that six; choose the remainder automatically. Do not ask the owner to fill the remaining places.
+An ordinary request to add icons means **six total**. Named icons occupy places in that six; choose the remainder automatically. Do not ask the owner to fill the remaining places. **A new identity defaults to None only. Add Square/Circle variants only when the owner explicitly requests frames; another family having frames is not authorization to add them everywhere.**
 
 Explicit family extensions and construction revisions follow their requested scope. Adding frames does not create another six-icon batch. The Plus/Minus/X family revision adds Minus to the existing symbols; it does not authorize unrelated additions. Styles and frames are variants of an identity, not duplicate sidebar icons.
 
@@ -98,7 +98,7 @@ Use a native **24 × 24** artboard, centered at **12,12**. Native SVG units corr
 - Avoid doubled shared edges, uneven joins and accidental dark intersections. Union overlapping Filled contours where necessary.
 - Inspect actual 16, 20, 24 and 48px output on both light and dark surfaces.
 
-The Camera/Folder main bodies are the object-corner reference. The original centerline-radius reference was 3.25 at Regular 1.70; current sources include the subsequent 1.75 weight refit. Reuse the current source construction instead of copying historical coordinates blindly. Small tabs, shoulders and handles retain their fitted local radii. Enclosing Square frames use a separate exterior radius of 4.
+The Camera/Folder main bodies are the object-corner reference. The original centerline-radius reference was 3.25 at Regular 1.70; current sources include the subsequent 1.75 weight refit. Reuse the current source construction instead of copying historical coordinates blindly. Small tabs, shoulders and handles retain their fitted local radii. Enclosing Square frames use a separate exterior radius of6 in the current owner-requested rounding trial. This does not change Camera/Folder or other natural-object corner radii.
 
 ### 3.2 Margins and optical size
 
@@ -108,7 +108,7 @@ Measure the **visible edge**, including stroke and rounded caps, rather than onl
 - Camera and Folder use left/right, retaining their horizontal proportions. Another object may use top/bottom. The remaining pair may have larger margins.
 - Naturally filled objects use their own silhouette; do not add an unnecessary box.
 - Square/Circle frame exteriors have 2px on all four sides.
-- **None is deliberately larger than Square/Circle.** Author larger native standalone geometry while preserving the existing compact framed glyphs. Fit the primary visible extent to20px at the family reference weight: Regular1.75 for directional/natural geometry and Bold2.50 for Bold-style Filled marks. The latter therefore has19.25px Regular Outline extent (2.375px primary margins). Arrow diagonals retain the same physical axial size, rather than being independently fitted to both artboard axes.
+- **Where frames are explicitly supported, None is deliberately larger than Square/Circle.** Author larger native standalone geometry while preserving the existing compact framed glyphs. Fit the primary visible extent to20px at the family reference weight: Regular1.75 for directional/natural geometry and Bold2.50 for Bold-style Filled marks. The latter therefore has19.25px Regular Outline extent (2.375px primary margins). Arrow diagonals retain the same physical axial size, rather than being independently fitted to both artboard axes.
 - Keep opposite margins balanced and preserve the native source proportions.
 - Bake an accepted orientation or proportion change into the source when requested; Lab X/Y should return to 100/100 and rotation to 0 for that new native baseline.
 
@@ -140,22 +140,22 @@ Filled is authored fill-only geometry. It is not the result of indiscriminately 
 | Check, no frame                        | Unboxed Bold 2.50 expansion of the shared check centerline             |
 | Check, Square/Circle                   | Solid frame with its compact Bold silhouette cut out                   |
 
-For natural dual-style objects, match the Filled exterior to the visible Regular Outline exterior. For Menu/Search, Check, alignment bars and unframed math symbols, compare Filled to **Bold 2.50**, not Regular. For boxed math marks, compare the hole to the corresponding Regular mark. Framed Menu, Check, alignment bars and Maximize use the compact framed glyph expanded at Bold as their cutouts. Directional families likewise use their compact framed solid-head geometry. Compare within the selected frame variant; the larger None silhouette is a separate source.
+For natural dual-style objects, match the Filled exterior to the visible Regular Outline exterior. For Menu/Search, Check, alignment bars and unframed math symbols, compare Filled to **Bold 2.50**, not Regular. For boxed math marks, compare the hole to the corresponding Regular mark. Framed Menu, Check and alignment bars use the compact framed glyph expanded at Bold as their cutouts. Maximize is None-only. Directional families likewise use their compact framed solid-head geometry. Compare within the selected frame variant; the larger None silhouette is a separate source.
 
 Keep the compact glyph identical between Square and Circle. None uses its separately authored larger geometry. Never enlarge a Filled path by scaling its stroke, and never simulate this size distinction with Lab-only transforms. This owner correction supersedes older same-size-None/frame instructions in historical metadata and supporting notes.
 
 ### 3.4 Frame construction
 
-Supported frame choices are `none`, `square` and `circle` on the existing icon identity. Frames do not create duplicate sidebar identities.
+The default supported choice is `none`. Add `square`/`circle` only for identities whose frames were explicitly requested. Existing requested frame families keep their supported variants; frames never create duplicate sidebar identities. `new-tab`, `external-link` and `maximize` are explicitly None-only. Morphs must cover every frame actually supported by their pair, which does not require adding frames to every new static icon.
 
-| Measurement                  | Square                                    | Circle                     |
-| ---------------------------- | ----------------------------------------- | -------------------------- |
-| Filled exterior              | Bounds 2..22, corner radius 4             | Center 12,12, radius 10    |
-| Outline centerline           | Bounds 2.875..21.125, corner radius 3.125 | Center 12,12, radius 9.125 |
-| Default frame stroke         | 1.75                                      | 1.75                       |
-| Default visible outer margin | 2 on all sides                            | 2 on all sides             |
+| Measurement                  | Square                                   | Circle                     |
+| ---------------------------- | ---------------------------------------- | -------------------------- |
+| Filled exterior              | Bounds 2..22, corner radius6             | Center 12,12, radius 10    |
+| Outline centerline           | Bounds 2.875..21.125, corner radius5.125 | Center 12,12, radius 9.125 |
+| Default frame stroke         | 1.75                                     | 1.75                       |
+| Default visible outer margin | 2 on all sides                           | 2 on all sides             |
 
-The Square stays upright when a directional glyph rotates. Cutouts must be transparent negative space, not white-painted shapes. Preserve exact unions at intersections and correct fill rules.
+The Square stays upright when a directional glyph rotates. Its current radius6 exterior / radius5.125 Outline centerline is an owner-requested rounder trial pending visual review, replacing the previous radius4/3.125 enclosing frame. Change only the enclosing contour: glyph paths, cutouts, positions and local radii remain unchanged unless separately requested. Cutouts are transparent negative space; preserve exact unions and correct fill rules.
 
 Check glyph-to-frame clearance at Regular and Bold, especially near Circle borders and diagonal endpoints. The outer 2px margin is the default Regular measurement; changing the Outline stroke changes its visible exterior normally.
 
@@ -185,9 +185,9 @@ Single and Double Chevron each have four cardinal directions only, with no diago
 
 These six identities are `chevron-up-down`, `chevron-left-right` and `chevron-line-up/down/left/right`. Up–Down combines two outward-facing heads; Left–Right is its quarter-turn. Line adds a separate stop line ahead of the V tip.
 
-Compact framed Up–Down vertices remain `(8,10.5) → (12,6.5) → (16,10.5)` and `(16,13.5) → (12,17.5) → (8,13.5)`. Its None centerlines scale uniformly by73/44 about12,12, keeping Regular1.75 fixed and giving20px visible primary extent. Compact Line Up keeps `(8,15.5) → (12,11.5) → (16,15.5)` with stop line `(8,8.5) → (16,8.5)`; its larger None centerlines scale by73/32, giving20px primary width and17.71875px height. Other directions are rigid rotations.
+Compact framed Up–Down vertices remain `(8,10.5) → (12,6.5) → (16,10.5)` and `(16,13.5) → (12,17.5) → (8,13.5)`. Its None centerlines scale uniformly by73/44 about12,12, keeping Regular1.75 fixed and giving20px visible primary extent. Chevron Line keeps the existing V size but moves its stop line closer by balanced repositioning. Compact Line Up uses `(8,15.25) → (12,11.25) → (16,15.25)` with bar `(8,8.75) → (16,8.75)`, giving a2.5-unit centerline gap. None retains V half-width9.125, with bar y5.9375, tip y8.9375 and base y18.0625, giving a3-unit gap and20×13.875px Regular visible bounds. Both references remain centered; other directions are rigid rotations.
 
-Filled closes and expands each triangle at radius0.875 and adds a matching fixed-radius capsule where needed. None gaps grow with its centerline proportions; compact framed gaps remain1.25px at Regular and0.5px at Bold. Frame Filled uses the unchanged compact silhouette as its cutout. All revised None drawings and existing draft frames remain pending owner review.
+Filled closes and expands each triangle at radius0.875 and adds a matching fixed-radius capsule where needed. Opposed None gaps grow with its centerline proportions; its compact framed gaps remain1.25px at Regular and0.5px at Bold. Line None keeps1.25px Regular /0.5px Bold separation; compact Line keeps0.75px Regular separation and intentionally reaches tangency at Bold2.50, without overlap. Frame Filled uses the unchanged compact silhouette as its cutout. All revised None drawings and existing draft frames remain pending owner review.
 
 #### Plus / Minus / X
 
@@ -210,10 +210,10 @@ Regular Outline is1.75. None Filled is the exact larger Bold2.50 expansion; fram
 
 #### Alignment and Maximize
 
-These use unboxed Bold2.50 Filled, with compact Bold cutouts in Square/Circle. Every larger None reference has20px primary extent at Bold and19.25px at Regular. Keep all existing framed geometry unchanged.
+These use unboxed Bold2.50 Filled. Alignment retains its explicitly requested Square/Circle variants with compact Bold cutouts; Maximize is explicitly None-only. Every None reference has20px primary extent at Bold and19.25px at Regular.
 
 - Alignment None rows are y3.25,9.08333333,14.91666667,20.75. Long bars span x3.25..20.75; short bars are11.66666667 units with their Left/Center/Right anchors preserved. Compact rows remain y7.5,10.5,13.5,16.5, with long9-unit bars x7.5..16.5 and short6-unit bars x7.5..13.5 / x9..15 / x10.5..16.5 respectively.
-- Maximize None corners occupy3.25..20.75 with arm length5.46875. Compact references remain the four rigid quarter-turns of `M8 10.5 V8 H10.5` within8..16. Rebuild each rounded Filled corner at radius1.25; do not scale the compact Filled contour.
+- Maximize has no enclosing frame variants. Its four corners occupy3.25..20.75 with arm length5.46875, as rigid quarter-turns around12,12. Filled is the exact union at Bold radius1.25; preserve the natural four-corner mark.
 
 #### More controls
 
@@ -227,10 +227,10 @@ Copy places its foreground sheet bottom-left and background sheet top-right, by 
 
 #### New Tab and External Link
 
-These keep the compact framed glyphs unchanged and author larger None glyphs at fixed Regular1.75.
+Both identities are explicitly None-only; do not add enclosing Square/Circle variants.
 
-- Compact New Tab uses window centerline bounds7..17/radius2.25 and centered plus half-extent1.75. Larger None scales centerlines by1.825 about12,12: window centerline radius4.10625, Filled exterior radius4.98125, plus half-extent3.19375. Natural Filled is a solid window with the Regular1.75 plus cut out, yielding visible bounds2..22. Framed Filled uses the unchanged compact window/plus silhouette.
-- Compact External Link keeps the open window bounds7.5..16.5/radius1.5, top arm ending10,7.5 and right arm ending16.5,14. Shaft is11.5,12.5→16.5,7.5, with head `(13,7.5) → (16.5,7.5) → (16.5,11)`. None scales centerlines by18.25/9 and rebuilds the natural window plus united solid-head arrow at0.875, yielding Regular visible bounds2..22. Framed separation and clearance remain unchanged.
+- New Tab uses a natural rounded window: centerline radius4.10625 and Filled exterior radius4.98125, with centered plus half-extent3.19375. Stroke stays Regular1.75. Natural Filled is a solid window with the matching Regular1.75 plus cut out, yielding visible bounds2..22. This window is the icon itself, not an optional enclosing frame.
+- External Link uses a natural open window with centerline radius5.125, Filled outer/inner radii6/4.25 and visible bounds2..22. Quarter-circle centers are `(8,8)`, `(8,16)` and `(16,16)`; the top arm ends at `(8,2.875)` and right arm at `(21.125,16)`. Keep the diagonal shaft and arrowhead geometry unchanged when revising the window's corner rounding. Filled unites the same natural window expansion and solid-head arrow; do not add a second box.
 
 #### Menu and Trash
 
@@ -341,7 +341,7 @@ repos/core/icons/frames/{square,circle}/filled/<name>.json
 1. Establish the Outline centerlines and native placement first.
 2. Measure the visible Regular exterior, including caps and joins. Fit the correct primary margin pair without distorting the silhouette.
 3. Derive the corresponding Filled exterior or cutout using the treatment in section 3.3. Construct exact unions at intersections; preserve counters and openings.
-4. Author the larger None glyph and preserve the compact shared Square/Circle glyphs as separate native variants. Keep Square upright, rebuild Filled at fixed family weight for each size, and verify compact Circle clearance.
+4. Add frames only when explicitly requested. For supported frame families, author the larger None glyph and preserve the compact shared Square/Circle glyphs as separate native variants. Keep Square upright, rebuild Filled at fixed family weight for each size, and verify compact Circle clearance.
 5. Write/update metadata: name, description, tags, authorship, construction, parts and review status. Use `filledTreatment` consistently (`bold-stroke`, `boxed-cutout`, `solid-head` where applicable). The current math family uses `supportsBold: true`.
 6. Update meaningful source/geometry checks when behavior changes. If a static endpoint changes, inspect its morph endpoint builder and regenerate the affected data; preserve accepted timing and unrelated pairs.
 7. Run core checks and commit the intended source changes before adapter synchronization.

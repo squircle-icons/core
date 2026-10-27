@@ -3,10 +3,16 @@
   "description": "A rounded chevron pointing down toward a separate stop line.",
   "tags": ["chevron", "caret", "navigation", "line", "down"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner explicitly requested larger native None glyphs while retaining the existing smaller Square/Circle glyphs unchanged. Chevron Line None uniformly scales its original centerlines by73/32 about12,12. Its20px primary extent includes round caps at Regular1.75; the other opposing pair retains the natural aspect ratio. All directions are rigid rotations; head and stop line stay separate. None geometry is authored separately from frames, with no runtime style/frame scaling and no scaling of stroke width. Rebuild all Filled contours at the fixed source stroke expansion; never scale a previous Filled path. Square/Circle SVG and metadata files retain their previous exact artwork and dimensions. This supersedes the older requirement that None and framed glyphs have identical size. Native X/Y100/100 and rotation0 remain the new None baseline. Revised None glyph awaits owner review; existing frame review status is unchanged.",
+  "construction": "Owner requested the Chevron V and its separate stop line to sit closer together in every frame and cardinal direction. For Line Up, larger None keeps its head x2.875..21.125 and unchanged4sqrt(2)*73/32 arm length, but moves the V and bar equally toward each other: head vertices (2.875,18.0625),(12,8.9375),(21.125,18.0625), bar (2.875,5.9375) to (21.125,5.9375). Its centerline tip-to-bar separation is3, giving1.25px visible clearance at Regular1.75 and.5px at Bold2.50. Visible bounds x2..22/y5.0625..18.9375 remain centered at12,12, with unchanged20px primary extent. Compact Square/Circle head vertices are (8,15.25),(12,11.25),(16,15.25), bar (8,8.75) to (16,8.75), preserving the existing head size and width. Compact centerline separation is2.5: visible gap.75px at Regular; Bold has intentional tangency at (12,10), without overlap. Compact Regular visible glyph size is9.75 by8.25, centered at12,12. Other directions are rigid quarter-turns about12,12. Outline stroke remains1.75 with round caps/joins. Filled is rebuilt with fixed.875 triangle expansion and a separate.875-radius capsule; no scaled stroke or runtime transform. None remains larger than compact framed glyphs. Square exterior radius6/Outline radius5.125 and all outer frame geometry are unchanged by this spacing revision; Circle remains radius10/Outline9.125. All revisions remain draft pending owner review.",
   "filledTreatment": "solid-head",
   "review": {
     "status": "draft",
-    "note": "Larger native None glyph requested by owner; smaller Square/Circle variants are preserved unchanged. Awaiting owner visual review."
-  }
+    "note": "Head and stop line moved closer together, with fixed weight and head dimensions. Revised spacing awaits owner visual review."
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "Larger native None glyph requested by owner; smaller Square/Circle variants are preserved unchanged. Awaiting owner visual review."
+    }
+  ]
 }

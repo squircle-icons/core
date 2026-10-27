@@ -1,5 +1,7 @@
 # Primary margin pairs — mandatory reference
 
+> **Current operating rule:** read [ICON_RULES.md](ICON_RULES.md). Enclosing Square/Circle frames are opt-in only when the owner explicitly requests them; new icons default to None. The current Square rounding trial uses exterior radius6 at bounds2..22 and Outline centerline radius5.125 at bounds2.875..21.125, with fixed Regular1.75. This supersedes older enclosing-frame radius4/3.125 examples below, without changing natural-object corner radii or inner glyphs. New Tab, External Link and Maximize are explicitly None-only. Larger native None geometry and the separately requested closer Chevron Line gaps are specified in the canonical guide.
+
 Owner direction recorded on 2026-10-27: use **2px at the shape's primary opposing edge pair**. The remaining pair does not need to sit at 2px. Preserve natural proportions and center opposite margins; never stretch a horizontal or vertical object into a square just to fill every side.
 
 - Horizontal objects such as Camera and Folder: left/right are the primary pair, both 2px. Top/bottom stay balanced and may be larger.

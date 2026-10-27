@@ -48,12 +48,20 @@ it('keeps visible opposing gaps and stop-line gaps at Regular and Bold weights',
   const line = points('chevron-line-up');
   const opposedCenterlineGap = opposed[3][1] - opposed[0][1];
   const stopCenterlineGap = line[1][1] - line[3][1];
+  const compact = pathParser.makeAbsolute(
+    pathParser.parseSVG(
+      icon('chevron-line-up').frames!.circle!.root.children[0].children.at(-1)!.attrs.d,
+    ),
+  );
+  const compactGap = compact[1].y - compact[3].y;
+  expect(compactGap).toBeCloseTo(2.5, 7);
   for (const [weight, clearance] of [
     [1.75, 1.25],
     [2.5, 0.5],
   ]) {
     expect(opposedCenterlineGap - weight).toBeGreaterThan(clearance);
-    expect(stopCenterlineGap - weight).toBeGreaterThan(clearance);
+    expect(stopCenterlineGap - weight).toBeCloseTo(clearance, 7);
+    expect(compactGap - weight).toBeCloseTo(weight === 1.75 ? 0.75 : 0, 7);
   }
 });
 

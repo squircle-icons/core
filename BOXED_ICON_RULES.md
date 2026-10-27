@@ -1,5 +1,7 @@
 # Plus and X: required construction reference
 
+> **Current operating rule:** read [ICON_RULES.md](ICON_RULES.md). Enclosing Square/Circle frames are opt-in only when the owner explicitly requests them; new icons default to None. The current Square rounding trial uses exterior radius6 at bounds2..22 and Outline centerline radius5.125 at bounds2.875..21.125, with fixed Regular1.75. This supersedes older enclosing-frame radius4/3.125 examples below, without changing natural-object corner radii or inner glyphs. New Tab, External Link and Maximize are explicitly None-only. Larger native None geometry and the separately requested closer Chevron Line gaps are specified in the canonical guide.
+
 Read this file before every Plus/X change. The owner accepted the contained
 shared-glyph relationship on 2026-10-27, then requested rounder box corners.
 The owner approved the current radius-4 corners and complete Plus/X pairs in both styles on 2026-10-27. The dimensions below are the approved reference.

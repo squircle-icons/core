@@ -1,5 +1,7 @@
 # Squircle Icons design rules
 
+> **Current operating rule:** read [ICON_RULES.md](ICON_RULES.md). Enclosing Square/Circle frames are opt-in only when the owner explicitly requests them; new icons default to None. The current Square rounding trial uses exterior radius6 at bounds2..22 and Outline centerline radius5.125 at bounds2.875..21.125, with fixed Regular1.75. This supersedes older enclosing-frame radius4/3.125 examples below, without changing natural-object corner radii or inner glyphs. New Tab, External Link and Maximize are explicitly None-only. Larger native None geometry and the separately requested closer Chevron Line gaps are specified in the canonical guide.
+
 Current motion approval: Plus ↔ X continuous horizontal merge is owner-approved on2026-10-27. See the approved motion reference at the end of this document.
 
 Current approval status:14 of33 pairs are owner-approved as of2026-10-27. Arrow/Chevron and Plus/Minus/X frame families await review; Sun retains its approved3px visible rays. Earlier approval counts below are historical. Moon uses the accepted -30-degree pose as its native0-degree source orientation.

@@ -3,10 +3,16 @@
   "description": "A rounded chevron pointing right toward a separate stop line in a circle frame.",
   "tags": ["chevron", "caret", "navigation", "line", "right", "frame", "circle"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Original extension of the existing project Chevron family, using the supplied reference only for icon meaning, without third-party SVG paths. Chevron Up Down and Left Right combine two outward-facing heads. Up Down vertices are (8,10.5),(12,6.5),(16,10.5) and (16,13.5),(12,17.5),(8,13.5); the Filled heads have1.25px central separation, and Bold Outline retains.5px between endpoint caps. Chevron Line Up uses V vertices (8,15.5),(12,11.5),(16,15.5), with a separate bar from(8,8.5) to(16,8.5), giving1.25px Regular and.5px Bold head/bar clearance. Rotate the exact construction for other cardinal directions, without independent scaling. All source strokes are Regular1.75 with round caps/joins; Filled is the same triangle expanded by.875 plus a matching.875-radius bar capsule where present. None/Square/Circle reuse one glyph at identical position and size. Standard frame exteriors2..22, Square radius4, Circle radius10; Outline centerline radius3.125/9.125. Framed Filled subtracts the exact standalone solid-head-and-line silhouette as transparent negative space. Circle clearance remains positive at Bold2.50. All six new identities and frames are drafts; existing Single/Double Chevron geometry is unchanged.",
+  "construction": "Owner requested the Chevron V and its separate stop line to sit closer together in every frame and cardinal direction. For Line Up, larger None keeps its head x2.875..21.125 and unchanged4sqrt(2)*73/32 arm length, but moves the V and bar equally toward each other: head vertices (2.875,18.0625),(12,8.9375),(21.125,18.0625), bar (2.875,5.9375) to (21.125,5.9375). Its centerline tip-to-bar separation is3, giving1.25px visible clearance at Regular1.75 and.5px at Bold2.50. Visible bounds x2..22/y5.0625..18.9375 remain centered at12,12, with unchanged20px primary extent. Compact Square/Circle head vertices are (8,15.25),(12,11.25),(16,15.25), bar (8,8.75) to (16,8.75), preserving the existing head size and width. Compact centerline separation is2.5: visible gap.75px at Regular; Bold has intentional tangency at (12,10), without overlap. Compact Regular visible glyph size is9.75 by8.25, centered at12,12. Other directions are rigid quarter-turns about12,12. Outline stroke remains1.75 with round caps/joins. Filled is rebuilt with fixed.875 triangle expansion and a separate.875-radius capsule; no scaled stroke or runtime transform. None remains larger than compact framed glyphs. Square exterior radius6/Outline radius5.125 and all outer frame geometry are unchanged by this spacing revision; Circle remains radius10/Outline9.125. All revisions remain draft pending owner review.",
   "filledTreatment": "solid-head",
   "review": {
     "status": "draft",
-    "note": "New opposed Chevron / Chevron Line family and frames; awaits owner review."
-  }
+    "note": "Head and stop line moved closer together, with fixed weight and head dimensions. Revised spacing awaits owner visual review."
+  },
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "New opposed Chevron / Chevron Line family and frames; awaits owner review."
+    }
+  ]
 }

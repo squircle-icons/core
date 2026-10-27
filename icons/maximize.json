@@ -3,10 +3,16 @@
   "description": "Four outward corners for maximizing a view.",
   "tags": ["window", "maximize", "expand", "fullscreen"],
   "authorship": "Original geometry constructed for this project; no third-party icon paths used.",
-  "construction": "Owner explicitly requested larger native Frame None artwork, independent of the unchanged smaller Square/Circle glyphs. None centerlines uniformlyscale about12,12 by2.1875000000, with Regular1.75 stroke and roundcaps/joins unchanged. None Filled is the exact Bold2.50 union at radius1.25, using analytical arcs and a single union contour at intersections; it is not scaled oldstrokegeometry and has no enclosingbox. Fit None BoldFilled visibleprimaryextent20, leaving2px on its mainopposingpair; RegularOutline has2.375px there. Otherpairs preserve naturalproportions and balancedmargins. Four cornerLcenterlines use bounds3.25..20.75 andarms5.46875, uniformlyscaledabout12,12. All frameSVG/JSON files retain their prior smaller frame-fitting geometry; do not enlarge the frame glyphs or restore same-None-and-frame sizing. Source-nativeX/Y100/100 androtation0. This ownerexception supersedes prior shared-size wording; frame-specific metadata remains the record of the smaller variant. Existingapprovalhistory is preserved. RevisedNoneglyph awaits ownerreview.",
+  "construction": "Owner explicitly requested larger native Frame None artwork, independent of the unchanged smaller Square/Circle glyphs. None centerlines uniformlyscale about12,12 by2.1875000000, with Regular1.75 stroke and roundcaps/joins unchanged. None Filled is the exact Bold2.50 union at radius1.25, using analytical arcs and a single union contour at intersections; it is not scaled oldstrokegeometry and has no enclosingbox. Fit None BoldFilled visibleprimaryextent20, leaving2px on its mainopposingpair; RegularOutline has2.375px there. Otherpairs preserve naturalproportions and balancedmargins. Four cornerLcenterlines use bounds3.25..20.75 andarms5.46875, uniformlyscaledabout12,12. All frameSVG/JSON files retain their prior smaller frame-fitting geometry; do not enlarge the frame glyphs or restore same-None-and-frame sizing. Source-nativeX/Y100/100 androtation0. This ownerexception supersedes prior shared-size wording; frame-specific metadata remains the record of the smaller variant. Existingapprovalhistory is preserved. RevisedNoneglyph awaits ownerreview. CURRENT NO-FRAME POLICY: the owner explicitly removed Square and Circle variants for this identity. Only Frame None is supported; prior notes about framed glyphs and frame clearance are historical. Preserve the enlarged standalone size and fixed Regular1.75 stroke. Standalone geometry is unchanged by this frame removal. ",
   "review": {
     "status": "draft",
-    "note": "Owner requested larger native unframed glyph; frame drawings remain unchanged. Revised None size awaits review."
+    "note": "Owner requested no frame variants. Standalone result awaits visual review."
   },
-  "filledTreatment": "bold-stroke"
+  "filledTreatment": "bold-stroke",
+  "reviewHistory": [
+    {
+      "status": "draft",
+      "note": "Owner requested larger native unframed glyph; frame drawings remain unchanged. Revised None size awaits review."
+    }
+  ]
 }

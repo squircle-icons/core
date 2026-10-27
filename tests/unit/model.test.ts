@@ -239,5 +239,5 @@ it('preserves the shared compact Square and Circle glyphs beside larger standalo
       expect(frame!.filled.root.attrs.stroke).toBe('none');
     }
   }
-  expect(icons.filter((icon) => icon.frames)).toHaveLength(38);
+  expect(icons.filter((icon) => icon.frames)).toHaveLength(35);
 });
