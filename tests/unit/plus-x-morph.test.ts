@@ -28,8 +28,8 @@ it('keeps the glyph inside its approved bounds while folding through a single li
   }
 });
 
-it('merges into one full-length vertical stroke before opening into X', () => {
+it('merges into one full-length horizontal stroke before opening into X', () => {
   for (const p of [0.4, 0.5, 0.6]) {
-    expect(plusXFrame(p, geometry).outline).toBe('M12 4.85 L12 19.15');
+    expect(plusXFrame(p, geometry).outline).toBe('M4.85 12 L19.15 12');
   }
 });
