@@ -62,6 +62,7 @@ Explicit family extensions and construction revisions follow their requested sco
 
 ### 2.3 Preserve contracts
 
+- **Reuse before adding an identity.** When the drawing already exists as an icon/style/frame variant and only the action name differs, reuse that existing identity and variant. Record the semantic mapping and add discovery tags; do not duplicate SVG geometry, generated components or alias exports. New Tab = Plus Square is the current example. Do not invent a duplicate identity merely to fill a six-action batch.
 - Author original geometry and keep metadata authorship accurate.
 - Use stable kebab-case icon names and stable `data-part` names. Preserve existing public names unless a rename is requested.
 - Keep direct Svelte imports independent of barrels, catalogs, unrelated icon geometry and animation runtime.
@@ -146,7 +147,7 @@ Keep the compact glyph identical between Square and Circle. None uses its separa
 
 ### 3.4 Frame construction
 
-The default supported choice is `none`. Add `square`/`circle` only for identities whose frames were explicitly requested. Existing requested frame families keep their supported variants; frames never create duplicate sidebar identities. `new-tab`, `external-link` and `maximize` are explicitly None-only. Morphs must cover every frame actually supported by their pair, which does not require adding frames to every new static icon.
+The default supported choice is `none`. Add `square`/`circle` only for identities whose frames were explicitly requested. Existing requested frame families keep their supported variants; frames never create duplicate sidebar identities. `external-link` and `maximize` are explicitly None-only. New Tab reuses Plus with `frame="square"`; it is not a separate icon identity or alias export. Morphs must cover every frame actually supported by their pair, which does not require adding frames to every new static icon.
 
 | Measurement                  | Square                                   | Circle                     |
 | ---------------------------- | ---------------------------------------- | -------------------------- |
@@ -195,6 +196,8 @@ These retain three styles: Outline / Bold / Filled. None Filled equals unboxed B
 
 Square/Circle keep their original compact centerline extent4.5: Plus `M7.5 12 H16.5 M12 7.5 V16.5`, Minus the horizontal segment, and X the two diagonals between7.5 and16.5. Framed Filled uses the compact Regular1.75 cutout. Bold remains explicitly unboxed and ignores frame selection. Do not substitute the larger None mark into a frame.
 
+New Tab is a semantic use of the existing Plus Square variant, in either supported style. Keep `new-tab` and `newtab` as discovery tags on Plus and its Square metadata. Do not create another `new-tab` identity, source SVG, component, or alias export for the same drawing. New Window remains the separate overlapping-window identity described below.
+
 #### Check
 
 Check supports Outline/Filled and all three frame choices. Larger None vertices are `(3.25,12.67307692) → (8.63461539,18.05769231) → (20.75,5.94230769)`. Compact Square/Circle vertices remain `(7,12.38461538) → (10.07692308,15.46153846) → (17,8.53846154)`. Both preserve the original4:9 arm ratio and45-degree slopes.
@@ -225,11 +228,10 @@ Copy places its foreground sheet bottom-left and background sheet top-right, by 
 
 `new-window` preserves both former Copy SVG files byte-for-byte, with foreground bottom-right and background top-left. Neither identity has additional Square/Circle variants, so this None-versus-frame enlargement does not resize them. New Window does not inherit Copy approval; revised Copy keeps previous approval in history. Both remain drafts.
 
-#### New Tab and External Link
+#### External Link
 
-Both identities are explicitly None-only; do not add enclosing Square/Circle variants.
+External Link is explicitly None-only; do not add enclosing Square/Circle variants.
 
-- New Tab uses a natural rounded window: centerline radius4.10625 and Filled exterior radius4.98125, with centered plus half-extent3.19375. Stroke stays Regular1.75. Natural Filled is a solid window with the matching Regular1.75 plus cut out, yielding visible bounds2..22. This window is the icon itself, not an optional enclosing frame.
 - External Link uses a natural open window with centerline radius5.125, Filled outer/inner radii6/4.25 and visible bounds2..22. Quarter-circle centers are `(8,8)`, `(8,16)` and `(16,16)`; the top arm ends at `(8,2.875)` and right arm at `(21.125,16)`. Keep the diagonal shaft and arrowhead geometry unchanged when revising the window's corner rounding. Filled unites the same natural window expansion and solid-head arrow; do not add a second box.
 
 #### Menu and Trash

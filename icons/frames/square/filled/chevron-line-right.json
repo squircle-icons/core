@@ -16,7 +16,8 @@
     "outlineCenterlineBounds": [2.875, 2.875, 21.125, 21.125],
     "outlineCenterlineRadius": 5.125,
     "defaultStrokeWidth": 1.75,
-    "glyphUnchanged": true
+    "glyphUnchanged": false,
+    "glyphRevision": "closerLine"
   },
   "reviewHistory": [
     {

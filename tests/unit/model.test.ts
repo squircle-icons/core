@@ -50,7 +50,6 @@ describe('single-source artwork pipeline', () => {
       'moon',
       'more-horizontal',
       'more-vertical',
-      'new-tab',
       'new-window',
       'plus',
       'search',
@@ -175,7 +174,6 @@ it('available filled sources preserve named parts and original geometry through 
     'moon',
     'more-horizontal',
     'more-vertical',
-    'new-tab',
     'new-window',
     'plus',
     'search',
@@ -240,4 +238,20 @@ it('preserves the shared compact Square and Circle glyphs beside larger standalo
     }
   }
   expect(icons.filter((icon) => icon.frames)).toHaveLength(35);
+});
+
+it('reuses Plus Square for New Tab discovery without a duplicate artwork identity', async () => {
+  const icons = await loadSources();
+  expect(icons).toHaveLength(50);
+  expect(icons.some((icon) => icon.name === 'new-tab')).toBe(false);
+  const plus = icons.find((icon) => icon.name === 'plus')!;
+  for (const metadata of [
+    plus.metadata,
+    plus.filled!.metadata,
+    plus.frames!.square!.metadata,
+    plus.frames!.square!.filled.metadata,
+  ]) {
+    expect(metadata.tags).toContain('new-tab');
+    expect(metadata.tags).toContain('newtab');
+  }
 });
