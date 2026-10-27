@@ -4,6 +4,7 @@ import { loadSources, root } from './validate.js';
 import { buildSunMoonGeometry } from './build-sun-moon.js';
 import { buildPlusXGeometry } from './build-plus-x.js';
 import { buildMenuXGeometry } from './build-menu-x.js';
+import { buildPlusMinusGeometry } from './build-plus-minus.js';
 const icons = await loadSources();
 await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
@@ -35,4 +36,9 @@ await writeFile(
 await writeFile(
   resolve(root, 'dist/morphs/menu-x.json'),
   JSON.stringify(buildMenuXGeometry(icons), null, 2) + '\n',
+);
+
+await writeFile(
+  resolve(root, 'dist/morphs/plus-minus.json'),
+  JSON.stringify(buildPlusMinusGeometry(icons), null, 2) + '\n',
 );

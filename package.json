@@ -61,7 +61,16 @@
       "types": "./dist/morphs/menu-x.d.ts",
       "default": "./dist/morphs/menu-x.js"
     },
-    "./morph/menu-x.json": "./dist/morphs/menu-x.json"
+    "./morph/menu-x.json": "./dist/morphs/menu-x.json",
+    "./morph/round-strokes": {
+      "types": "./dist/morphs/round-strokes.d.ts",
+      "default": "./dist/morphs/round-strokes.js"
+    },
+    "./morph/plus-minus": {
+      "types": "./dist/morphs/plus-minus.d.ts",
+      "default": "./dist/morphs/plus-minus.js"
+    },
+    "./morph/plus-minus.json": "./dist/morphs/plus-minus.json"
   },
   "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {
