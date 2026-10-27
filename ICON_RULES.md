@@ -1,18 +1,26 @@
 # Icon — Shared Agent Playbook
 
-Maintained: 2026-10-27. **This is the canonical English working document for icon creation and revision across this workspace.** It defines the goal, rules, design contract, workflow, verification, tests and completion criteria. Read it before making icon changes. Update the current sections when the owner changes a rule; do not maintain competing copies in agent entry points.
+Maintained: 2026-10-28. **This is the canonical English working document for icon creation and revision across this workspace.** It defines the goal, rules, design contract, workflow, verification, tests and completion criteria. Read it before making icon changes. Update the current sections when the owner changes a rule; do not maintain competing copies in agent entry points.
 
 ## Current design direction — original squircle identity
 
-The owner clarified that this project needs its **own squircle design language**, beyond ordinary rounded corners. The current task changes the concept and this document only. It does not authorize prototypes, replacement artwork, package changes or a collection-wide redesign yet.
+The owner clarified that this project needs its **own squircle design language**, beyond ordinary rounded corners. The concept-first documentation task is complete. On2026-10-28 the owner authorized the first **Camera-only artwork trial**, including Outline/Filled and a working local Lab preview. This does not authorize a collection-wide redesign.
 
 An external example may reveal a mismatch between our work and our own brief. It must not supply the design solution. Do not trace, extract, sample or reconstruct its paths, silhouettes, proportions, motifs, compositions, icon inventory or style recipes. Do not make a slightly altered version of another collection. Start our design decisions from the meaning of each icon and independently develop our own shape grammar.
 
 The existing circular-corner measurements below describe the approved implementation baseline. They do not establish the future squircle language. No new curve formula, exponent, control-point recipe or replacement geometry is approved by this conceptual clarification. Preserve the current artwork and acceptance records until a later artwork request establishes the scope of a redesign.
 
+## Camera original-squircle trial — 2026-10-28
+
+Camera is the first scoped artwork redesign. Its semantic structure remains a horizontal camera with a low raised housing, circular lens and indicator. The independently authored body uses a progressive corner profile: curvature starts at zero beside a straight side, increases through the turn and returns to zero at the next side. The lens remains circular because it describes an optical aperture. The shallow housing is integrated into the body rather than adding a generic enclosing frame.
+
+The Camera-only construction is recorded in its source metadata and [authoring reference](tools/camera-design.ts). It uses quintic profiles, with cubic Hermite source fitting and an analytical outward normal offset for the Filled exterior. Curve-fitting position error must stay below0.0001 native units; sampled joins preserve tangent/zero-curvature contact with straight sections. The Regular visible bounds are x2..22/y3.625..20.375, centered at12,12. The Filled lens is an intentional solid-style counter at the shared lens centerline radius, not a requirement to fill or copy every Outline interior.
+
+Both revised Camera styles are **drafts awaiting owner visual review**. Other artwork and approval records remain unchanged. These profile proportions are an experiment for this subject, not a newly approved universal recipe. Review the real Lab and actual16/20/24/48px output before extending the grammar to other subjects. Camera has no current morph endpoint; no animation change is part of this trial.
+
 ## Current static approval — 2026-10-27
 
-The owner explicitly approved **all current static icons**, including every available style and requested Square/Circle drawing. This covers51 authoring families and121 separately exported static icons after the frame split. Preserve every existing SVG path and prior review history while recording the approval. Current `metadata.review` is authoritative; earlier draft statements in historical construction notes are superseded. New or changed artwork must reopen the affected review. Static approval does not approve any morph or motion.
+The owner explicitly approved **all current static icons**, including every available style and requested Square/Circle drawing. This covers51 authoring families and121 separately exported static icons after the frame split. Preserve every existing SVG path and prior review history while recording the approval. The Camera-only trial above reopens its two style reviews. Current `metadata.review` is authoritative; earlier draft statements in historical construction notes are superseded. New or changed artwork must reopen the affected review. Static approval does not approve any morph or motion.
 
 ## Start here
 
@@ -121,7 +129,7 @@ Use a native **24 × 24** artboard, centered at **12,12**. Native SVG units corr
 
 These circular-arc values are not a universal squircle construction rule for future redesigns. The earlier instruction to apply radius3.25 automatically to every new comparable corner is superseded by the current conceptual direction. A later artwork task must first establish our independently designed silhouette and progressive corner profile, with its own rationale and review evidence. Do not guess a numeric replacement or silently refit the whole collection now.
 
-Camera/Folder fitted bodies, small semantic details and the current Square frame exterior radius6 remain approved baseline references. Preserve their current geometry during this documentation-only task. Future profiles must respect the subject's meaning and scale; neither a single fixed radius nor one universal outline should be imposed on every feature.
+Camera/Folder fitted bodies, small semantic details and the current Square frame exterior radius6 remain approved baseline references. Preserve their approved baseline outside an explicitly requested revision; Camera is now the first scoped trial. Future profiles must respect the subject's meaning and scale; neither a single fixed radius nor one universal outline should be imposed on every feature.
 
 ### 3.2 Margins and optical size
 
@@ -361,7 +369,7 @@ Review status:
 
 Use the established family rules for routine choices. If a missing decision materially affects the result, ask the owner while progressing work that does not depend on the answer.
 
-For a later redesign request, build the brief from the subject and our own design goals. Establish our shape grammar independently before proposing an artwork trial. Record why the proportions and corner progression belong to this family, without using another collection's geometry or stylistic solution as the target. Review a concrete trial before proposing a collection-wide migration. This workflow does not start a trial during the current documentation-only task.
+For a later redesign request, build the brief from the subject and our own design goals. Establish our shape grammar independently before proposing an artwork trial. Record why the proportions and corner progression belong to this family, without using another collection's geometry or stylistic solution as the target. Review a concrete trial before proposing a collection-wide migration. The Camera-only trial below is the first owner-requested application; it does not establish approval for other icons.
 
 ### Step 3 — Author in core
 
