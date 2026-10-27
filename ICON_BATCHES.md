@@ -2,13 +2,13 @@
 
 Owner workflow recorded on 2026-10-27: an add-icons request means six icons total. Explicitly named icons occupy places in that same batch. Choose complementary icons for all remaining places automatically.
 
-| Round | Icons                                                                                  | Current review status |
-| ----- | -------------------------------------------------------------------------------------- | --------------------- |
-| 1     | Bell, Camera, Folder, Heart, Search, Settings                                          | All six approved      |
-| 2     | Sun, Moon                                                                              | Both approved         |
-| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up                                         | All six approved      |
-| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash                                 | All six approved      |
-| 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right | All six await review  |
+| Round | Icons                                                                                  | Current review status                          |
+| ----- | -------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| 1     | Bell, Camera, Folder, Heart, Search, Settings                                          | All six approved                               |
+| 2     | Sun, Moon                                                                              | Both approved                                  |
+| 3     | X, Copy, Chevron Down, Plus, Check, Chevron Up                                         | All six approved                               |
+| 4     | Arrow Left, Arrow Right, Menu, Download, Upload, Trash                                 | Arrow Left/Right reopened; other four approved |
+| 5     | Arrow Up, Arrow Down, Arrow Up Left, Arrow Up Right, Arrow Down Left, Arrow Down Right | All six await review                           |
 
 **18 of26 current icon pairs are approved; all eight compass arrows and their new frames await review.** The owner approved Sun with3px visible rays in both styles on2026-10-27. Approval covers both Outline and Filled. Automated checks do not grant visual approval.
 
