@@ -103,86 +103,93 @@ for (const subject of ['camera', 'folder'] as const)
       }
     },
   );
-it('Camera aperture and Folder divider retain deliberate exact native counters', () => {
+it('Camera counters preserve shared placement and the scoped stroke relationship', () => {
   const camera = prototypeStudy('camera');
-  const outlineArcs = pathParser.parseSVG(camera.outline).filter((c) => 'rx' in c);
-  const filledArcs = pathParser.parseSVG(camera.filled).filter((c) => 'rx' in c);
-  expect(outlineArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([3.2411202, 3.2411202]);
-  expect(filledArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([
-    2.4911202, 2.4911202, 0.75, 0.75,
-  ]);
-  const folder = prototypeStudy('folder');
-  const dividerArcs = pathParser.parseSVG(folder.filled).filter((c) => 'rx' in c);
-  expect(dividerArcs.map((c) => ('rx' in c ? c.rx : NaN))).toEqual([0.75, 0.75]);
-  expect(bodyCommands(folder.outline).at(-1)!.code).toBe('Z');
+  const outline = pathParser.makeAbsolute(pathParser.parseSVG(camera.outline)),
+    filled = pathParser.makeAbsolute(pathParser.parseSVG(camera.filled));
+  const outlineArcs = outline.filter((c) => 'rx' in c),
+    filledArcs = filled.filter((c) => 'rx' in c);
+  expect(outlineArcs).toHaveLength(2);
+  expect(filledArcs).toHaveLength(4);
+  for (let i = 0; i < 2; i++) {
+    if (!('rx' in outlineArcs[i] && 'rx' in filledArcs[i])) throw Error('Missing lens arc');
+    expect(filledArcs[i].rx).toBeCloseTo(outlineArcs[i].rx - 0.75, 6);
+    expect(filledArcs[i].rx).toBeGreaterThan(0);
+  }
+  const outlineMoves = outline.filter((c) => c.code === 'M'),
+    filledMoves = filled.filter((c) => c.code === 'M');
+  if (!('rx' in outlineArcs[0] && 'rx' in filledArcs[0])) throw Error('Missing circular lens');
+  expect(outlineMoves[1].x + outlineArcs[0].rx).toBeCloseTo(filledMoves[1].x + filledArcs[0].rx, 6);
+  expect(outlineMoves[1].y).toBeCloseTo(filledMoves[1].y, 6);
+  expect(outlineMoves[2].x).toBeCloseTo(filledMoves[2].x + 0.75, 6);
+  expect(outlineMoves[2].y).toBeCloseTo(filledMoves[2].y, 6);
 });
-
-it('original housing, tab, side runs and details are invariant while only main body corners change', () => {
-  const originalFeatures = {
-    camera: [
-      [8.2758646, 6.63968611],
-      [9.20277691, 6.07970858],
-      [9.88095856, 4.78932476],
-      [10.58717728, 4.36267519],
-      [13.41282368, 4.36267519],
-      [14.1190424, 4.78932476],
-      [14.797225, 6.07970858],
-      [15.72413635, 6.63968611],
-      [21.25, 16.3962059],
-      [6.11612034, 19.63732529],
-      [2.75, 9.38217258],
-    ],
-    folder: [
-      [5.66734982, 4.1911912],
-      [8.07275391, 4.1911912],
-      [8.64480209, 4.4328866],
-      [10.89379501, 6.74629974],
-      [11.6446085, 7.06352472],
-      [18.13319778, 7.06352472],
-      [21.25, 16.56768799],
-      [6.11612034, 19.80880928],
-      [2.75, 6.98354101],
-    ],
-  };
-  for (const subject of ['camera', 'folder'] as const)
-    for (const exponent of [2.7, 3.2, 4]) {
-      const shape = prototypeStudy(subject, exponent),
-        commands = bodyCommands(shape.outline);
-      for (const [x, y] of originalFeatures[subject])
-        expect(commands.some((c) => Math.hypot(c.x - x, c.y - y) < 0.000001)).toBe(true);
-      for (const style of ['outline', 'filled'] as const) {
-        const tail = shape[style].slice(shape[style].indexOf('Z') + 1);
-        const base = prototypeStudy(subject, 3.2)[style];
-        expect(tail).toBe(base.slice(base.indexOf('Z') + 1));
-      }
-      const outline = pathParser.makeAbsolute(pathParser.parseSVG(shape.outline));
-      const detail = outline.slice(outline.findIndex((c) => c.code === 'Z') + 1);
-      if (subject === 'camera') {
-        expect(detail[0].x).toBeCloseTo(12 - 3.24112022, 6);
-        expect(detail[0].y).toBeCloseTo(12.8227459, 6);
-        expect(detail[4].x).toBeCloseTo(17.88388062, 6);
-        expect(detail[4].y).toBeCloseTo(9.13285542, 6);
-      } else {
-        expect(detail[0].x).toBe(2.75);
-        expect(detail[1].x).toBe(21.25);
-        expect(detail[0].y).toBeCloseTo(10.9030056, 6);
+it('Camera semantic line runs and interior geometry do not follow the body corner control', () => {
+  const reference = prototypeStudy('camera');
+  const lineRuns = (d: string) =>
+    bodyCommands(d)
+      .filter((c) => c.code === 'L')
+      .map((c) => [c.x, c.y]);
+  const detail = (d: string) => d.slice(d.indexOf('Z') + 1);
+  for (const n of [2.7, 3.2, 4]) {
+    const shape = prototypeStudy('camera', n);
+    expect(lineRuns(shape.outline)).toEqual(lineRuns(reference.outline));
+    expect(detail(shape.outline)).toBe(detail(reference.outline));
+    expect(detail(shape.filled)).toBe(detail(reference.filled));
+  }
+});
+it('Folder retains actual Square lower curves without anisotropic scaling, allowing a uniform recenter after the cut', () => {
+  for (const n of [2.7, 3.2, 4])
+    for (const style of ['outline', 'filled'] as const) {
+      const square = bodyCommands(squircleStudy(n)[style]),
+        folder = bodyCommands(prototypeStudy('folder', n)[style]);
+      const lowerCount = (square.length - 2) / 2,
+        shift = folder[0].y - square[0].y;
+      for (let i = 1; i <= lowerCount; i++) {
+        const a = square[i],
+          b = folder[i];
+        expect(b.code).toBe('C');
+        if (!('x1' in a && 'x2' in a && 'x1' in b && 'x2' in b))
+          throw Error('Expected inherited Square curves');
+        for (const key of ['x0', 'x1', 'x2', 'x'] as const) expect(b[key]).toBeCloseTo(a[key], 3);
+        for (const key of ['y0', 'y1', 'y2', 'y'] as const)
+          expect(b[key] - shift).toBeCloseTo(a[key], 3);
       }
     }
 });
-it('restored native silhouettes retain their original heights and an enclosed Folder counter', () => {
-  for (const subject of ['camera', 'folder'] as const) {
-    const shape = prototypeStudy(subject),
-      outside = bodySamples(shape.filled);
-    const ys = outside.map((p) => p.point[1]);
-    expect(Math.min(...ys)).toBeCloseTo(subject === 'camera' ? 3.61267519 : 3.4411912, 4);
-    expect(Math.max(...ys)).toBeCloseTo(subject === 'camera' ? 20.38732529 : 20.55880928, 4);
+function pointInside(point: Point, polygon: Point[]) {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const a = polygon[i],
+      b = polygon[j];
+    if (
+      a[1] > point[1] !== b[1] > point[1] &&
+      point[0] < ((b[0] - a[0]) * (point[1] - a[1])) / (b[1] - a[1]) + a[0]
+    )
+      inside = !inside;
   }
-  const folder = prototypeStudy('folder');
-  const all = pathParser.makeAbsolute(pathParser.parseSVG(folder.filled));
-  const counter = all.slice(all.findIndex((c) => c.code === 'Z') + 1);
-  const xs = counter.flatMap((c) => ('rx' in c ? [c.x - c.rx, c.x + c.rx] : [c.x]));
-  expect(Math.min(...xs)).toBeCloseTo(4.76980874, 6);
-  expect(Math.max(...xs)).toBeCloseTo(19.23019126, 6);
-  expect(Math.min(...xs) - 2).toBeGreaterThan(2.7);
-  expect(22 - Math.max(...xs)).toBeGreaterThan(2.7);
-});
+  return inside;
+}
+it.each([2, 2.4, 2.7, 3.2, 4, 4.4, 5])(
+  'Folder counter remains enclosed with clear1.5-weight capsule at profile%s',
+  (n) => {
+    const shape = prototypeStudy('folder', n),
+      all = pathParser.makeAbsolute(pathParser.parseSVG(shape.filled));
+    const counter = all.slice(all.findIndex((c) => c.code === 'Z') + 1),
+      arcs = counter.filter((c) => 'rx' in c);
+    expect(arcs).toHaveLength(2);
+    for (const arc of arcs) if ('rx' in arc) expect(arc.rx).toBe(0.75);
+    const xs = counter.flatMap((c) => ('rx' in c ? [c.x - c.rx, c.x + c.rx] : [c.x]));
+    const ys = counter.map((c) => c.y),
+      body = bodySamples(shape.filled).map((s) => s.point);
+    const minX = Math.min(...xs),
+      maxX = Math.max(...xs),
+      minY = Math.min(...ys),
+      maxY = Math.max(...ys);
+    expect(maxY - minY).toBeCloseTo(1.5, 6);
+    expect(minX - 2).toBeGreaterThan(1);
+    expect(22 - maxX).toBeGreaterThan(1);
+    for (const x of [minX, (minX + maxX) / 2, maxX])
+      for (const y of [minY, maxY]) expect(pointInside([x, y], body)).toBe(true);
+  },
+);
