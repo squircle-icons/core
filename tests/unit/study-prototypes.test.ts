@@ -255,69 +255,51 @@ it.each([2, 2.4, 2.7, 3.2, 4, 4.4, 5])(
 );
 
 it.each([2, 2.4, 2.7, 3.2, 4, 4.4, 5])(
-  'Folder left stem and open front edge form one connected native junction at profile%s',
+  'Folder layers share the actual convex Square left curve without an inward neck at profile%s',
   (n) => {
-    const shape = prototypeStudy('folder', n),
-      exterior = bodyCommands(shape.filled),
-      outline = bodyCommands(shape.outline),
-      connector = exterior.slice(65, 97),
-      insetConnector = outline.slice(65, 97);
-    // Accepted lower64 cubics terminate directly in a monotone connector. There is
-    // no rear lower-left return, concave arc or backward hook between the forms.
-    expect(connector).toHaveLength(32);
-    for (const c of connector) {
-      expect(c.code).toBe('C');
-      expect(c.x).toBeGreaterThanOrEqual(c.x0 - 1e-7);
-      expect(c.y).toBeLessThan(c.y0);
-    }
-    const tangent = (c: (typeof exterior)[number], end: boolean): Point => {
-      if (!('x1' in c && 'x2' in c)) throw Error('Expected connected cubic');
-      return end ? [c.x - c.x2, c.y - c.y2] : [c.x1 - c.x0, c.y1 - c.y0];
-    };
-    for (const [a, b] of [
-      [exterior[64], connector[0]],
-      [connector.at(-1)!, exterior[97]],
-    ]) {
-      expect([a.x, a.y]).toEqual([b.x0, b.y0]);
-      const u = tangent(a, true),
-        v = tangent(b, false);
-      expect(
-        Math.abs((u[0] * v[1] - u[1] * v[0]) / (Math.hypot(...u) * Math.hypot(...v))),
-      ).toBeLessThan(0.0001);
-      expect(u[0] * v[0] + u[1] * v[1]).toBeGreaterThan(0);
-    }
-    const internal = pathParser.makeAbsolute(
-        pathParser.parseSVG(shape.outline.slice(shape.outline.indexOf('Z') + 1)),
-      ),
-      endpoint: Point = [internal[0].x, internal[0].y];
-    const squaredDistance = (c: (typeof exterior)[number], t: number) => {
-      if (!('x1' in c && 'x2' in c)) throw Error('Expected inset cubic');
-      const x =
-          (1 - t) ** 3 * c.x0 +
-          3 * (1 - t) ** 2 * t * c.x1 +
-          3 * (1 - t) * t * t * c.x2 +
-          t ** 3 * c.x,
-        y =
-          (1 - t) ** 3 * c.y0 +
-          3 * (1 - t) ** 2 * t * c.y1 +
-          3 * (1 - t) * t * t * c.y2 +
-          t ** 3 * c.y;
-      return (x - endpoint[0]) ** 2 + (y - endpoint[1]) ** 2;
-    };
-    let distance = Infinity;
-    for (const c of insetConnector) {
-      let lo = 0,
-        hi = 1;
-      for (let i = 0; i < 50; i++) {
-        const a = lo + (hi - lo) / 3,
-          b = hi - (hi - lo) / 3;
-        if (squaredDistance(c, a) < squaredDistance(c, b)) hi = b;
-        else lo = a;
+    const shape = prototypeStudy('folder', n);
+    for (const style of ['outline', 'filled'] as const) {
+      const folder = bodyCommands(shape[style]),
+        square = bodyCommands(squircleStudy(n)[style]);
+      // The first eight upper-left intervals are the Square's own native curve,
+      // continuous with its accepted lower half; no returning rear edge is drawn.
+      for (let i = 65; i <= 72; i++) {
+        const a = folder[i],
+          b = square[i];
+        if (!('x1' in a && 'x2' in a && 'x1' in b && 'x2' in b))
+          throw Error('Expected shared Square cubics');
+        for (const k of (style === 'filled' ? ['x0', 'x1', 'x2', 'x'] : ['x0', 'x']) as Array<
+          'x0' | 'x1' | 'x2' | 'x'
+        >)
+          expect(a[k]).toBeCloseTo(b[k], 3);
+        const shift = folder[0].y - square[0].y;
+        for (const k of (style === 'filled' ? ['y0', 'y1', 'y2', 'y'] : ['y0', 'y']) as Array<
+          'y0' | 'y1' | 'y2' | 'y'
+        >)
+          expect(a[k] - shift).toBeCloseTo(b[k], 3);
       }
-      distance = Math.min(distance, squaredDistance(c, (lo + hi) / 2));
     }
-    // The open edge terminates on the actual stroke centerline, not near a
-    // bounding box, exterior corner or separate round-capped stroke.
-    expect(Math.sqrt(distance)).toBeLessThan(0.0005);
+    const upper = bodySamples(shape.filled).slice(64 * 4, 105 * 4);
+    for (let i = 1; i < upper.length; i++) {
+      const a = upper[i - 1],
+        b = upper[i];
+      expect(b.point[0]).toBeGreaterThanOrEqual(a.point[0] - 0.00001);
+      expect(b.point[1]).toBeLessThanOrEqual(a.point[1] + 0.00001);
+      const bend =
+        (a.tangent[0] * b.tangent[1] - a.tangent[1] * b.tangent[0]) /
+        (Math.hypot(...a.tangent) * Math.hypot(...b.tangent));
+      expect(bend).toBeGreaterThanOrEqual(-0.00001);
+    }
+    const body = bodyCommands(shape.outline),
+      internal = shape.outline.slice(shape.outline.indexOf('Z') + 1),
+      seam = pathParser.makeAbsolute(pathParser.parseSVG(internal));
+    // The front boundary branches from the SAME left centerline point. Neither
+    // a near-touching cap nor an independently offset rear-left line can replace it.
+    expect([seam[0].x, seam[0].y]).toEqual([body[64].x, body[64].y]);
+    for (const sample of bodySamples(internal + 'Z')) {
+      expect(sample.tangent[0]).toBeGreaterThanOrEqual(-0.00001);
+      expect(sample.tangent[1]).toBeLessThanOrEqual(0.00001);
+      expect(Math.hypot(...sample.tangent)).toBeGreaterThan(0.00001);
+    }
   },
 );
