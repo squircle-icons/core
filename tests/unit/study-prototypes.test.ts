@@ -9,10 +9,44 @@ import {
 type Point = [number, number];
 const bodyCommands = (d: string) =>
   pathParser.makeAbsolute(pathParser.parseSVG(d.slice(0, d.indexOf('Z') + 1)));
-function bodySamples(d: string) {
+function circularArc(c: ReturnType<typeof pathParser.makeAbsolute>[number], t: number) {
+  if (!('rx' in c)) throw Error('Expected circular arc');
+  const r = c.rx,
+    dx = c.x - c.x0,
+    dy = c.y - c.y0,
+    chord = Math.hypot(dx, dy),
+    h = Math.sqrt(Math.max(0, r * r - (chord * chord) / 4));
+  let selected: { center: Point; start: number; delta: number } | undefined;
+  for (const sign of [-1, 1]) {
+    const center: Point = [
+      (c.x + c.x0) / 2 - (sign * dy * h) / chord,
+      (c.y + c.y0) / 2 + (sign * dx * h) / chord,
+    ];
+    const start = Math.atan2(c.y0 - center[1], c.x0 - center[0]);
+    let delta = Math.atan2(c.y - center[1], c.x - center[0]) - start;
+    if (c.sweep && delta < 0) delta += 2 * Math.PI;
+    if (!c.sweep && delta > 0) delta -= 2 * Math.PI;
+    if (c.largeArc ? Math.abs(delta) >= Math.PI - 1e-6 : Math.abs(delta) <= Math.PI + 1e-6) {
+      selected = { center, start, delta };
+      break;
+    }
+  }
+  if (!selected) throw Error('Invalid circular join');
+  const angle = selected.start + selected.delta * t;
+  return {
+    point: [
+      selected.center[0] + r * Math.cos(angle),
+      selected.center[1] + r * Math.sin(angle),
+    ] as Point,
+    tangent: [-r * Math.sin(angle) * selected.delta, r * Math.cos(angle) * selected.delta] as Point,
+  };
+}
+function bodySamples(d: string, includeArcs = true) {
   return bodyCommands(d)
     .slice(1, -1)
     .flatMap((c) => {
+      if (c.code === 'A')
+        return includeArcs ? [0, 0.25, 0.5, 0.75].map((t) => circularArc(c, t)) : [];
       if (c.code === 'L')
         return [0, 0.25, 0.5, 0.75].map((t) => ({
           point: [c.x0 + (c.x - c.x0) * t, c.y0 + (c.y - c.y0) * t] as Point,
@@ -73,7 +107,7 @@ for (const subject of ['camera', 'folder'] as const)
     (n) => {
       const shape = prototypeStudy(subject, n),
         outside = bodySamples(shape.filled),
-        inside = bodySamples(shape.outline);
+        inside = bodySamples(shape.outline, false);
       expect(inside).toHaveLength(outside.length);
       for (let i = 0; i < outside.length; i++) {
         const a = outside[i],
@@ -87,7 +121,7 @@ for (const subject of ['camera', 'folder'] as const)
       }
       for (const [samples, half] of [
         [outside, 0],
-        [inside, 0.75],
+        [bodySamples(shape.outline), 0.75],
       ] as const) {
         const xs = samples.map((p) => p.point[0]),
           ys = samples.map((p) => p.point[1]);
@@ -157,6 +191,27 @@ it('Folder retains actual Square lower curves without anisotropic scaling, allow
       }
     }
 });
+
+it('Folder uses a visible rear form and an occluding front boundary with transparent geometry', () => {
+  const shape = prototypeStudy('folder');
+  const outer = bodyCommands(shape.outline),
+    joinArcs = outer.filter((c) => 'rx' in c);
+  expect(joinArcs).toHaveLength(2);
+  for (const arc of joinArcs)
+    if ('rx' in arc) {
+      expect(arc.rx).toBe(0.75);
+      expect(arc.sweep).toBe(false);
+    }
+  const internal = shape.outline.slice(shape.outline.indexOf('Z') + 1);
+  expect(internal.startsWith('M')).toBe(true);
+  expect(internal.endsWith('Z')).toBe(false);
+  const internalCommands = pathParser.makeAbsolute(pathParser.parseSVG(internal));
+  const polygon = bodySamples(shape.filled).map((s) => s.point);
+  for (const c of internalCommands) expect(pointInside([c.x, c.y], polygon)).toBe(true);
+  // Neither style needs an opaque background-colored patch to hide the rear form.
+  expect(shape.outline).not.toMatch(/white|#fff|mask|clipPath/i);
+  expect(shape.filled).not.toMatch(/white|#fff|mask|clipPath/i);
+});
 function pointInside(point: Point, polygon: Point[]) {
   let inside = false;
   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
@@ -186,10 +241,15 @@ it.each([2, 2.4, 2.7, 3.2, 4, 4.4, 5])(
       maxX = Math.max(...xs),
       minY = Math.min(...ys),
       maxY = Math.max(...ys);
-    expect(maxY - minY).toBeCloseTo(1.5, 6);
+    expect(maxY - minY).toBeGreaterThanOrEqual(1.5);
+    const hole = shape.filled.slice(shape.filled.indexOf('Z') + 1);
+    const holeSamples = bodySamples(hole);
+    expect(intersects(holeSamples.map((s) => s.point))).toBe(false);
+    for (const sample of holeSamples) {
+      expect(Math.hypot(...sample.tangent)).toBeGreaterThan(0.00001);
+      expect(pointInside(sample.point, body)).toBe(true);
+    }
     expect(minX - 2).toBeGreaterThan(1);
     expect(22 - maxX).toBeGreaterThan(1);
-    for (const x of [minX, (minX + maxX) / 2, maxX])
-      for (const y of [minY, maxY]) expect(pointInside([x, y], body)).toBe(true);
   },
 );

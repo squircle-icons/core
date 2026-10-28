@@ -4,7 +4,7 @@
 
 > **Part-by-part judgment —2026-10-28:** use the squircle language where it suits each body, housing, tab, opening or join. Do not force maximum squircle treatment into every corner. Balanced Square remains the base reference. See the [canonical rule](ICON_RULES.md#part-by-part-design-judgment--owner-clarification).
 
-> **Current study review —2026-10-28:** Balanced Square at1.5 is accepted. Camera/Folder study revisions were rejected; use our own source shapes and subject-specific proportions. The latest Folder draft derives from our own Square by cutting the upper portion; do not freeze historical prototype heights or copy external linework. See [owner review](ICON_RULES.md#owner-review-balanced-square-accepted-object-tops-rejected).
+> **Current study review —2026-10-28:** Balanced Square at1.5 is accepted. Camera/Folder study revisions were rejected; use our own source shapes and subject-specific proportions. Folder retains our own Square-derived lower curves, which are accepted. The owner's sketch clarifies a large front squircle overlapping a smaller rear squircle; preserve the lower curve shape while developing those visible layers. Uniform optical recentering is allowed. Do not freeze unrelated draft heights or copy external linework. See [owner review](ICON_RULES.md#owner-review-balanced-square-accepted-object-tops-rejected).
 
 > **Base-shape study —2026-10-28:** compare whole-contour Square, Camera and Folder prototypes together before extending the redesign. New-study/new-design stroke is1.5; existing artwork and motion keep their current1.75 baseline. See the [canonical scoped rule](ICON_RULES.md#base-shape-first-new-design-stroke15--2026-10-28).
 
