@@ -90,7 +90,12 @@
     "./design/figma-catalog": {
       "types": "./dist/design/figma-catalog.d.ts",
       "default": "./dist/design/figma-catalog.js"
-    }
+    },
+    "./morph/trash": {
+      "types": "./dist/morphs/trash.d.ts",
+      "default": "./dist/morphs/trash.js"
+    },
+    "./morph/trash.json": "./dist/morphs/trash.json"
   },
   "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {

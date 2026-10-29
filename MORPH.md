@@ -160,6 +160,32 @@ endpoint paths and verify near-endpoint boundary continuity below.0005. Preserve
 0.6× pace and smooth reversal. The previous rigid half-turn and legacy circular
 elbow implementation are superseded.
 
+### Trash lid motion — proposed 2026-10-29
+
+The owner requested an icon motion starting with Trash opening its lid and closing.
+Preview `/motion/trash`, opt-in adapter `morph/trash`. This is object motion rather
+than a transformation to a different icon. Closed references are current Figma
+Trash Outline18:145 and Filled18:151 in `FIGMA_STUDY_ICONS`; static draft statuses
+remain unchanged. No frame or additional static identity is introduced.
+
+Keep the body and two slots fixed. Treat lid and handle as one rigid part, lifting
+1.5 native units and rotating −12° about12,6.5 at full opening. Both styles share
+that transform. Use the shared reversible spring at0.7×, mapping progress linearly
+to the transform so retargeting retains geometric velocity. The Lab loops closed →
+open → closed, with manual states, scrubbing and reduced-motion direct selection.
+
+Filled's original union is split at its exported lid/body junctions19.1495,7.22754
+and4.8497,7.22754. Keep every source curve and all three transparent counters;
+the shared straight cut reveals the solid body's top edge when opened. At closure
+the two positive pieces reconstitute the source silhouette. Do not use evenodd
+across the separate overlapping solid pieces. Outline's open body remains its exact
+source stroke. This deliberate revealed-rim treatment needs owner visual review.
+
+Verify packed closed contours against the literal catalog, no discontinuity near
+closure, rigid lid/handle correspondence, stationary body/slots, bounds, both
+styles, actual sizes, light/dark, reversal, reduced motion and responsive controls.
+The motion is proposed, pending owner review; existing approved timing is unchanged.
+
 ### Verification matrix for this migration
 
 All five pairs × both styles × both endpoints must match the current packed Figma

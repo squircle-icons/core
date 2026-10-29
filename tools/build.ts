@@ -1,3 +1,4 @@
+import { buildTrashGeometry } from './build-trash.js';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { loadSources, root } from './validate.js';
@@ -47,4 +48,9 @@ await writeFile(
 await writeFile(
   resolve(root, 'dist/morphs/maximize-minimize.json'),
   JSON.stringify(buildMaximizeMinimizeGeometry(), null, 2) + '\n',
+);
+
+await writeFile(
+  resolve(root, 'dist/morphs/trash.json'),
+  JSON.stringify(buildTrashGeometry(), null, 2) + '\n',
 );
