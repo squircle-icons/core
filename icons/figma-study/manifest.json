@@ -994,9 +994,9 @@
       "style": "outline",
       "nodeId": "24:123",
       "source": "icons/figma-study/mail/outline.svg",
-      "sha256": "189d4d1552010decdc09b44c67fb0aaa2079b2abfe4ca5c871ab4164f4a05150",
+      "sha256": "9a7d9d3aaf04475183ab3c842bf2d303e9e0ca91173d36acc98afd9f9d604291",
       "exportMember": "Mail/Outline.svg",
-      "revisionArchiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b"
+      "revisionArchiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff"
     },
     {
       "id": "mail",
@@ -1005,9 +1005,9 @@
       "style": "filled",
       "nodeId": "24:127",
       "source": "icons/figma-study/mail/filled.svg",
-      "sha256": "bbabbb80143aaea8d831396a13cc1f71d83c7118f90343be63eb4cbfa5150223",
+      "sha256": "23a47e255ed8382ebe90fc5911e1517b98cd458f11bf05620108276a11a21a4a",
       "exportMember": "Mail/Filled.svg",
-      "revisionArchiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b"
+      "revisionArchiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff"
     },
     {
       "id": "wallet",
@@ -1098,9 +1098,9 @@
       "style": "outline",
       "nodeId": "24:162",
       "source": "icons/figma-study/shop/outline.svg",
-      "sha256": "50a7db9052181e6433137ed74c72cdd9c29f46344d3f1f0d58c606aad96f6fbb",
+      "sha256": "009d9e9cb371c19f98a0ad1f5c13bd8560fa219c5f0a5a11e08df0fa6b7ec579",
       "exportMember": "Shop/Outline.svg",
-      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
+      "revisionArchiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff"
     },
     {
       "id": "shop",
@@ -1109,9 +1109,9 @@
       "style": "filled",
       "nodeId": "24:170",
       "source": "icons/figma-study/shop/filled.svg",
-      "sha256": "9668f6ff2a116c2d72782b3ac6b971e5fa64664dd6665360f29829c709e317c5",
+      "sha256": "a136bd2124bfa0bc383f46558061915b03881f30a134a4a0877a777b89fd32f4",
       "exportMember": "Shop/Filled.svg",
-      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
+      "revisionArchiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff"
     },
     {
       "id": "chevron-line-up",
@@ -1647,6 +1647,13 @@
       "identities": ["mail"],
       "archiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b",
       "scope": "Replace the rejected V flap with a continuous downward bow; retain the Mail body and connected ends.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail", "shop"],
+      "archiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff",
+      "scope": "Mail retains bowed arms meeting in a central V. Shop uses our Home Door silhouette with the retained window; doorway connects to the base.",
       "review": "draft"
     }
   ]
