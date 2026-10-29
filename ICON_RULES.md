@@ -2,6 +2,10 @@
 
 Maintained: 2026-10-29. **This is the canonical English working document for icon creation and revision across this workspace.** It defines the goal, rules, design contract, workflow, verification, tests and completion criteria. Read it before making icon changes. Update the current sections when the owner changes a rule; do not maintain competing copies in agent entry points.
 
+## Svelte static API — owner decision, 2026-10-29
+
+Generate one Svelte component per static icon identity. Select Outline (default) or Filled with the `style` prop on that same component. Do not generate separate Filled components, a Filled barrel or `/filled` package subpaths. Keep per-icon imports independent and preserve the existing stroke-width props. This packaging decision does not change authored artwork, approval status or the separate opt-in morph API.
+
 ## Current design language — working contract, 2026-10-28
 
 **Lab migration — 2026-10-29:** the owner explicitly requested all current Figma icons replace the old active Lab collection on a new main page. The active local review set is now the81 current identities /162 drawings, at study base1.5. `icons/figma-study/manifest.json` records all source IDs and hashes; `src/design/figma-catalog.ts` exposes `FIGMA_STUDY_ICONS` through Core and the pinned Svelte adapter's `design/figma-catalog` subpath. Do not mix legacy1.75 artwork or frame variants into this new page. The old packaged collection remains historical compatibility data for existing consumers, not the active Lab catalog. This migration does not grant new visual approvals or change Homepage. The separate morph task owns migration of the five motion pairs to these same endpoints.
@@ -154,13 +158,13 @@ Sources in `.artifacts/figma-study/`: `author-chevrons-study.py`, `author-chevro
 
 ## Current Mail, Wallet and Shop corrections — 2026-10-29
 
-Mail retains its original four-sided body. Its flap uses two bowed arms meeting in a recognizable central V, with a locally round stroke join; the arms curve downward continuously and their terminals connect to the body. The owner rejected both the straighter wing-like V and the later U with a horizontal midpoint. Filled uses the same bowed V as a transparent counter, clipped inside the existing outer rim.
+Mail retains its original four-sided body. The owner's latest direction is a plain two-line V flap first, without gathered or added bowed shaping. Both terminals connect to the body; only the stroke join lightly rounds the central point. Filled uses the same plain V as a transparent counter, clipped inside the existing outer rim. The bowed V, broad U and reduced-curve trials are superseded recovery history; do not replay them over this latest request.
 
 Wallet retains its literal body and circular fastener. Its closure now reaches the right wall; butt terminals end inside the shared body ribbon. The matching Filled counter reaches the inside of the rim and preserves a solid exterior bridge.
 
 The owner subsequently requested Shop use our Home roof first and connect its doorway to the base. Its current shell is the exact Home Door Outline silhouette with the existing short left window retained; Filled derives from the corresponding Home Door exterior with a transparent window. The old awning, panel marks and disconnected doorway are superseded recovery history. This is a Shop draft; no other Home drawing was changed.
 
-The six original frame IDs remain: Mail `24:123` / `24:127`, Wallet `24:130` / `24:135`, Shop `24:162` / `24:170` (Outline / Filled). Current native exports are in `icons/figma-study/{mail,wallet,shop}/`; the manifest records revision archives and hashes. Final web export68 differs from the fresh export65 baseline only in these six SVGs; the other154 exports are byte-identical. The main artwork still has eleven groups /162 drawings, with no extra pasted vectors outside their original frames. Earlier exports66/67 and generators are historical wherever their shapes differ from this section. Focused source/export comparison and retained-geometry evidence live under `.artifacts/figma-study/connected-seams/`. These corrections await owner visual review.
+The six original frame IDs remain: Mail `24:123` / `24:127`, Wallet `24:130` / `24:135`, Shop `24:162` / `24:170` (Outline / Filled). Current native exports are in `icons/figma-study/{mail,wallet,shop}/`; the manifest records revision archives and hashes. Web export68 differs from the fresh export65 baseline only in these six SVGs; the other154 exports are byte-identical. Export69 supersedes only the two Mail drawings with the plain V. The main artwork still has eleven groups /162 drawings, with no extra pasted vectors outside their original frames. Earlier exports66/67, intermediate curves and generators are historical wherever their shapes differ from this section. Focused source/export comparison and retained-geometry evidence live under `.artifacts/figma-study/connected-seams/`. These corrections await owner visual review.
 
 ## Mail, Wallet, Bookmark, Note, Pen, Shop, Menu and Chat Bubble Mark — 2026-10-28
 

@@ -994,9 +994,9 @@
       "style": "outline",
       "nodeId": "24:123",
       "source": "icons/figma-study/mail/outline.svg",
-      "sha256": "9a7d9d3aaf04475183ab3c842bf2d303e9e0ca91173d36acc98afd9f9d604291",
+      "sha256": "1f46a8949db5227ccb7fb4bdcfd2c4fe5e5af85be01af3f0a16794916111af19",
       "exportMember": "Mail/Outline.svg",
-      "revisionArchiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff"
+      "revisionArchiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80"
     },
     {
       "id": "mail",
@@ -1005,9 +1005,9 @@
       "style": "filled",
       "nodeId": "24:127",
       "source": "icons/figma-study/mail/filled.svg",
-      "sha256": "23a47e255ed8382ebe90fc5911e1517b98cd458f11bf05620108276a11a21a4a",
+      "sha256": "c33394a4d30b0851639ddafedd90922a19be5d327da3a47147013fd48eeef3ac",
       "exportMember": "Mail/Filled.svg",
-      "revisionArchiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff"
+      "revisionArchiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80"
     },
     {
       "id": "wallet",
@@ -1654,6 +1654,13 @@
       "identities": ["mail", "shop"],
       "archiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff",
       "scope": "Mail retains bowed arms meeting in a central V. Shop uses our Home Door silhouette with the retained window; doorway connects to the base.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail"],
+      "archiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80",
+      "scope": "Use a plain two-line V flap first, without gathered or added bowed shaping; retain the body and connected ends.",
       "review": "draft"
     }
   ]
