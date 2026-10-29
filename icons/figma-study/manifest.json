@@ -994,8 +994,9 @@
       "style": "outline",
       "nodeId": "24:123",
       "source": "icons/figma-study/mail/outline.svg",
-      "sha256": "de2038c23b8dbc6e9a21e764193e9d9388e1d457e4802657d0e5ab536d6e83b6",
-      "exportMember": "Mail/Outline.svg"
+      "sha256": "701b12fcce0cad2efb69d3e6f4eb8324c771776216acefce052874bff5d282e8",
+      "exportMember": "Mail/Outline.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
     },
     {
       "id": "mail",
@@ -1004,8 +1005,9 @@
       "style": "filled",
       "nodeId": "24:127",
       "source": "icons/figma-study/mail/filled.svg",
-      "sha256": "1e3c81b1ad9e7435a1c09d87c73923fd0c7c57709e4c9b2f8d1a3cd6a0a2f400",
-      "exportMember": "Mail/Filled.svg"
+      "sha256": "035e89ed8227e20858226e39bb8093f7d69f20255daeed88592b2be02617a4b2",
+      "exportMember": "Mail/Filled.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
     },
     {
       "id": "wallet",
@@ -1014,8 +1016,9 @@
       "style": "outline",
       "nodeId": "24:130",
       "source": "icons/figma-study/wallet/outline.svg",
-      "sha256": "c0231f5736c944fdabb551ce0f1ec2bf7e83f92a3806ada3efb90004e6739345",
-      "exportMember": "Wallet/Outline.svg"
+      "sha256": "ab8ec9f2e246814de559847fc37f89ead0320e2b41241d3b3980569516b19493",
+      "exportMember": "Wallet/Outline.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
     },
     {
       "id": "wallet",
@@ -1024,8 +1027,9 @@
       "style": "filled",
       "nodeId": "24:135",
       "source": "icons/figma-study/wallet/filled.svg",
-      "sha256": "d23cde26f964679257b28ff6c3e04f26165ff11af83f58c5bb64a65c33585ccf",
-      "exportMember": "Wallet/Filled.svg"
+      "sha256": "41255f7336a2adfe289cdc485551c5c95f2d5b9eda160e5d3e3c758baa97d985",
+      "exportMember": "Wallet/Filled.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
     },
     {
       "id": "bookmark",
@@ -1094,8 +1098,9 @@
       "style": "outline",
       "nodeId": "24:162",
       "source": "icons/figma-study/shop/outline.svg",
-      "sha256": "7422e51f802a36fc032a17ba8cbb641bb6afeb5a8b3862efbed8d396fbc96c29",
-      "exportMember": "Shop/Outline.svg"
+      "sha256": "50a7db9052181e6433137ed74c72cdd9c29f46344d3f1f0d58c606aad96f6fbb",
+      "exportMember": "Shop/Outline.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
     },
     {
       "id": "shop",
@@ -1104,8 +1109,9 @@
       "style": "filled",
       "nodeId": "24:170",
       "source": "icons/figma-study/shop/filled.svg",
-      "sha256": "956a397723d5c73e72cdebce9de0e90fb09f2f37233b88912e62e8256d7a6a1a",
-      "exportMember": "Shop/Filled.svg"
+      "sha256": "9668f6ff2a116c2d72782b3ac6b971e5fa64664dd6665360f29829c709e317c5",
+      "exportMember": "Shop/Filled.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
     },
     {
       "id": "chevron-line-up",
@@ -1626,6 +1632,15 @@
       "source": "icons/figma-study/copy/filled.svg",
       "sha256": "17fc313802d0db6ecc15801423b200dd0a1ccbd6335e006a6f62fb45994c2a55",
       "exportMember": "Copy/Filled.svg"
+    }
+  ],
+  "revisions": [
+    {
+      "date": "2026-10-29",
+      "identities": ["mail", "wallet", "shop"],
+      "archiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4",
+      "scope": "Connect Mail flap and Wallet closure to their body; trim Shop frontage at the awning; preserve all other artwork.",
+      "review": "draft"
     }
   ]
 }

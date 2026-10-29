@@ -3,6 +3,36 @@ import { readFile } from 'node:fs/promises';
 import { expect, it } from 'vitest';
 import { FIGMA_STUDY_ICONS } from '../../src/design/figma-catalog.js';
 
+it('connects marked seams while retaining the owner body and detail masters', () => {
+  const paths = (id: string) =>
+    [...FIGMA_STUDY_ICONS.find((icon) => icon.id === id)!.outline.matchAll(/<path\b[^>]*>/g)].map(
+      (match) => match[0],
+    );
+  const hash = (tag: string) =>
+    createHash('sha256')
+      .update(tag.match(/\bd="([^"]+)"/)![1])
+      .digest('hex');
+  const mail = paths('mail');
+  const wallet = paths('wallet');
+  const shop = paths('shop');
+  expect(hash(mail[0])).toBe('6d98d5a90de0024baaf748c4fdbd31febd21cbb14fe4eec1c9953e2f5099ab0f');
+  expect(hash(wallet[0])).toBe('fc8a9df134c0b16b46515d7a9434245ef0ced06c092953754a63049e40cf0f46');
+  expect(hash(wallet[2])).toBe('8c2a74b13e40388df0f8b5e53a6467044a34a1d53602dfb83742a10d0169fd8b');
+  expect(hash(shop[1])).toBe('1256f347d8efba25db92be477929d0fed33d41939bd2a558aafccdd59291d1fa');
+  // Terminals meet the actual body/awning centerlines. Butt ends stay inside
+  // that shared ribbon instead of poking through it with an extra round cap.
+  expect(mail[1]).toContain('M3.41064 7.23944');
+  expect(mail[1]).toContain('L20.5893 7.23946');
+  expect(wallet[1]).toContain('M21.1923 9.5');
+  expect(wallet[1]).toContain('H21.1923');
+  expect(shop[0]).toContain('M3.95286 9.10911');
+  expect(shop[0]).toContain('20.0472 9.1091');
+  for (const seam of [mail[1], wallet[1], shop[0]])
+    expect(seam).not.toContain('stroke-linecap="round"');
+  const filled = FIGMA_STUDY_ICONS.find((icon) => icon.id === 'shop')!.filled;
+  expect([...filled.matchAll(/<path\b/g)]).toHaveLength(1);
+});
+
 it('contains every current Figma identity once, with both styles and source references', () => {
   expect(FIGMA_STUDY_ICONS).toHaveLength(81);
   expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.id)).size).toBe(81);
