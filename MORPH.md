@@ -1,6 +1,6 @@
 # Morph — shared agent playbook
 
-Maintained: 2026-10-27. **This is the canonical working document for every morph
+Maintained: 2026-10-29. **This is the canonical working document for every morph
 request across core, Svelte and the standalone local Lab.** Read it before starting a pair or
 revising motion. Update this document when the owner changes the contract;
 repository entry points should link here instead of maintaining another copy.
@@ -85,13 +85,14 @@ are implementation constraints, not an invitation to retune approved motion.
 
 ### Pair registry and current endpoint contract
 
-| Pair                | Lab route                  | Opt-in Svelte subpath     | Default shared-rate multiplier | Motion status                                          |
-| ------------------- | -------------------------- | ------------------------- | ------------------------------ | ------------------------------------------------------ |
-| Sun ↔ Moon          | `/morph`                   | `morph/sun-moon`          | 1.0                            | Owner-preferred reference; experiment                  |
-| Plus ↔ X            | `/morph/plus-x`            | `morph/plus-x`            | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
-| Menu ↔ X            | `/morph/menu-x`            | `morph/menu-x`            | 0.6                            | Proposed motion; awaiting owner review                 |
-| Plus ↔ Minus        | `/morph/plus-minus`        | `morph/plus-minus`        | 0.6                            | Proposed single-fold motion; awaiting owner review     |
-| Maximize ↔ Minimize | `/morph/maximize-minimize` | `morph/maximize-minimize` | 0.6                            | Proposed inward corner fold; awaiting owner review     |
+| Pair                      | Lab route                        | Opt-in Svelte subpath           | Default shared-rate multiplier | Motion status                                          |
+| ------------------------- | -------------------------------- | ------------------------------- | ------------------------------ | ------------------------------------------------------ |
+| Sun ↔ Moon                | `/morph`                         | `morph/sun-moon`                | 1.0                            | Owner-preferred reference; experiment                  |
+| Plus ↔ X                  | `/morph/plus-x`                  | `morph/plus-x`                  | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
+| Menu ↔ X                  | `/morph/menu-x`                  | `morph/menu-x`                  | 0.6                            | Proposed motion; awaiting owner review                 |
+| Plus ↔ Minus              | `/morph/plus-minus`              | `morph/plus-minus`              | 0.6                            | Proposed single-fold motion; awaiting owner review     |
+| Maximize ↔ Minimize       | `/morph/maximize-minimize`       | `morph/maximize-minimize`       | 0.6                            | Proposed inward corner fold; awaiting owner review     |
+| Maximize ↔ Minimize study | `/morph/maximize-minimize-study` | `morph/maximize-minimize-study` | 0.6                            | New squircle endpoints; draft motion and artwork       |
 
 **Current Plus/X geometry depends on the selected native frame.** Plus/Minus/X
 None uses centered half-extents 8.75: Regular visible bounds 2.375..21.625,
@@ -212,6 +213,39 @@ rejected for this pair; its previous proposal does not approve this revision.
 Verify fixed tips, inward elbow movement, bounded separated parts, continuous
 straight-to-curved passage, exact packed endpoints, moving Bold/Filled overlays,
 reversal, reduced motion, lifecycle, actual sizes and narrow screens.
+
+### Maximize ↔ Minimize squircle study — 2026-10-29
+
+The owner explicitly handed the eight window/transfer Figma study identities to
+Lab and the morph task. Prioritize this existing meaningful state pair; adding
+static Login, Logout, Upload, Download, Copy and New Window does not request every
+possible combination. Those identities remain static review drafts until a
+specific motion is authored. No static artwork is rewritten by this handoff.
+
+Use the committed `src/design/window-transfer.ts` Maximize and Minimize exports,
+which preserve actual batch63 Figma paths. Both styles remain draft pending owner
+visual review. Keep the legacy production pair and its route independent. The
+new opt-in study pair uses its source Outline **1.5**, and Filled is the same
+centerlines expanded at **2.5**, the documented corner-mark exception. This scoped
+study does not migrate other morphs from1.75 or change their accepted motion.
+
+Map four corners TL/TR/BR/BL. Preserve both source tips per corner and align the
+destination by reversing path traversal. Interpolate the two authored cubic runs
+with quintic C2 progress: the elbow pulls inward through an exact straight diagonal
+chord at0.5, then bends into Minimize. No rigid corner rotation, frame, opacity
+fade or midpoint hold. Preserve the gradual source curves rather than substituting
+circular fillets. Keep the shared reversible controller and0.6× rate.
+
+Filled uses analytical normal offsets of the moving cubic centerlines with fixed
+1.25 round caps. Fit those offsets with a fixed16 subdivisions per cubic; the
+independent sampled error must remain below.0002 native units through the fold.
+Use the literal exported paths at0/1 and test near-endpoint continuity against
+those same static paths. Do not interpolate the dense static Filled controls.
+
+Verification includes packed static study endpoint overlays, moving Bold/Filled
+overlays, anchored tips, continuous straight midpoint, separate quadrant bounds,
+reversal without element replacement, reduced motion, native sizes, both surfaces
+and narrow screens. Retain the legacy static catalog and all prior motions.
 
 ### Complete matching frame families — owner correction, 2026-10-27
 
