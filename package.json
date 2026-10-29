@@ -9,6 +9,8 @@
     "node": ">=22.17.0"
   },
   "scripts": {
+    "generate:figma": "node --import tsx tools/generate-figma-catalog.ts",
+    "generate:figma:check": "node --import tsx tools/generate-figma-catalog.ts --check",
     "validate": "node --import tsx tools/validate.ts",
     "build": "tsc -p tsconfig.build.json && node --import tsx tools/build.ts",
     "check": "tsc --noEmit",
@@ -85,11 +87,10 @@
       "types": "./dist/design/window-transfer.d.ts",
       "default": "./dist/design/window-transfer.js"
     },
-    "./morph/maximize-minimize-study": {
-      "types": "./dist/morphs/maximize-minimize-study.d.ts",
-      "default": "./dist/morphs/maximize-minimize-study.js"
-    },
-    "./morph/maximize-minimize-study.json": "./dist/morphs/maximize-minimize-study.json"
+    "./design/figma-catalog": {
+      "types": "./dist/design/figma-catalog.d.ts",
+      "default": "./dist/design/figma-catalog.js"
+    }
   },
   "description": "Original Squircle SVG artwork, metadata and framework-independent types.",
   "repository": {
