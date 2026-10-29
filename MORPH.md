@@ -52,7 +52,8 @@ readable at actual icon sizes and smooth in both directions. The result must:
   flash, SVG replacement or unintended midpoint pause.
 - Work in Outline and Filled, with accessible labeling, reduced motion and a
   usable Lab preview for manual inspection.
-- Keep static direct imports free of the morph runtime and unrelated geometry.
+- Keep ordinary static direct imports free of motion runtime and unrelated geometry.
+  Trash is the explicit unified-API exception described below.
 - Include reproducible automated checks, visual evidence and an accurate handoff.
 
 The Sun ↔ Moon motion is the owner's preferred visual reference. Plus ↔ X's
@@ -105,7 +106,8 @@ artwork or the proposed motions.
 - Nonempty labels expose image semantics; unlabeled SVGs are decorative. Disable
   Lab autoplay and switch requested endpoints directly under reduced motion.
 - Pause while hidden, resume without a time jump and clean up on unmount. Keep
-  all morph code opt-in; static direct imports must load no motion runtime.
+  all morph code opt-in; ordinary static direct imports must load no motion runtime.
+  The owner-approved unified Trash API includes only its own motion and shared controller.
 
 ### Sun ↔ Moon
 
@@ -168,6 +170,26 @@ Trash; `/morph` contains only the five authored pairs. Do not put Trash in the
 Morph picker or import its renderer through a Morph page. Geometry lives in
 `src/motions/trash.ts` and the adapter uses a distinct `motion/trash` export.
 The spring controller may be shared internally; this does not merge the features.
+
+### Unified Trash component API — owner decision2026-10-29
+
+The owner selected `<Trash animate open={open} />` using the ordinary `trash`
+import. Reuse the existing renderer internally; do not create a second animation.
+`animate` defaults to false, preserving the legacy production Trash shape and
+static stroke-width props. True selects the existing current-Figma motion at its
+fixed authored thickness. Keep `animate` enabled and change `open` to reverse
+without remounting; switching `animate` changes the rendering mode and source
+generation. Continue supporting Outline/Filled and the existing common/motion
+props. Reject `strokeWidth` in the animated TypeScript API.
+
+The unified Trash import includes its motion renderer, geometry and controller
+so SSR and the first interaction need no asynchronous fallback or extra download.
+Static mode must mount none of the motion lifecycle; other per-icon imports must
+exclude this runtime and geometry. The compatibility `motion/trash` export remains.
+Do not change geometry, timing, approvals, Motion/Morph page separation or public
+package pins as part of this API integration. Verify packed SSR/hydration, both
+styles, default static parity, reversal, controlled progress, lifecycle, reduced
+motion, compatibility and measured bundle isolation/size.
 
 ### Trash lid motion — proposed 2026-10-29
 
@@ -303,16 +325,16 @@ dedicated automated test for every row. Read the existing tests, reuse their pac
 fixtures, and add meaningful missing coverage for the changed behavior. Label any
 manual-only verification honestly.
 
-| Area             | Required assertions                                                                                                                                                        | Existing starting points                                                                  |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Core geometry    | Exact endpoint data, invalid/out-of-range progress, deterministic finite intermediate frames, bounded contours and continuity around critical phases.                      | `core/tests/unit/sun-moon-morph.test.ts`, `plus-x-morph.test.ts`, `menu-x-morph.test.ts`. |
-| Pair geometry    | Verify its actual design contract, not just generated strings. Plus X needs one line at 0.5, nonzero continuous merge velocity and identical Outline/Filled hole geometry. | Core Plus X unit tests and adapter `tests/browser/plus-x-morph.spec.ts`.                  |
-| Packed endpoints | Raster/vector compare both styles at both ends against actual installed static exports, selecting Square Filled for Plus/X.                                                | Adapter `tests/browser/*morph.spec.ts` and packed fixture.                                |
-| Runtime behavior | Retarget mid-flight without resetting position/velocity or replacing the SVG; controlled progress, repeated reversal and reduced-motion changes.                           | Adapter morph specs and shared `MorphProgress.svelte`.                                    |
-| Lifecycle        | Hidden-tab pause/resume and cleanup after unmount, including repeated mount cycles.                                                                                        | Shared controller and packed fixture; extend coverage when changing lifecycle logic.      |
-| Compatibility    | SSR/client compilation, hydration without mismatch, Svelte 5.0 through supported Svelte 5, package declarations and consumer engines.                                      | Adapter `test:pack`, `test:compat`, compatibility fixture.                                |
-| Static isolation | Static direct imports must traverse no morph runtime or unrelated geometry, before and after tree shaking.                                                                 | Adapter `test:bundle` and `test:imports`.                                                 |
-| Lab integration  | Correct route/pair picker, endpoints, styles, scrubbing, reversal, reduced-motion loop policy, responsive widths and retained catalog status.                              | Local Lab `tests/browser/morph.spec.ts` and pair-specific specs.                          |
+| Area             | Required assertions                                                                                                                                                                                | Existing starting points                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Core geometry    | Exact endpoint data, invalid/out-of-range progress, deterministic finite intermediate frames, bounded contours and continuity around critical phases.                                              | `core/tests/unit/sun-moon-morph.test.ts`, `plus-x-morph.test.ts`, `menu-x-morph.test.ts`. |
+| Pair geometry    | Verify its actual design contract, not just generated strings. Plus X needs one line at 0.5, nonzero continuous merge velocity and identical Outline/Filled hole geometry.                         | Core Plus X unit tests and adapter `tests/browser/plus-x-morph.spec.ts`.                  |
+| Packed endpoints | Raster/vector compare both styles at both ends against actual installed static exports, selecting Square Filled for Plus/X.                                                                        | Adapter `tests/browser/*morph.spec.ts` and packed fixture.                                |
+| Runtime behavior | Retarget mid-flight without resetting position/velocity or replacing the SVG; controlled progress, repeated reversal and reduced-motion changes.                                                   | Adapter morph specs and shared `MorphProgress.svelte`.                                    |
+| Lifecycle        | Hidden-tab pause/resume and cleanup after unmount, including repeated mount cycles.                                                                                                                | Shared controller and packed fixture; extend coverage when changing lifecycle logic.      |
+| Compatibility    | SSR/client compilation, hydration without mismatch, Svelte 5.0 through supported Svelte 5, package declarations and consumer engines.                                                              | Adapter `test:pack`, `test:compat`, compatibility fixture.                                |
+| Static isolation | Ordinary static direct imports must traverse no motion runtime or unrelated geometry. Unified Trash may traverse only its own motion and shared controller, with no lifecycle work in static mode. | Adapter `test:bundle` and `test:imports`.                                                 |
+| Lab integration  | Correct route/pair picker, endpoints, styles, scrubbing, reversal, reduced-motion loop policy, responsive widths and retained catalog status.                                                      | Local Lab `tests/browser/morph.spec.ts` and pair-specific specs.                          |
 
 ### Commands
 

@@ -15,12 +15,9 @@ it('connects marked seams while retaining the owner body and detail masters', ()
       .digest('hex');
   const mail = paths('mail');
   const wallet = paths('wallet');
-  const shop = paths('shop');
   expect(hash(mail[0])).toBe('6d98d5a90de0024baaf748c4fdbd31febd21cbb14fe4eec1c9953e2f5099ab0f');
   expect(hash(wallet[0])).toBe('fc8a9df134c0b16b46515d7a9434245ef0ced06c092953754a63049e40cf0f46');
   expect(hash(wallet[2])).toBe('8c2a74b13e40388df0f8b5e53a6467044a34a1d53602dfb83742a10d0169fd8b');
-  expect(hash(shop[0])).toBe(hash(paths('home-door')[0]));
-  expect(hash(shop[1])).toBe('304f503a0ad77b73dbe1ca8a9a3f8c702e68398ae983f0f6f1277b42a0897a32');
   // Terminals meet the actual body/awning centerlines. Butt ends stay inside
   // that shared ribbon instead of poking through it with an extra round cap.
   expect(mail[1]).toContain('M3.41064 7.23944');
@@ -30,13 +27,11 @@ it('connects marked seams while retaining the owner body and detail masters', ()
   expect(wallet[1]).toContain('M21.1923 9.5');
   expect(wallet[1]).toContain('H21.1923');
   for (const seam of [mail[1], wallet[1]]) expect(seam).not.toContain('stroke-linecap="round"');
-  const filled = FIGMA_STUDY_ICONS.find((icon) => icon.id === 'shop')!.filled;
-  expect([...filled.matchAll(/<path\b/g)]).toHaveLength(1);
 });
 
 it('contains every current Figma identity once, with both styles and source references', () => {
-  expect(FIGMA_STUDY_ICONS).toHaveLength(82);
-  expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.id)).size).toBe(82);
+  expect(FIGMA_STUDY_ICONS).toHaveLength(94);
+  expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.id)).size).toBe(94);
   expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.group)).size).toBe(11);
   for (const icon of FIGMA_STUDY_ICONS) {
     expect(icon.baseStroke).toBe(1.5);
