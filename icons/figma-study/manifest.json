@@ -1135,9 +1135,9 @@
       "style": "filled",
       "nodeId": "24:170",
       "source": "icons/figma-study/shop/filled.svg",
-      "sha256": "a7c0e576bdae92dda65e6be08d9ef527384fcf2b42d18a4c83004757c1c1f16c",
+      "sha256": "83a44dbde92f7c837b5d046506f0ec37e2478f15ca62d05dff72ab3a19c49c05",
       "exportMember": "Shop/Filled.svg",
-      "revisionArchiveSHA256": "08546b444bba48848827ead842560bb14e3ca62a04d10babdb97633dc3dd5c81"
+      "revisionArchiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672"
     },
     {
       "id": "chevron-line-up",
@@ -1820,9 +1820,9 @@
       "style": "outline",
       "nodeId": "40:81",
       "source": "icons/figma-study/shopping-bag/outline.svg",
-      "sha256": "1dc45df7ee6654a6980705b8ee15f183de18dd8544f33d1cfee7f486ba8dddae",
+      "sha256": "2a1a45c18b007ad2428ed0fb97429e484f02232416cebfccb2807f975af32810",
       "exportMember": "Shopping Bag/Outline.svg",
-      "revisionArchiveSHA256": "b9aae74af1cf0607ec25bd79f398e73b552b73130889a67b48f42aedf5267378"
+      "revisionArchiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672"
     },
     {
       "id": "shopping-bag",
@@ -1831,9 +1831,9 @@
       "style": "filled",
       "nodeId": "40:85",
       "source": "icons/figma-study/shopping-bag/filled.svg",
-      "sha256": "69d2c9debbfe883976a96704224758b99b7cb2c9a1d18ed239c82918c6f579e6",
+      "sha256": "52d61b82958dcbdbfda904f4b9f0cd8aa0ce4b6fd1779431a573320bde71e3e2",
       "exportMember": "Shopping Bag/Filled.svg",
-      "revisionArchiveSHA256": "b9aae74af1cf0607ec25bd79f398e73b552b73130889a67b48f42aedf5267378"
+      "revisionArchiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672"
     },
     {
       "id": "bell-ring",
@@ -2083,6 +2083,13 @@
       "identities": ["link"],
       "archiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0",
       "scope": "Trim only the diagonal connector by.5 native at each end; retain shorter/fuller rings, pose, center and fixed1.5/2.5 weights.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag", "shop"],
+      "archiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672",
+      "scope": "Shopping Bag body widens about2 native units while retaining the upper arch and1.5 stroke; Shop Filled adds the same canopy hem as a transparent seam joined to its existing stripe counters, with solid exterior bridges. Shop Outline and all other drawings retained.",
       "review": "draft"
     }
   ]

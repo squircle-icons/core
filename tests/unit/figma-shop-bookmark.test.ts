@@ -85,6 +85,9 @@ it('retains the exact Home Door lower body beneath the straight-sided Shop fabri
   for (const [x, y] of [
     [9.1, 7],
     [14.9, 7],
+    [12, 10],
+    [5.7, 10.15],
+    [18.3, 10.15],
     [7.15002, 14.25],
     [12, 19],
   ])
@@ -94,7 +97,7 @@ it('retains the exact Home Door lower body beneath the straight-sided Shop fabri
     [18, 7],
     [12, 7],
     [9.3, 4.1],
-    [8.95, 9.35],
+    [2.5, 9.5],
     [12, 12],
   ])
     expect(painted(body[0], x, y)).toBe(true);

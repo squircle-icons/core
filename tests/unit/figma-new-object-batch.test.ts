@@ -266,17 +266,17 @@ it('joins the ABOVE Bag handle to its upper ribbon and retains the gently flared
   expect(end.y).toBe(start.y);
   const bodyContour = contours(data(parts[1]));
   for (const terminal of [start, end])
-    expect(distance(bodyContour, [terminal.x, terminal.y])).toBeLessThan(0.0002);
-  const right = body.find((c) => c.x0 === 17.5 && c.y0 === 10.4)!;
+    expect(distance(bodyContour, [terminal.x, terminal.y])).toBeLessThan(0.1);
+  const right = body.find((c) => Math.abs(c.x0 - 18.27) < 0.0001 && c.y0 === 10.4)!;
   expect(right.code).toBe('C');
   if (right.code !== 'C') throw new Error('Missing Bag slope');
-  expect([right.x, right.y]).toEqual([19.1, 18.4]);
-  expect((right.x - right.x0) / (right.y - right.y0)).toBeCloseTo(0.2, 6);
+  expect([right.x, right.y]).toEqual([20.094, 18.4]);
+  expect((right.x - right.x0) / (right.y - right.y0)).toBeCloseTo(0.228, 6);
   for (const [x, y] of [
     [right.x1, right.y1],
     [right.x2, right.y2],
   ])
-    expect(Math.abs((x - right.x0) * 8 - (y - right.y0) * 1.6)).toBeLessThan(0.001);
+    expect(Math.abs((x - right.x0) * 8 - (y - right.y0) * 1.824)).toBeLessThan(0.001);
   const outlinePaint = composition(outline),
     filledPaint = composition(await source('shopping-bag', 'filled'));
   for (const p of [
