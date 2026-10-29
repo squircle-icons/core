@@ -1,5 +1,7 @@
 # Squircle Icons design rules
 
+> **Morph migration —2026-10-29:** the owner now explicitly requests all active morphs use the new Figma icon set and removes their old endpoint variants. All five pairs use source Outline1.5 and their actual semantic Filled treatment. The approved PlusX motion/rate is preserved. See [MORPH.md](MORPH.md) for the current contract; earlier1.75/framed morph notes below are historical.
+
 > **Current concept — original squircle identity:** start with [ICON_RULES.md](ICON_RULES.md#current-design-direction--original-squircle-identity). The owner requested a concept/documentation update first. Develop our own shape language from icon meaning; external collections must not supply geometry, proportions, motifs or style recipes. Ordinary circular rounding alone does not establish the intended squircle identity. Numerical corner values below record the approved legacy implementation, not a universal future design recipe. Preserve current artwork and approval records; prototypes and redesign implementation require a later artwork task.
 
 > **Part-by-part judgment —2026-10-28:** use the squircle language where it suits each body, housing, tab, opening or join. Do not force maximum squircle treatment into every corner. Balanced Square remains the base reference. See the [canonical rule](ICON_RULES.md#part-by-part-design-judgment--owner-clarification).

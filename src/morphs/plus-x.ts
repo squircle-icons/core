@@ -1,17 +1,13 @@
-import { mergedStrokes, type MorphFrame, type MorphFrames } from './round-strokes.js';
+import { mergedStrokes } from './round-strokes.js';
 export type PlusXMarkGeometry = {
   center: [number, number];
   plusExtent: number;
   xExtent: number;
   strokeWidth: number;
-  box: string;
   plus: { outline: string; filled: string };
   x: { outline: string; filled: string };
 };
-export type PlusXGeometry = PlusXMarkGeometry & {
-  frames: MorphFrames;
-  variants?: Record<MorphFrame, PlusXMarkGeometry>;
-};
+export type PlusXGeometry = PlusXMarkGeometry;
 type Point = { x: number; y: number };
 const clamp = (p: number) => Math.min(1, Math.max(0, p));
 const add = (a: Point, b: Point): Point => ({ x: a.x + b.x, y: a.y + b.y });
@@ -36,15 +32,11 @@ function interpolate(
   );
 }
 /** Plus flows through one horizontal line into X without a hold or zero angular velocity. */
-export function plusXFrame(
-  progress: number,
-  geometry: PlusXGeometry,
-  frame: MorphFrame = 'square',
-) {
-  const mark = geometry.variants?.[frame] ?? geometry;
+export function plusXFrame(progress: number, geometry: PlusXGeometry) {
+  const mark = geometry;
   const p = clamp(Number.isFinite(progress) ? progress : 0);
-  if (p === 0) return { ...mark.plus, filled: geometry.frames[frame].from };
-  if (p === 1) return { ...mark.x, filled: geometry.frames[frame].to };
+  if (p === 0) return mark.plus;
+  if (p === 1) return mark.x;
   const turn = Math.PI / 4;
   const t = p < 0.5 ? p * 2 : (p - 0.5) * 2;
   const a = p < 0.5 ? interpolate(0, 0, 0, turn, t) : interpolate(0, turn, turn, 0, t);
@@ -64,9 +56,6 @@ export function plusXFrame(
   const outline = Math.abs(a - b) < 1e-6 ? line(b) : `${line(a)} ${line(b)}`;
   return {
     outline,
-    filled:
-      geometry.frames[frame].box +
-      ' ' +
-      mergedStrokes(a, b, length, (frame === 'none' ? 2.5 : mark.strokeWidth) / 2, center),
+    filled: mergedStrokes(a, b, length, 2.5 / 2, center),
   };
 }

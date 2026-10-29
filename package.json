@@ -15,7 +15,7 @@
     "build": "tsc -p tsconfig.build.json && node --import tsx tools/build.ts",
     "check": "tsc --noEmit",
     "test": "vitest run",
-    "verify": "pnpm format:check && pnpm validate && pnpm check && pnpm test && pnpm build",
+    "verify": "pnpm format:check && pnpm generate:figma:check && pnpm validate && pnpm check && pnpm test && pnpm build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepublishOnly": "node -e \"throw new Error('Publication is disabled pending package naming and release review')\""

@@ -1,8 +1,8 @@
 /** Experimental shared-circle construction. Static approved drawings stay unchanged. */
 export type Circle = { x: number; y: number; radius: number };
 export type SunMoonGeometry = {
-  sun: Circle & { rays: number[][] };
-  moon: { outer: Circle; inner: Circle; path: string };
+  sun: Circle & { rays: number[][]; path: string; filledPath: string };
+  moon: { outer: Circle; inner: Circle; path: string; filledPath: string };
   strokeWidth: number;
 };
 export type SunMoonFrame = { body: string; rays: string[]; rayOpacity: number };
@@ -29,7 +29,9 @@ export function sunMoonFrame(progress: number, geometry: SunMoonGeometry): SunMo
   const overlap = (moon.outer.radius + innerRadius - finalDistance) * bodyProgress ** 2;
   const distance = radius + innerRadius - overlap;
   let body: string;
-  if (p === 1) {
+  if (p === 0) {
+    body = sun.path;
+  } else if (p === 1) {
     body = moon.path;
   } else if (overlap < 1e-7) {
     body = `M${point(x + radius, y)} A${number(radius)} ${number(radius)} 0 1 0 ${point(x - radius, y)} A${number(radius)} ${number(radius)} 0 1 0 ${point(x + radius, y)} Z`;

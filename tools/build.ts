@@ -6,8 +6,6 @@ import { buildPlusXGeometry } from './build-plus-x.js';
 import { buildMenuXGeometry } from './build-menu-x.js';
 import { buildPlusMinusGeometry } from './build-plus-minus.js';
 import { buildMaximizeMinimizeGeometry } from './build-maximize-minimize.js';
-import { buildMaximizeMinimizeStudyGeometry } from './build-maximize-minimize-study.js';
-import { WINDOW_TRANSFER_STUDY } from '../src/design/window-transfer.js';
 const icons = await loadSources();
 await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
@@ -29,29 +27,24 @@ console.log(`Built ${icons.length} validated core icons.`);
 await mkdir(resolve(root, 'dist/morphs'), { recursive: true });
 await writeFile(
   resolve(root, 'dist/morphs/sun-moon.json'),
-  JSON.stringify(buildSunMoonGeometry(icons), null, 2) + '\n',
+  JSON.stringify(buildSunMoonGeometry(), null, 2) + '\n',
 );
 await writeFile(
   resolve(root, 'dist/morphs/plus-x.json'),
-  JSON.stringify(buildPlusXGeometry(icons), null, 2) + '\n',
+  JSON.stringify(buildPlusXGeometry(), null, 2) + '\n',
 );
 
 await writeFile(
   resolve(root, 'dist/morphs/menu-x.json'),
-  JSON.stringify(buildMenuXGeometry(icons), null, 2) + '\n',
+  JSON.stringify(buildMenuXGeometry(), null, 2) + '\n',
 );
 
 await writeFile(
   resolve(root, 'dist/morphs/plus-minus.json'),
-  JSON.stringify(buildPlusMinusGeometry(icons), null, 2) + '\n',
+  JSON.stringify(buildPlusMinusGeometry(), null, 2) + '\n',
 );
 
 await writeFile(
   resolve(root, 'dist/morphs/maximize-minimize.json'),
-  JSON.stringify(buildMaximizeMinimizeGeometry(icons), null, 2) + '\n',
-);
-
-await writeFile(
-  resolve(root, 'dist/morphs/maximize-minimize-study.json'),
-  JSON.stringify(buildMaximizeMinimizeStudyGeometry(WINDOW_TRANSFER_STUDY), null, 2) + '\n',
+  JSON.stringify(buildMaximizeMinimizeGeometry(), null, 2) + '\n',
 );

@@ -55,7 +55,7 @@ for (const id of ids) {
 }
 const source = await format(
   `// Generated from icons/figma-study by tools/generate-figma-catalog.ts. Do not redraw here.\nexport const FIGMA_STUDY_ICONS = ${JSON.stringify(icons)} as const;\nexport type FigmaStudyIcon = (typeof FIGMA_STUDY_ICONS)[number];\n`,
-  { ...(await resolveConfig(root)), parser: 'typescript' },
+  { ...(await resolveConfig(resolve(root, 'src/design/figma-catalog.ts'))), parser: 'typescript' },
 );
 const target = resolve(root, 'src/design/figma-catalog.ts');
 if (process.argv.includes('--check')) {

@@ -1,17 +1,16 @@
 import { beforeAll, expect, it } from 'vitest';
-import { loadSources } from '../../tools/validate.js';
 import { buildPlusXGeometry } from '../../tools/build-plus-x.js';
 import { plusXFrame, type PlusXGeometry } from '../../src/morphs/plus-x.js';
 let geometry: PlusXGeometry;
 beforeAll(async () => {
-  geometry = buildPlusXGeometry(await loadSources());
+  geometry = buildPlusXGeometry();
 });
-it('uses the approved endpoints and matching upright source frame without altering static sources', () => {
-  expect(geometry.strokeWidth).toBe(1.75);
+it('uses current source endpoints and preserves the approved angular motion', () => {
+  expect(geometry.strokeWidth).toBe(1.5);
   expect(plusXFrame(0, geometry)).toEqual(geometry.plus);
   expect(plusXFrame(1, geometry)).toEqual(geometry.x);
-  expect(geometry.plusExtent).toBeCloseTo(4.5, 8);
-  expect(geometry.xExtent).toBeCloseTo(4.5, 8);
+  expect(geometry.plusExtent).toBeCloseTo(8.75, 8);
+  expect(geometry.xExtent).toBeCloseTo(8.75, 8);
 });
 it('keeps the glyph inside its approved bounds while folding through a single line', () => {
   for (let i = 1; i < 100; i++) {
@@ -20,16 +19,16 @@ it('keeps the glyph inside its approved bounds while folding through a single li
     const xs = values.filter((_, n) => n % 2 === 0),
       ys = values.filter((_, n) => n % 2 === 1);
     for (const axis of [xs, ys]) {
-      expect(Math.min(...axis) - 0.875).toBeGreaterThanOrEqual(4 - 1e-7);
-      expect(Math.max(...axis) + 0.875).toBeLessThanOrEqual(20 + 1e-7);
+      expect(Math.min(...axis) - 0.75).toBeGreaterThanOrEqual(2.5 - 1e-7);
+      expect(Math.max(...axis) + 0.75).toBeLessThanOrEqual(21.5 + 1e-7);
     }
-    expect(frame.filled.startsWith(geometry.box + ' ')).toBe(true);
+    expect(frame.filled.startsWith('M')).toBe(true);
     expect(frame.filled).not.toMatch(/NaN|Infinity/);
   }
 });
 
 it('passes through one horizontal stroke without holding neighboring frames', () => {
-  expect(plusXFrame(0.5, geometry).outline).toBe('M7.5 12 L16.5 12');
+  expect(plusXFrame(0.5, geometry).outline).toBe('M3.25 12 L20.75 12');
   for (const p of [0.4, 0.49, 0.499, 0.501, 0.51, 0.6]) {
     expect(plusXFrame(p, geometry).outline).not.toBe(plusXFrame(0.5, geometry).outline);
   }

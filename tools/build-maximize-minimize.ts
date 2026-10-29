@@ -1,130 +1,79 @@
+import { XMLParser } from 'fast-xml-parser';
 import pathParser from 'svg-path-parser';
-import type { CoreIcon } from '../src/catalog.js';
+import { FIGMA_STUDY_ICONS } from '../src/design/figma-catalog.js';
+type WindowTransferStudyIcon = { id: string; baseStroke: number; outline: string; filled: string };
 import type {
-  CornerCommand,
-  CornerId,
   MaximizeMinimizeGeometry,
+  StudyCubic,
+  StudyPoint,
 } from '../src/morphs/maximize-minimize.js';
 
-const ids: CornerId[] = ['tl', 'tr', 'br', 'bl'];
-const near = (a: number, b: number) => Math.abs(a - b) < 1e-6;
-function paths(icon: CoreIcon, filled = false): string[] {
-  const root = filled ? icon.filled!.root : icon.root;
-  const collect = (node: CoreIcon['root']): string[] =>
-    node.tag === 'path' ? [node.attrs.d] : node.children.flatMap(collect);
-  const pieces = collect(root)
-    .flatMap((path) => path.match(/[Mm][^Mm]*/g) ?? [])
-    .map((path) => path.trim());
-  if (pieces.length !== 4) throw new Error(`${icon.name} requires four stable L subpaths`);
-  return pieces;
+const parse = (d: string) => pathParser.makeAbsolute(pathParser.parseSVG(d));
+const near = (a: StudyPoint, b: StudyPoint) => Math.hypot(a[0] - b[0], a[1] - b[1]) < 1e-6;
+function paths(svg: string) {
+  const root = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' }).parse(svg).svg;
+  if (root.viewBox !== '0 0 24 24' || !Array.isArray(root.path) || root.path.length !== 4)
+    throw new Error('Study endpoints require four paths on the native 24 canvas');
+  return root.path as { d: string; 'stroke-width'?: string; transform?: string }[];
 }
-function commands(path: string): CornerCommand[] {
-  return pathParser.makeAbsolute(pathParser.parseSVG(path)).map((command) => {
-    if (command.command === 'closepath') return { kind: 'Z' };
-    if (command.command === 'elliptical arc') {
-      if (!near(command.rx, command.ry))
-        throw new Error('Corner morph requires circular elbow and cap arcs');
-      return {
-        kind: 'A',
-        rx: command.rx,
-        ry: command.ry,
-        rotation: command.xAxisRotation,
-        large: command.largeArc,
-        sweep: command.sweep,
-        x: command.x,
-        y: command.y,
-      };
-    }
-    if (['moveto', 'lineto', 'horizontal lineto', 'vertical lineto'].includes(command.command))
-      return { kind: command.command === 'moveto' ? 'M' : 'L', x: command.x, y: command.y };
-    throw new Error(`Unsupported corner command: ${command.command}`);
-  });
-}
-function assertHalfTurn(from: CornerCommand[], to: CornerCommand[], center: [number, number]) {
-  if (from.length !== to.length) throw new Error('Corner endpoint command structures differ');
-  from.forEach((command, index) => {
-    const end = to[index];
-    if (command.kind !== end.kind) throw new Error('Corner endpoint command structures differ');
-    if (command.kind === 'Z' || end.kind === 'Z') return;
-    if (!near(2 * center[0] - command.x, end.x) || !near(2 * center[1] - command.y, end.y))
-      throw new Error('Minimize must be the same L after a local half-turn');
-    if (command.kind === 'A' && end.kind === 'A')
-      if (
-        !near(command.rx, end.rx) ||
-        !near(command.ry, end.ry) ||
-        command.large !== end.large ||
-        command.sweep !== end.sweep
-      )
-        throw new Error('Corner endpoint radii or arc directions differ');
-  });
-}
-export function buildMaximizeMinimizeGeometry(icons: CoreIcon[]): MaximizeMinimizeGeometry {
-  const maximize = icons.find((icon) => icon.name === 'maximize');
-  const minimize = icons.find((icon) => icon.name === 'minimize');
-  if (!maximize?.filled || !minimize?.filled)
-    throw new Error('Both Maximize and Minimize styles are required');
-  if ([maximize, minimize].some((icon) => Object.keys(icon.frames ?? {}).length))
-    throw new Error('This authored pair supports unframed sources only');
-  const strokeWidth = Number(maximize.root.attrs['stroke-width']);
-  if (!near(strokeWidth, Number(minimize.root.attrs['stroke-width'])))
-    throw new Error('Corner endpoint Outline weights differ');
-  const outlines = paths(maximize),
-    fills = paths(maximize, true),
-    targets = paths(minimize),
-    targetFills = paths(minimize, true);
-  let cornerRadius = 0,
-    filledStrokeWidth = 0;
-  const corners = outlines.map((path, index) => {
-    const outline = commands(path),
-      filled = commands(fills[index]);
-    const vertices = outline.filter(
-      (command): command is Exclude<CornerCommand, { kind: 'Z' }> => command.kind !== 'Z',
-    );
-    const xs = vertices.map((command) => command.x),
-      ys = vertices.map((command) => command.y);
-    const center: [number, number] = [
-      (Math.min(...xs) + Math.max(...xs)) / 2,
-      (Math.min(...ys) + Math.max(...ys)) / 2,
+function cubics(d: string): StudyCubic[] {
+  const commands = parse(d);
+  if (commands.length !== 3 || commands[0].command !== 'moveto')
+    throw new Error('Each study corner requires two authored cubic runs');
+  let from: StudyPoint = [commands[0].x, commands[0].y];
+  return commands.slice(1).map((command) => {
+    if (command.command !== 'curveto') throw new Error('Study corner must retain its cubic master');
+    const curve: StudyCubic = [
+      from,
+      [command.x1, command.y1],
+      [command.x2, command.y2],
+      [command.x, command.y],
     ];
-    const expected: CornerId =
-      center[1] < 12 ? (center[0] < 12 ? 'tl' : 'tr') : center[0] < 12 ? 'bl' : 'br';
-    if (expected !== ids[index]) throw new Error('Corner subpaths must retain TL/TR/BR/BL order');
-    const elbow = outline.find(
-      (command): command is Extract<CornerCommand, { kind: 'A' }> => command.kind === 'A',
-    );
-    if (!elbow) throw new Error('Each L requires its source rounded elbow');
-    const radii = filled
-      .filter((command): command is Extract<CornerCommand, { kind: 'A' }> => command.kind === 'A')
-      .map((command) => command.rx);
-    const width = 2 * (Math.max(...radii) - elbow.rx);
-    if (index && (!near(cornerRadius, elbow.rx) || !near(filledStrokeWidth, width)))
-      throw new Error('Corner weights and radii must match across all four L parts');
-    cornerRadius = elbow.rx;
-    filledStrokeWidth = width;
+    from = curve[3];
+    return curve;
+  });
+}
+export function buildMaximizeMinimizeGeometry(
+  icons: readonly WindowTransferStudyIcon[] = FIGMA_STUDY_ICONS,
+): MaximizeMinimizeGeometry {
+  const a = icons.find((icon) => icon.id === 'maximize');
+  const b = icons.find((icon) => icon.id === 'minimize');
+  if (!a || !b) throw new Error('Both study endpoints and styles are required');
+  const source = paths(a.outline),
+    target = paths(b.outline);
+  const fills = paths(a.filled),
+    targetFills = paths(b.filled);
+  const ids = ['tl', 'tr', 'br', 'bl'] as const;
+  let width = 0;
+  const corners = source.map((piece, i) => {
+    if ([piece, target[i], fills[i], targetFills[i]].some((p) => p.transform))
+      throw new Error('Study corner transforms must be baked in source');
     if (
-      !(width > 0) ||
-      !radii.some((radius) => near(radius, width / 2)) ||
-      !radii.some((radius) => near(radius, elbow.rx - width / 2))
+      Number(piece['stroke-width']) !== a.baseStroke ||
+      Number(target[i]['stroke-width']) !== a.baseStroke ||
+      a.baseStroke !== b.baseStroke
     )
-      throw new Error('Filled corner contour must have matching round caps and offsets');
-    assertHalfTurn(outline, commands(targets[index]), center);
-    assertHalfTurn(filled, commands(targetFills[index]), center);
+      throw new Error('Study endpoint weights must match their declared source');
+    const from = cubics(piece.d);
+    const to = cubics(target[i].d)
+      .reverse()
+      .map((curve) => [...curve].reverse() as StudyCubic);
+    if (!near(from[0][0], to[0][0]) || !near(from.at(-1)![3], to.at(-1)![3]))
+      throw new Error('Study corner tips must stay anchored at both endpoints');
+    const first = parse(fills[i].d)[0];
+    const h = Math.min(
+      ...[from[0][0], from.at(-1)![3]].map((p) => Math.hypot(first.x - p[0], first.y - p[1])),
+    );
+    if (!(h > 0) || (i > 0 && Math.abs(2 * h - width) > 1e-6))
+      throw new Error('Study Filled offsets must use one consistent source weight');
+    width = 2 * h;
     return {
-      id: ids[index],
-      center,
-      direction: (index % 2 ? -1 : 1) as 1 | -1,
-      outline,
-      filled,
-      maximize: { outline: path, filled: fills[index] },
-      minimize: { outline: targets[index], filled: targetFills[index] },
+      id: ids[i],
+      from,
+      to,
+      maximize: { outline: piece.d, filled: fills[i].d },
+      minimize: { outline: target[i].d, filled: targetFills[i].d },
     };
   });
-  return {
-    strokeWidth,
-    filledStrokeWidth,
-    cornerRadius,
-    corners,
-    maximize: { outline: outlines.join(' '), filled: fills.join(' ') },
-    minimize: { outline: targets.join(' '), filled: targetFills.join(' ') },
-  };
+  return { strokeWidth: a.baseStroke, filledStrokeWidth: width, corners };
 }

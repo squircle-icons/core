@@ -1,110 +1,55 @@
-import { beforeAll, expect, it } from 'vitest';
-import pathParser from 'svg-path-parser';
-import { loadSources } from '../../tools/validate.js';
-import type { CoreIcon } from '../../src/catalog.js';
-import { buildMenuXGeometry } from '../../tools/build-menu-x.js';
+import { expect, it } from 'vitest';
 import { buildPlusXGeometry } from '../../tools/build-plus-x.js';
 import { buildPlusMinusGeometry } from '../../tools/build-plus-minus.js';
-import { menuXFrame } from '../../src/morphs/menu-x.js';
+import { buildMenuXGeometry } from '../../tools/build-menu-x.js';
 import { plusXFrame } from '../../src/morphs/plus-x.js';
 import { plusMinusFrame } from '../../src/morphs/plus-minus.js';
-let icons: CoreIcon[];
-beforeAll(async () => {
-  icons = await loadSources();
-});
-const cases = [
-  {
-    name: 'Menu X',
-    from: 'menu',
-    to: 'x',
-    make: () => {
-      const g = buildMenuXGeometry(icons);
-      return { g, render: (p: number, f: 'none' | 'square' | 'circle') => menuXFrame(p, g, f) };
-    },
-  },
-  {
-    name: 'Plus X',
-    from: 'plus',
-    to: 'x',
-    make: () => {
-      const g = buildPlusXGeometry(icons);
-      return { g, render: (p: number, f: 'none' | 'square' | 'circle') => plusXFrame(p, g, f) };
-    },
-  },
+import { menuXFrame } from '../../src/morphs/menu-x.js';
+import { mark } from '../../tools/morph-source.js';
+const x = buildPlusXGeometry(),
+  minus = buildPlusMinusGeometry(),
+  menu = buildMenuXGeometry();
+for (const c of [
+  { name: 'Plus X', from: 'plus', to: 'x', geometry: x, frame: (p: number) => plusXFrame(p, x) },
   {
     name: 'Plus Minus',
     from: 'plus',
     to: 'minus',
-    make: () => {
-      const g = buildPlusMinusGeometry(icons);
-      return { g, render: (p: number, f: 'none' | 'square' | 'circle') => plusMinusFrame(p, g, f) };
-    },
+    geometry: minus,
+    frame: (p: number) => plusMinusFrame(p, minus),
   },
-];
-for (const item of cases)
-  for (const frame of ['none', 'square', 'circle'] as const)
-    it(`${item.name} implements the complete matching ${frame} family`, () => {
-      const { g, render } = item.make();
-      for (const [name, p] of [
-        [item.from, 0],
-        [item.to, 1],
-      ] as const) {
-        const source = icons.find((icon) => icon.name === name)!;
-        const variant = frame === 'none' ? source.filled! : source.frames![frame]!.filled!;
-        const outline = frame === 'none' ? source : source.frames![frame]!;
-        const sourceOutline = String(
-          outline.root.children[0].children[frame === 'none' ? 0 : 1].attrs.d,
-        );
-        expect(render(p, frame).outline).toBe(sourceOutline);
-        const near = render(p === 0 ? 0.00001 : 0.99999, frame);
-        const vertices = (d: string) =>
-          pathParser.makeAbsolute(pathParser.parseSVG(d)).map(({ x, y }) => [x, y]);
-        const a = vertices(sourceOutline),
-          b = vertices(near.outline + ('middle' in near ? ' ' + near.middle : ''));
-        // Either path ordering is valid; the limiting stroke endpoints must coincide.
-        for (const [points, reference] of [
-          [a, b],
-          [b, a],
-        ])
-          for (const [x, y] of points)
-            expect(Math.min(...reference.map(([u, v]) => Math.hypot(x - u, y - v)))).toBeLessThan(
-              0.0001,
-            );
-        expect(render(p, frame).filled).toBe(String(variant.root.children[0].children[0].attrs.d));
-      }
-      for (const p of [0.000001, 0.1, 0.3, 0.5, 0.65, 0.9, 0.999999]) {
-        const result = render(p, frame);
-        expect(result.filled).not.toMatch(/NaN|Infinity/);
-        if (frame !== 'none')
-          expect(result.filled.startsWith(g.frames[frame].box + ' ')).toBe(true);
-      }
-    });
-it('rejects a partial frame family instead of silently mixing endpoint variants', () => {
-  const broken = structuredClone(icons);
-  delete broken.find((icon) => icon.name === 'menu')!.frames!.circle;
-  expect(() => buildMenuXGeometry(broken)).toThrow(/missing Filled circle/);
-});
-
-it('derives larger None marks independently without resizing either framed morph', () => {
-  const enlarged = structuredClone(icons);
-  for (const name of ['plus', 'minus', 'x', 'menu']) {
-    const glyph = enlarged.find((icon) => icon.name === name)!.root.children[0].children[0];
-    glyph.attrs.d = String(glyph.attrs.d).replace(/-?\d*\.?\d+/g, (n) =>
-      String(12 + (Number(n) - 12) * 1.1),
-    );
-  }
-  const verify = <G>(
-    build: (icons: CoreIcon[]) => G,
-    render: (p: number, g: G, f: 'none' | 'square' | 'circle') => { outline: string },
-  ) => {
-    const previous = build(icons),
-      next = build(enlarged);
-    expect(render(0.4, next, 'none').outline).not.toBe(render(0.4, previous, 'none').outline);
-    for (const frame of ['square', 'circle'] as const)
-      for (const p of [0, 0.001, 0.4, 0.5, 0.9, 1])
-        expect(render(p, next, frame)).toEqual(render(p, previous, frame));
-  };
-  verify(buildPlusXGeometry, plusXFrame);
-  verify(buildPlusMinusGeometry, plusMinusFrame);
-  verify(buildMenuXGeometry, menuXFrame);
-});
+  {
+    name: 'Menu X',
+    from: 'menu',
+    to: 'x',
+    geometry: menu,
+    frame: (p: number) => menuXFrame(p, menu),
+  },
+]) {
+  it(c.name + ' uses only current unboxed Figma source endpoints and1.5 Outline', () => {
+    expect(c.geometry.strokeWidth).toBe(1.5);
+    expect(c.geometry).not.toHaveProperty('frames');
+    expect(c.geometry).not.toHaveProperty('variants');
+    for (const [p, id] of [
+      [0, c.from],
+      [1, c.to],
+    ] as const) {
+      const s = mark(id),
+        frame = c.frame(p);
+      expect(frame.outline).toBe(s.outline);
+      expect(frame.filled).toBe(s.filled);
+    }
+  });
+  it(c.name + ' remains finite, source-bounded and deterministic through reversals', () => {
+    for (let i = 0; i <= 100; i++) {
+      const p = i / 100,
+        a = c.frame(p);
+      expect(a.outline + a.filled).not.toMatch(/NaN|Infinity/);
+      c.frame(1 - p);
+      expect(c.frame(p)).toEqual(a);
+    }
+    expect(c.frame(NaN)).toEqual(c.frame(0));
+    expect(c.frame(-2)).toEqual(c.frame(0));
+    expect(c.frame(3)).toEqual(c.frame(1));
+  });
+}
