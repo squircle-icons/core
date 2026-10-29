@@ -178,7 +178,9 @@ Filled's original union is split at its exported lid/body junctions19.1495,7.227
 and4.8497,7.22754. Keep every source curve and all three transparent counters;
 the shared straight cut reveals the solid body's top edge when opened. At closure
 the two positive pieces reconstitute the source silhouette. Do not use evenodd
-across the separate overlapping solid pieces. Outline's open body remains its exact
+across overlapping solid pieces. Render Filled as one nonzero-winding path with
+reversed slot counters and a transformed lid subpath, avoiding an antialiased seam
+where the two source pieces meet. Outline's open body remains its exact
 source stroke. This deliberate revealed-rim treatment needs owner visual review.
 
 Verify packed closed contours against the literal catalog, no discontinuity near
