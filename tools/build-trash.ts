@@ -66,8 +66,8 @@ export function buildTrashGeometry(): TrashGeometry {
       lid,
     },
     filledLidCommands: normalized(lid),
-    pivot: [12, 6.5],
-    lift: 1.5,
-    angle: -12,
+    pivot: [19.75, 6.5],
+    lift: 0,
+    angle: 12,
   };
 }

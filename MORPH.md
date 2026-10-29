@@ -169,7 +169,9 @@ Trash Outline18:145 and Filled18:151 in `FIGMA_STUDY_ICONS`; static draft status
 remain unchanged. No frame or additional static identity is introduced.
 
 Keep the body and two slots fixed. Treat lid and handle as one rigid part, lifting
-1.5 native units and rotating −12° about12,6.5 at full opening. Both styles share
+clockwise12° about the right lid terminal19.75,6.5, with no separate lift.
+This rightward opening and anchored balance follow the owner’s2026-10-29 review;
+the earlier centered upward/leftward tilt is superseded. Both styles share
 that transform. Use the shared reversible spring at0.7×, mapping progress linearly
 to the transform so retargeting retains geometric velocity. The Lab loops closed →
 open → closed, with manual states, scrubbing and reduced-motion direct selection.
