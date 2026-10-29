@@ -1,23 +1,11 @@
-# Contributing to core
+# Contributing to Core
 
-**Current icon contract:** in this workspace, start with [ICON_RULES.md](ICON_RULES.md). It is the canonical agent playbook for Goal, Rules, Design, Verification, Tests and delivery. Older numerical examples or dated trials below are historical where superseded by that guide; use its current family-specific construction rules.
+Read [ICON_RULES.md](ICON_RULES.md), [DESIGN_RULES.md](DESIGN_RULES.md) and [MORPH.md](MORPH.md). Core owns original artwork and pure geometry; Svelte owns components and the private Lab owns preview UI.
 
-Read [DESIGN_RULES.md](DESIGN_RULES.md), [ICON_MARGIN_RULES.md](ICON_MARGIN_RULES.md) and [BOXED_ICON_RULES.md](BOXED_ICON_RULES.md) first. Re-read the boxed-icon construction reference before every Plus/X change. Review the silhouette and crisp strokes, and review new drawings in a batch against the approved family.
+Edit source SVGs under `icons/figma-study/`, update their hashes in the manifest, run `pnpm generate:figma`, then `pnpm verify`. Never edit generated catalog geometry. Preserve native source coordinates, authored paint, semantic counters and review status. The current catalog has94 pairs with no legacy frame variants. New numerical decisions belong in the canonical playbook.
 
-For every new or revised dual-style icon, match the Filled outer edge to the visible Outline exterior at native 100% and Regular 1.75. Compare overlays and rotated poses, inspect actual sizes, and add or update the packed-export contour regression check in the adapter.
+Inspect Outline/Filled at native16/20/24/48px on light/dark surfaces. Compare actual packed components to literal sources; automated checks do not grant owner approval. Keep Core framework independent and free of import-time DOM work. Source validation must reject unsafe XML, scripts, external references and unsupported clipping.
 
-Edit original SVG and metadata in `icons/`, or framework-independent types in `src/`. Preserve stable `data-part` names. Keep core free of framework imports and import-time DOM work. Run `pnpm verify` and inspect artwork in the standalone local Lab before accepting geometry changes.
+Commit validated Core changes before adapter sync. In Svelte run `pnpm sync:core ../core`, verify and commit the adapter, then update the private Lab with `pnpm sync:svelte ../svelte` and verify its actual installed artifact. Preserve unrelated work and keep Homepage on its separately verified published npm pin. Coordinate exclusive downstream ownership during sync.
 
-Generated catalog data and adapter components are build output. Commit core changes before synchronizing an adapter, so the downstream source commit is traceable. Contributions to original code and artwork are submitted under the project’s [MIT license](LICENSE).
-
-Use 2px at the primary opposing edge pair. Camera/Folder use left/right and retain horizontal proportions; another icon may use top/bottom. The remaining pair need not be 2px. Plus/X use all four sides of their Filled box. Naturally filled objects need no added enclosing box.
-
-Owner exception: Menu/Search Filled is the shared Outline centerline expanded at Bold 2.50, with no box. Compare their packed Filled contours against Outline Bold, not Regular. See current direction in BOXED_ICON_RULES.md.
-
-## Morph contributions
-
-Before creating or revising a morph, read the [shared agent playbook](MORPH.md)
-for Goal, Design, implementation order, Verification, Tests and delivery criteria.
-It is the canonical specification; this repository must not maintain a divergent
-copy. A named pair request means implement through to a working Lab preview, and
-the owner permits questions whenever a material decision is unclear.
+The owner authorized the94-pair alpha publication without changing draft visual status. Future stable releases require approved artwork. Original code and artwork contributions use the [MIT license](LICENSE).

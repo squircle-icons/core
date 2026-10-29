@@ -1,259 +1,52 @@
-import { describe, expect, it } from 'vitest';
-import { readFile } from 'node:fs/promises';
-import { parseSvg, optimizeSvg, extractStrokeCutout, validateIconName } from '../../tools/model.js';
+import { expect, it } from 'vitest';
+import { parseSvg, validateIconName } from '../../tools/model.js';
 import { loadSources } from '../../tools/validate.js';
-
-const source = await readFile(new URL('../../icons/folder.svg', import.meta.url), 'utf8');
-describe('single-source artwork pipeline', () => {
-  it('validates the original collection', async () => {
-    const icons = await loadSources();
-    expect(icons.map((icon) => icon.name)).toEqual([
-      'align-center',
-      'align-left',
-      'align-right',
-      'arrow-down-left',
-      'arrow-down-right',
-      'arrow-down',
-      'arrow-left',
-      'arrow-right',
-      'arrow-up-left',
-      'arrow-up-right',
-      'arrow-up',
-      'bell',
-      'camera',
-      'check',
-      'chevron-down',
-      'chevron-left-right',
-      'chevron-left',
-      'chevron-line-down',
-      'chevron-line-left',
-      'chevron-line-right',
-      'chevron-line-up',
-      'chevron-right',
-      'chevron-up-down',
-      'chevron-up',
-      'chevrons-down',
-      'chevrons-left',
-      'chevrons-right',
-      'chevrons-up',
-      'copy',
-      'corner-up-right',
-      'download',
-      'external-link',
-      'folder',
-      'heart',
-      'log-in',
-      'log-out',
-      'maximize',
-      'menu',
-      'minimize',
-      'minus',
-      'moon',
-      'more-horizontal',
-      'more-vertical',
-      'new-window',
-      'plus',
-      'search',
-      'settings',
-      'sun',
-      'trash',
-      'upload',
-      'x',
-    ]);
-  });
-  it('preserves part names and geometry during conservative optimization', () => {
-    const optimized = optimizeSvg(source);
-    expect(parseSvg(optimized)).toEqual(parseSvg(source));
-    expect(optimizeSvg(source)).toBe(optimized);
-  });
-  it.each([
-    ['malformed XML', source.replace('</svg>', '')],
-    ['active content', source.replace('</svg>', '<script>alert(1)</script></svg>')],
-    [
-      'external resources',
-      source.replace(
-        '<g data-part="body">',
-        '<g data-part="body" href="https://example.org/art.svg">',
-      ),
-    ],
-    ['duplicate parts', source.replace('data-part="lid"', 'data-part="body"')],
-    ['unnamed parts', source.replace('data-part="lid"', 'class="lid"')],
-    ['invalid viewBox', source.replace('0 0 24 24', '0 0 NaN 24')],
-    ['invalid path', source.replace(/<path d="[^"]*"/, '<path d="M invalid"')],
-    ['entities', '<!DOCTYPE svg [<!ENTITY test "x">]>' + source],
-    ['unsupported text', source.replace('</svg>', '<text>hello</text></svg>')],
-    [
-      'negative circle radius',
-      source.replace('<g data-part="lid">', '<g data-part="lid"><circle cx="12" cy="12" r="-1"/>'),
-    ],
-  ])('rejects %s', (_, svg) => expect(() => parseSvg(svg)).toThrow());
-});
-
-describe('filled artwork pipeline', () => {
-  it('preserves compound cutouts and named parts through optimization', async () => {
-    const source = await readFile(
-      new URL('../../icons/filled/folder.svg', import.meta.url),
-      'utf8',
-    );
-    expect(parseSvg(optimizeSvg(source, 'filled'), 'filled')).toEqual(parseSvg(source, 'filled'));
-    const icons = await loadSources();
-    expect(icons.find((icon) => icon.name === 'folder')?.filled?.parts).toEqual(['body']);
-    expect(() => parseSvg(source)).toThrow('unfilled');
-    expect(() =>
-      parseSvg(source.replace('stroke="none"', 'stroke="currentColor"'), 'filled'),
-    ).toThrow('without stroke');
-    expect(() =>
-      parseSvg(source.replace('fill-rule="evenodd"', 'fill-rule="invalid"'), 'filled'),
-    ).toThrow('winding');
-    expect(() =>
-      parseSvg(source.replace('</svg>', '<script>alert(1)</script></svg>'), 'filled'),
-    ).toThrow();
-  });
-});
-
-it('derives adjustable negative-space geometry by part and rejects invalid targets or widths', async () => {
-  const svg = parseSvg(
-    await readFile(new URL('../../icons/filled/folder.svg', import.meta.url), 'utf8'),
-    'filled',
-  );
-  const config = { part: 'body', minWidth: 0.25, maxWidth: 6 };
-  expect(extractStrokeCutout(svg.root, config)).toMatchObject({
-    left: 4.76980874,
-    right: 19.23019126,
-    centerY: 10.90300546,
-    defaultWidth: 1.75,
-  });
-  expect(() => extractStrokeCutout(svg.root, { ...config, part: 'missing' })).toThrow(
-    'Cutout part',
-  );
-  expect(() => extractStrokeCutout(svg.root, { ...config, maxWidth: Infinity })).toThrow('bounds');
-  expect(() => extractStrokeCutout(svg.root, { ...config, minWidth: 2 })).toThrow('bounds');
-});
-
-it('available filled sources preserve named parts and original geometry through optimization', async () => {
+import { FIGMA_STUDY_ICONS } from '../../src/design/figma-catalog.js';
+const svg =
+  '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L22 22" stroke="currentColor" stroke-width="1.5"/></svg>';
+it('promotes all 94 source pairs with exact geometry and review status', async () => {
   const icons = await loadSources();
-  expect(icons.filter((icon) => icon.filled).map((icon) => icon.name)).toEqual([
-    'align-center',
-    'align-left',
-    'align-right',
-    'arrow-down-left',
-    'arrow-down-right',
-    'arrow-down',
-    'arrow-left',
-    'arrow-right',
-    'arrow-up-left',
-    'arrow-up-right',
-    'arrow-up',
-    'bell',
-    'camera',
-    'check',
-    'chevron-down',
-    'chevron-left-right',
-    'chevron-left',
-    'chevron-line-down',
-    'chevron-line-left',
-    'chevron-line-right',
-    'chevron-line-up',
-    'chevron-right',
-    'chevron-up-down',
-    'chevron-up',
-    'chevrons-down',
-    'chevrons-left',
-    'chevrons-right',
-    'chevrons-up',
-    'copy',
-    'corner-up-right',
-    'download',
-    'external-link',
-    'folder',
-    'heart',
-    'log-in',
-    'log-out',
-    'maximize',
-    'menu',
-    'minimize',
-    'minus',
-    'moon',
-    'more-horizontal',
-    'more-vertical',
-    'new-window',
-    'plus',
-    'search',
-    'settings',
-    'sun',
-    'trash',
-    'upload',
-    'x',
-  ]);
-  expect(icons.find((icon) => icon.name === 'search')?.filled).toBeDefined();
-  for (const icon of icons.filter((icon) => icon.filled)) {
-    const source = await readFile(
-      new URL(`../../icons/filled/${icon.name}.svg`, import.meta.url),
-      'utf8',
-    );
-    expect(parseSvg(optimizeSvg(source, 'filled'), 'filled')).toEqual(parseSvg(source, 'filled'));
-    expect(icon.filled?.parts.length).toBeGreaterThan(0);
-  }
-});
-
-it.each(['foo-', 'foo--bar', '-foo', '../camera', 'Camera'])(
-  'rejects invalid icon name %s',
-  (name) => {
-    expect(() => validateIconName(name)).toThrow('Invalid icon name');
-  },
-);
-it.each(['camera', 'chevron-down', 'camera-2'])('accepts icon name %s', (name) => {
-  expect(() => validateIconName(name)).not.toThrow();
-});
-it('rejects empty artwork even when it has a named group', () => {
-  const empty = source.replace(/<path[^>]*\/>/g, '');
-  expect(() => parseSvg(empty)).toThrow('at least one shape');
-});
-it('preserves small and precise circle geometry during optimization', () => {
-  const precise = source.replace(
-    '<g data-part="body">',
-    '<g data-part="body"><circle cx="1.23456789" cy="2.34567891" r="0.0001"/>',
-  );
-  expect(parseSvg(optimizeSvg(precise))).toEqual(parseSvg(precise));
-});
-
-it.each(['', '0x10', '0b10', '4px', '1e999'])('rejects non-SVG circle coordinate %s', (cx) => {
-  const invalid = source.replace(
-    '<g data-part="body">',
-    `<g data-part="body"><circle cx="${cx}" cy="12" r="1"/>`,
-  );
-  expect(() => parseSvg(invalid)).toThrow('circle geometry');
-});
-
-it('preserves the shared compact Square and Circle glyphs beside larger standalone arrows', async () => {
-  const icons = await loadSources();
-  const arrows = icons.filter((icon) => /^(arrow|chevrons?)-/.test(icon.name));
-  expect(arrows).toHaveLength(22);
-  for (const icon of arrows) {
-    expect(Object.keys(icon.frames!)).toEqual(['square', 'circle']);
-    const framedGlyph = icon.frames!.square!.root.children[0].children.at(-1)!.attrs.d;
-    expect(framedGlyph).not.toBe(icon.root.children[0].children[0].attrs.d);
-    for (const frame of Object.values(icon.frames!)) {
-      expect(frame!.root.children[0].children.at(-1)!.attrs.d).toBe(framedGlyph);
-      expect(frame!.metadata.review?.status).toBe('approved');
-      expect(frame!.filled.root.attrs.stroke).toBe('none');
+  expect(icons).toHaveLength(94);
+  const paths = (node: any): string[] => [
+    ...(node.tag === 'path' ? [node.attrs.d] : []),
+    ...node.children.flatMap(paths),
+  ];
+  for (const icon of icons) {
+    const original = FIGMA_STUDY_ICONS.find((source) => source.id === icon.name)!;
+    expect(icon.metadata.review.status).toBe(original.status);
+    for (const style of ['outline', 'filled'] as const) {
+      const root = style === 'outline' ? icon.root : icon.filled.root;
+      expect(paths(root)).toEqual([...original[style].matchAll(/\bd="([^"]+)"/g)].map((m) => m[1]));
+      expect(JSON.stringify(root)).not.toMatch(/clipPath|"id"|clip-path/);
+      expect(root.attrs.overflow).toBe('hidden');
     }
   }
-  expect(icons.filter((icon) => icon.frames)).toHaveLength(35);
 });
-
-it('reuses Plus Square for New Tab discovery without a duplicate artwork identity', async () => {
-  const icons = await loadSources();
-  expect(icons).toHaveLength(51);
-  expect(icons.some((icon) => icon.name === 'new-tab')).toBe(false);
-  const plus = icons.find((icon) => icon.name === 'plus')!;
-  for (const metadata of [
-    plus.metadata,
-    plus.filled!.metadata,
-    plus.frames!.square!.metadata,
-    plus.frames!.square!.filled.metadata,
-  ]) {
-    expect(metadata.tags).toContain('new-tab');
-    expect(metadata.tags).toContain('newtab');
-  }
+it.each([
+  svg.replace('<path', '<script'),
+  svg.replace('stroke="currentColor"', 'onclick="alert(1)"'),
+  svg.replace('stroke="currentColor"', 'stroke="url(https://example.com)"'),
+  svg.replace('M2 2L22 22', 'M0 0L1e999 1'),
+  svg.replace('stroke-width="1.5"', 'stroke-width="NaN"'),
+  svg.replace('viewBox="0 0 24 24"', 'viewBox="0 0 32 32"'),
+  svg.replace('<path', '<g clip-path="url(#unknown)"><path').replace('</svg>', '</g></svg>'),
+  '<!DOCTYPE svg>' + svg,
+  svg.replace('</svg>', '<foreignObject/></svg>'),
+  svg.replace('<path', '<path transform="rotate(20)"'),
+])('rejects unsafe or unsupported source %s', (source) => expect(() => parseSvg(source)).toThrow());
+it('validates full-viewport clips before removing redundant definitions', () => {
+  const clipped = svg
+    .replace('<path', '<g clip-path="url(#c)"><path')
+    .replace(
+      '</svg>',
+      '</g><defs><clipPath id="c"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>',
+    );
+  expect(parseSvg(clipped).root.attrs.overflow).toBe('hidden');
+  expect(() => parseSvg(clipped.replace('<rect width="24"', '<rect width="12"'))).toThrow(
+    'viewport',
+  );
 });
+it.each(['../camera', 'Bad Name', 'camera_', 'camera/other'])(
+  'rejects unsafe icon names %s',
+  (name) => expect(() => validateIconName(name)).toThrow(),
+);

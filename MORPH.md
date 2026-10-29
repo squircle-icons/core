@@ -68,8 +68,7 @@ The owner explicitly requested **all morphs use the new icons and the old morph
 set be removed**. This supersedes the earlier1.75 production/frame endpoint
 contract. The active five pairs read the same committed `FIGMA_STUDY_ICONS` export
 from `src/design/figma-catalog.ts` that the new main Lab uses. Do not use legacy
-`icons/` drawings or re-create an endpoint in Lab. Static production package
-retention is separate from removal of the old active morph interface.
+`icons/` drawings or re-create an endpoint in Lab. The production static catalog now uses the same94 source pairs; legacy production artwork is removed.
 
 All active endpoints use native24×24 and Outline1.5. Filled uses the actual source
 treatment: Sun/Moon follow the1.5 exterior; Plus/Minus/X/Menu/Maximize/Minimize use
@@ -182,7 +181,7 @@ The spring controller may be shared internally; this does not merge the features
 
 The owner selected `<Trash animate open={open} />` using the ordinary `trash`
 import. Reuse the existing renderer internally; do not create a second animation.
-`animate` defaults to false, preserving the legacy production Trash shape and
+`animate` defaults to false, using the same current source Trash shape and
 static stroke-width props. True selects the existing current-Figma motion at its
 fixed authored thickness. Keep `animate` enabled and change `open` to reverse
 without remounting; switching `animate` changes the rendering mode and source
