@@ -1010,6 +1010,28 @@
       "revisionArchiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d"
     },
     {
+      "id": "mail-fold",
+      "label": "Mail Fold",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "38:7",
+      "source": "icons/figma-study/mail-fold/outline.svg",
+      "sha256": "d8c308983e1392f1f4ad2b1886d41ebb45a30bc9cbeccce37525293eaa3e81b8",
+      "exportMember": "Mail Fold/Outline.svg",
+      "revisionArchiveSHA256": "bc2b59b7ef12ccdad37375d218ef525f7f54232702ae1fa4144ba9d4ea3498ef"
+    },
+    {
+      "id": "mail-fold",
+      "label": "Mail Fold",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "38:12",
+      "source": "icons/figma-study/mail-fold/filled.svg",
+      "sha256": "3354540b6359fe33beb37475b93f45c10e849e043c159ec1ea874e9bbebf007d",
+      "exportMember": "Mail Fold/Filled.svg",
+      "revisionArchiveSHA256": "bc2b59b7ef12ccdad37375d218ef525f7f54232702ae1fa4144ba9d4ea3498ef"
+    },
+    {
       "id": "wallet",
       "label": "Wallet",
       "group": "objects",
@@ -1668,6 +1690,13 @@
       "identities": ["mail"],
       "archiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d",
       "scope": "Slightly fuller V arms and a small tangent fillet at the central tip, developed from the plain-line baseline; no gathered terminal shaping.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail-fold"],
+      "archiveSHA256": "bc2b59b7ef12ccdad37375d218ef525f7f54232702ae1fa4144ba9d4ea3498ef",
+      "scope": "Add an independent Mail Fold pair with lower fold seams; keep the existing Mail unchanged. The complete board has82 pairs in11 groups.",
       "review": "draft"
     }
   ]

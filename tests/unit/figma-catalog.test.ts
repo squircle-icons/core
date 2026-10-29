@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { expect, it } from 'vitest';
 import { FIGMA_STUDY_ICONS } from '../../src/design/figma-catalog.js';
+import pathParser from 'svg-path-parser';
 
 it('connects marked seams while retaining the owner body and detail masters', () => {
   const paths = (id: string) =>
@@ -34,8 +35,8 @@ it('connects marked seams while retaining the owner body and detail masters', ()
 });
 
 it('contains every current Figma identity once, with both styles and source references', () => {
-  expect(FIGMA_STUDY_ICONS).toHaveLength(81);
-  expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.id)).size).toBe(81);
+  expect(FIGMA_STUDY_ICONS).toHaveLength(82);
+  expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.id)).size).toBe(82);
   expect(new Set(FIGMA_STUDY_ICONS.map((icon) => icon.group)).size).toBe(11);
   for (const icon of FIGMA_STUDY_ICONS) {
     expect(icon.baseStroke).toBe(1.5);
@@ -78,4 +79,28 @@ it('records authored outline exceptions without pretending fill-only geometry is
     expect(icon.adjustableStroke).toBe(true);
     expect(icon.outline).toContain('stroke-width="1.5"');
   }
+});
+
+it('adds lower folds as a separate Mail identity while retaining its base paths', () => {
+  const paths = (id: string) =>
+    [...FIGMA_STUDY_ICONS.find((icon) => icon.id === id)!.outline.matchAll(/\bd="([^"]+)"/g)].map(
+      (match) => match[1],
+    );
+  const mail = paths('mail'),
+    folded = paths('mail-fold');
+  expect(folded.slice(0, 2)).toEqual(mail);
+  expect(folded).toHaveLength(3);
+  expect(folded[2].match(/M/g)).toHaveLength(2);
+  const lower = pathParser.makeAbsolute(pathParser.parseSVG(folded[2]));
+  const junctions = [
+    [4.18375, 17.7038],
+    [8.49679784, 10.94092783],
+    [15.50320216, 10.94092783],
+    [19.8162, 17.7038],
+  ];
+  // Native Figma export rounds the authored intersections. The same declared
+  // .0002 export tolerance applies to the connection, not a new design offset.
+  lower.forEach((point, i) =>
+    expect(Math.hypot(point.x - junctions[i][0], point.y - junctions[i][1])).toBeLessThan(0.0002),
+  );
 });
