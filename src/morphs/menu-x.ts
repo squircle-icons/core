@@ -1,9 +1,4 @@
-import {
-  mergedStrokes,
-  movingStrokeUnion,
-  type MorphFrame,
-  type MorphFrames,
-} from './round-strokes.js';
+import { mergedStrokes, movingStrokeUnion } from './round-strokes.js';
 export type MenuXMarkGeometry = {
   center: [number, number];
   menuExtent: number;
@@ -14,10 +9,7 @@ export type MenuXMarkGeometry = {
   menu: { outline: string; filled: string };
   x: { outline: string; filled: string };
 };
-export type MenuXGeometry = MenuXMarkGeometry & {
-  frames: MorphFrames;
-  variants?: Record<MorphFrame, MenuXMarkGeometry>;
-};
+export type MenuXGeometry = MenuXMarkGeometry;
 const clamp = (p: number) => Math.max(0, Math.min(1, p));
 const smooth = (p: number) => {
   const t = clamp(p);
@@ -26,18 +18,12 @@ const smooth = (p: number) => {
 const mix = (a: number, b: number, p: number) => a + (b - a) * p;
 const fmt = (n: number) => String(Math.round(n * 1e8) / 1e8);
 const point = (p: [number, number]) => p.map(fmt).join(' ');
-export function menuXFrame(
-  progress: number,
-  geometry: MenuXGeometry,
-  frame: MorphFrame = 'square',
-) {
-  const mark = geometry.variants?.[frame] ?? geometry;
+export function menuXFrame(progress: number, geometry: MenuXGeometry) {
+  const mark = geometry;
   const p = clamp(Number.isFinite(progress) ? progress : 0);
-  if (p === 0)
-    return { ...mark.menu, filled: geometry.frames[frame].from, middle: '', middleWidth: 0 };
-  if (p === 1) return { ...mark.x, filled: geometry.frames[frame].to, middle: '', middleWidth: 0 };
-  const q = smooth(p),
-    center = mark.center;
+  if (p === 0) return { ...mark.menu, filled: mark.menu.filled, middle: '', middleWidth: 0 };
+  if (p === 1) return { ...mark.x, filled: mark.x.filled, middle: '', middleWidth: 0 };
+  const center = mark.center;
   // Finish the horizontal merge before either outer bar starts opening into X.
   const collapse = smooth(p * 2);
   const opening = smooth(p * 2 - 1);
@@ -51,8 +37,7 @@ export function menuXFrame(
   };
   const remaining = 1 - collapse;
   const middleExtent = mark.menuExtent * remaining;
-  const width =
-    frame === 'none' ? mark.filledStrokeWidth : mix(mark.filledStrokeWidth, mark.strokeWidth, q);
+  const width = mark.filledStrokeWidth;
   const glyph =
     offset < 1e-6 && remaining < 1e-6
       ? mergedStrokes(angle, -angle, extent, width / 2, { x: center[0], y: center[1] })
@@ -87,6 +72,6 @@ export function menuXFrame(
         : '',
     middleWidth: mark.strokeWidth * remaining,
     filledWidth: width,
-    filled: geometry.frames[frame].box + ' ' + glyph,
+    filled: glyph,
   };
 }

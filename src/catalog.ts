@@ -1,6 +1,11 @@
 /** Internal build contract; not a stable public API. */
 export type CoreIcon = {
   name: string;
+  label: string;
+  group: string;
+  baseStroke: number;
+  adjustableStroke: boolean;
+  figma: { outline: string; filled: string };
   metadata: {
     name: string;
     description: string;
@@ -20,27 +25,9 @@ export type CoreIcon = {
   };
   root: { tag: string; attrs: Record<string, string>; children: CoreIcon['root'][] };
   parts: string[];
-  frames?: Partial<Record<'square' | 'circle', CoreFrame>>;
   filled?: {
     metadata: CoreIcon['metadata'];
     root: CoreIcon['root'];
     parts: string[];
-    cutout?: {
-      part: string;
-      outerPath: string;
-      left: number;
-      right: number;
-      centerY: number;
-      defaultWidth: number;
-      minWidth: number;
-      maxWidth: number;
-    };
   };
-};
-
-export type CoreFrame = {
-  metadata: CoreIcon['metadata'];
-  root: CoreIcon['root'];
-  parts: string[];
-  filled: { metadata: CoreIcon['metadata']; root: CoreIcon['root']; parts: string[] };
 };

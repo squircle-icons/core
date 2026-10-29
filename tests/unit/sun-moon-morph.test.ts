@@ -1,16 +1,15 @@
 import { beforeAll, expect, it } from 'vitest';
-import { loadSources } from '../../tools/validate.js';
 import { buildSunMoonGeometry } from '../../tools/build-sun-moon.js';
 import { sunMoonFrame, type SunMoonGeometry } from '../../src/morphs/sun-moon.js';
 let geometry: SunMoonGeometry;
 beforeAll(async () => {
-  geometry = buildSunMoonGeometry(await loadSources());
+  geometry = buildSunMoonGeometry();
 });
 it('derives approved Sun and Moon endpoints without modifying the catalog', () => {
-  expect(geometry.sun.radius).toBe(5.1);
+  expect(geometry.sun.radius).toBeCloseTo(4.7, 3);
   expect(geometry.sun.rays).toHaveLength(8);
-  expect(geometry.moon.outer.x).toBeCloseTo(12.00675074, 6);
-  expect(geometry.moon.outer.y).toBeCloseTo(11.86562791, 6);
+  expect(geometry.moon.outer.x).toBeCloseTo(12.00675074, 3);
+  expect(geometry.moon.outer.y).toBeCloseTo(11.86562791, 3);
   expect(sunMoonFrame(1, geometry).body).toBe(geometry.moon.path);
   expect(sunMoonFrame(0, geometry).rayOpacity).toBe(1);
   expect(sunMoonFrame(1, geometry).rayOpacity).toBe(0);

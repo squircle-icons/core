@@ -1,18 +1,18 @@
 # Squircle Icons · core
 
-**Alpha stage · Open source · MIT license**
+Original source for the current **94 icons / 188 Outline and Filled drawings**, plus five morph pairs and Trash motion. Core is a private build package; the public package is [`@squircle-icons/svelte`](https://github.com/squircle-icons/svelte).
 
-The single editable source of original Squircle artwork, metadata, and framework-independent types. This repository contains no homepage or framework component implementation.
+## Current artwork
 
-## Design direction
+`icons/figma-study/manifest.json` records source IDs and SHA-256 hashes for every native SVG. Those files are the editable artwork source. `src/design/figma-catalog.ts` is generated from them; `dist/catalog.json` exposes the same current collection to adapters. Legacy icons, enclosing-frame variants and superseded prototype datasets are removed. Published older npm versions remain immutable.
 
-Read [the design rules](DESIGN_RULES.md) before changing artwork. Rounded rectangular outer construction must preserve the real object; interior details follow the icon’s meaning. All 51 current authoring families and their supported static styles are owner-approved as of 2026-10-27. The adapter exposes 121 independent static icons, including 35 Square and 35 Circle drawings. Static approval is separate from the motion statuses in [MORPH.md](MORPH.md). Moon's accepted minus-30-degree pose is baked into its native zero-degree source. Current metadata records the approved artwork; earlier review counts and construction experiments in the design history are superseded.
+Drawings use native24×24 and a1.5 Outline baseline. Thin1.25, Regular1.5 and Bold2.5 previews apply only to real stroked Outlines. Heart/Pen have authored expanded Outlines and retain fixed geometry. Filled preserves its source paint, counters and semantic stroke treatment. No drawing is resized, rounded again or silently promoted to approved by packaging.
 
-Menu and Search use unboxed Filled geometry matching Outline at fixed Bold 2.50. Other matching exterior comparisons use Regular 1.75, with the documented boxed-cutout and solid arrow-head treatments. Read [the construction guide](BOXED_ICON_RULES.md) for the accepted exceptions and [margin rules](ICON_MARGIN_RULES.md) for native spacing.
+Four pairs currently retain explicit visual approval; the others remain drafts. The owner authorized publishing the current collection as an alpha. That release authorization is separate from visual or motion approval. See [ICON_RULES.md](ICON_RULES.md), [DESIGN_RULES.md](DESIGN_RULES.md) and [MORPH.md](MORPH.md).
 
-## Develop
+## Develop and verify
 
-Use Node.js 24.19.0 and pnpm 10.10.0.
+Use Node24.19.0 and pnpm10.10.0.
 
 ```sh
 pnpm install --frozen-lockfile
@@ -20,14 +20,10 @@ pnpm verify
 pnpm pack --pack-destination .artifacts
 ```
 
-`icons/` contains the original SVGs and adjacent authorship/construction metadata. `src/` contains shared stroke weights, types, and an internal catalog type.
+Validation checks source hashes, safe SVG/XML, finite geometry, native viewports, paint and current endpoints. Generation retains path coordinates and authored transforms. Redundant full24×24 clip definitions become root viewport clipping, avoiding duplicate SVG IDs across component instances. Build clears generated output so removed datasets cannot ship accidentally. Tests cover invalid inputs and source-derived geometry; successful tests grant no visual approval.
 
-`pnpm build` validates/optimizes artwork conservatively, compiles types, and writes `dist/catalog.json` for adapter generation. `pnpm test` covers invalid XML/geometry, stable parts, filled contours, and cutout contracts. Generated catalog data must not be edited manually.
+## Adapter promotion
 
-## Updating an adapter
+Commit verified Core changes, then run `pnpm sync:core /path/to/core` in Svelte. The adapter records the exact Core commit and artifact SHA-256. Commit and verify Svelte before syncing the independent private Lab. Public consumers do not install Core.
 
-Commit the reviewed core change, then run `pnpm sync:core /path/to/core` in the Svelte repository. That command builds a local core artifact and records its source commit and SHA-256. No npm account or publication is needed during this alpha. Future framework adapters should consume the same versioned core input.
-
-The packed catalog/source exports are an **internal build contract**, not a stable public core API. The core dependency is development-only in adapters; icon consumers do not install it separately.
-
-The approved family uses a 24×24 grid and default 1.75 stroke. New or revised artwork still needs owner review; automated tests do not grant visual approval. Do not copy or adapt third-party icon paths and claim them as original. Original artwork and code are licensed under [MIT](LICENSE). See [migration provenance](MIGRATION.md).
+Core stays framework independent. SVGs are original project artwork; do not copy third-party paths. Original artwork and code use the [MIT license](LICENSE).

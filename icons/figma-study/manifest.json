@@ -1,0 +1,2096 @@
+{
+  "fileKey": "5H3BjvQHvoTlkqp73YNx17",
+  "canvas": [24, 24],
+  "baseStroke": 1.5,
+  "exported": "2026-10-29",
+  "archiveSHA256": "14646fdb539adef02be33077a109e6789d1c016f9bb3dc94254775dc27813c42",
+  "boardSHA256": "b92234646c42324962cfc9ccf9e6b809b9b338edaa11135e2238afa2ca027146",
+  "normalization": "Native frame SVGs unchanged. Square retains its named board paths with grid-cell translation only. No scaling or redraw.",
+  "records": [
+    {
+      "id": "square",
+      "label": "Square",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "11:31",
+      "source": "icons/figma-study/square/outline.svg",
+      "sha256": "47504c48350315e320bd1c661a419bb35d8d77d442810837ffe0c913455fbce4",
+      "exportMember": "board:square-outline"
+    },
+    {
+      "id": "square",
+      "label": "Square",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "11:34",
+      "source": "icons/figma-study/square/filled.svg",
+      "sha256": "63db218183c004beaefb8c03bd6a7680ff26bcd51ea26f2ec20e62714d42ea7e",
+      "exportMember": "board:square-filled"
+    },
+    {
+      "id": "triangle",
+      "label": "Triangle",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "22:34",
+      "source": "icons/figma-study/triangle/outline.svg",
+      "sha256": "08bf65526c8f7c2fee51801645ade00040d0503473da13b51ba38a688efb66e3",
+      "exportMember": "Triangle/Outline.svg"
+    },
+    {
+      "id": "triangle",
+      "label": "Triangle",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "22:37",
+      "source": "icons/figma-study/triangle/filled.svg",
+      "sha256": "0e74f0d23068475cd2f6bc8344e1f05756c7a85d211063ea0ea0c60bc809f1ae",
+      "exportMember": "Triangle/Filled.svg"
+    },
+    {
+      "id": "heart",
+      "label": "Heart",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "20:265",
+      "source": "icons/figma-study/heart/outline.svg",
+      "sha256": "1d4789dcbfbbe30931695671d08a3f8c2e93027afb047ee6d68fd22ce9246608",
+      "exportMember": "Heart/Outline.svg"
+    },
+    {
+      "id": "heart",
+      "label": "Heart",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "20:270",
+      "source": "icons/figma-study/heart/filled.svg",
+      "sha256": "7854dfe21a341706996516fb0fb280a72968b988d6585a0760ccd0139c663d60",
+      "exportMember": "Heart/Filled.svg"
+    },
+    {
+      "id": "camera",
+      "label": "Camera",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:112",
+      "source": "icons/figma-study/camera/outline.svg",
+      "sha256": "714f0feafa7d0428023b29d926766fe0be3bba9971bf2692a6d9b9e4ed2eca16",
+      "exportMember": "Camera/Outline.svg"
+    },
+    {
+      "id": "camera",
+      "label": "Camera",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:117",
+      "source": "icons/figma-study/camera/filled.svg",
+      "sha256": "983fd7c6144b0b30957609015285862132e06b72e6d1956d9280a113eda0b819",
+      "exportMember": "Camera/Filled.svg"
+    },
+    {
+      "id": "camera-simple",
+      "label": "Camera Simple",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:10",
+      "source": "icons/figma-study/camera-simple/outline.svg",
+      "sha256": "1ac754cf0e8c60a8c72298bab9f6d67fc707d09504f23be615491be37488679d",
+      "exportMember": "Camera Simple/Outline.svg"
+    },
+    {
+      "id": "camera-simple",
+      "label": "Camera Simple",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:15",
+      "source": "icons/figma-study/camera-simple/filled.svg",
+      "sha256": "d2ebe32b093939f838e8d617ae424724cf56c86653c72ada2f9a4a29cc54804d",
+      "exportMember": "Camera Simple/Filled.svg"
+    },
+    {
+      "id": "folder",
+      "label": "Folder",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "16:25",
+      "source": "icons/figma-study/folder/outline.svg",
+      "sha256": "7e0472ee70dc4540dc8af261a4d4e8129e736eefcecc1d4bda84abb65f7f7cca",
+      "exportMember": "Folder/Outline.svg"
+    },
+    {
+      "id": "folder",
+      "label": "Folder",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "19:333",
+      "source": "icons/figma-study/folder/filled.svg",
+      "sha256": "5c1bf3db5d0ac2421e8c643692ee33854f8b741a38a073c3d324c93ccc53df6e",
+      "exportMember": "Folder/Filled.svg"
+    },
+    {
+      "id": "folder-simple",
+      "label": "Folder Simple",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "16:2",
+      "source": "icons/figma-study/folder-simple/outline.svg",
+      "sha256": "9d17f1367f0003625e0c3787a4a3a1c311922a3739718a645993fb899275bc9c",
+      "exportMember": "Folder Simple/Outline.svg"
+    },
+    {
+      "id": "folder-simple",
+      "label": "Folder Simple",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "16:10",
+      "source": "icons/figma-study/folder-simple/filled.svg",
+      "sha256": "45e2beca40f89c14d85baabf7325c0c3d9531794a7d1d2842ee2e829dc32c8f6",
+      "exportMember": "Folder Simple/Filled.svg"
+    },
+    {
+      "id": "trash-simple",
+      "label": "Trash Simple",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:120",
+      "source": "icons/figma-study/trash-simple/outline.svg",
+      "sha256": "85b4c802c7171eca99ef2722d378b7f5105a48fd9dfb84acf111e7d1318abd64",
+      "exportMember": "Trash Simple/Outline.svg"
+    },
+    {
+      "id": "trash-simple",
+      "label": "Trash Simple",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:125",
+      "source": "icons/figma-study/trash-simple/filled.svg",
+      "sha256": "c3e79a4a6aa76e542a77d5b90d01fecce0766987d66f198bba86ebe8c01771b4",
+      "exportMember": "Trash Simple/Filled.svg"
+    },
+    {
+      "id": "trash",
+      "label": "Trash",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:145",
+      "source": "icons/figma-study/trash/outline.svg",
+      "sha256": "e4117979ab74d99e364ecfc7f014e1be7b138f19ff39825cea616aaa1a9982c9",
+      "exportMember": "Trash/Outline.svg"
+    },
+    {
+      "id": "trash",
+      "label": "Trash",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:151",
+      "source": "icons/figma-study/trash/filled.svg",
+      "sha256": "6e2c68242fd6aa47acbdbac3abed0057f4c93f6cc8f83da07580d70a745e0d2e",
+      "exportMember": "Trash/Filled.svg"
+    },
+    {
+      "id": "calendar",
+      "label": "Calendar",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:163",
+      "source": "icons/figma-study/calendar/outline.svg",
+      "sha256": "7518c5f5c7b9e1a1f88d1b51f7512cd057a559a33989a92efc82bfa31858b600",
+      "exportMember": "Calendar/Outline.svg"
+    },
+    {
+      "id": "calendar",
+      "label": "Calendar",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:169",
+      "source": "icons/figma-study/calendar/filled.svg",
+      "sha256": "490f5586b41717e8ebc120a618b7b43f5cf1d9d2afacdefcabc03f220b68edee",
+      "exportMember": "Calendar/Filled.svg"
+    },
+    {
+      "id": "lock",
+      "label": "Lock",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:194",
+      "source": "icons/figma-study/lock/outline.svg",
+      "sha256": "883e38400556f1819b8f9dab78a7ce34c196c7f04c9d501031c81cefc7665cb5",
+      "exportMember": "Lock/Outline.svg"
+    },
+    {
+      "id": "lock",
+      "label": "Lock",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:199",
+      "source": "icons/figma-study/lock/filled.svg",
+      "sha256": "c5eb02b2d62f4478ae272d7ea0aa5c8a4fec4f9137ea7797cde0b2221ad559a1",
+      "exportMember": "Lock/Filled.svg"
+    },
+    {
+      "id": "bell",
+      "label": "Bell",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "18:229",
+      "source": "icons/figma-study/bell/outline.svg",
+      "sha256": "5f422457cff3999105c972e218a63f16a902acc303a4706f8677c852a939c79f",
+      "exportMember": "Bell/Outline.svg",
+      "revisionArchiveSHA256": "5fd30991c5e8d583b3326301f868e445ed0b720fa0d374c7352ae897edd671a8"
+    },
+    {
+      "id": "bell",
+      "label": "Bell",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "18:234",
+      "source": "icons/figma-study/bell/filled.svg",
+      "sha256": "dc78a97c3852187235c441d22b39bce7fc2b8b6c11b3807feb1a4e06b8c9407d",
+      "exportMember": "Bell/Filled.svg",
+      "revisionArchiveSHA256": "5fd30991c5e8d583b3326301f868e445ed0b720fa0d374c7352ae897edd671a8"
+    },
+    {
+      "id": "chat-bubble",
+      "label": "Chat Bubble",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "19:344",
+      "source": "icons/figma-study/chat-bubble/outline.svg",
+      "sha256": "22698bdea87ff431c5e58d6527819b6b190b8298a11ab7f2bf47614b9f05fb66",
+      "exportMember": "Chat Bubble/Outline.svg"
+    },
+    {
+      "id": "chat-bubble",
+      "label": "Chat Bubble",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "19:347",
+      "source": "icons/figma-study/chat-bubble/filled.svg",
+      "sha256": "30c949fde74a879cc273d61b6096c2790c312536b79af17afe369e97e8d30136",
+      "exportMember": "Chat Bubble/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-right",
+      "label": "Chat Bubble Right",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "20:81",
+      "source": "icons/figma-study/chat-bubble-right/outline.svg",
+      "sha256": "4a41192b225585a317a24dec9fd29e49bffcb09c70f8fe3bbd6b738fecb6d0b2",
+      "exportMember": "Chat Bubble Right/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-right",
+      "label": "Chat Bubble Right",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "20:74",
+      "source": "icons/figma-study/chat-bubble-right/filled.svg",
+      "sha256": "68228a2805e76ad51aa02e8bad6143ed891ac24184565bbf69437e6e3d5612ab",
+      "exportMember": "Chat Bubble Right/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-compact",
+      "label": "Chat Bubble Compact",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "20:2",
+      "source": "icons/figma-study/chat-bubble-compact/outline.svg",
+      "sha256": "8178ece7b04df65d192009b908fa738aef532f8bc6e43756ee88b660f067d3a3",
+      "exportMember": "Chat Bubble Compact/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-compact",
+      "label": "Chat Bubble Compact",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "20:5",
+      "source": "icons/figma-study/chat-bubble-compact/filled.svg",
+      "sha256": "9c8cca7fd36f3910b16f02493924adf2c6a7352e7a30d89872f9c41ec15934b4",
+      "exportMember": "Chat Bubble Compact/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-slant",
+      "label": "Chat Bubble Slant",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "20:49",
+      "source": "icons/figma-study/chat-bubble-slant/outline.svg",
+      "sha256": "f8862f6344fb25cdfc46b8c94d0d65f7bab5c0b3fe9f30c5cc2d8e76776bd8ce",
+      "exportMember": "Chat Bubble Slant/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-slant",
+      "label": "Chat Bubble Slant",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "20:55",
+      "source": "icons/figma-study/chat-bubble-slant/filled.svg",
+      "sha256": "086cae095e63ffcc9b88d437555af63533ad46187ad29fe4437ab9fda7a2dce2",
+      "exportMember": "Chat Bubble Slant/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-slant-right",
+      "label": "Chat Bubble Slant Right",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "20:119",
+      "source": "icons/figma-study/chat-bubble-slant-right/outline.svg",
+      "sha256": "776f2f250f56e16450fad8624a644ef303a292eedf9d2283afdd2afab46c1200",
+      "exportMember": "Chat Bubble Slant Right/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-slant-right",
+      "label": "Chat Bubble Slant Right",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "20:121",
+      "source": "icons/figma-study/chat-bubble-slant-right/filled.svg",
+      "sha256": "22099d3e3af0131252386693386f8d3227c599e44a9dfd5f043879a261371c1f",
+      "exportMember": "Chat Bubble Slant Right/Filled.svg"
+    },
+    {
+      "id": "home",
+      "label": "Home",
+      "group": "home",
+      "style": "outline",
+      "nodeId": "20:126",
+      "source": "icons/figma-study/home/outline.svg",
+      "sha256": "5baef3a86e68d2d024c53965e8a1ffc1ba8021adecccaa3825f50c90d6c4ee25",
+      "exportMember": "Home/Outline.svg"
+    },
+    {
+      "id": "home",
+      "label": "Home",
+      "group": "home",
+      "style": "filled",
+      "nodeId": "20:131",
+      "source": "icons/figma-study/home/filled.svg",
+      "sha256": "9bb9db939b90e7040a637f79f4bb027b10d1786d7089fcb7f169f15a351cf993",
+      "exportMember": "Home/Filled.svg"
+    },
+    {
+      "id": "home-door",
+      "label": "Home Door",
+      "group": "home",
+      "style": "outline",
+      "nodeId": "20:164",
+      "source": "icons/figma-study/home-door/outline.svg",
+      "sha256": "3d82b80c4dd00202b55bbd147b8525e56aeb152e78a9c52656f1004ea74b6eea",
+      "exportMember": "Home Door/Outline.svg"
+    },
+    {
+      "id": "home-door",
+      "label": "Home Door",
+      "group": "home",
+      "style": "filled",
+      "nodeId": "20:170",
+      "source": "icons/figma-study/home-door/filled.svg",
+      "sha256": "d15eda6f0b892d32c3bb56a94d94449c1cb79c83f2434745afc9a10cf6a72618",
+      "exportMember": "Home Door/Filled.svg"
+    },
+    {
+      "id": "home-door-closed",
+      "label": "Home Door Closed",
+      "group": "home",
+      "style": "outline",
+      "nodeId": "20:197",
+      "source": "icons/figma-study/home-door-closed/outline.svg",
+      "sha256": "ddd6c5ae4ce2de927667e087c45033112f7fb4a238be6f38bf35e388fbb7eca7",
+      "exportMember": "Home Door Closed/Outline.svg"
+    },
+    {
+      "id": "home-door-closed",
+      "label": "Home Door Closed",
+      "group": "home",
+      "style": "filled",
+      "nodeId": "20:203",
+      "source": "icons/figma-study/home-door-closed/filled.svg",
+      "sha256": "05b8cc9106893726da0c7c2fd60a9e684de179dfbbea3825262fc74c6a30d93a",
+      "exportMember": "Home Door Closed/Filled.svg"
+    },
+    {
+      "id": "person",
+      "label": "Person",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "22:2",
+      "source": "icons/figma-study/person/outline.svg",
+      "sha256": "5fbe3b09cfc45648bb6840cee9cc173b1209fbfee424659de9ea05ab4f5e9a99",
+      "exportMember": "Person/Outline.svg"
+    },
+    {
+      "id": "person",
+      "label": "Person",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "22:6",
+      "source": "icons/figma-study/person/filled.svg",
+      "sha256": "e895bab214290967883209bfd7ed6214d4e354dc8fbe932cfdc5bc9513a9119b",
+      "exportMember": "Person/Filled.svg"
+    },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "22:10",
+      "source": "icons/figma-study/settings/outline.svg",
+      "sha256": "f017dd3126c42d0eef407205fbafffa16fd04b8f0280e80b71a2a72ae4e16afd",
+      "exportMember": "Settings/Outline.svg"
+    },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "22:14",
+      "source": "icons/figma-study/settings/filled.svg",
+      "sha256": "434bf9863bb1031ba3bf656aa6e3f9d764f1e06403cc81b63551326279386c2e",
+      "exportMember": "Settings/Filled.svg"
+    },
+    {
+      "id": "search",
+      "label": "Search",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "22:40",
+      "source": "icons/figma-study/search/outline.svg",
+      "sha256": "a222c98e20a38893084156242b02ade688a7b26ae2de13ea36b52f481095e300",
+      "exportMember": "Search/Outline.svg"
+    },
+    {
+      "id": "search",
+      "label": "Search",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "22:43",
+      "source": "icons/figma-study/search/filled.svg",
+      "sha256": "ab7454709fe8e859cfc7a6a98148c2354db283e20581c8a4e6fcbc77fe543186",
+      "exportMember": "Search/Filled.svg"
+    },
+    {
+      "id": "sun",
+      "label": "Sun",
+      "group": "weather",
+      "style": "outline",
+      "nodeId": "22:17",
+      "source": "icons/figma-study/sun/outline.svg",
+      "sha256": "c43b3fa09214e92ae4f64903e814fc9fc5f6b8d1566ab5108e64b63eb1657c7b",
+      "exportMember": "Sun/Outline.svg"
+    },
+    {
+      "id": "sun",
+      "label": "Sun",
+      "group": "weather",
+      "style": "filled",
+      "nodeId": "22:21",
+      "source": "icons/figma-study/sun/filled.svg",
+      "sha256": "d04fe38c596db4c4d101d2530aeb7ce4d7a3595048e745e82c470ec8b96f1a1c",
+      "exportMember": "Sun/Filled.svg"
+    },
+    {
+      "id": "moon",
+      "label": "Moon",
+      "group": "weather",
+      "style": "outline",
+      "nodeId": "22:25",
+      "source": "icons/figma-study/moon/outline.svg",
+      "sha256": "41d3d26d6b3665f943e8e1a88b1ef62b3325b6b6b2e54e9f974a9a85afbbf79b",
+      "exportMember": "Moon/Outline.svg"
+    },
+    {
+      "id": "moon",
+      "label": "Moon",
+      "group": "weather",
+      "style": "filled",
+      "nodeId": "22:28",
+      "source": "icons/figma-study/moon/filled.svg",
+      "sha256": "905c3f80237561f16e2aa1c9bf732db9ec1bf26c26366a66c15c501926bcd861",
+      "exportMember": "Moon/Filled.svg"
+    },
+    {
+      "id": "arrow-up",
+      "label": "Arrow Up",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:2",
+      "source": "icons/figma-study/arrow-up/outline.svg",
+      "sha256": "c643d2f384f83ae3de5515f957585dd0a7d042d2fc878de86d8202933077117a",
+      "exportMember": "Arrow Up/Outline.svg"
+    },
+    {
+      "id": "arrow-up",
+      "label": "Arrow Up",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:5",
+      "source": "icons/figma-study/arrow-up/filled.svg",
+      "sha256": "7b2d64da956c3e165cb568f06fad76bccd37fffbdf1a19e2bf51852adaa289ff",
+      "exportMember": "Arrow Up/Filled.svg"
+    },
+    {
+      "id": "arrow-up-right",
+      "label": "Arrow Up Right",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:8",
+      "source": "icons/figma-study/arrow-up-right/outline.svg",
+      "sha256": "8fafe6ce909335271e9e17b1d3899e5f3375ea1c09f40deabe1ec213e9678ceb",
+      "exportMember": "Arrow Up Right/Outline.svg"
+    },
+    {
+      "id": "arrow-up-right",
+      "label": "Arrow Up Right",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:11",
+      "source": "icons/figma-study/arrow-up-right/filled.svg",
+      "sha256": "25a53148c3020036eec82860d6ee0cfa68eaa5126ecd9e42bca61917b015db34",
+      "exportMember": "Arrow Up Right/Filled.svg"
+    },
+    {
+      "id": "arrow-right",
+      "label": "Arrow Right",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:14",
+      "source": "icons/figma-study/arrow-right/outline.svg",
+      "sha256": "839d45e47848f8f1a8396ae3ff584f85b29682c2e53ff6280f17a4b6f60ae489",
+      "exportMember": "Arrow Right/Outline.svg"
+    },
+    {
+      "id": "arrow-right",
+      "label": "Arrow Right",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:17",
+      "source": "icons/figma-study/arrow-right/filled.svg",
+      "sha256": "3e1e0d36af41f90fed3f4039761e2d3caf8b161e22d449f40d428849b5780413",
+      "exportMember": "Arrow Right/Filled.svg"
+    },
+    {
+      "id": "arrow-down-right",
+      "label": "Arrow Down Right",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:20",
+      "source": "icons/figma-study/arrow-down-right/outline.svg",
+      "sha256": "685ad2958de80dc10f764f1400295c43fb27dc3c6f7a07bf32c77211b1b62517",
+      "exportMember": "Arrow Down Right/Outline.svg"
+    },
+    {
+      "id": "arrow-down-right",
+      "label": "Arrow Down Right",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:23",
+      "source": "icons/figma-study/arrow-down-right/filled.svg",
+      "sha256": "aa95326be2c64718c3af2005712129beb72e8cadc93530add20d4345aad8cda3",
+      "exportMember": "Arrow Down Right/Filled.svg"
+    },
+    {
+      "id": "arrow-down",
+      "label": "Arrow Down",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:26",
+      "source": "icons/figma-study/arrow-down/outline.svg",
+      "sha256": "2b80bc84cd4b447554bf9f7119b25afd6cbce5a0184822458912c86fe2e4005c",
+      "exportMember": "Arrow Down/Outline.svg"
+    },
+    {
+      "id": "arrow-down",
+      "label": "Arrow Down",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:29",
+      "source": "icons/figma-study/arrow-down/filled.svg",
+      "sha256": "217ba3896fb97d8acdd125a7dadd32f000ac97a39197e0d3db383bff83266f3b",
+      "exportMember": "Arrow Down/Filled.svg"
+    },
+    {
+      "id": "arrow-down-left",
+      "label": "Arrow Down Left",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:32",
+      "source": "icons/figma-study/arrow-down-left/outline.svg",
+      "sha256": "93ae25369c9947773709ccc36e8f6c252a2134e1923f3f8a1416561228c3369e",
+      "exportMember": "Arrow Down Left/Outline.svg"
+    },
+    {
+      "id": "arrow-down-left",
+      "label": "Arrow Down Left",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:35",
+      "source": "icons/figma-study/arrow-down-left/filled.svg",
+      "sha256": "4b1e6980182741d85d10bbea9282db30c8194c054f7129086fb09ac62c6eebfc",
+      "exportMember": "Arrow Down Left/Filled.svg"
+    },
+    {
+      "id": "arrow-left",
+      "label": "Arrow Left",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:38",
+      "source": "icons/figma-study/arrow-left/outline.svg",
+      "sha256": "4517b1e7380b42976e00fb8920fdc7c6237bcab8d772dd4eb26a12b5774eb4e8",
+      "exportMember": "Arrow Left/Outline.svg"
+    },
+    {
+      "id": "arrow-left",
+      "label": "Arrow Left",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:41",
+      "source": "icons/figma-study/arrow-left/filled.svg",
+      "sha256": "550224098d4d43c8fd0fed7970ecc8d9f94f1b86da1e84469e26549bd8eea5c3",
+      "exportMember": "Arrow Left/Filled.svg"
+    },
+    {
+      "id": "arrow-up-left",
+      "label": "Arrow Up Left",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "23:44",
+      "source": "icons/figma-study/arrow-up-left/outline.svg",
+      "sha256": "59ef3c94ab4cfd3a3fde8160d2505934b77fd737c69c3f08ab0f7141c1d5b14d",
+      "exportMember": "Arrow Up Left/Outline.svg"
+    },
+    {
+      "id": "arrow-up-left",
+      "label": "Arrow Up Left",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "23:47",
+      "source": "icons/figma-study/arrow-up-left/filled.svg",
+      "sha256": "2de7f7030e269138d379ce8286f8878ab6cb55528b4275d83620d19fc6f9a509",
+      "exportMember": "Arrow Up Left/Filled.svg"
+    },
+    {
+      "id": "chevron-up",
+      "label": "Chevron Up",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:2",
+      "source": "icons/figma-study/chevron-up/outline.svg",
+      "sha256": "fbc8311f49cb7910644e10eda1874577d6a8bfca19f98ec9cd1f447d95f6ea7c",
+      "exportMember": "Chevron Up/Outline.svg"
+    },
+    {
+      "id": "chevron-up",
+      "label": "Chevron Up",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:5",
+      "source": "icons/figma-study/chevron-up/filled.svg",
+      "sha256": "8c8e869150789d42073a9b9e8085cf01e19eeba838ac4564b6e15d47e8c3e1bc",
+      "exportMember": "Chevron Up/Filled.svg"
+    },
+    {
+      "id": "chevron-right",
+      "label": "Chevron Right",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:8",
+      "source": "icons/figma-study/chevron-right/outline.svg",
+      "sha256": "8b1f7bc52cfae79bf5837bd0b7b2954c74764d941ef7aa3df1eb5a87902cea15",
+      "exportMember": "Chevron Right/Outline.svg"
+    },
+    {
+      "id": "chevron-right",
+      "label": "Chevron Right",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:11",
+      "source": "icons/figma-study/chevron-right/filled.svg",
+      "sha256": "dc4e997fd2ffed682d515e69375c05f2636a36a3acdfb28b358564a780354e01",
+      "exportMember": "Chevron Right/Filled.svg"
+    },
+    {
+      "id": "chevron-down",
+      "label": "Chevron Down",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:14",
+      "source": "icons/figma-study/chevron-down/outline.svg",
+      "sha256": "6dbbc7aeb40bf57fa28174f90237c560d87af406e0c08a8048b9f20e2508c218",
+      "exportMember": "Chevron Down/Outline.svg"
+    },
+    {
+      "id": "chevron-down",
+      "label": "Chevron Down",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:17",
+      "source": "icons/figma-study/chevron-down/filled.svg",
+      "sha256": "87afb3b901e2aa8dd4de25a2ccaadf5a88506b55f9330bbba0b13556411409d4",
+      "exportMember": "Chevron Down/Filled.svg"
+    },
+    {
+      "id": "chevron-left",
+      "label": "Chevron Left",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:20",
+      "source": "icons/figma-study/chevron-left/outline.svg",
+      "sha256": "8a36850513afb8ae687a70930fc67763870b1586b4f452090ffaa557361c5b25",
+      "exportMember": "Chevron Left/Outline.svg"
+    },
+    {
+      "id": "chevron-left",
+      "label": "Chevron Left",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:23",
+      "source": "icons/figma-study/chevron-left/filled.svg",
+      "sha256": "a2cb5d223391c00737b352d6bade08dde98c5b247b48fcc581b6dbd80468d8bf",
+      "exportMember": "Chevron Left/Filled.svg"
+    },
+    {
+      "id": "chevrons-up",
+      "label": "Chevrons Up",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:26",
+      "source": "icons/figma-study/chevrons-up/outline.svg",
+      "sha256": "b8ca24d832c2bc6222516a861330e507b1cfd679da5d9205f7de84d5d1d08580",
+      "exportMember": "Chevrons Up/Outline.svg"
+    },
+    {
+      "id": "chevrons-up",
+      "label": "Chevrons Up",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:29",
+      "source": "icons/figma-study/chevrons-up/filled.svg",
+      "sha256": "4684bf0edd7ce24bbcb420ce630499b8f5a48ff09e6d9877ffecc56a9e357c16",
+      "exportMember": "Chevrons Up/Filled.svg"
+    },
+    {
+      "id": "chevrons-right",
+      "label": "Chevrons Right",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:32",
+      "source": "icons/figma-study/chevrons-right/outline.svg",
+      "sha256": "7ea0ce6e1336324722cc81ac287f6fba292749a4dea9d8163d6affa3c52f5308",
+      "exportMember": "Chevrons Right/Outline.svg"
+    },
+    {
+      "id": "chevrons-right",
+      "label": "Chevrons Right",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:35",
+      "source": "icons/figma-study/chevrons-right/filled.svg",
+      "sha256": "a25c028d068c8cdfb5bc10b0437bbee5af15775b594dc40388ec5de662a72615",
+      "exportMember": "Chevrons Right/Filled.svg"
+    },
+    {
+      "id": "chevrons-down",
+      "label": "Chevrons Down",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:38",
+      "source": "icons/figma-study/chevrons-down/outline.svg",
+      "sha256": "83cf9c588f12b140dc75fbe6000449e1bb1f67f94d8c2ca83aa295967c81bf75",
+      "exportMember": "Chevrons Down/Outline.svg"
+    },
+    {
+      "id": "chevrons-down",
+      "label": "Chevrons Down",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:41",
+      "source": "icons/figma-study/chevrons-down/filled.svg",
+      "sha256": "29586244bc9ec8b9057810b006f9cb4b505f78b0a77f195d6954e289dd12ed54",
+      "exportMember": "Chevrons Down/Filled.svg"
+    },
+    {
+      "id": "chevrons-left",
+      "label": "Chevrons Left",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:44",
+      "source": "icons/figma-study/chevrons-left/outline.svg",
+      "sha256": "73792e619c9dfda63839cdc5037fe6e423966c8c5dbe1a9cbe9afc2b769e86c6",
+      "exportMember": "Chevrons Left/Outline.svg"
+    },
+    {
+      "id": "chevrons-left",
+      "label": "Chevrons Left",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:47",
+      "source": "icons/figma-study/chevrons-left/filled.svg",
+      "sha256": "2193a0600081c9eb3e2d94fe67a5e3052f3b3cacffde06b5a4cb63cba422d9ec",
+      "exportMember": "Chevrons Left/Filled.svg"
+    },
+    {
+      "id": "corner-up-right",
+      "label": "Corner Up Right",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:50",
+      "source": "icons/figma-study/corner-up-right/outline.svg",
+      "sha256": "c878c2b0cbd6b52848cee93cb2833bcadcf0cde24edaafd2e1e1bf0f1b738897",
+      "exportMember": "Corner Up Right/Outline.svg"
+    },
+    {
+      "id": "corner-up-right",
+      "label": "Corner Up Right",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:55",
+      "source": "icons/figma-study/corner-up-right/filled.svg",
+      "sha256": "2047119833a094b0b5ae702222ddd35a3cee90a0128dd31fc307f6cab8359bed",
+      "exportMember": "Corner Up Right/Filled.svg"
+    },
+    {
+      "id": "corner-right-up",
+      "label": "Corner Right Up",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:58",
+      "source": "icons/figma-study/corner-right-up/outline.svg",
+      "sha256": "529def87812e3504457ef318cac8b6289a0acda1cb05cb870dfba2d45dd5209a",
+      "exportMember": "Corner Right Up/Outline.svg"
+    },
+    {
+      "id": "corner-right-up",
+      "label": "Corner Right Up",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:63",
+      "source": "icons/figma-study/corner-right-up/filled.svg",
+      "sha256": "17da4db53d4a646080ad0f9ce70aba362d3bd06d762d5ca92c53a3c6ddc1b202",
+      "exportMember": "Corner Right Up/Filled.svg"
+    },
+    {
+      "id": "corner-right-down",
+      "label": "Corner Right Down",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:66",
+      "source": "icons/figma-study/corner-right-down/outline.svg",
+      "sha256": "5aebb28b0162ce6fb81643e0d40c7db74f941f9cb26a82be575f683762c13cf5",
+      "exportMember": "Corner Right Down/Outline.svg"
+    },
+    {
+      "id": "corner-right-down",
+      "label": "Corner Right Down",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:71",
+      "source": "icons/figma-study/corner-right-down/filled.svg",
+      "sha256": "d4aa7d513932ee4d4fdfc1449d0d2c9f59a0536aaf02753e2844e3c40fd69012",
+      "exportMember": "Corner Right Down/Filled.svg"
+    },
+    {
+      "id": "corner-down-right",
+      "label": "Corner Down Right",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:74",
+      "source": "icons/figma-study/corner-down-right/outline.svg",
+      "sha256": "b7330f7a5144ab5bfd88737ada7863b6affc5396aa89d27b8c6852bb302ba050",
+      "exportMember": "Corner Down Right/Outline.svg"
+    },
+    {
+      "id": "corner-down-right",
+      "label": "Corner Down Right",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:79",
+      "source": "icons/figma-study/corner-down-right/filled.svg",
+      "sha256": "157519b5faa13fc815b3cacef403d82ee61bc8da46e1d58e4b681d3226810596",
+      "exportMember": "Corner Down Right/Filled.svg"
+    },
+    {
+      "id": "corner-down-left",
+      "label": "Corner Down Left",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:82",
+      "source": "icons/figma-study/corner-down-left/outline.svg",
+      "sha256": "50c61298062d5954a3d40e12cf2c5ed229b014dcf726174ec47d3a2604e89923",
+      "exportMember": "Corner Down Left/Outline.svg"
+    },
+    {
+      "id": "corner-down-left",
+      "label": "Corner Down Left",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:87",
+      "source": "icons/figma-study/corner-down-left/filled.svg",
+      "sha256": "11d022d5d9ad3f387573ce9b84cae296c6cfa9118f1ff972cdf0742d19a93885",
+      "exportMember": "Corner Down Left/Filled.svg"
+    },
+    {
+      "id": "corner-left-down",
+      "label": "Corner Left Down",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:90",
+      "source": "icons/figma-study/corner-left-down/outline.svg",
+      "sha256": "0631eeefbedec590a54323262c916f4fc9dd87f5fb3f8f460f481ba55e69255b",
+      "exportMember": "Corner Left Down/Outline.svg"
+    },
+    {
+      "id": "corner-left-down",
+      "label": "Corner Left Down",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:95",
+      "source": "icons/figma-study/corner-left-down/filled.svg",
+      "sha256": "edb69c991f0ad5171b49af55af5c5bd9cd21d6f4f3ebb68c0cd8561b08a9c85e",
+      "exportMember": "Corner Left Down/Filled.svg"
+    },
+    {
+      "id": "corner-left-up",
+      "label": "Corner Left Up",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:98",
+      "source": "icons/figma-study/corner-left-up/outline.svg",
+      "sha256": "5a525a4aa0dcdd75c4091f007dc7e7e20efeb0e2dd94b0aba2e6f392731ca587",
+      "exportMember": "Corner Left Up/Outline.svg"
+    },
+    {
+      "id": "corner-left-up",
+      "label": "Corner Left Up",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:103",
+      "source": "icons/figma-study/corner-left-up/filled.svg",
+      "sha256": "71d8af09de07b9d4edd669e11a306101216e21232326ea0b7c59e893e5842ae3",
+      "exportMember": "Corner Left Up/Filled.svg"
+    },
+    {
+      "id": "corner-up-left",
+      "label": "Corner Up Left",
+      "group": "corner-arrows",
+      "style": "outline",
+      "nodeId": "24:106",
+      "source": "icons/figma-study/corner-up-left/outline.svg",
+      "sha256": "50808876a0587a2a2c6dffc9ac2ce9db778b6a1c4344042b54bce8e0ccae521a",
+      "exportMember": "Corner Up Left/Outline.svg"
+    },
+    {
+      "id": "corner-up-left",
+      "label": "Corner Up Left",
+      "group": "corner-arrows",
+      "style": "filled",
+      "nodeId": "24:111",
+      "source": "icons/figma-study/corner-up-left/filled.svg",
+      "sha256": "4d6e7f9696a484223c25a36a915671f3b32888905c941cfded698384a26ad683",
+      "exportMember": "Corner Up Left/Filled.svg"
+    },
+    {
+      "id": "mail",
+      "label": "Mail",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "24:123",
+      "source": "icons/figma-study/mail/outline.svg",
+      "sha256": "8543a5bffe3a89179819d1b763d0ec0765462d800aa431de1b02f2da954eed92",
+      "exportMember": "Mail/Outline.svg",
+      "revisionArchiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d"
+    },
+    {
+      "id": "mail",
+      "label": "Mail",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "24:127",
+      "source": "icons/figma-study/mail/filled.svg",
+      "sha256": "92b4c2b5f752c616178b9e4955883de304198619fc992c5170442353696eeee1",
+      "exportMember": "Mail/Filled.svg",
+      "revisionArchiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d"
+    },
+    {
+      "id": "mail-fold",
+      "label": "Mail Fold",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "38:7",
+      "source": "icons/figma-study/mail-fold/outline.svg",
+      "sha256": "d8c308983e1392f1f4ad2b1886d41ebb45a30bc9cbeccce37525293eaa3e81b8",
+      "exportMember": "Mail Fold/Outline.svg",
+      "revisionArchiveSHA256": "bc2b59b7ef12ccdad37375d218ef525f7f54232702ae1fa4144ba9d4ea3498ef"
+    },
+    {
+      "id": "mail-fold",
+      "label": "Mail Fold",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "38:12",
+      "source": "icons/figma-study/mail-fold/filled.svg",
+      "sha256": "3354540b6359fe33beb37475b93f45c10e849e043c159ec1ea874e9bbebf007d",
+      "exportMember": "Mail Fold/Filled.svg",
+      "revisionArchiveSHA256": "bc2b59b7ef12ccdad37375d218ef525f7f54232702ae1fa4144ba9d4ea3498ef"
+    },
+    {
+      "id": "wallet",
+      "label": "Wallet",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "24:130",
+      "source": "icons/figma-study/wallet/outline.svg",
+      "sha256": "ab8ec9f2e246814de559847fc37f89ead0320e2b41241d3b3980569516b19493",
+      "exportMember": "Wallet/Outline.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
+    },
+    {
+      "id": "wallet",
+      "label": "Wallet",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "24:135",
+      "source": "icons/figma-study/wallet/filled.svg",
+      "sha256": "41255f7336a2adfe289cdc485551c5c95f2d5b9eda160e5d3e3c758baa97d985",
+      "exportMember": "Wallet/Filled.svg",
+      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
+    },
+    {
+      "id": "bookmark",
+      "label": "Bookmark",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "24:138",
+      "source": "icons/figma-study/bookmark/outline.svg",
+      "sha256": "0b6edebb89a87f2c6cb16287f04c8e6905470fc3d7b8b43f5acd20d25c99f2ca",
+      "exportMember": "Bookmark/Outline.svg",
+      "revisionArchiveSHA256": "f1521fa8441c27d6591cdb2ba2ea6f9b62f645e2211f1db264a1dafabfe9ffbc"
+    },
+    {
+      "id": "bookmark",
+      "label": "Bookmark",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "24:142",
+      "source": "icons/figma-study/bookmark/filled.svg",
+      "sha256": "2268186fbc2d5ca21f5286bf5d3ab7300889eddb2ced2048e12576959f1f3726",
+      "exportMember": "Bookmark/Filled.svg",
+      "revisionArchiveSHA256": "f1521fa8441c27d6591cdb2ba2ea6f9b62f645e2211f1db264a1dafabfe9ffbc"
+    },
+    {
+      "id": "note",
+      "label": "Note",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "24:145",
+      "source": "icons/figma-study/note/outline.svg",
+      "sha256": "a3aadb643231aac00fc132edf087418aa16d1399facabc5a829ec670acd2df5a",
+      "exportMember": "Note/Outline.svg"
+    },
+    {
+      "id": "note",
+      "label": "Note",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "24:152",
+      "source": "icons/figma-study/note/filled.svg",
+      "sha256": "f6db5c8543efeedaf6fda12ee450b697a782446e8db590378862ed541c2fdf7f",
+      "exportMember": "Note/Filled.svg"
+    },
+    {
+      "id": "pen",
+      "label": "Pen",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "24:155",
+      "source": "icons/figma-study/pen/outline.svg",
+      "sha256": "9424886966c005f0ecfe8210e8ecd74375c5025be7540c5c151d864545f84f22",
+      "exportMember": "Pen/Outline.svg"
+    },
+    {
+      "id": "pen",
+      "label": "Pen",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "24:159",
+      "source": "icons/figma-study/pen/filled.svg",
+      "sha256": "47f992fa8ae45aa85f8dfbd78afd53ef0d94db748d83bf781a0d442c5160c144",
+      "exportMember": "Pen/Filled.svg"
+    },
+    {
+      "id": "shop",
+      "label": "Shop",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "24:162",
+      "source": "icons/figma-study/shop/outline.svg",
+      "sha256": "1793717901137cdac2d53278847502dc744ac6ae5ae91fd4e83a84041c340cf4",
+      "exportMember": "Shop/Outline.svg",
+      "revisionArchiveSHA256": "a4528f3ca8490a71b8e02f252cc81178dfe3967ca059c7bea19fac43b8915546"
+    },
+    {
+      "id": "shop",
+      "label": "Shop",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "24:170",
+      "source": "icons/figma-study/shop/filled.svg",
+      "sha256": "83a44dbde92f7c837b5d046506f0ec37e2478f15ca62d05dff72ab3a19c49c05",
+      "exportMember": "Shop/Filled.svg",
+      "revisionArchiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672"
+    },
+    {
+      "id": "chevron-line-up",
+      "label": "Chevron Line Up",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:174",
+      "source": "icons/figma-study/chevron-line-up/outline.svg",
+      "sha256": "b094c40b37625d0248407bc57f3aa67991fcc93b1b8e722254f401a4c1713f18",
+      "exportMember": "Chevron Line Up/Outline.svg"
+    },
+    {
+      "id": "chevron-line-up",
+      "label": "Chevron Line Up",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:177",
+      "source": "icons/figma-study/chevron-line-up/filled.svg",
+      "sha256": "aba944dc3eeb10a403b19925d13c19ddaaedf3e216c9bb91f41c7e794456fae1",
+      "exportMember": "Chevron Line Up/Filled.svg"
+    },
+    {
+      "id": "chevron-line-right",
+      "label": "Chevron Line Right",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:180",
+      "source": "icons/figma-study/chevron-line-right/outline.svg",
+      "sha256": "79038907648fdd74a9eeb9858831d995be60e14d501157d689993ff84b1eff5c",
+      "exportMember": "Chevron Line Right/Outline.svg"
+    },
+    {
+      "id": "chevron-line-right",
+      "label": "Chevron Line Right",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:183",
+      "source": "icons/figma-study/chevron-line-right/filled.svg",
+      "sha256": "673ac4b66925b0130def7614c6188295bcf642a29b641b1f3765b33966062d48",
+      "exportMember": "Chevron Line Right/Filled.svg"
+    },
+    {
+      "id": "chevron-line-down",
+      "label": "Chevron Line Down",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:186",
+      "source": "icons/figma-study/chevron-line-down/outline.svg",
+      "sha256": "cfdcd16413ef3da19025ab024bb4c34175c30c0ed8ac88c55a4aaeebb890b31a",
+      "exportMember": "Chevron Line Down/Outline.svg"
+    },
+    {
+      "id": "chevron-line-down",
+      "label": "Chevron Line Down",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:189",
+      "source": "icons/figma-study/chevron-line-down/filled.svg",
+      "sha256": "6977cd77b7020b69d0c38f1a428faa1700e03d3bf7f20f733dc97600e7ab18e2",
+      "exportMember": "Chevron Line Down/Filled.svg"
+    },
+    {
+      "id": "chevron-line-left",
+      "label": "Chevron Line Left",
+      "group": "chevrons",
+      "style": "outline",
+      "nodeId": "24:192",
+      "source": "icons/figma-study/chevron-line-left/outline.svg",
+      "sha256": "a60ce23836b2db022fe1d5f8e3e52eb7580e9e9c34249592ba321f88f6d927ae",
+      "exportMember": "Chevron Line Left/Outline.svg"
+    },
+    {
+      "id": "chevron-line-left",
+      "label": "Chevron Line Left",
+      "group": "chevrons",
+      "style": "filled",
+      "nodeId": "24:195",
+      "source": "icons/figma-study/chevron-line-left/filled.svg",
+      "sha256": "3f9f00998496d4d56f83fb09355b7664f02be4bb98703465528ea87b22566418",
+      "exportMember": "Chevron Line Left/Filled.svg"
+    },
+    {
+      "id": "menu",
+      "label": "Menu",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "24:198",
+      "source": "icons/figma-study/menu/outline.svg",
+      "sha256": "6e26dc8424012ae2d6ca9e875756503bf8f1da27cf5af18bff534923d03a4ef4",
+      "exportMember": "Menu/Outline.svg"
+    },
+    {
+      "id": "menu",
+      "label": "Menu",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "24:203",
+      "source": "icons/figma-study/menu/filled.svg",
+      "sha256": "f38b7cc680fa8777c156985a077792696297494a3290e2c1d3b58adc39f08032",
+      "exportMember": "Menu/Filled.svg"
+    },
+    {
+      "id": "menu-two",
+      "label": "Menu Two",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "24:208",
+      "source": "icons/figma-study/menu-two/outline.svg",
+      "sha256": "d2680b2c767f6b969cf86166e02f900f2758db66ac7120b960010884e326a495",
+      "exportMember": "Menu Two/Outline.svg"
+    },
+    {
+      "id": "menu-two",
+      "label": "Menu Two",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "24:212",
+      "source": "icons/figma-study/menu-two/filled.svg",
+      "sha256": "d5671323caf251b2a46c36298d52c7ba7c034b319b724a1a7955babd7a1cc16f",
+      "exportMember": "Menu Two/Filled.svg"
+    },
+    {
+      "id": "menu-unequal",
+      "label": "Menu Unequal",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "24:216",
+      "source": "icons/figma-study/menu-unequal/outline.svg",
+      "sha256": "b60b02491c0f54dd03a0ff47afae0348f2bd8dee93f2f2b45f5ae958344a6d17",
+      "exportMember": "Menu Unequal/Outline.svg"
+    },
+    {
+      "id": "menu-unequal",
+      "label": "Menu Unequal",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "24:221",
+      "source": "icons/figma-study/menu-unequal/filled.svg",
+      "sha256": "55976c69fe689b2487b630a2a15d0c19f1d0925f64e232a7bad6e3e53cc0df7e",
+      "exportMember": "Menu Unequal/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-mark",
+      "label": "Chat Bubble Mark",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "24:226",
+      "source": "icons/figma-study/chat-bubble-mark/outline.svg",
+      "sha256": "6e27cab88abd2a9d7d91dad805857b18cd4c5b70f75e7abe9af4c9740cfc43e1",
+      "exportMember": "Chat Bubble Mark/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-mark",
+      "label": "Chat Bubble Mark",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "24:230",
+      "source": "icons/figma-study/chat-bubble-mark/filled.svg",
+      "sha256": "83ddb5452ffd8ab31acb4a30a4d1e638ebabdac7836991b3b773eb10f4834433",
+      "exportMember": "Chat Bubble Mark/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-right-mark",
+      "label": "Chat Bubble Right Mark",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "25:2",
+      "source": "icons/figma-study/chat-bubble-right-mark/outline.svg",
+      "sha256": "90f0262a395a94961106e91247c5e84d1feff78fdfa853d796431b19087cb30e",
+      "exportMember": "Chat Bubble Right Mark/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-right-mark",
+      "label": "Chat Bubble Right Mark",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "25:6",
+      "source": "icons/figma-study/chat-bubble-right-mark/filled.svg",
+      "sha256": "304d9e20c7b99f97ce4cf4083579f16800c3c69554225b4608e5d0a16691a50d",
+      "exportMember": "Chat Bubble Right Mark/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-compact-mark",
+      "label": "Chat Bubble Compact Mark",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "25:9",
+      "source": "icons/figma-study/chat-bubble-compact-mark/outline.svg",
+      "sha256": "449f0ea651575737d3f4770d00418cb31961bd6e04e5dd7b191c3c77557854ac",
+      "exportMember": "Chat Bubble Compact Mark/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-compact-mark",
+      "label": "Chat Bubble Compact Mark",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "25:13",
+      "source": "icons/figma-study/chat-bubble-compact-mark/filled.svg",
+      "sha256": "7e0598a585450ec7c98b6b256ac6ad1e4b9f82e31cc8a3c590d95fc453122dbb",
+      "exportMember": "Chat Bubble Compact Mark/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-slant-mark",
+      "label": "Chat Bubble Slant Mark",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "25:16",
+      "source": "icons/figma-study/chat-bubble-slant-mark/outline.svg",
+      "sha256": "b26dce85f95e3b49e97b2d19e293ce37e5e2b70e9a403f528e3cc4fef2d51814",
+      "exportMember": "Chat Bubble Slant Mark/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-slant-mark",
+      "label": "Chat Bubble Slant Mark",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "25:20",
+      "source": "icons/figma-study/chat-bubble-slant-mark/filled.svg",
+      "sha256": "42af393d88521cd53f6e7fc8cae28f60e573e88912698ed03a50bd402afedfef",
+      "exportMember": "Chat Bubble Slant Mark/Filled.svg"
+    },
+    {
+      "id": "chat-bubble-slant-right-mark",
+      "label": "Chat Bubble Slant Right Mark",
+      "group": "communication",
+      "style": "outline",
+      "nodeId": "25:23",
+      "source": "icons/figma-study/chat-bubble-slant-right-mark/outline.svg",
+      "sha256": "95c8db6f4568ac62fa700dc1f2c66773dcb7ace22961109b4eb801d8a1bbc482",
+      "exportMember": "Chat Bubble Slant Right Mark/Outline.svg"
+    },
+    {
+      "id": "chat-bubble-slant-right-mark",
+      "label": "Chat Bubble Slant Right Mark",
+      "group": "communication",
+      "style": "filled",
+      "nodeId": "25:27",
+      "source": "icons/figma-study/chat-bubble-slant-right-mark/filled.svg",
+      "sha256": "70f8d9908a6319f704bff99bc95c2e824a481fd14127276e51ca17ce6425f7a3",
+      "exportMember": "Chat Bubble Slant Right Mark/Filled.svg"
+    },
+    {
+      "id": "check",
+      "label": "Check",
+      "group": "controls",
+      "style": "outline",
+      "nodeId": "25:30",
+      "source": "icons/figma-study/check/outline.svg",
+      "sha256": "890db4a1d4a368b10c6cd78ecd6a2473fb7e2237f2fd4d490f00af32acef1fbe",
+      "exportMember": "Check/Outline.svg"
+    },
+    {
+      "id": "check",
+      "label": "Check",
+      "group": "controls",
+      "style": "filled",
+      "nodeId": "25:33",
+      "source": "icons/figma-study/check/filled.svg",
+      "sha256": "d152edd683154d97b3486417f053ecca788cdb5b84613994817bcddd6365e31a",
+      "exportMember": "Check/Filled.svg"
+    },
+    {
+      "id": "plus",
+      "label": "Plus",
+      "group": "controls",
+      "style": "outline",
+      "nodeId": "25:36",
+      "source": "icons/figma-study/plus/outline.svg",
+      "sha256": "25e62c81a45b95aea5bfd6b53c6a88eb235b1dd9e57af695534a76a3abb2fe07",
+      "exportMember": "Plus/Outline.svg"
+    },
+    {
+      "id": "plus",
+      "label": "Plus",
+      "group": "controls",
+      "style": "filled",
+      "nodeId": "25:39",
+      "source": "icons/figma-study/plus/filled.svg",
+      "sha256": "69bbdb3db16ed5079a3714c6421331f56feede916788bebe47e63701ed8da95a",
+      "exportMember": "Plus/Filled.svg"
+    },
+    {
+      "id": "x",
+      "label": "X",
+      "group": "controls",
+      "style": "outline",
+      "nodeId": "25:42",
+      "source": "icons/figma-study/x/outline.svg",
+      "sha256": "31e33237e5beec6d2b8bced28d746f2b0bd0ed93da1cf0c2bc48b62e23cb4937",
+      "exportMember": "X/Outline.svg"
+    },
+    {
+      "id": "x",
+      "label": "X",
+      "group": "controls",
+      "style": "filled",
+      "nodeId": "25:45",
+      "source": "icons/figma-study/x/filled.svg",
+      "sha256": "d888493efa2cd179bc45a675d23296e2d60b19c0028cc1ad406a32685f86da0e",
+      "exportMember": "X/Filled.svg"
+    },
+    {
+      "id": "minus",
+      "label": "Minus",
+      "group": "controls",
+      "style": "outline",
+      "nodeId": "25:48",
+      "source": "icons/figma-study/minus/outline.svg",
+      "sha256": "3deaf0458b32584cb8fe59c4983325255d8d6c31f2b8fe2c2a1147463d8c47bb",
+      "exportMember": "Minus/Outline.svg"
+    },
+    {
+      "id": "minus",
+      "label": "Minus",
+      "group": "controls",
+      "style": "filled",
+      "nodeId": "25:51",
+      "source": "icons/figma-study/minus/filled.svg",
+      "sha256": "6eab15b12f5b467c4abdb66f1d459a6919eb5e771f6c99a126d9a9fabbb95f38",
+      "exportMember": "Minus/Filled.svg"
+    },
+    {
+      "id": "more-horizontal",
+      "label": "More Horizontal",
+      "group": "controls",
+      "style": "outline",
+      "nodeId": "25:54",
+      "source": "icons/figma-study/more-horizontal/outline.svg",
+      "sha256": "35eb9c204f932f0eea1a1034245ad495e5ff331a6fa77755f72e10b832fbc9c7",
+      "exportMember": "More Horizontal/Outline.svg"
+    },
+    {
+      "id": "more-horizontal",
+      "label": "More Horizontal",
+      "group": "controls",
+      "style": "filled",
+      "nodeId": "25:59",
+      "source": "icons/figma-study/more-horizontal/filled.svg",
+      "sha256": "2ac0a45ec3ca5b5fd877db4920e4923d2a82fd8cacaf67dcd95abc0e8104e24a",
+      "exportMember": "More Horizontal/Filled.svg"
+    },
+    {
+      "id": "more-vertical",
+      "label": "More Vertical",
+      "group": "controls",
+      "style": "outline",
+      "nodeId": "25:64",
+      "source": "icons/figma-study/more-vertical/outline.svg",
+      "sha256": "24376835302cb5bc1f0a545de90e3cfd7023236b2ba2d892393d436e786ca0ee",
+      "exportMember": "More Vertical/Outline.svg"
+    },
+    {
+      "id": "more-vertical",
+      "label": "More Vertical",
+      "group": "controls",
+      "style": "filled",
+      "nodeId": "25:69",
+      "source": "icons/figma-study/more-vertical/filled.svg",
+      "sha256": "e336272727ea7f6f5c8f42c246281573c0ab264afa195de7cfb682a2a536594d",
+      "exportMember": "More Vertical/Filled.svg"
+    },
+    {
+      "id": "maximize",
+      "label": "Maximize",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:19",
+      "source": "icons/figma-study/maximize/outline.svg",
+      "sha256": "9f5f7fb8485b94dbaa93cf7a7dea8376056bb202e88329246a7ef6d2addde6d1",
+      "exportMember": "Maximize/Outline.svg"
+    },
+    {
+      "id": "maximize",
+      "label": "Maximize",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:25",
+      "source": "icons/figma-study/maximize/filled.svg",
+      "sha256": "8bd3a0490e06cb1edf9498548061d3336719b1f8f48ea5acd4a689ae17c01896",
+      "exportMember": "Maximize/Filled.svg"
+    },
+    {
+      "id": "minimize",
+      "label": "Minimize",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:31",
+      "source": "icons/figma-study/minimize/outline.svg",
+      "sha256": "a904782d5d2ff8609adf07409367c8bb83c2e8022eaf50645b7a936d03797f5d",
+      "exportMember": "Minimize/Outline.svg"
+    },
+    {
+      "id": "minimize",
+      "label": "Minimize",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:37",
+      "source": "icons/figma-study/minimize/filled.svg",
+      "sha256": "d32da8798b166fa7062a2931379a0f16b75618f1600b57341b85e379e3375a23",
+      "exportMember": "Minimize/Filled.svg"
+    },
+    {
+      "id": "login",
+      "label": "Login",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:43",
+      "source": "icons/figma-study/login/outline.svg",
+      "sha256": "1014d17c1b418703055d12b93de4eb9bfcee33b6c3bb3033ce866cfec7bc3b56",
+      "exportMember": "Login/Outline.svg"
+    },
+    {
+      "id": "login",
+      "label": "Login",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:47",
+      "source": "icons/figma-study/login/filled.svg",
+      "sha256": "e0ae2e8695af83ca7ca03816e6dece2ea0eb3c9eb5970b59dfe7f5d9f85d91b6",
+      "exportMember": "Login/Filled.svg"
+    },
+    {
+      "id": "logout",
+      "label": "Logout",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:51",
+      "source": "icons/figma-study/logout/outline.svg",
+      "sha256": "73f7bba131acbf9ad0c959ce27e622b4a72cce1f8d52e3b227787246bd7653e6",
+      "exportMember": "Logout/Outline.svg"
+    },
+    {
+      "id": "logout",
+      "label": "Logout",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:55",
+      "source": "icons/figma-study/logout/filled.svg",
+      "sha256": "c27c13f65b69338a4dd243608c6ea209c82e5efdb13eb7cd623e823628c828a3",
+      "exportMember": "Logout/Filled.svg"
+    },
+    {
+      "id": "upload",
+      "label": "Upload",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:59",
+      "source": "icons/figma-study/upload/outline.svg",
+      "sha256": "7b1a345bd63fdac6d099d71bb68db2fa871e4e373f791e167be1b4486a1441f4",
+      "exportMember": "Upload/Outline.svg"
+    },
+    {
+      "id": "upload",
+      "label": "Upload",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:63",
+      "source": "icons/figma-study/upload/filled.svg",
+      "sha256": "a88f2720cc0b6f9236eb76e70423f39b558672aea8ccf095ead6b443a341eab8",
+      "exportMember": "Upload/Filled.svg"
+    },
+    {
+      "id": "download",
+      "label": "Download",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:67",
+      "source": "icons/figma-study/download/outline.svg",
+      "sha256": "b17e96bd880b1e8dc34f757566fb95bbcf1428f1cc749f812cfb92d5ac5d5f06",
+      "exportMember": "Download/Outline.svg"
+    },
+    {
+      "id": "download",
+      "label": "Download",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:71",
+      "source": "icons/figma-study/download/filled.svg",
+      "sha256": "45863cc954736a83e4d6e0fead9adea51ff673432778f205d6e850bc14e1a511",
+      "exportMember": "Download/Filled.svg"
+    },
+    {
+      "id": "new-window",
+      "label": "New Window",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:75",
+      "source": "icons/figma-study/new-window/outline.svg",
+      "sha256": "aabe570e867535834c757a7efcca425913b79f6ca2f5ccd1e77a8d1f0c1d3fe0",
+      "exportMember": "New Window/Outline.svg"
+    },
+    {
+      "id": "new-window",
+      "label": "New Window",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:79",
+      "source": "icons/figma-study/new-window/filled.svg",
+      "sha256": "a0cf042c8d4e47c34464b1f6267cefe0c04ef0b55a11a496338336a3c93f4fa4",
+      "exportMember": "New Window/Filled.svg"
+    },
+    {
+      "id": "copy",
+      "label": "Copy",
+      "group": "window-transfer",
+      "style": "outline",
+      "nodeId": "28:83",
+      "source": "icons/figma-study/copy/outline.svg",
+      "sha256": "bbb32c4141ff676881db84dfa84690eb21ebd36654ee0b010594dad6f1723020",
+      "exportMember": "Copy/Outline.svg"
+    },
+    {
+      "id": "copy",
+      "label": "Copy",
+      "group": "window-transfer",
+      "style": "filled",
+      "nodeId": "28:87",
+      "source": "icons/figma-study/copy/filled.svg",
+      "sha256": "17fc313802d0db6ecc15801423b200dd0a1ccbd6335e006a6f62fb45994c2a55",
+      "exportMember": "Copy/Filled.svg"
+    },
+    {
+      "id": "info",
+      "label": "Info",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "40:23",
+      "source": "icons/figma-study/info/outline.svg",
+      "sha256": "064bcce0da81a20c22065c280525b11736e129be6d323777501828b6368b93f2",
+      "exportMember": "Info/Outline.svg",
+      "revisionArchiveSHA256": "1ebd10963aea93403e85481752bb2889d36a01187ed77aabf9a122e60017f667"
+    },
+    {
+      "id": "info",
+      "label": "Info",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "40:28",
+      "source": "icons/figma-study/info/filled.svg",
+      "sha256": "07f8eff82862b39a7e007501ffa429506b2a3ec6ebdb3c232ed9af6066b8ea36",
+      "exportMember": "Info/Filled.svg",
+      "revisionArchiveSHA256": "1ebd10963aea93403e85481752bb2889d36a01187ed77aabf9a122e60017f667"
+    },
+    {
+      "id": "alert",
+      "label": "Alert",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "40:31",
+      "source": "icons/figma-study/alert/outline.svg",
+      "sha256": "3c97708761b52028caa57262e9915082c52e9aa54618a1830e0971e753cc0c26",
+      "exportMember": "Alert/Outline.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "alert",
+      "label": "Alert",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "40:36",
+      "source": "icons/figma-study/alert/filled.svg",
+      "sha256": "9c5dd5f9a4531490fed489ef256b0dd45b68e0e2751c517030686c074ec79307",
+      "exportMember": "Alert/Filled.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "globe",
+      "label": "Globe",
+      "group": "shapes-symbols",
+      "style": "outline",
+      "nodeId": "40:39",
+      "source": "icons/figma-study/globe/outline.svg",
+      "sha256": "5502cd1098846169271a0458ba827a0e88416d3d642c509e5cd3226d40e984a4",
+      "exportMember": "Globe/Outline.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "globe",
+      "label": "Globe",
+      "group": "shapes-symbols",
+      "style": "filled",
+      "nodeId": "40:44",
+      "source": "icons/figma-study/globe/filled.svg",
+      "sha256": "b7520317f3086228ba0cb1193d2d9b06c3d418916041fa7ee9450a8915aeb6b6",
+      "exportMember": "Globe/Filled.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "link",
+      "label": "Link",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "40:47",
+      "source": "icons/figma-study/link/outline.svg",
+      "sha256": "0aec775705f5d6a89b6df7f12a6c404355c3bda246dea16e244553c2d29d53b5",
+      "exportMember": "Link/Outline.svg",
+      "revisionArchiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0"
+    },
+    {
+      "id": "link",
+      "label": "Link",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "40:52",
+      "source": "icons/figma-study/link/filled.svg",
+      "sha256": "791de4b8bc8b9b917279e7b26ec294ec5e07233554769d17abd6002200b90f99",
+      "exportMember": "Link/Filled.svg",
+      "revisionArchiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0"
+    },
+    {
+      "id": "code",
+      "label": "Code",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "40:55",
+      "source": "icons/figma-study/code/outline.svg",
+      "sha256": "8cd86144aa03d0a7b768e50d0a9c41dbf60b84e0ab42d472cddf68707c90f1a4",
+      "exportMember": "Code/Outline.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "code",
+      "label": "Code",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "40:60",
+      "source": "icons/figma-study/code/filled.svg",
+      "sha256": "7c78c5acb0ab59fd3207ff9d8eba0b6f559e67def6029d9613a26a2725b4bfef",
+      "exportMember": "Code/Filled.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "terminal",
+      "label": "Terminal",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "40:65",
+      "source": "icons/figma-study/terminal/outline.svg",
+      "sha256": "68159e4b0044d982a6c28546c2f26d048fd076c6080bc93a5aff4218d17a70b3",
+      "exportMember": "Terminal/Outline.svg",
+      "revisionArchiveSHA256": "c3b8cec3a71dece60a29a281f0824ca04efe36eb22304f5730685fac5a023cf3"
+    },
+    {
+      "id": "terminal",
+      "label": "Terminal",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "40:70",
+      "source": "icons/figma-study/terminal/filled.svg",
+      "sha256": "21500ef172b667c8354dc20bb904b6a463ac1fdec5d3a0abd976c23b71e142c0",
+      "exportMember": "Terminal/Filled.svg",
+      "revisionArchiveSHA256": "c3b8cec3a71dece60a29a281f0824ca04efe36eb22304f5730685fac5a023cf3"
+    },
+    {
+      "id": "external-link",
+      "label": "External Link",
+      "group": "interface",
+      "style": "outline",
+      "nodeId": "40:73",
+      "source": "icons/figma-study/external-link/outline.svg",
+      "sha256": "bd07f5881fd2e78ecfac7716eb4752fa1893bd6d2e0be2255e76c53c988017c7",
+      "exportMember": "External Link/Outline.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "external-link",
+      "label": "External Link",
+      "group": "interface",
+      "style": "filled",
+      "nodeId": "40:78",
+      "source": "icons/figma-study/external-link/filled.svg",
+      "sha256": "175e0deb57410ec0f190b3852293fb717a11978dc46eb29290f50d084dbb4ebe",
+      "exportMember": "External Link/Filled.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "shopping-bag",
+      "label": "Shopping Bag",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "40:81",
+      "source": "icons/figma-study/shopping-bag/outline.svg",
+      "sha256": "2a1a45c18b007ad2428ed0fb97429e484f02232416cebfccb2807f975af32810",
+      "exportMember": "Shopping Bag/Outline.svg",
+      "revisionArchiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672"
+    },
+    {
+      "id": "shopping-bag",
+      "label": "Shopping Bag",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "40:85",
+      "source": "icons/figma-study/shopping-bag/filled.svg",
+      "sha256": "52d61b82958dcbdbfda904f4b9f0cd8aa0ce4b6fd1779431a573320bde71e3e2",
+      "exportMember": "Shopping Bag/Filled.svg",
+      "revisionArchiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672"
+    },
+    {
+      "id": "bell-ring",
+      "label": "Bell Ring",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "40:89",
+      "source": "icons/figma-study/bell-ring/outline.svg",
+      "sha256": "b69852ac16205937371a12ee7f7214e07be59cd888252c000408b9b625c473d8",
+      "exportMember": "Bell Ring/Outline.svg",
+      "revisionArchiveSHA256": "3e92e5a0992668d5fca61d0f43e77d7241b50cab8e07dd5e3cba9a4d1b67d473"
+    },
+    {
+      "id": "bell-ring",
+      "label": "Bell Ring",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "40:95",
+      "source": "icons/figma-study/bell-ring/filled.svg",
+      "sha256": "89b1a282f00e942b4acb24bbaa93100970817b82763b52c7b4d900914b2d5749",
+      "exportMember": "Bell Ring/Filled.svg",
+      "revisionArchiveSHA256": "3e92e5a0992668d5fca61d0f43e77d7241b50cab8e07dd5e3cba9a4d1b67d473"
+    },
+    {
+      "id": "repeat",
+      "label": "Repeat",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "40:107",
+      "source": "icons/figma-study/repeat/outline.svg",
+      "sha256": "e2383c76ddb3e96a0e63fa1f0f74be36cc503b87234c7e0a91176f9168c11f2d",
+      "exportMember": "Repeat/Outline.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "repeat",
+      "label": "Repeat",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "40:113",
+      "source": "icons/figma-study/repeat/filled.svg",
+      "sha256": "ca7093cb556a1f9656f86108c3d554dcb1d4c7901ac31680b5d814406db52de1",
+      "exportMember": "Repeat/Filled.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "reply",
+      "label": "Reply",
+      "group": "arrows",
+      "style": "outline",
+      "nodeId": "40:117",
+      "source": "icons/figma-study/reply/outline.svg",
+      "sha256": "7698b1bd1ad47ed5792855ec82ac1a8c81550570caf33cf74f530a112bf4b682",
+      "exportMember": "Reply/Outline.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "reply",
+      "label": "Reply",
+      "group": "arrows",
+      "style": "filled",
+      "nodeId": "40:121",
+      "source": "icons/figma-study/reply/filled.svg",
+      "sha256": "05a27c63236ae3437143cb0f5df5bbe6a6b1d9726c4134919d32c55a5eb08883",
+      "exportMember": "Reply/Filled.svg",
+      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+    },
+    {
+      "id": "image",
+      "label": "Image",
+      "group": "objects",
+      "style": "outline",
+      "nodeId": "40:99",
+      "source": "icons/figma-study/image/outline.svg",
+      "sha256": "d06d4b49e3b314f1696d4a506b241b8b9c2242c750658cd274361600f942a96f",
+      "exportMember": "Image/Outline.svg",
+      "revisionArchiveSHA256": "67c83fb0ce1a99c73e112e4bad77b1be3d0d9fec6314be94a61db4bb5814299d"
+    },
+    {
+      "id": "image",
+      "label": "Image",
+      "group": "objects",
+      "style": "filled",
+      "nodeId": "40:104",
+      "source": "icons/figma-study/image/filled.svg",
+      "sha256": "9a3fca37ad5d0f788a9442de1dc5b691262d220f3ec8b71e0ac1082da890107c",
+      "exportMember": "Image/Filled.svg",
+      "revisionArchiveSHA256": "67c83fb0ce1a99c73e112e4bad77b1be3d0d9fec6314be94a61db4bb5814299d"
+    }
+  ],
+  "revisions": [
+    {
+      "date": "2026-10-29",
+      "identities": ["mail", "wallet", "shop"],
+      "archiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4",
+      "scope": "Connect Mail flap and Wallet closure to their body; trim Shop frontage at the awning; preserve all other artwork.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail"],
+      "archiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b",
+      "scope": "Replace the rejected V flap with a continuous downward bow; retain the Mail body and connected ends.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail", "shop"],
+      "archiveSHA256": "fc37a8299cd32216e480a7b35671e3611c9d834c656811346e65b58751358fff",
+      "scope": "Mail retains bowed arms meeting in a central V. Shop uses our Home Door silhouette with the retained window; doorway connects to the base.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail"],
+      "archiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80",
+      "scope": "Use a plain two-line V flap first, without gathered or added bowed shaping; retain the body and connected ends.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail"],
+      "archiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d",
+      "scope": "Slightly fuller V arms and a small tangent fillet at the central tip, developed from the plain-line baseline; no gathered terminal shaping.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail-fold"],
+      "archiveSHA256": "bc2b59b7ef12ccdad37375d218ef525f7f54232702ae1fa4144ba9d4ea3498ef",
+      "scope": "Add an independent Mail Fold pair with lower fold seams; keep the existing Mail unchanged. The complete board has82 pairs in11 groups.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["bookmark"],
+      "archiveSHA256": "f1521fa8441c27d6591cdb2ba2ea6f9b62f645e2211f1db264a1dafabfe9ffbc",
+      "scope": "Widen Bookmark visible width15 to16, retaining height/stroke and original Figma frames.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shop"],
+      "archiveSHA256": "a4528f3ca8490a71b8e02f252cc81178dfe3967ca059c7bea19fac43b8915546",
+      "scope": "Replace Shop roof with striped fabric canopy and straight exterior slopes, preserving the exact Home Door lower/body/door geometry and window; transparent panel/window counters.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": [
+        "info",
+        "alert",
+        "globe",
+        "link",
+        "code",
+        "terminal",
+        "external-link",
+        "shopping-bag",
+        "bell-ring",
+        "repeat",
+        "reply",
+        "image"
+      ],
+      "archiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad",
+      "scope": "Add12 independent original current-study pairs from complete Figma web export76:24 verbatim native SVGs. Preserve all82 existing pairs, including current Shop and Bookmark. Board now94 pairs/188 drawings across11 groups; Square remains its two raw board sources.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["terminal"],
+      "archiveSHA256": "c3b8cec3a71dece60a29a281f0824ca04efe36eb22304f5730685fac5a023cf3",
+      "scope": "Taller Terminal body: visible20\u00d718 versus20\u00d716, centered at12 with width20 and native1.5 stroke retained. Preserve current quarter flow; translate the unchanged prompt/underscore and true Filled counters together byY+.35 to center the mark group. Replace the original40:65/40:70 frames without moving them. Two SVGs stored verbatim from actual export77.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["link"],
+      "archiveSHA256": "732a3d9dee53c0ba1c75051fbe315a32eae1091382f5021240ae8257b4a54a37",
+      "scope": "Fuller Link rings: increase each local short-axis span by1 native unit (7.497077639\u21928.497077639), then shorten each ring long-axis span only.343011554 toward its unchanged mouth axis-position to retain Filled2px native margins. Preserve connector, diagonal orientation, Outline1.5 and fixed unboxed Bold2.5 Filled. Replace only original frames40:47/40:52; two SVGs stored verbatim from actual export78.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag"],
+      "archiveSHA256": "cd5be1131dab6bf1e364cec907e4e85dea3c53c3cb00c91bcf16950aaa005df9",
+      "scope": "Connect handle terminals inside the upper body stroke and slope sides outward toward the base; retain1.5 study stroke and transparent handle opening.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["bell"],
+      "archiveSHA256": "5fd30991c5e8d583b3326301f868e445ed0b720fa0d374c7352ae897edd671a8",
+      "scope": "Remove only the top crown/stem; retain existing shell/clapper geometry and Bell Ring side arcs, with the newly exposed local Filled top bridge.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["bell-ring"],
+      "archiveSHA256": "3e92e5a0992668d5fca61d0f43e77d7241b50cab8e07dd5e3cba9a4d1b67d473",
+      "scope": "Remove only the top crown/stem; retain existing shell/clapper geometry and Bell Ring side arcs, with the newly exposed local Filled top bridge.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["link"],
+      "archiveSHA256": "9eb25d0185518f4869686ce2550545d3bd01ff6a96aabf8248a2f579cd97fc65",
+      "scope": "Shorten each ring local long span by1.25 while increasing local short span by.5, retaining the complete connector, diagonal pose and fixed1.5/2.5 weights; no enlargement back to prior margins.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["info"],
+      "archiveSHA256": "1ebd10963aea93403e85481752bb2889d36a01187ed77aabf9a122e60017f667",
+      "scope": "Replace only Info housing with Circle centered12,12; retain original i dot/stem and transparent counters. Corrected native frame alignment, no mark translation/scaling.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag"],
+      "archiveSHA256": "0b73cceb7ac2a299843aeb04e15120a194547c2aef67012669e8b3df465da24c",
+      "scope": "Use a short U handle curving down inside the bag, with true Filled counter and solid upper rim; retain sloped body geometry with Y-2.75 translation only, no resizing.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag"],
+      "archiveSHA256": "b9aae74af1cf0607ec25bd79f398e73b552b73130889a67b48f42aedf5267378",
+      "scope": "Owner restores the connected ABOVE handle and sloped body from export79; supersedes the mistaken inside-U86.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shop"],
+      "archiveSHA256": "08546b444bba48848827ead842560bb14e3ca62a04d10babdb97633dc3dd5c81",
+      "scope": "Replace broad transparent fabric panel with two transparent1.5 stripe seams inside solid canopy rim; exterior and window retained.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["image"],
+      "archiveSHA256": "67c83fb0ce1a99c73e112e4bad77b1be3d0d9fec6314be94a61db4bb5814299d",
+      "scope": "Extend only landscape first/last rays into the unchanged frame rim; retain body/sun/middle landscape and full solid Filled border.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["link"],
+      "archiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0",
+      "scope": "Trim only the diagonal connector by.5 native at each end; retain shorter/fuller rings, pose, center and fixed1.5/2.5 weights.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag", "shop"],
+      "archiveSHA256": "48b6927b1363b607eb6c52a4c329e4974cdeae4744987b08fecadf90b5461672",
+      "scope": "Shopping Bag body widens about2 native units while retaining the upper arch and1.5 stroke; Shop Filled adds the same canopy hem as a transparent seam joined to its existing stripe counters, with solid exterior bridges. Shop Outline and all other drawings retained.",
+      "review": "draft"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Morph — shared agent playbook
 
-Maintained: 2026-10-27. **This is the canonical working document for every morph
+Maintained: 2026-10-29. **This is the canonical working document for every morph
 request across core, Svelte and the standalone local Lab.** Read it before starting a pair or
 revising motion. Update this document when the owner changes the contract;
 repository entry points should link here instead of maintaining another copy.
@@ -52,7 +52,8 @@ readable at actual icon sizes and smooth in both directions. The result must:
   flash, SVG replacement or unintended midpoint pause.
 - Work in Outline and Filled, with accessible labeling, reduced motion and a
   usable Lab preview for manual inspection.
-- Keep static direct imports free of the morph runtime and unrelated geometry.
+- Keep ordinary static direct imports free of motion runtime and unrelated geometry.
+  Trash is the explicit unified-API exception described below.
 - Include reproducible automated checks, visual evidence and an accurate handoff.
 
 The Sun ↔ Moon motion is the owner's preferred visual reference. Plus ↔ X's
@@ -61,208 +62,179 @@ that pair. Neither preference automatically approves the design of another pair.
 
 ## 2. Design
 
-### Shared invariants
+### Current endpoint contract — owner migration, 2026-10-29
 
-| Concern             | Required behavior                                                                                                                         |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Artboard and weight | 24 × 24; fixed Regular 1.75. Static Thin is 1.25 and Bold is 2.50. Do not add a morph thickness control unless requested.                 |
-| Endpoints           | Derive geometry from core SVGs through endpoint builders. Match the actual endpoint variant, including its frame, pose, caps and contour. |
-| Source ownership    | Original artwork and intermediate geometry live in core. Svelte renders and controls progress. The local Lab provides inspection UI.      |
-| Continuity          | No whole-icon opacity crossfade. Map contours/parts explicitly; avoid kinks, accidental holes, contour crossings and disconnected shards. |
-| Reversal            | Retain both position and velocity when the target changes. Use the same geometry function in reverse.                                     |
-| Controller          | Shared analytic critically damped spring: mass 1, stiffness 100, damping 20. Keep pair-specific rate multipliers separate.                |
-| Accessibility       | A nonempty `label` exposes an image role; otherwise SVGs are decorative. The host button owns its action label and state.                 |
-| Reduced motion      | Disable Lab autoplay and switch requested endpoints immediately. Controlled manual inspection remains available.                          |
-| Lifecycle           | Pause while hidden, resume without a time jump, cancel scheduled frames and remove listeners on unmount.                                  |
-| Isolation           | Static icon direct imports/barrels must not import morph code. Morphs remain explicit opt-in subpaths.                                    |
+The owner explicitly requested **all morphs use the new icons and the old morph
+set be removed**. This supersedes the earlier1.75 production/frame endpoint
+contract. The active five pairs read the same committed `FIGMA_STUDY_ICONS` export
+from `src/design/figma-catalog.ts` that the new main Lab uses. Do not use legacy
+`icons/` drawings or re-create an endpoint in Lab. The production static catalog now uses the same94 source pairs; legacy production artwork is removed.
 
-`progress` overrides animation and is clamped to [0, 1]; non-finite progress maps
-to 0. `moon` selects the Sun Moon destination; `x` selects the Plus X and Menu X
-destination. `minus` selects the Plus Minus destination, and `minimize` selects the Maximize Minimize destination. Existing components also accept `style`, `size`, `color`, `class`,
-`label`, `speed`, `onprogress` and `onsettle`. Check `MorphProgress.svelte` before
-changing speed limits, settling thresholds or callback behavior; existing values
-are implementation constraints, not an invitation to retune approved motion.
+All active endpoints use native24×24 and Outline1.5. Filled uses the actual source
+treatment: Sun/Moon follow the1.5 exterior; Plus/Minus/X/Menu/Maximize/Minimize use
+fixed Bold2.5 marks. Preserve source pose, round caps, joins and optical extents.
+Current new endpoints are unframed: remove old None/Square/Circle selection and
+old framed morph data. A later framed request must provide authored matching
+sources; never apply a generic frame to the new study marks.
 
-### Pair registry and current endpoint contract
+| Pair                | Canonical Lab route        | Opt-in Svelte subpath     | Rate | Motion review                                  |
+| ------------------- | -------------------------- | ------------------------- | ---- | ---------------------------------------------- |
+| Sun ↔ Moon          | `/morph`                   | `morph/sun-moon`          | 1.0  | Owner-preferred reference; experiment          |
+| Plus ↔ X            | `/morph/plus-x`            | `morph/plus-x`            | 0.4  | Continuous horizontal merge approved2026-10-27 |
+| Menu ↔ X            | `/morph/menu-x`            | `morph/menu-x`            | 0.6  | Proposed horizontal-first merge                |
+| Plus ↔ Minus        | `/morph/plus-minus`        | `morph/plus-minus`        | 0.6  | Proposed single fold                           |
+| Maximize ↔ Minimize | `/morph/maximize-minimize` | `morph/maximize-minimize` | 0.6  | Proposed inward cubic fold                     |
 
-| Pair                | Lab route                  | Opt-in Svelte subpath     | Default shared-rate multiplier | Motion status                                          |
-| ------------------- | -------------------------- | ------------------------- | ------------------------------ | ------------------------------------------------------ |
-| Sun ↔ Moon          | `/morph`                   | `morph/sun-moon`          | 1.0                            | Owner-preferred reference; experiment                  |
-| Plus ↔ X            | `/morph/plus-x`            | `morph/plus-x`            | 0.4                            | Continuous horizontal-merge motion approved 2026-10-27 |
-| Menu ↔ X            | `/morph/menu-x`            | `morph/menu-x`            | 0.6                            | Proposed motion; awaiting owner review                 |
-| Plus ↔ Minus        | `/morph/plus-minus`        | `morph/plus-minus`        | 0.6                            | Proposed single-fold motion; awaiting owner review     |
-| Maximize ↔ Minimize | `/morph/maximize-minimize` | `morph/maximize-minimize` | 0.6                            | Proposed inward corner fold; awaiting owner review     |
+Only one implementation per pair remains active. The temporary
+`/morph/maximize-minimize-study` address redirects to the canonical route; its
+separate component/data export is removed. The current static drafts retain their
+own approval records. Migrating endpoints does not automatically approve their
+artwork or the proposed motions.
 
-**Current Plus/X geometry depends on the selected native frame.** Plus/Minus/X
-None uses centered half-extents 8.75: Regular visible bounds 2.375..21.625,
-or 19.25 square; unboxed Filled Bold 2.50 spans 2..22, or 20 square.
-Square/Circle retain half-extents 4.5: Regular visible bounds 6.625..17.375,
-or 10.75 square. Square frame bounds remain 2..22 with the current exterior radius 6.
-Framed Filled holes match the smaller Regular mark. Compare each endpoint with
-the same selected frame; never restore the larger None glyph inside a frame.
+### Shared design and runtime invariants
 
-Static endpoint approval and motion approval are separate. The owner approved
-all current static artwork on2026-10-27:51 source families and121 separately named
-identities including their supported styles and frames. This supersedes older
-static pending-review notes. It does not approve experimental morphs: read the
-motion status in the registry above. Builders and the latest construction rules
-supply current dimensions; preserve the separately approved Plus X algorithm.
+- Reach the actual source paint at progress0/1 in both styles, including semantic
+  solid parts and transparent counters. Convert stroked Filled Menu marks to exact
+  capsule contours for animation; do not interpret them as closed filled paths.
+- Use the shared analytic critically damped spring (mass1/stiffness100/damping20).
+  Keep the rates above. Reverse using current progress and velocity, without a
+  reset, whole-icon fade, element replacement or unintended middle pause.
+- Controlled `progress` overrides animation; clamp to0..1 and map nonfinite values
+  to0. Preserve destination flags `moon`, `x`, `minus` and `minimize`, along with
+  size/color/style/class/label/speed/callback behavior. No thickness control.
+- Nonempty labels expose image semantics; unlabeled SVGs are decorative. Disable
+  Lab autoplay and switch requested endpoints directly under reduced motion.
+- Pause while hidden, resume without a time jump and clean up on unmount. Keep
+  all morph code opt-in; ordinary static direct imports must load no motion runtime.
+  The owner-approved unified Trash API includes only its own motion and shared controller.
 
-### Sun ↔ Moon reference
+### Sun ↔ Moon
 
-Derive the circle, eight 3px visible Sun rays and Moon circles from source. The
-body grows into the crescent while the rays retract; concavity and ray phases use
-C2 interpolation. Filled follows the evolving closed body and Regular exterior.
-Preserve the Moon's baked native pose, including its accepted -30° source
-orientation. Regenerate endpoint data after a source revision instead of copying
-new paths into the adapter or local app.
+Preserve the shared-circle growth and coordinated retracting rays. Recover the
+circle centers/radii and native pose from the current baked cubic source anchors.
+Sun has eight visible3px rays. Use C2 interpolation for body growth and ray
+retraction; preserve the source crescent concavity and rotated native pose.
+Use literal source body paths at both endpoints in each style, including the
+filled Moon's native contour. Intermediate Filled is the evolving closed body
+plus its1.5 stroke exterior; rays retain the same1.5 construction. Verify the
+source/analytic near-endpoint transition as well as exact endpoints.
 
-### Plus ↔ X approved motion
+### Plus ↔ X — preserve approved motion
 
-Fold Plus through exactly one horizontal line at progress 0.5, then immediately
-open into X. There is no hold and no easing to a stop at the merge. Carry nonzero
-matching angular velocity and continuous acceleration through that point. Keep
-its 0.4× default rate and smooth reversal. Extend the arms as needed to reach the
-current source X rather than a smaller strict rotation of Plus.
+Plus folds through exactly one horizontal line at0.5, immediately opening into X.
+Carry matching nonzero angular velocity and continuous acceleration through the
+merge. Keep the approved0.4× pace and smooth reversal. Derive actual extents from
+new source; do not substitute a smaller strict rotation. Filled is the analytical
+union of the same moving centerlines at2.5 with round1.25 caps. The new endpoints
+have no box or cutout. Earlier rotation-only, vertical-line, held-middle and faster
+trials remain rejected. Historical motion reference: core
+`e4a739a4fde20156bfe7a812f78918f06daeb75b`; its obsolete dimensions are not current
+source. Endpoint migration does not authorize retuning this approved motion.
 
-The Filled Square frame stays upright. Its hole is the exact analytical union of
-the same moving Outline strokes, including overlapping round end caps. No
-style-specific glyph translation or scaling is allowed.
+### Menu ↔ X
 
-Historical motion reference: core `e4a739a4fde20156bfe7a812f78918f06daeb75b`,
-Svelte `190b84b49ea2e058fc99d358298a392c0271eaee`. Later source-derived weight and
-frame-family refits supersede those commits' static dimensions. Simple rotating
-crosses, vertical merges, faster default pacing and a held midpoint were rejected.
+At0..0.5 all three bars stay horizontal, outer bars move to center and the middle
+contracts to zero length/thickness. At0.5 render one horizontal stroke; at0.5..1
+open opposite diagonals into X. Use C2 phase interpolation and no scheduled hold.
+Interpolate projected horizontal extent from source Menu to X to avoid bulging.
+Filled is the exact positive union of the moving2.5 bars. Test close neighbors of
+0.5 so coincident contours never cancel. Rate0.6, reversible on the shared spring.
 
-### Menu ↔ X proposal
+### Plus ↔ Minus
 
-Owner correction, 2026-10-27: merge Menu into one horizontal line before opening X.
-During progress 0..0.5, keep all bars horizontal while moving the outer bars to the
-center and contracting the middle bar to zero length and thickness. At exactly
-0.5, render one horizontal stroke at the native Menu extent. During 0.5..1, open
-the two merged bars into opposite X diagonals, with no scheduled midpoint hold.
-Use C2 interpolation on both phases, preserve round ends and source endpoints,
-and interpolate the projected horizontal extent from Menu to X to avoid a size
-bulge. Reverse along the same geometry with the existing shared spring at 0.6×.
-At the merge, Filled must have one capsule union; coincident contours must not
-cancel its hole under even-odd fill. Test before, at and after the merge in all
-three supported frames and both styles.
+Keep the source horizontal arm fixed. Fold the vertical arm90° onto it with
+quintic C2 interpolation, preserving source extents,1.5 Outline and2.5 Filled
+union. No middle hold or style-specific translation/scaling. Keep0.6× pace.
 
-Filled uses the same selected None/Square/Circle variant at both ends. None is
-the positive unboxed Bold mark. Square/Circle keep the source frame upright and
-cut out the exact union of the moving bars. Menu's source cutout is Bold2.50,
-which interpolates to X's Regular1.75 cutout in framed variants; None stays2.50.
-The previous unboxed-to-box topology bridge is superseded. See the complete frame
-family rule below. The horizontal-first revision remains available for owner review.
+### Maximize ↔ Minimize
 
-### Plus ↔ Minus proposal
+Use four stable TL/TR/BR/BL cubic corner marks. Anchor their two source tips and
+reverse destination traversal to align those tips. Pull the two authored cubic
+runs inward with quintic C2 progress, passing through exact straight diagonal
+chords at0.5, then bending into Minimize. Do not rigidly rotate corners or replace
+gradual squircle curves with circular fillets.
 
-Goal: expand/collapse or add/remove state, with Plus and Minus from current core
-sources. `icons/plus.svg` and `icons/minus.svg` share the native horizontal
-centerline from3.25,12 to20.75,12; their Square/Circle sources use7.5,12 to16.5,12.
-Both static endpoints are approved; this single-fold motion remains pending review.
-Filled uses the selected authored frame, defaulting to Square.
+Filled is the analytical normal offset of the moving centerline at2.5, with1.25
+round caps. Fit with16 fixed subdivisions per cubic; independently sampled error
+must stay below.0002 native units throughout the fold. Keep literal exported
+endpoint paths and verify near-endpoint boundary continuity below.0005. Preserve
+0.6× pace and smooth reversal. The previous rigid half-turn and legacy circular
+elbow implementation are superseded.
 
-Keep the horizontal arm fixed. Fold the vertical arm through 90° onto that same
-line, preserving its length, Regular1.75 weight and round ends. Quintic C2 phase
-interpolation settles smoothly at both endpoints without a middle hold. Reverse
-along the same geometry using the shared spring. The proposed rate is0.6×; keep
-Sun Moon and approved Plus X rates unchanged. Filled retains the current source
-Square at2..22 and cuts out the exact analytical union of the same two strokes.
+### Animate / Morph naming — owner clarification2026-10-29
 
-The pure capsule-union helper is shared with Plus X; extracting it must preserve
-Plus X frames exactly. Compare packed Plus/Minus endpoints in both styles, check
-near-parallel overlapping caps and native16/20/24/48px samples, test reversal,
-reduced motion and pair navigation in all three engines. Menu X retains its
-existing design and rate; reverify its current Menu and Square Filled X sources
-alongside this pair. No unresolved endpoint identity or timing decision blocks
-this proposal; both pairs remain available for owner visual review.
+The owner calls the two user-facing categories **Animate** and **Morph**.
+Animate is the display name for single-icon animation, previously labeled Motion.
+Keep the existing `/motion` routes, compatibility imports and `animate` prop;
+this is a terminology change, with no change to geometry or playback.
 
-### Maximize ↔ Minimize proposal
+### Object Motion is separate from Morph — owner clarification2026-10-29
 
-Goal: transition between expanded and restored view states using the same four
-rounded corner marks. Sources are `icons/maximize.svg`, `icons/minimize.svg` and
-their Filled counterparts. Both are None-only; no frame selector or enclosing
-box is added. Both static endpoints are owner-approved, including their mandatory
-roundness construction. The inward-fold motion below remains pending owner review.
+Motion animates parts of one icon. Morph transforms between two icon identities.
+The owner explicitly requires separate pages and navigation: `/motion` contains
+Trash; `/morph` contains only the five authored pairs. Do not put Trash in the
+Morph picker or import its renderer through a Morph page. Geometry lives in
+`src/motions/trash.ts` and the adapter uses a distinct `motion/trash` export.
+The spring controller may be shared internally; this does not merge the features.
 
-Map the four L-shaped subpaths in stable top-left, top-right, bottom-right,
-bottom-left order. Each elbow has centerline radius3.25 with unchanged5.46875 arm
-extent. Outline is Regular1.75; Filled follows the same centerline at fixed
-Bold2.50, with exterior/interior elbow radii4.5/2 and cap radius1.25. Derive all
-paths, radii and local centers from source through the endpoint builder.
+### Unified Trash component API — owner decision2026-10-29
 
-Owner motion correction, 2026-10-27: favor inward contraction and shape morphing
-instead of twisting or rotating each complete corner. Anchor the two source tips
-of every L. Pull its virtual elbow diagonally from the outer corner to the inner
-corner, using quintic C2 interpolation. Its arms straighten into a single diagonal
-chord at progress0.5, then bend inward into Minimize. No rigid-part rotation,
-opacity crossfade, midpoint hold or element replacement is used.
+The owner selected `<Trash animate open={open} />` using the ordinary `trash`
+import. Reuse the existing renderer internally; do not create a second animation.
+`animate` defaults to false, using the same current source Trash shape and
+static stroke-width props. True selects the existing current-Figma motion at its
+fixed authored thickness. Keep `animate` enabled and change `open` to reverse
+without remounting; switching `animate` changes the rendering mode and source
+generation. Continue supporting Outline/Filled and the existing common/motion
+props. Reject `strokeWidth` in the animated TypeScript API.
 
-Retain actual tangent fillets of radius3.25 while each bend is curved; its arc
-span smoothly reaches zero at the straight midpoint. Rebuild Filled as the exact
-Bold2.50 offset of those changing centerlines with constant1.25 caps and4.5/2
-outer/inner curved offsets. Do not interpolate old Filled control points or scale
-stroke widths. Original static paths remain the exact progress0/1 endpoints,
-even when their path traversal order differs from the intermediate drawing.
+The unified Trash import includes its motion renderer, geometry and controller
+so SSR and the first interaction need no asynchronous fallback or extra download.
+Static mode must mount none of the motion lifecycle; other per-icon imports must
+exclude this runtime and geometry. The compatibility `motion/trash` export remains.
+Do not change geometry, timing, approvals, Motion/Morph page separation or public
+package pins as part of this API integration. Verify packed SSR/hydration, both
+styles, default static parity, reversal, controlled progress, lifecycle, reduced
+motion, compatibility and measured bundle isolation/size.
 
-The proposed rate remains0.6× the shared spring. Reverse the same geometry while
-retaining current progress and velocity. The earlier four-corner half-turn was
-rejected for this pair; its previous proposal does not approve this revision.
-Verify fixed tips, inward elbow movement, bounded separated parts, continuous
-straight-to-curved passage, exact packed endpoints, moving Bold/Filled overlays,
-reversal, reduced motion, lifecycle, actual sizes and narrow screens.
+### Trash lid motion — proposed 2026-10-29
 
-### Complete matching frame families — owner correction, 2026-10-27
+The owner requested an icon motion starting with Trash opening its lid and closing.
+Preview `/motion` or `/motion/trash`, opt-in adapter `motion/trash`. This is object motion rather
+than a transformation to a different icon. Closed references are current Figma
+Trash Outline18:145 and Filled18:151 in `FIGMA_STUDY_ICONS`; static draft statuses
+remain unchanged. No frame or additional static identity is introduced.
 
-Frames are opt-in per icon: add them only when the owner asks for that identity.
-A morph request does not authorize adding frames to every icon or inventing missing
-variants. Read supported frame capabilities from both actual endpoint sources.
-Maximize, Minimize and External Link have no added frames under the current owner correction.
-New Tab uses the existing Plus Square identity; do not create a duplicate icon or
-independent New Tab frame family. Where a pair's supported families differ, clarify the intended shared
-variant rather than silently changing static artwork.
+Keep the body and two slots fixed. Treat lid and handle as one rigid part, rotating
+clockwise12° about the right lid terminal19.75,6.5, with no separate lift.
+This rightward opening and anchored balance follow the owner’s2026-10-29 review;
+the earlier centered upward/leftward tilt is superseded. Both styles share
+that transform. Use the shared reversible spring at0.7×, mapping progress linearly
+to the transform so retargeting retains geometric velocity. The Lab loops closed →
+open → closed, with manual states, scrubbing and reduced-motion direct selection.
 
-If a morph endpoint supports frames, implement and verify every supported common
-frame for the whole pair. Menu ↔ X, Plus ↔ X and Plus ↔ Minus must all provide
-None, Square and Circle. A single selected frame applies to both endpoints, the
-intermediate Filled geometry, static comparison buttons and actual-size samples.
-Static framed artwork uses separately named exports such as `plus-square` and
-`plus-circle`. Select the matching explicit component for every static endpoint;
-never pass a runtime `frame` prop to a static icon. The morph's own frame option
-selects its authored pair geometry, and does not merge static components again.
-Never pair an unframed Filled source with a framed target, silently fall back to
-another frame, or declare the pair complete after testing only Square. Builders
-reject missing or mismatched frame data. Read both exterior and Outline frame
-paths from source; never hardcode a previous corner radius in runtime or comparison
-masks. Current Square exterior radius is 6, with Regular centerline radius 5.125;
-Circle remains radius 10. A corner-only revision regenerates all existing framed
-morphs without changing native marks or motion. The frame exterior stays upright and
-unchanged throughout a framed transition. Default Square preserves existing
-math-morph presentation; switching frame does not retune progress or motion.
+Filled's original union is split at its exported lid/body junctions19.1495,7.22754
+and4.8497,7.22754. Keep every source curve and all three transparent counters;
+the shared straight cut reveals the solid body's top edge when opened. At closure
+the two positive pieces reconstitute the source silhouette. Do not use evenodd
+across overlapping solid pieces. Render Filled as one nonzero-winding path with
+reversed slot counters and a transformed lid subpath, avoiding an antialiased seam
+where the two source pieces meet. Outline's open body remains its exact
+source stroke. This deliberate revealed-rim treatment needs owner visual review.
 
-None Filled follows the unboxed Bold2.50 source at both ends. Square/Circle use
-their actual source cutouts: Menu is Bold2.50 and X/Plus/Minus are Regular1.75.
-Menu X interpolates that source-derived cutout width while retaining the existing
-Outline part mapping, progress phases and0.6× pace. Its former solid-to-box
-topology bridge is superseded: framed Menu starts in the same frame as X.
-Outline uses Regular1.75 and supports every matching frame too; it defaults to None, while Filled defaults to Square. Existing Plus X merge/timing and Plus Minus
-fold/timing remain unchanged.
+Verify packed closed contours against the literal catalog, no discontinuity near
+closure, rigid lid/handle correspondence, stationary body/slots, bounds, both
+styles, actual sizes, light/dark, reversal, reduced motion and responsive controls.
+The motion is proposed, pending owner review; existing approved timing is unchanged.
 
-Native mark geometry is selected per frame. The owner's later 2026-10-27
-correction makes None deliberately larger than Square/Circle; derive its
-centerlines, extents and exact endpoints from the standalone source, and derive
-framed marks from the selected frame's glyph source. Never reuse None dimensions
-inside a frame or simulate the difference with Lab-only scaling. The same selected
-variant must drive Outline, Filled, intermediate geometry and every preview.
-Source-size updates regenerate all three pairs without changing their approved
-angular sequence or rate. Verify near-endpoint continuity as well as exact endpoint
-paths, and keep a regression proving that changing None leaves framed motion intact.
+### Verification matrix for this migration
 
-Required regression matrix: three pairs × three frame choices × both endpoints,
-plus intermediate contour/negative-space checks, reversal and reduced motion in
-all three browser engines. Update the packed component fixture and the actual
-Lab; a static source check alone does not verify the rendered frame selection.
+All five pairs × both styles × both endpoints must match the current packed Figma
+catalog. Also inspect intermediate frames, actual16/20/24/48px, light/dark,
+mid-flight reversal, reduced motion, narrow screens and navigation. Test the
+approved PlusX merge velocity and new MaxMin fixed-tip/straight-chord behavior.
+Verify no legacy frame controls or duplicate study pair remain. Static drafts and
+owner edits must be preserved, with the full Core→adapter→Lab provenance recorded.
 
 ## 3. Implementation workflow
 
@@ -293,7 +265,7 @@ and `apps/` are not implementation targets.
 
 | Layer                 | Files to inspect or extend                                                                                                                     |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Core source           | `icons/`; `src/morphs/<pair>.ts` for pure geometry and types. No framework or DOM dependencies.                                                |
+| Core source           | `src/design/figma-catalog.ts`; `src/morphs/<pair>.ts` for pure geometry and types. No framework or DOM dependencies.                           |
 | Core endpoint data    | `tools/build-<pair>.ts`; register JSON generation in `tools/build.ts` and exports in `package.json`.                                           |
 | Core tests            | `tests/unit/<pair>-morph.test.ts`.                                                                                                             |
 | Svelte renderer       | `src/lib/morph/<Pair>Morph.svelte`; reuse `MorphProgress.svelte`.                                                                              |
@@ -359,16 +331,16 @@ dedicated automated test for every row. Read the existing tests, reuse their pac
 fixtures, and add meaningful missing coverage for the changed behavior. Label any
 manual-only verification honestly.
 
-| Area             | Required assertions                                                                                                                                                        | Existing starting points                                                                  |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Core geometry    | Exact endpoint data, invalid/out-of-range progress, deterministic finite intermediate frames, bounded contours and continuity around critical phases.                      | `core/tests/unit/sun-moon-morph.test.ts`, `plus-x-morph.test.ts`, `menu-x-morph.test.ts`. |
-| Pair geometry    | Verify its actual design contract, not just generated strings. Plus X needs one line at 0.5, nonzero continuous merge velocity and identical Outline/Filled hole geometry. | Core Plus X unit tests and adapter `tests/browser/plus-x-morph.spec.ts`.                  |
-| Packed endpoints | Raster/vector compare both styles at both ends against actual installed static exports, selecting Square Filled for Plus/X.                                                | Adapter `tests/browser/*morph.spec.ts` and packed fixture.                                |
-| Runtime behavior | Retarget mid-flight without resetting position/velocity or replacing the SVG; controlled progress, repeated reversal and reduced-motion changes.                           | Adapter morph specs and shared `MorphProgress.svelte`.                                    |
-| Lifecycle        | Hidden-tab pause/resume and cleanup after unmount, including repeated mount cycles.                                                                                        | Shared controller and packed fixture; extend coverage when changing lifecycle logic.      |
-| Compatibility    | SSR/client compilation, hydration without mismatch, Svelte 5.0 through supported Svelte 5, package declarations and consumer engines.                                      | Adapter `test:pack`, `test:compat`, compatibility fixture.                                |
-| Static isolation | Static direct imports must traverse no morph runtime or unrelated geometry, before and after tree shaking.                                                                 | Adapter `test:bundle` and `test:imports`.                                                 |
-| Lab integration  | Correct route/pair picker, endpoints, styles, scrubbing, reversal, reduced-motion loop policy, responsive widths and retained catalog status.                              | Local Lab `tests/browser/morph.spec.ts` and pair-specific specs.                          |
+| Area             | Required assertions                                                                                                                                                                                | Existing starting points                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Core geometry    | Exact endpoint data, invalid/out-of-range progress, deterministic finite intermediate frames, bounded contours and continuity around critical phases.                                              | `core/tests/unit/sun-moon-morph.test.ts`, `plus-x-morph.test.ts`, `menu-x-morph.test.ts`. |
+| Pair geometry    | Verify its actual design contract, not just generated strings. Plus X needs one line at 0.5, nonzero continuous merge velocity and identical Outline/Filled hole geometry.                         | Core Plus X unit tests and adapter `tests/browser/plus-x-morph.spec.ts`.                  |
+| Packed endpoints | Raster/vector compare both styles at both ends against actual installed static exports, selecting Square Filled for Plus/X.                                                                        | Adapter `tests/browser/*morph.spec.ts` and packed fixture.                                |
+| Runtime behavior | Retarget mid-flight without resetting position/velocity or replacing the SVG; controlled progress, repeated reversal and reduced-motion changes.                                                   | Adapter morph specs and shared `MorphProgress.svelte`.                                    |
+| Lifecycle        | Hidden-tab pause/resume and cleanup after unmount, including repeated mount cycles.                                                                                                                | Shared controller and packed fixture; extend coverage when changing lifecycle logic.      |
+| Compatibility    | SSR/client compilation, hydration without mismatch, Svelte 5.0 through supported Svelte 5, package declarations and consumer engines.                                                              | Adapter `test:pack`, `test:compat`, compatibility fixture.                                |
+| Static isolation | Ordinary static direct imports must traverse no motion runtime or unrelated geometry. Unified Trash may traverse only its own motion and shared controller, with no lifecycle work in static mode. | Adapter `test:bundle` and `test:imports`.                                                 |
+| Lab integration  | Correct route/pair picker, endpoints, styles, scrubbing, reversal, reduced-motion loop policy, responsive widths and retained catalog status.                                                      | Local Lab `tests/browser/morph.spec.ts` and pair-specific specs.                          |
 
 ### Commands
 

@@ -1,39 +1,48 @@
-import type { CoreIcon } from '../src/catalog.js';
+import { commands, source } from './morph-source.js';
 import type { Circle, SunMoonGeometry } from '../src/morphs/sun-moon.js';
-
-/** Derive every endpoint from the validated approved source, never a second drawing. */
-export function buildSunMoonGeometry(icons: CoreIcon[]): SunMoonGeometry {
-  const sun = icons.find((icon) => icon.name === 'sun')!;
-  const moon = icons.find((icon) => icon.name === 'moon')!;
-  const disc = sun.root.children.find((node) => node.attrs['data-part'] === 'body')!.children[0];
-  const rayPath = sun.root.children.find((node) => node.attrs['data-part'] === 'rays')!.children[0];
-  const path = String(moon.root.children[0].children[0].attrs.d);
-  const values = path.match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi)!.map(Number);
-  const [px, py, r, , , , , qx, qy, innerRadius] = values;
-  const center = (radius: number, side: number): Circle => {
-    const dx = qx - px;
-    const dy = qy - py;
-    const length = Math.hypot(dx, dy);
-    const height = Math.sqrt(radius ** 2 - (length / 2) ** 2);
-    return {
-      x: (px + qx) / 2 + (side * height * dy) / length,
-      y: (py + qy) / 2 - (side * height * dx) / length,
-      radius,
-    };
-  };
-  const rayValues = String(rayPath.attrs.d)
-    .match(/-?\d*\.?\d+/g)!
-    .map(Number);
+type Point = { x: number; y: number };
+/** Recover circles from actual baked cubic anchors, not a previous pose. */
+function circle(a: Point, b: Point, c: Point): Circle {
+  const d = 2 * (a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y));
+  if (Math.abs(d) < 1e-8) throw new Error('Circle source points are collinear');
+  const sq = (p: Point) => p.x * p.x + p.y * p.y;
+  const x = (sq(a) * (b.y - c.y) + sq(b) * (c.y - a.y) + sq(c) * (a.y - b.y)) / d;
+  const y = (sq(a) * (c.x - b.x) + sq(b) * (a.x - c.x) + sq(c) * (b.x - a.x)) / d;
+  return { x, y, radius: Math.hypot(a.x - x, a.y - y) };
+}
+export function buildSunMoonGeometry(): SunMoonGeometry {
+  const sun = source('sun'),
+    moon = source('moon');
+  const disk = commands(sun.paths[0].d),
+    crescent = commands(moon.paths[0].d);
+  if (disk.length !== 6 || crescent.length !== 14)
+    throw new Error('Review changed Sun/Moon master mapping');
+  let start: Point = { x: 0, y: 0 };
+  const rays = commands(sun.paths[1].d).flatMap((c) => {
+    if (c.command === 'moveto') {
+      start = c;
+      return [];
+    }
+    const line = [start.x, start.y, c.x, c.y];
+    start = c;
+    return [line];
+  });
+  const strokeWidth = Number(sun.paths[0]['stroke-width']);
+  if (strokeWidth !== 1.5 || Number(moon.paths[0]['stroke-width']) !== strokeWidth)
+    throw new Error('New Sun/Moon source weights differ');
   return {
+    strokeWidth,
     sun: {
-      x: Number(disc.attrs.cx),
-      y: Number(disc.attrs.cy),
-      radius: Number(disc.attrs.r),
-      rays: Array.from({ length: rayValues.length / 4 }, (_, i) =>
-        rayValues.slice(i * 4, i * 4 + 4),
-      ),
+      ...circle(disk[0], disk[1], disk[2]),
+      rays,
+      path: sun.paths[0].d,
+      filledPath: source('sun', 'filled').paths[0].d,
     },
-    moon: { outer: center(r, -1), inner: center(innerRadius, 1), path },
-    strokeWidth: Number(sun.root.attrs['stroke-width']),
+    moon: {
+      outer: circle(crescent[0], crescent[4], crescent[8]),
+      inner: circle(crescent[8], crescent[10], crescent[12]),
+      path: moon.paths[0].d,
+      filledPath: source('moon', 'filled').paths[0].d,
+    },
   };
 }

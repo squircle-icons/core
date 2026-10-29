@@ -1,0 +1,37 @@
+export type TrashCommand = { code: 'M' | 'L' | 'C' | 'Z'; values: number[] };
+export type TrashGeometry = {
+  strokeWidth: number;
+  outline: { body: string; lid: string; marks: string };
+  filled: { body: string; lid: string };
+  filledLidCommands: TrashCommand[];
+  pivot: [number, number];
+  lift: number;
+  angle: number;
+};
+/** A rigid lid and handle lift together; the body and transparent slots stay fixed. */
+export function trashFrame(progress: number, geometry: TrashGeometry) {
+  const p = Math.max(0, Math.min(1, Number.isFinite(progress) ? progress : 0));
+  const angle = (geometry.angle * p * Math.PI) / 180;
+  const [cx, cy] = geometry.pivot;
+  const transformedLid = geometry.filledLidCommands
+    .map(({ code, values }) => {
+      const coordinates: number[] = [];
+      for (let i = 0; i < values.length; i += 2) {
+        const x = values[i] - cx,
+          y = values[i + 1] - cy;
+        coordinates.push(
+          cx + x * Math.cos(angle) - y * Math.sin(angle),
+          cy + x * Math.sin(angle) + y * Math.cos(angle) - geometry.lift * p,
+        );
+      }
+      return code + coordinates.map((n) => String(Math.round(n * 1e8) / 1e8)).join(' ');
+    })
+    .join('');
+  return {
+    filled: geometry.filled.body + transformedLid,
+    progress: p,
+    lift: -geometry.lift * p,
+    angle: geometry.angle * p,
+    transform: `translate(0 ${-geometry.lift * p}) rotate(${geometry.angle * p} ${geometry.pivot.join(' ')})`,
+  };
+}

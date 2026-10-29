@@ -125,11 +125,6 @@ export function mergedStrokes(
   return path + ' Z';
 }
 
-export type MorphFrame = 'none' | 'square' | 'circle';
-export type MorphFrames = Record<
-  MorphFrame,
-  { box: string; outline: string; from: string; to: string }
->;
 export type MovingStroke = { center: Point; angle: number; length: number; radius: number };
 
 // Menu has three moving, sometimes disconnected capsules with unequal radii.
