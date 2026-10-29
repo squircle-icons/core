@@ -6,6 +6,8 @@ import { buildPlusXGeometry } from './build-plus-x.js';
 import { buildMenuXGeometry } from './build-menu-x.js';
 import { buildPlusMinusGeometry } from './build-plus-minus.js';
 import { buildMaximizeMinimizeGeometry } from './build-maximize-minimize.js';
+import { buildMaximizeMinimizeStudyGeometry } from './build-maximize-minimize-study.js';
+import { WINDOW_TRANSFER_STUDY } from '../src/design/window-transfer.js';
 const icons = await loadSources();
 await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
@@ -47,4 +49,9 @@ await writeFile(
 await writeFile(
   resolve(root, 'dist/morphs/maximize-minimize.json'),
   JSON.stringify(buildMaximizeMinimizeGeometry(icons), null, 2) + '\n',
+);
+
+await writeFile(
+  resolve(root, 'dist/morphs/maximize-minimize-study.json'),
+  JSON.stringify(buildMaximizeMinimizeStudyGeometry(WINDOW_TRANSFER_STUDY), null, 2) + '\n',
 );
