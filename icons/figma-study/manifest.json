@@ -994,9 +994,9 @@
       "style": "outline",
       "nodeId": "24:123",
       "source": "icons/figma-study/mail/outline.svg",
-      "sha256": "1f46a8949db5227ccb7fb4bdcfd2c4fe5e5af85be01af3f0a16794916111af19",
+      "sha256": "8543a5bffe3a89179819d1b763d0ec0765462d800aa431de1b02f2da954eed92",
       "exportMember": "Mail/Outline.svg",
-      "revisionArchiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80"
+      "revisionArchiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d"
     },
     {
       "id": "mail",
@@ -1005,9 +1005,9 @@
       "style": "filled",
       "nodeId": "24:127",
       "source": "icons/figma-study/mail/filled.svg",
-      "sha256": "c33394a4d30b0851639ddafedd90922a19be5d327da3a47147013fd48eeef3ac",
+      "sha256": "92b4c2b5f752c616178b9e4955883de304198619fc992c5170442353696eeee1",
       "exportMember": "Mail/Filled.svg",
-      "revisionArchiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80"
+      "revisionArchiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d"
     },
     {
       "id": "wallet",
@@ -1661,6 +1661,13 @@
       "identities": ["mail"],
       "archiveSHA256": "2c0cb11a57a9731a3afd5e350e096119bf08210be8ae61bc6d16b585bbc1fa80",
       "scope": "Use a plain two-line V flap first, without gathered or added bowed shaping; retain the body and connected ends.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail"],
+      "archiveSHA256": "dd51ecdedde33f923e4062dc2ace0e3ad6b8a208a6720cde02a20058b537418d",
+      "scope": "Slightly fuller V arms and a small tangent fillet at the central tip, developed from the plain-line baseline; no gathered terminal shaping.",
       "review": "draft"
     }
   ]
