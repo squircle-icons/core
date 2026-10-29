@@ -162,6 +162,13 @@ endpoint paths and verify near-endpoint boundary continuity below.0005. Preserve
 0.6× pace and smooth reversal. The previous rigid half-turn and legacy circular
 elbow implementation are superseded.
 
+### Animate / Morph naming — owner clarification2026-10-29
+
+The owner calls the two user-facing categories **Animate** and **Morph**.
+Animate is the display name for single-icon animation, previously labeled Motion.
+Keep the existing `/motion` routes, compatibility imports and `animate` prop;
+this is a terminology change, with no change to geometry or playback.
+
 ### Object Motion is separate from Morph — owner clarification2026-10-29
 
 Motion animates parts of one icon. Morph transforms between two icon identities.

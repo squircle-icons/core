@@ -83,7 +83,8 @@ it('retains the exact Home Door lower body beneath the straight-sided Shop fabri
   expect(filled).toContain('fill-rule="evenodd"');
   expect(filled).not.toMatch(/\bstroke=/);
   for (const [x, y] of [
-    [12, 7],
+    [9.1, 7],
+    [14.9, 7],
     [7.15002, 14.25],
     [12, 19],
   ])
@@ -91,6 +92,9 @@ it('retains the exact Home Door lower body beneath the straight-sided Shop fabri
   for (const [x, y] of [
     [5, 16],
     [18, 7],
+    [12, 7],
+    [9.3, 4.1],
+    [8.95, 9.35],
     [12, 12],
   ])
     expect(painted(body[0], x, y)).toBe(true);

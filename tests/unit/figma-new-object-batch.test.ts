@@ -126,14 +126,25 @@ it('keeps the twelve new identities native, safe and consistently stroked', asyn
       expect(svg).not.toMatch(
         /NaN|Infinity|undefined|<(?:image|mask|foreignObject|script)\b|\btransform=/,
       );
-      expect(svg).not.toMatch(/(?:fill|stroke)="(?:white|#fff(?:fff)?)"/i);
+      // Figma's white rectangles inside defs establish clipping, not opaque
+      // surface patches. Check the painted composition outside definitions.
+      expect(svg.replace(/<defs>[\s\S]*?<\/defs>/g, '')).not.toMatch(
+        /(?:fill|stroke)="(?:white|#fff(?:fff)?)"/i,
+      );
       const stroked = tags(svg).filter(
         (t) => attribute(t, 'stroke') !== undefined && attribute(t, 'stroke') !== 'none',
       );
       if (style === 'outline') expect(stroked.length).toBeGreaterThan(0);
       for (const tag of stroked) {
         expect(attribute(tag, 'stroke-width')).toBe('1.5');
-        expect(attribute(tag, 'stroke-linecap')).toBe('round');
+        // The Bag handle stops inside the shared upper-body ribbon. Its butt
+        // terminals avoid the hanging round caps the owner rejected.
+        if (
+          style === 'outline' &&
+          ((id === 'shopping-bag' && tag === stroked[0]) || (id === 'image' && tag === stroked[1]))
+        )
+          expect(attribute(tag, 'stroke-linecap') ?? 'butt').toBe('butt');
+        else expect(attribute(tag, 'stroke-linecap')).toBe('round');
       }
       if (style === 'filled') {
         // Bell's exact inherited fill keeps native1.5 ringing accent marks.
@@ -149,13 +160,8 @@ it('keeps the twelve new identities native, safe and consistently stroked', asyn
   }
 });
 
-it('inherits the accepted Square and Triangle bodies and the complete current Bell', async () => {
+it('inherits the current Triangle body and complete crown-free Bell', async () => {
   for (const style of ['outline', 'filled']) {
-    inheritedGeometry(
-      data(tags(await source('info', style))[0]),
-      data(tags(await source('square', style))[0]),
-      style === 'outline' ? [-24, -24] : [-56, -24],
-    );
     inheritedGeometry(
       data(tags(await source('alert', style))[0]),
       data(tags(await source('triangle', style))[0]),
@@ -164,7 +170,7 @@ it('inherits the accepted Square and Triangle bodies and the complete current Be
       ringing = tags(await source('bell-ring', style));
     expect(ringing).toHaveLength(bell.length + 1);
     for (let i = 0; i < bell.length; i++) {
-      // Filled Bell contains both shell/crown and clapper subpaths. Compare
+      // Filled Bell contains the shell and clapper subpaths. Compare
       // every command, not only its first exterior or a bounding box.
       const a = commands(data(ringing[i])),
         b = commands(data(bell[i]));
@@ -180,6 +186,230 @@ it('inherits the accepted Square and Triangle bodies and the complete current Be
             ).toBeLessThan(0.0002);
     }
   }
+});
+
+it('uses the requested Circle Info housing while retaining its original i position and dimensions', async () => {
+  const outline = tags(await source('info')),
+    filled = tags(await source('info', 'filled'));
+  const ring = commands(data(outline[0]));
+  expect(ring.map((c) => c.code)).toEqual(['M', 'C', 'C', 'C', 'C', 'Z']);
+  for (const [style, d, radius] of [
+    ['outline', data(outline[0]), 9.25],
+    ['filled', data(filled[0]), 10],
+  ] as const) {
+    const points = contours(d)[0];
+    const xs = points.map(([x]) => x),
+      ys = points.map(([, y]) => y);
+    expect(Math.min(...xs)).toBeCloseTo(12 - radius, 4);
+    expect(Math.max(...xs)).toBeCloseTo(12 + radius, 4);
+    expect(Math.min(...ys)).toBeCloseTo(12 - radius, 4);
+    expect(Math.max(...ys)).toBeCloseTo(12 + radius, 4);
+    // Figma's ordinary cubic circle has a small known radial approximation.
+    // Its semantic circle endpoints/center remain fixed; a squircle fails this.
+    for (const [x, y] of points)
+      expect(Math.abs(Math.hypot(x - 12, y - 12) - radius), style).toBeLessThan(0.003);
+  }
+  const dot = contours(data(outline[1]))[0],
+    stem = commands(data(outline[2]));
+  expect(Math.min(...dot.map(([x]) => x))).toBeCloseTo(11.25, 4);
+  expect(Math.max(...dot.map(([x]) => x))).toBeCloseTo(12.75, 4);
+  expect(Math.min(...dot.map(([, y]) => y))).toBe(7);
+  expect(Math.max(...dot.map(([, y]) => y))).toBe(8.5);
+  expect(stem.map((c) => c.code)).toEqual(['M', 'V']);
+  for (const [i, [x, y]] of [
+    [12, 11.25],
+    [12, 16.25],
+  ].entries()) {
+    expect(stem[i].x).toBeCloseTo(x, 4);
+    expect(stem[i].y).toBe(y);
+  }
+  const paint = composition(await source('info', 'filled'));
+  for (const p of [
+    [12, 7.75],
+    [12, 13.5],
+  ] as Point[])
+    expect(paint(p)).toBe(false);
+  expect(paint([12, 2.5])).toBe(true);
+  expect(paint([3, 3])).toBe(false);
+});
+
+it('retains the shorter fuller Link rings while trimming only its diagonal connector', async () => {
+  const parts = tags(await source('link'));
+  expect(parts).toHaveLength(3);
+  for (const tag of parts.slice(0, 2)) {
+    const points = contours(data(tag))[0];
+    const short = points.map(([x, y]) => (x + y - 24) / Math.SQRT2);
+    const long = points.map(([x, y]) => (x - y) / Math.SQRT2);
+    expect(Math.max(...short) - Math.min(...short)).toBeCloseTo(8.997077639, 3);
+    expect(Math.max(...long) - Math.min(...long)).toBeCloseTo(8.085327898, 3);
+  }
+  const connector = commands(data(parts[2]));
+  expect(connector.map((c) => c.code)).toEqual(['M', 'L']);
+  for (const [i, [x, y]] of [
+    [9.38309339, 14.61694661],
+    [14.61704661, 9.38303339],
+  ].entries())
+    expect(Math.hypot(connector[i].x - x, connector[i].y - y)).toBeLessThan(0.0002);
+});
+
+it('joins the ABOVE Bag handle to its upper ribbon and retains the gently flared walls', async () => {
+  const outline = await source('shopping-bag'),
+    parts = tags(outline);
+  expect(parts).toHaveLength(2);
+  const handle = commands(data(parts[0])),
+    body = commands(data(parts[1]));
+  const start = handle[0],
+    end = handle.at(-1)!;
+  expect(start.x).toBe(8.5);
+  expect(end.x).toBe(15.5);
+  expect(start.y).toBeCloseTo(8.320223469, 4);
+  expect(end.y).toBe(start.y);
+  const bodyContour = contours(data(parts[1]));
+  for (const terminal of [start, end])
+    expect(distance(bodyContour, [terminal.x, terminal.y])).toBeLessThan(0.0002);
+  const right = body.find((c) => c.x0 === 17.5 && c.y0 === 10.4)!;
+  expect(right.code).toBe('C');
+  if (right.code !== 'C') throw new Error('Missing Bag slope');
+  expect([right.x, right.y]).toEqual([19.1, 18.4]);
+  expect((right.x - right.x0) / (right.y - right.y0)).toBeCloseTo(0.2, 6);
+  for (const [x, y] of [
+    [right.x1, right.y1],
+    [right.x2, right.y2],
+  ])
+    expect(Math.abs((x - right.x0) * 8 - (y - right.y0) * 1.6)).toBeLessThan(0.001);
+  const outlinePaint = composition(outline),
+    filledPaint = composition(await source('shopping-bag', 'filled'));
+  for (const p of [
+    [8.5, start.y],
+    [15.5, end.y],
+  ] as Point[]) {
+    expect(outlinePaint(p)).toBe(true);
+    expect(filledPaint(p)).toBe(true);
+  }
+  for (const p of [
+    [8.5, 9.25],
+    [15.5, 9.25],
+  ] as Point[])
+    expect(outlinePaint(p)).toBe(false);
+  for (const p of [
+    [12, 5],
+    [12, 7],
+  ] as Point[])
+    expect(filledPaint(p)).toBe(false);
+  expect(filledPaint([12, 16])).toBe(true);
+});
+
+it('connects both Image landscape ends to the original frame with protected Filled bridges', async () => {
+  const outline = await source('image'),
+    parts = tags(outline),
+    mark = commands(data(parts[1]));
+  expect(attribute(parts[1], 'stroke-linecap') ?? 'butt').toBe('butt');
+  const ends = [mark[0], mark.at(-1)!];
+  const body = commands(data(parts[0])).filter((c) => c.code === 'C');
+  for (const [i, [x, y]] of [
+    [4.27375978, 18.83393107],
+    [20.29152433, 18.20550714],
+  ].entries()) {
+    expect(Math.hypot(ends[i].x - x, ends[i].y - y)).toBeLessThan(0.0002);
+    const c = body[i === 0 ? 2 : 0],
+      t = i === 0 ? 0.9797174549737411 : 0.8743745435617252,
+      u = 1 - t;
+    const bx = u ** 3 * c.x0 + 3 * u * u * t * c.x1 + 3 * u * t * t * c.x2 + t ** 3 * c.x;
+    const by = u ** 3 * c.y0 + 3 * u * u * t * c.y1 + 3 * u * t * t * c.y2 + t ** 3 * c.y;
+    expect(Math.hypot(ends[i].x - bx, ends[i].y - by)).toBeLessThan(0.0002);
+  }
+  expect(data(parts[1])).toContain('L14.1 16.7L16.25 14.3');
+  const filled = composition(await source('image', 'filled'));
+  for (const p of [
+    [16.6, 8.4],
+    [10.05, 12.3],
+    [6, 17.5],
+    [19, 16.6],
+  ] as Point[])
+    expect(filled(p)).toBe(false);
+  for (const p of [
+    [4.2738, 18.8339],
+    [20.2916, 18.2055],
+    [12, 19.5],
+  ] as Point[])
+    expect(filled(p)).toBe(true);
+});
+
+it('removes the Bell crowns while retaining the separate clapper gap and Ring accents', async () => {
+  for (const id of ['bell', 'bell-ring']) {
+    const outline = await source(id),
+      filled = await source(id, 'filled');
+    const outlineParts = tags(outline),
+      filledParts = tags(filled);
+    expect(outlineParts).toHaveLength(id === 'bell' ? 2 : 3);
+    expect(commands(data(outlineParts[0])).map((c) => c.code)).toEqual(['M', 'C', 'C']);
+    expect(data(outlineParts[1])).toContain('M12.0001 4.5');
+    for (const svg of [outline, filled]) {
+      const paint = composition(svg);
+      expect(paint([12, 2.75])).toBe(false);
+      expect(paint([12, 4])).toBe(true);
+      expect(paint([12, 19.25])).toBe(false);
+      expect(paint([12, 21.1])).toBe(true);
+    }
+    // Filled keeps the solid clapper, rather than introducing an inner hole.
+    expect(composition(filled)([12, 20.25])).toBe(true);
+    if (id === 'bell-ring') {
+      expect(data(outlineParts[2])).toBe(data(filledParts[1]));
+      const accents = commands(data(outlineParts[2]));
+      expect(accents.map((c) => c.code)).toEqual(['M', 'C', 'M', 'C']);
+      expect([accents[0].x, accents[0].y]).toEqual([4.35004, 5.89999]);
+      expect([accents[2].x, accents[2].y]).toEqual([19.65, 5.89999]);
+    }
+  }
+});
+
+it('keeps the taller Terminal housing20×18 and centers its original prompt and underscore', async () => {
+  const outline = tags(await source('terminal'));
+  const bounds = (points: Point[]) => [
+    Math.min(...points.map(([x]) => x)),
+    Math.min(...points.map(([, y]) => y)),
+    Math.max(...points.map(([x]) => x)),
+    Math.max(...points.map(([, y]) => y)),
+  ];
+  const centerline = bounds(contours(data(outline[0]))[0]);
+  const visible = centerline.map((v, i) => v + (i < 2 ? -0.75 : 0.75));
+  expect(visible).toEqual([2, 3, 22, 21]);
+  expect(bounds(contours(data(tags(await source('terminal', 'filled'))[0]))[0])).toEqual([
+    2, 3, 22, 21,
+  ]);
+  const prompt = commands(data(outline[1]));
+  expect(prompt.map((c) => c.code)).toEqual(['M', 'L', 'L']);
+  for (const [i, [x, y]] of [
+    [7, 8.85],
+    [10.15, 12],
+    [7, 15.15],
+  ].entries()) {
+    expect(prompt[i].x).toBeCloseTo(x, 4);
+    expect(prompt[i].y).toBeCloseTo(y, 4);
+  }
+  const underscore = commands(data(outline[2]));
+  expect(underscore.map((c) => [c.x, c.y])).toEqual([
+    [13.1, 15.15],
+    [16.9, 15.15],
+  ]);
+  // True1.5 counters keep the original mark dimensions after the sharedY+.35
+  // centering move; nearby solid samples prevent a merely enlarged opening.
+  const filled = composition(await source('terminal', 'filled'));
+  for (const point of [
+    [7, 8.85],
+    [10.15, 12],
+    [7, 15.15],
+    [15, 15.15],
+  ] as Point[])
+    expect(filled(point)).toBe(false);
+  for (const point of [
+    [11, 12],
+    [15, 14.25],
+    [15, 16.05],
+    [12, 6],
+    [12, 18],
+  ] as Point[])
+    expect(filled(point)).toBe(true);
 });
 
 it('preserves genuine semantic counters and solid shell bridges', async () => {

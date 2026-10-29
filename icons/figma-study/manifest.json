@@ -3,7 +3,7 @@
   "canvas": [24, 24],
   "baseStroke": 1.5,
   "exported": "2026-10-29",
-  "archiveSHA256": "88059cd25aebe7e0cfea1466af96971f313eca9b5898beb6cb9393541b5129fc",
+  "archiveSHA256": "14646fdb539adef02be33077a109e6789d1c016f9bb3dc94254775dc27813c42",
   "boardSHA256": "b92234646c42324962cfc9ccf9e6b809b9b338edaa11135e2238afa2ca027146",
   "normalization": "Native frame SVGs unchanged. Square retains its named board paths with grid-cell translation only. No scaling or redraw.",
   "records": [
@@ -234,8 +234,9 @@
       "style": "outline",
       "nodeId": "18:229",
       "source": "icons/figma-study/bell/outline.svg",
-      "sha256": "64db8a3b0e921bb6add4188a4c0c471e397e1d893a30d5074d292d6ebdc2bb58",
-      "exportMember": "Bell/Outline.svg"
+      "sha256": "5f422457cff3999105c972e218a63f16a902acc303a4706f8677c852a939c79f",
+      "exportMember": "Bell/Outline.svg",
+      "revisionArchiveSHA256": "5fd30991c5e8d583b3326301f868e445ed0b720fa0d374c7352ae897edd671a8"
     },
     {
       "id": "bell",
@@ -244,8 +245,9 @@
       "style": "filled",
       "nodeId": "18:234",
       "source": "icons/figma-study/bell/filled.svg",
-      "sha256": "d903ae59787e880f51fda5cbf9e5bd6d4be31ecbb5952973ab5f31421d6a58fe",
-      "exportMember": "Bell/Filled.svg"
+      "sha256": "dc78a97c3852187235c441d22b39bce7fc2b8b6c11b3807feb1a4e06b8c9407d",
+      "exportMember": "Bell/Filled.svg",
+      "revisionArchiveSHA256": "5fd30991c5e8d583b3326301f868e445ed0b720fa0d374c7352ae897edd671a8"
     },
     {
       "id": "chat-bubble",
@@ -1133,9 +1135,9 @@
       "style": "filled",
       "nodeId": "24:170",
       "source": "icons/figma-study/shop/filled.svg",
-      "sha256": "59d7bf018da62d9bb0d4a3de49e945727adc7329355d8da6890f00bde541a6e5",
+      "sha256": "a7c0e576bdae92dda65e6be08d9ef527384fcf2b42d18a4c83004757c1c1f16c",
       "exportMember": "Shop/Filled.svg",
-      "revisionArchiveSHA256": "a4528f3ca8490a71b8e02f252cc81178dfe3967ca059c7bea19fac43b8915546"
+      "revisionArchiveSHA256": "08546b444bba48848827ead842560bb14e3ca62a04d10babdb97633dc3dd5c81"
     },
     {
       "id": "chevron-line-up",
@@ -1664,9 +1666,9 @@
       "style": "outline",
       "nodeId": "40:23",
       "source": "icons/figma-study/info/outline.svg",
-      "sha256": "a5875cd082e5b2a54cf68ee0184e7d453db5e2d184351f8d93d4482391649119",
+      "sha256": "064bcce0da81a20c22065c280525b11736e129be6d323777501828b6368b93f2",
       "exportMember": "Info/Outline.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "1ebd10963aea93403e85481752bb2889d36a01187ed77aabf9a122e60017f667"
     },
     {
       "id": "info",
@@ -1675,9 +1677,9 @@
       "style": "filled",
       "nodeId": "40:28",
       "source": "icons/figma-study/info/filled.svg",
-      "sha256": "4c072e1f169af7ce0f087ee467cd41c626ac247436b0899d4c69f0411fed5c1b",
+      "sha256": "07f8eff82862b39a7e007501ffa429506b2a3ec6ebdb3c232ed9af6066b8ea36",
       "exportMember": "Info/Filled.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "1ebd10963aea93403e85481752bb2889d36a01187ed77aabf9a122e60017f667"
     },
     {
       "id": "alert",
@@ -1730,9 +1732,9 @@
       "style": "outline",
       "nodeId": "40:47",
       "source": "icons/figma-study/link/outline.svg",
-      "sha256": "0a916c088d857794736aa189ed28c78fb2e91d011d5d605320b16ee738d300ea",
+      "sha256": "0aec775705f5d6a89b6df7f12a6c404355c3bda246dea16e244553c2d29d53b5",
       "exportMember": "Link/Outline.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0"
     },
     {
       "id": "link",
@@ -1741,9 +1743,9 @@
       "style": "filled",
       "nodeId": "40:52",
       "source": "icons/figma-study/link/filled.svg",
-      "sha256": "032a6aff2ffbe963a4efddba76561b6a02c03a4320126672f4a4f93f4c42b8e1",
+      "sha256": "791de4b8bc8b9b917279e7b26ec294ec5e07233554769d17abd6002200b90f99",
       "exportMember": "Link/Filled.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0"
     },
     {
       "id": "code",
@@ -1774,9 +1776,9 @@
       "style": "outline",
       "nodeId": "40:65",
       "source": "icons/figma-study/terminal/outline.svg",
-      "sha256": "4e82c9eaaf2d8878cb4c4f49855ff83d959172cd1e65042806b403e5987232c3",
+      "sha256": "68159e4b0044d982a6c28546c2f26d048fd076c6080bc93a5aff4218d17a70b3",
       "exportMember": "Terminal/Outline.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "c3b8cec3a71dece60a29a281f0824ca04efe36eb22304f5730685fac5a023cf3"
     },
     {
       "id": "terminal",
@@ -1785,9 +1787,9 @@
       "style": "filled",
       "nodeId": "40:70",
       "source": "icons/figma-study/terminal/filled.svg",
-      "sha256": "9e1a237a8c080f730cbed7e1f145893ae87386db822e9f9ed3ef9bfe1958fab4",
+      "sha256": "21500ef172b667c8354dc20bb904b6a463ac1fdec5d3a0abd976c23b71e142c0",
       "exportMember": "Terminal/Filled.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "c3b8cec3a71dece60a29a281f0824ca04efe36eb22304f5730685fac5a023cf3"
     },
     {
       "id": "external-link",
@@ -1818,9 +1820,9 @@
       "style": "outline",
       "nodeId": "40:81",
       "source": "icons/figma-study/shopping-bag/outline.svg",
-      "sha256": "d8d75c7509051ea2df68fbed7d6c25a0ea8a0b05533843be42d7f96c453ed486",
+      "sha256": "1dc45df7ee6654a6980705b8ee15f183de18dd8544f33d1cfee7f486ba8dddae",
       "exportMember": "Shopping Bag/Outline.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "b9aae74af1cf0607ec25bd79f398e73b552b73130889a67b48f42aedf5267378"
     },
     {
       "id": "shopping-bag",
@@ -1829,9 +1831,9 @@
       "style": "filled",
       "nodeId": "40:85",
       "source": "icons/figma-study/shopping-bag/filled.svg",
-      "sha256": "0bb44b9a69c4edfed879d47e286c2b69c4a1a09db24a5a28c28fda5f6741c3b1",
+      "sha256": "69d2c9debbfe883976a96704224758b99b7cb2c9a1d18ed239c82918c6f579e6",
       "exportMember": "Shopping Bag/Filled.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "b9aae74af1cf0607ec25bd79f398e73b552b73130889a67b48f42aedf5267378"
     },
     {
       "id": "bell-ring",
@@ -1840,9 +1842,9 @@
       "style": "outline",
       "nodeId": "40:89",
       "source": "icons/figma-study/bell-ring/outline.svg",
-      "sha256": "7b03e634c3b6940add9afcbcba8183c1b204c9ffeacb931e537b14b90b1471ea",
+      "sha256": "b69852ac16205937371a12ee7f7214e07be59cd888252c000408b9b625c473d8",
       "exportMember": "Bell Ring/Outline.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "3e92e5a0992668d5fca61d0f43e77d7241b50cab8e07dd5e3cba9a4d1b67d473"
     },
     {
       "id": "bell-ring",
@@ -1851,9 +1853,9 @@
       "style": "filled",
       "nodeId": "40:95",
       "source": "icons/figma-study/bell-ring/filled.svg",
-      "sha256": "61dfdff476afa36033e27134017b773b5d3a3fd57272405d4c5dd4bf12b1e1e7",
+      "sha256": "89b1a282f00e942b4acb24bbaa93100970817b82763b52c7b4d900914b2d5749",
       "exportMember": "Bell Ring/Filled.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "3e92e5a0992668d5fca61d0f43e77d7241b50cab8e07dd5e3cba9a4d1b67d473"
     },
     {
       "id": "repeat",
@@ -1906,9 +1908,9 @@
       "style": "outline",
       "nodeId": "40:99",
       "source": "icons/figma-study/image/outline.svg",
-      "sha256": "1c65bcffcf2133de78c0d90fc0d46850356d5915e8716f44e4c62b404cdb933a",
+      "sha256": "d06d4b49e3b314f1696d4a506b241b8b9c2242c750658cd274361600f942a96f",
       "exportMember": "Image/Outline.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "67c83fb0ce1a99c73e112e4bad77b1be3d0d9fec6314be94a61db4bb5814299d"
     },
     {
       "id": "image",
@@ -1917,9 +1919,9 @@
       "style": "filled",
       "nodeId": "40:104",
       "source": "icons/figma-study/image/filled.svg",
-      "sha256": "6463c2121ba18fe8d22e3ca650b5d9ab962972acb110c08b733ad2159487f847",
+      "sha256": "9a3fca37ad5d0f788a9442de1dc5b691262d220f3ec8b71e0ac1082da890107c",
       "exportMember": "Image/Filled.svg",
-      "revisionArchiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad"
+      "revisionArchiveSHA256": "67c83fb0ce1a99c73e112e4bad77b1be3d0d9fec6314be94a61db4bb5814299d"
     }
   ],
   "revisions": [
@@ -1997,6 +1999,90 @@
       ],
       "archiveSHA256": "ddd1707162c043cfdab2b0884dbf9a43e71e05114dbcd6370ca2a48b24be52ad",
       "scope": "Add12 independent original current-study pairs from complete Figma web export76:24 verbatim native SVGs. Preserve all82 existing pairs, including current Shop and Bookmark. Board now94 pairs/188 drawings across11 groups; Square remains its two raw board sources.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["terminal"],
+      "archiveSHA256": "c3b8cec3a71dece60a29a281f0824ca04efe36eb22304f5730685fac5a023cf3",
+      "scope": "Taller Terminal body: visible20\u00d718 versus20\u00d716, centered at12 with width20 and native1.5 stroke retained. Preserve current quarter flow; translate the unchanged prompt/underscore and true Filled counters together byY+.35 to center the mark group. Replace the original40:65/40:70 frames without moving them. Two SVGs stored verbatim from actual export77.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["link"],
+      "archiveSHA256": "732a3d9dee53c0ba1c75051fbe315a32eae1091382f5021240ae8257b4a54a37",
+      "scope": "Fuller Link rings: increase each local short-axis span by1 native unit (7.497077639\u21928.497077639), then shorten each ring long-axis span only.343011554 toward its unchanged mouth axis-position to retain Filled2px native margins. Preserve connector, diagonal orientation, Outline1.5 and fixed unboxed Bold2.5 Filled. Replace only original frames40:47/40:52; two SVGs stored verbatim from actual export78.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag"],
+      "archiveSHA256": "cd5be1131dab6bf1e364cec907e4e85dea3c53c3cb00c91bcf16950aaa005df9",
+      "scope": "Connect handle terminals inside the upper body stroke and slope sides outward toward the base; retain1.5 study stroke and transparent handle opening.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["bell"],
+      "archiveSHA256": "5fd30991c5e8d583b3326301f868e445ed0b720fa0d374c7352ae897edd671a8",
+      "scope": "Remove only the top crown/stem; retain existing shell/clapper geometry and Bell Ring side arcs, with the newly exposed local Filled top bridge.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["bell-ring"],
+      "archiveSHA256": "3e92e5a0992668d5fca61d0f43e77d7241b50cab8e07dd5e3cba9a4d1b67d473",
+      "scope": "Remove only the top crown/stem; retain existing shell/clapper geometry and Bell Ring side arcs, with the newly exposed local Filled top bridge.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["link"],
+      "archiveSHA256": "9eb25d0185518f4869686ce2550545d3bd01ff6a96aabf8248a2f579cd97fc65",
+      "scope": "Shorten each ring local long span by1.25 while increasing local short span by.5, retaining the complete connector, diagonal pose and fixed1.5/2.5 weights; no enlargement back to prior margins.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["info"],
+      "archiveSHA256": "1ebd10963aea93403e85481752bb2889d36a01187ed77aabf9a122e60017f667",
+      "scope": "Replace only Info housing with Circle centered12,12; retain original i dot/stem and transparent counters. Corrected native frame alignment, no mark translation/scaling.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag"],
+      "archiveSHA256": "0b73cceb7ac2a299843aeb04e15120a194547c2aef67012669e8b3df465da24c",
+      "scope": "Use a short U handle curving down inside the bag, with true Filled counter and solid upper rim; retain sloped body geometry with Y-2.75 translation only, no resizing.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shopping-bag"],
+      "archiveSHA256": "b9aae74af1cf0607ec25bd79f398e73b552b73130889a67b48f42aedf5267378",
+      "scope": "Owner restores the connected ABOVE handle and sloped body from export79; supersedes the mistaken inside-U86.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["shop"],
+      "archiveSHA256": "08546b444bba48848827ead842560bb14e3ca62a04d10babdb97633dc3dd5c81",
+      "scope": "Replace broad transparent fabric panel with two transparent1.5 stripe seams inside solid canopy rim; exterior and window retained.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["image"],
+      "archiveSHA256": "67c83fb0ce1a99c73e112e4bad77b1be3d0d9fec6314be94a61db4bb5814299d",
+      "scope": "Extend only landscape first/last rays into the unchanged frame rim; retain body/sun/middle landscape and full solid Filled border.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["link"],
+      "archiveSHA256": "7fd8f24573fef5630604a3c5efa2c93d666e49a453b0eaa41d637b8d12d57df0",
+      "scope": "Trim only the diagonal connector by.5 native at each end; retain shorter/fuller rings, pose, center and fixed1.5/2.5 weights.",
       "review": "draft"
     }
   ]
