@@ -22,7 +22,8 @@ it('connects marked seams while retaining the owner body and detail masters', ()
   // Terminals meet the actual body/awning centerlines. Butt ends stay inside
   // that shared ribbon instead of poking through it with an extra round cap.
   expect(mail[1]).toContain('M3.41064 7.23944');
-  expect(mail[1]).toContain('L20.5893 7.23946');
+  expect(mail[1]).toContain('8.15 12.75 12 12.75C15.85 12.75');
+  expect(mail[1]).toContain('20.5893 7.23946');
   expect(wallet[1]).toContain('M21.1923 9.5');
   expect(wallet[1]).toContain('H21.1923');
   expect(shop[0]).toContain('M3.95286 9.10911');

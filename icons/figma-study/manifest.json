@@ -994,9 +994,9 @@
       "style": "outline",
       "nodeId": "24:123",
       "source": "icons/figma-study/mail/outline.svg",
-      "sha256": "701b12fcce0cad2efb69d3e6f4eb8324c771776216acefce052874bff5d282e8",
+      "sha256": "189d4d1552010decdc09b44c67fb0aaa2079b2abfe4ca5c871ab4164f4a05150",
       "exportMember": "Mail/Outline.svg",
-      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
+      "revisionArchiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b"
     },
     {
       "id": "mail",
@@ -1005,9 +1005,9 @@
       "style": "filled",
       "nodeId": "24:127",
       "source": "icons/figma-study/mail/filled.svg",
-      "sha256": "035e89ed8227e20858226e39bb8093f7d69f20255daeed88592b2be02617a4b2",
+      "sha256": "bbabbb80143aaea8d831396a13cc1f71d83c7118f90343be63eb4cbfa5150223",
       "exportMember": "Mail/Filled.svg",
-      "revisionArchiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4"
+      "revisionArchiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b"
     },
     {
       "id": "wallet",
@@ -1640,6 +1640,13 @@
       "identities": ["mail", "wallet", "shop"],
       "archiveSHA256": "53820e2f8a9f431e0ea966b31dd39757b7c9b9ed6e7f28dcad058dc0e7451bc4",
       "scope": "Connect Mail flap and Wallet closure to their body; trim Shop frontage at the awning; preserve all other artwork.",
+      "review": "draft"
+    },
+    {
+      "date": "2026-10-29",
+      "identities": ["mail"],
+      "archiveSHA256": "3b7b78aa8136607d100b733fd578ae16a4332cc7b49a9e43c9579ef936a31a1b",
+      "scope": "Replace the rejected V flap with a continuous downward bow; retain the Mail body and connected ends.",
       "review": "draft"
     }
   ]
