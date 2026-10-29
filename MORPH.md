@@ -160,15 +160,24 @@ endpoint paths and verify near-endpoint boundary continuity below.0005. Preserve
 0.6× pace and smooth reversal. The previous rigid half-turn and legacy circular
 elbow implementation are superseded.
 
+### Object Motion is separate from Morph — owner clarification2026-10-29
+
+Motion animates parts of one icon. Morph transforms between two icon identities.
+The owner explicitly requires separate pages and navigation: `/motion` contains
+Trash; `/morph` contains only the five authored pairs. Do not put Trash in the
+Morph picker or import its renderer through a Morph page. Geometry lives in
+`src/motions/trash.ts` and the adapter uses a distinct `motion/trash` export.
+The spring controller may be shared internally; this does not merge the features.
+
 ### Trash lid motion — proposed 2026-10-29
 
 The owner requested an icon motion starting with Trash opening its lid and closing.
-Preview `/motion/trash`, opt-in adapter `morph/trash`. This is object motion rather
+Preview `/motion` or `/motion/trash`, opt-in adapter `motion/trash`. This is object motion rather
 than a transformation to a different icon. Closed references are current Figma
 Trash Outline18:145 and Filled18:151 in `FIGMA_STUDY_ICONS`; static draft statuses
 remain unchanged. No frame or additional static identity is introduced.
 
-Keep the body and two slots fixed. Treat lid and handle as one rigid part, lifting
+Keep the body and two slots fixed. Treat lid and handle as one rigid part, rotating
 clockwise12° about the right lid terminal19.75,6.5, with no separate lift.
 This rightward opening and anchored balance follow the owner’s2026-10-29 review;
 the earlier centered upward/leftward tilt is superseded. Both styles share

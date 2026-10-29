@@ -1,5 +1,5 @@
 import { buildTrashGeometry } from './build-trash.js';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { loadSources, root } from './validate.js';
 import { buildSunMoonGeometry } from './build-sun-moon.js';
@@ -7,6 +7,9 @@ import { buildPlusXGeometry } from './build-plus-x.js';
 import { buildMenuXGeometry } from './build-menu-x.js';
 import { buildPlusMinusGeometry } from './build-plus-minus.js';
 import { buildMaximizeMinimizeGeometry } from './build-maximize-minimize.js';
+// Retire the former Trash Morph build output when upgrading an existing checkout.
+for (const suffix of ['js', 'd.ts', 'json'])
+  await rm(resolve(root, `dist/morphs/trash.${suffix}`), { force: true });
 const icons = await loadSources();
 await mkdir(resolve(root, 'dist'), { recursive: true });
 await writeFile(
@@ -50,7 +53,8 @@ await writeFile(
   JSON.stringify(buildMaximizeMinimizeGeometry(), null, 2) + '\n',
 );
 
+await mkdir(resolve(root, 'dist/motions'), { recursive: true });
 await writeFile(
-  resolve(root, 'dist/morphs/trash.json'),
+  resolve(root, 'dist/motions/trash.json'),
   JSON.stringify(buildTrashGeometry(), null, 2) + '\n',
 );

@@ -1,6 +1,6 @@
 import { XMLParser } from 'fast-xml-parser';
 import { commands, source } from './morph-source.js';
-import type { TrashGeometry, TrashCommand } from '../src/morphs/trash.js';
+import type { TrashGeometry, TrashCommand } from '../src/motions/trash.js';
 
 function normalized(d: string): TrashCommand[] {
   return commands(d).map((c) => {

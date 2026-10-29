@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { buildTrashGeometry } from '../../tools/build-trash.js';
-import { trashFrame } from '../../src/morphs/trash.js';
+import { trashFrame } from '../../src/motions/trash.js';
 import { commands, source } from '../../tools/morph-source.js';
 const geometry = buildTrashGeometry();
 it('retains the current outline parts and filled source curves and counters', () => {
